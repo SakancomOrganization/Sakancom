@@ -1,2 +1,2 @@
 # Sakancom
-The project of Software Enginnering Course
+The project of Software Engineering course
