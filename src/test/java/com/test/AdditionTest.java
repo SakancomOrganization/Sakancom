@@ -1,6 +1,6 @@
-package org.test;
+package com.test;
 
-import org.code.Addition;
+import com.code.Addition;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

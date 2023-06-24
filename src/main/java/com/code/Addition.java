@@ -1,4 +1,4 @@
-package org.code;
+package com.code;
 
 public class Addition {
     public int add (int ... nums) {
