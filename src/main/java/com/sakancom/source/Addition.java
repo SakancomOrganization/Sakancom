@@ -1,4 +1,4 @@
-package com.code;
+package com.sakancom.source;
 
 public class Addition {
     public int add (int ... nums) {
