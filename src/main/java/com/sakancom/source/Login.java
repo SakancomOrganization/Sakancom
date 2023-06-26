@@ -31,30 +31,27 @@ public class Login {
         this.type = type;
     }
 
-    public boolean canLogin() {
+    public boolean canLogin() throws SQLException {
+        String url = "jdbc:mysql://localhost:3306/sakancom";
         try {
-            String query = "SELECT * FROM users WHERE username = ? and password = ? and type = ?";
-            String connectionUrl = "jdbc:mysql://localhost:3306/sakancom";
-            Connection conn = DriverManager.getConnection(connectionUrl, "root", "");
-            try {
-                PreparedStatement ps = conn.prepareStatement(query);
-                ps.setString(1, this.username);
-                ps.setString(2, this.password);
-                ps.setString(3, this.type);
-                ResultSet rs = ps.executeQuery();
-                while (rs.next()) {
-                    String username = rs.getString("username");
-                    String password = rs.getString("password");
-                    String type = rs.getString("type");
-                    if (this.username.equals(username)
-                            && this.password.equals(password)
-                            && this.type.equals(type))
-                        return true;
+            try (Connection conn = DriverManager.getConnection(url, "root", "Mohammad12002Sakancom")) {
+                String query = "SELECT * FROM users WHERE username = ? and password = ? and type = ?";
+                try (PreparedStatement ps = conn.prepareStatement(query)) {
+                    ps.setString(1, this.username);
+                    ps.setString(2, this.password);
+                    ps.setString(3, this.type);
+                    ResultSet rs = ps.executeQuery();
+                    while (rs.next()) {
+                        String usernameDB = rs.getString("username");
+                        String passwordDB = rs.getString("password");
+                        String typeDB = rs.getString("type");
+                        if (this.username.equals(usernameDB)
+                                && this.password.equals(passwordDB)
+                                && this.type.equals(typeDB))
+                            return true;
+                    }
                 }
-                conn.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            } //inner-catch
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
