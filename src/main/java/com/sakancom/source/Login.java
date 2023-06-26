@@ -31,7 +31,7 @@ public class Login {
         this.type = type;
     }
 
-    public boolean canLogin() throws SQLException {
+    public boolean canLogin() {
         String url = "jdbc:mysql://localhost:3306/sakancom";
         try {
             try (Connection conn = DriverManager.getConnection(url, "root", "Mohammad12002Sakancom")) {
