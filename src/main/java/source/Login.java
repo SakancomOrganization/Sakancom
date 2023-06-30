@@ -1,4 +1,6 @@
-package com.sakancom.source;
+package source;
+
+import objects.User;
 
 import java.sql.*;
 

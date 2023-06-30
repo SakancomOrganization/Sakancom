@@ -1,4 +1,4 @@
-package com.sakancom.source;
+package objects;
 
 import java.sql.Date;
 

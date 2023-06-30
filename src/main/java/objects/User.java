@@ -1,4 +1,4 @@
-package com.sakancom.source;
+package objects;
 
 public class User {
     private String username;

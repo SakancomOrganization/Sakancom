@@ -1,7 +1,7 @@
-package com.sakancom.test;
+package tests;
 
-import com.sakancom.source.Login;
-import com.sakancom.source.Type;
+import source.Login;
+import objects.Type;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
