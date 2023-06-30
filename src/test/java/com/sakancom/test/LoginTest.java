@@ -1,6 +1,7 @@
 package com.sakancom.test;
 
 import com.sakancom.source.Login;
+import com.sakancom.source.Type;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
@@ -16,15 +17,22 @@ public class LoginTest {
 
     @When("username is {string}")
     public void usernameIs(String username) {
-        login.setUsername(username);
+        login.getUser().setUsername(username);
     }
     @When("password is {string}")
     public void passwordIs(String password) {
-        login.setPassword(password);
+        login.getUser().setPassword(password);
     }
     @When("type is {string}")
     public void typeIs(String type) {
-        login.setType(type);
+        if(type.equalsIgnoreCase("admin"))
+            login.getUser().setType(Type.ADMINISTRATOR);
+        else if (type.equalsIgnoreCase("owner")) {
+            login.getUser().setType(Type.OWNER);
+        }
+        else if (type.equalsIgnoreCase("tenant")) {
+            login.getUser().setType(Type.TENANT);
+        }
     }
     @Then("the user will log in successfully")
     public void theUserWillLogInSuccessfully() {
