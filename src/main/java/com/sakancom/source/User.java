@@ -8,6 +8,10 @@ public class User {
     private Location location;
     private ContactInfo contactInfo;
 
+    public User() {
+
+    }
+
     public User(String username, String password, Type type, Name name, Location location, ContactInfo contactInfo) {
         this.username = username;
         this.password = password;

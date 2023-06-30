@@ -3,8 +3,11 @@ package com.sakancom.source;
 import java.sql.*;
 
 public class Login {
-    private User user;
+    private final User user;
 
+    public Login() {
+        user = new User();
+    }
     public User getUser() {
         return user;
     }
@@ -18,7 +21,7 @@ public class Login {
                 try (PreparedStatement ps = conn.prepareStatement(query)) {
                     ps.setString(1, user.getUsername());
                     ps.setString(2, user.getPassword());
-                    ps.setInt(3, user.getType().getNumber());
+                    ps.setString(3, user.getType().toString());
                     ResultSet rs = ps.executeQuery();
                     if(rs.next()) {
                         return true;
