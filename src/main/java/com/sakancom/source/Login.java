@@ -35,6 +35,7 @@ public class Login {
         String url = "jdbc:mysql://localhost:3306/sakancom";
         try {
             try (Connection conn = DriverManager.getConnection(url, "root", "Mohammad12002Sakancom")) {
+                //language=sql
                 String query = "SELECT * FROM users WHERE username = ? and password = ? and type = ?";
                 try (PreparedStatement ps = conn.prepareStatement(query)) {
                     ps.setString(1, this.username);
