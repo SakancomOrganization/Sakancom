@@ -1,6 +1,6 @@
 package tests;
 
-import source.Login;
+import controllers.Login;
 import objects.Type;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
