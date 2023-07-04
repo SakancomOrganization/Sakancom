@@ -6,6 +6,9 @@ public class Location {
     private String building;
     private int floorNum;
 
+    public Location() {
+
+    }
     public Location(String city, String street, String building, int floorNum) {
         this.city = city;
         this.street = street;

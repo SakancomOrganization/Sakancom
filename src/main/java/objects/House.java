@@ -13,6 +13,9 @@ public class House {
     private List<Neighbor> neighbors;
     private List<Icon> images;
 
+    public House() {
+
+    }
     public House(int id, User owner, Location location, Services services, int monthlyRent) {
         this.id = id;
         this.owner = owner;

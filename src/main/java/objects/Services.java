@@ -9,6 +9,9 @@ public class Services {
     private int bedroomsNum;
     private int bathroomsNum;
 
+    public Services() {
+
+    }
     public Services(boolean includesElectricity, boolean includesWater, boolean hasInternet, boolean hasTelephone, boolean hasBalcony, int bedroomsNum, int bathroomsNum) {
         this.includesElectricity = includesElectricity;
         this.includesWater = includesWater;
