@@ -8,10 +8,9 @@ public class User {
     private Location location;
     private ContactInfo contactInfo;
 
-    public User() {
+    public User () {
 
     }
-
     public User(String username, String password, Type type, Name name, Location location, ContactInfo contactInfo) {
         this.username = username;
         this.password = password;
@@ -67,5 +66,18 @@ public class User {
 
     public void setContactInfo(ContactInfo contactInfo) {
         this.contactInfo = contactInfo;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof User user) {
+            return this.username.equals(user.getUsername());
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
     }
 }

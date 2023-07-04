@@ -74,4 +74,23 @@ public class Services {
     public void setBathroomsNum(int bathroomsNum) {
         this.bathroomsNum = bathroomsNum;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Services services) {
+            return this.includesElectricity == services.isIncludesElectricity()
+                    && this.includesWater == services.isIncludesWater()
+                    && this.hasInternet == services.isHasInternet()
+                    && this.hasTelephone == services.isHasTelephone()
+                    && this.hasBalcony == services.isHasBalcony()
+                    && this.bedroomsNum >= services.getBedroomsNum()
+                    && this.bathroomsNum >= services.getBathroomsNum();
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
 }

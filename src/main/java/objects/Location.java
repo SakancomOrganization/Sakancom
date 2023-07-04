@@ -44,4 +44,20 @@ public class Location {
     public void setFloorNum(int floorNum) {
         this.floorNum = floorNum;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Location location) {
+           return (location.getCity().isEmpty() || this.city.equals(location.getCity()))
+                   && (location.getStreet().isEmpty() || this.street.equals(location.getStreet()))
+                   && (location.getBuilding().isEmpty() || this.building.equals(location.getBuilding()))
+                   && (location.floorNum == -1 || this.floorNum == location.getFloorNum());
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
 }

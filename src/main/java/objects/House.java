@@ -1,6 +1,7 @@
 package objects;
 
-import java.sql.Blob;
+import javax.swing.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class House {
@@ -10,16 +11,16 @@ public class House {
     private Services services;
     private int monthlyRent;
     private List<Neighbor> neighbors;
-    private List<Blob> images;
+    private List<Icon> images;
 
-    public House(int id, User owner, Location location, Services services, int monthlyRent, List<Neighbor> neighbors, List<Blob> images) {
+    public House(int id, User owner, Location location, Services services, int monthlyRent) {
         this.id = id;
         this.owner = owner;
         this.location = location;
         this.services = services;
         this.monthlyRent = monthlyRent;
-        this.neighbors = neighbors;
-        this.images = images;
+        neighbors = new ArrayList<>();
+        images  = new ArrayList<>();
     }
 
     public int getId() {
@@ -70,11 +71,40 @@ public class House {
         this.neighbors = neighbors;
     }
 
-    public List<Blob> getImages() {
+    public List<Icon> getImages() {
         return images;
     }
 
-    public void setImages(List<Blob> images) {
+    public void setImages(List<Icon> images) {
         this.images = images;
+    }
+
+    public void addNeighbor(Neighbor neighbor) {
+        if(!neighbors.contains(neighbor)) {
+            neighbors.add(neighbor);
+        }
+    }
+
+    public void removeNeighbor(Neighbor neighbor) {
+        neighbors.remove(neighbor);
+    }
+
+    public void addImage(ImageIcon imageIcon) {
+        if(!images.contains(imageIcon)) {
+            images.add(imageIcon);
+        }
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof House house) {
+            return this.id == house.getId();
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
     }
 }

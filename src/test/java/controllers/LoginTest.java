@@ -1,19 +1,23 @@
-package tests;
+package controllers;
 
-import controllers.Login;
+import io.cucumber.java.Before;
 import objects.Type;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import objects.User;
 
 import static junit.framework.TestCase.assertFalse;
 import static junit.framework.TestCase.assertTrue;
 
 public class LoginTest {
 
-    private final Login login;
-    public LoginTest(Login login) {
-        this.login = login;
+    private Login login;
+    @Before
+    public void setup() {
+        login = new Login(new User());
     }
+
+
 
     @When("username is {string}")
     public void usernameIs(String username) {
