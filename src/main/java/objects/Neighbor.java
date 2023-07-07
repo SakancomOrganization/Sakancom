@@ -1,12 +1,11 @@
 package objects;
 
+import java.util.Objects;
+
 public class Neighbor {
     private String name;
     private String description;
 
-    public Neighbor() {
-
-    }
     public Neighbor(String name, String description) {
         this.name = name;
         this.description = description;
@@ -39,6 +38,6 @@ public class Neighbor {
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        return Objects.hash(name, description);
     }
 }

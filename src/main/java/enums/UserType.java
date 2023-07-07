@@ -1,4 +1,4 @@
-package constants;
+package enums;
 
 public enum UserType {
     ADMIN,

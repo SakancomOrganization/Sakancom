@@ -1,11 +1,12 @@
 package objects;
 
-import constants.InfoStatus;
-import constants.SaleStatus;
+import enums.InfoStatus;
+import enums.SaleStatus;
 
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class House {
     private int id;
@@ -132,6 +133,6 @@ public class House {
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        return Objects.hash(id);
     }
 }

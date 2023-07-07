@@ -1,5 +1,7 @@
 package objects;
 
+import java.util.Objects;
+
 public class Services {
     private boolean includesElectricity;
     private boolean includesWater;
@@ -9,9 +11,6 @@ public class Services {
     private int bedroomsNum;
     private int bathroomsNum;
 
-    public Services() {
-
-    }
     public Services(boolean includesElectricity, boolean includesWater, boolean hasInternet, boolean hasTelephone, boolean hasBalcony, int bedroomsNum, int bathroomsNum) {
         this.includesElectricity = includesElectricity;
         this.includesWater = includesWater;
@@ -86,14 +85,14 @@ public class Services {
                     && this.hasInternet == services.isHasInternet()
                     && this.hasTelephone == services.isHasTelephone()
                     && this.hasBalcony == services.isHasBalcony()
-                    && this.bedroomsNum >= services.getBedroomsNum()
-                    && this.bathroomsNum >= services.getBathroomsNum();
+                    && this.bedroomsNum <= services.getBedroomsNum()
+                    && this.bathroomsNum <= services.getBathroomsNum();
         }
         return false;
     }
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        return Objects.hash(includesElectricity, includesWater, hasInternet, hasTelephone, hasBalcony, bedroomsNum, bathroomsNum);
     }
 }

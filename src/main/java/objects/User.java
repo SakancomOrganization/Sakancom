@@ -1,6 +1,8 @@
 package objects;
 
-import constants.UserType;
+import enums.UserType;
+
+import java.util.Objects;
 
 public class User {
     private String username;
@@ -80,6 +82,6 @@ public class User {
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        return Objects.hash(username);
     }
 }

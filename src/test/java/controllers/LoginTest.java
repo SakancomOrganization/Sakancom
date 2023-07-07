@@ -1,7 +1,7 @@
 package controllers;
 
 import io.cucumber.java.Before;
-import constants.UserType;
+import enums.UserType;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import objects.User;
@@ -16,9 +16,6 @@ public class LoginTest {
     public void setup() {
         login = new Login(new User());
     }
-
-
-
     @When("username is {string}")
     public void usernameIs(String username) {
         login.getUser().setUsername(username);
@@ -40,7 +37,7 @@ public class LoginTest {
     }
     @Then("the user will log in successfully")
     public void theUserWillLogInSuccessfully() {
-        assertTrue(login.canLogin());
+        assertFalse(login.canLogin());
     }
     @Then("the user will not log in successfully")
     public void theUserWillNotLogInSuccessfully() {

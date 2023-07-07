@@ -8,9 +8,6 @@ public class ContactInfo {
     private Date birthdate;
     private String major;
 
-    public ContactInfo () {
-
-    }
     public ContactInfo(String email, String phoneNumber, Date birthdate, String major) {
         this.email = email;
         this.phoneNumber = phoneNumber;
