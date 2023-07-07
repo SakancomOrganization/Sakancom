@@ -1,5 +1,55 @@
 
 O
 src/test/features/login.feature,f\d\fd79e5c6b6f7b4c3a502f75a1678e85733274923
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+S
+#src/main/java/controllers/Main.java,f\b\fb946a3fe8a2e67ff43f8bf0e3554e4e14e5b60a
+Z
+*src/test/java/objects/TestContactInfo.java,d\0\d0b8363aea6e43e9f3f1e8afe77d00660c34f5c8
+S
+#src/main/java/enums/InfoStatus.java,a\e\aef06032c3ad5685ee4dd8c8399e36f590f1db41
+S
+#src/main/java/enums/SaleStatus.java,9\2\928b704a01e0a388cf734146c1b0d8b112dda516
+Q
+!src/main/java/enums/UserType.java,a\3\a3be9b8d19325edf32b9a155cd281d9356a8d335
+W
+'src/test/java/enums/TestSaleStatus.java,d\9\d9e88cd26014bf52c27ba6cede2e6c0ac0c3f22e
+W
+'src/test/java/enums/TestInfoStatus.java,6\c\6cac27d042c48362832931600d255fda120b55b5
+U
+%src/test/java/enums/TestUserType.java,7\0\70e32db0c79bbed5bac40436c4753741f5e15345
+T
+$src/main/java/controllers/Login.java,d\7\d7348dead3122e957b92c9ed3e4ca992b430a9cd
+X
+(src/test/java/controllers/LoginTest.java,c\4\c439262e31f97c04ddbbc9e74164011c55403123
+d
+4src/test/java/controllers/ControllersTestRunner.java,6\6\66836c9d22aff92fb6a07c44ca2a92e7eede9395
+V
+&src/main/java/objects/ContactInfo.java,0\3\03408d1909c489ff585dbf3df0083c48b73cb780
+W
+'src/test/java/objects/TestLocation.java,9\2\925b835cbcbd61b4435373a3c5535ca6671906a0
+S
+#src/main/java/objects/Location.java,a\1\a1ea25531735c86ac18b55257e0d7dbbf47d3389
+S
+#src/main/java/objects/Sakancom.java,7\1\718811609b28b587fb0589b710a9c317c43c97c5
+P
+ src/main/java/objects/House.java,0\2\02b6f33dde6173aeed32fddc2a6e3dde6071d01f
+W
+'src/test/java/objects/TestServices.java,6\e\6e46090203f384131a3d035ae81c92c5b4846435
+S
+#src/main/java/objects/Services.java,c\6\c69aac34193fd80f7b340f6bc0c5bad535a30573
 O
-src/main/java/objects/Type.java,7\1\71759d74ffd32a6f8e572afe7494eb7a8c835669
+src/main/java/objects/Name.java,e\3\e3d0163689c3b52d234116f8a46e0c63f7856646
+S
+#src/test/java/objects/TestName.java,f\1\f1cd96b39af08b4319504f813556b2ec5ff34a64
+O
+src/main/java/objects/User.java,e\9\e91c8fd298b23b8aa6f52c7b729600feb9a16ff7
+W
+'src/test/java/objects/TestNeighbor.java,5\f\5fa013f4fc987d3afa4d69b387ce84e5110f0318
+S
+#src/main/java/objects/Neighbor.java,9\8\981d1194aac4e6394844431e1f68828c0facb62d
+7
+pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
+U
+%src/main/java/email/EmailService.java,4\6\4631193b3e60655c3bb6d16618ae75b37865a257
