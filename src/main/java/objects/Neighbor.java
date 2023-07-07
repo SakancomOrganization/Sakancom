@@ -31,8 +31,8 @@ public class Neighbor {
     @Override
     public boolean equals(Object obj) {
         if(obj instanceof Neighbor neighbor) {
-            return this.name.equals(neighbor.getName())
-                    && this.description.equals(neighbor.getDescription());
+            return this.name.equalsIgnoreCase(neighbor.getName())
+                    && this.description.equalsIgnoreCase(neighbor.getDescription());
         }
         return false;
     }

@@ -1,9 +1,11 @@
 package objects;
 
+import constants.UserType;
+
 public class User {
     private String username;
     private String password;
-    private Type type;
+    private UserType userType;
     private Name name;
     private Location location;
     private ContactInfo contactInfo;
@@ -11,10 +13,10 @@ public class User {
     public User () {
 
     }
-    public User(String username, String password, Type type, Name name, Location location, ContactInfo contactInfo) {
+    public User(String username, String password, UserType userType, Name name, Location location, ContactInfo contactInfo) {
         this.username = username;
         this.password = password;
-        this.type = type;
+        this.userType = userType;
         this.name = name;
         this.location = location;
         this.contactInfo = contactInfo;
@@ -36,12 +38,12 @@ public class User {
         this.password = password;
     }
 
-    public Type getType() {
-        return type;
+    public UserType getType() {
+        return userType;
     }
 
-    public void setType(Type type) {
-        this.type = type;
+    public void setType(UserType userType) {
+        this.userType = userType;
     }
 
     public Name getName() {

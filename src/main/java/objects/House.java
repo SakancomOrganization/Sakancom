@@ -1,5 +1,8 @@
 package objects;
 
+import constants.InfoStatus;
+import constants.SaleStatus;
+
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,10 +15,13 @@ public class House {
     private int monthlyRent;
     private List<Neighbor> neighbors;
     private List<Icon> images;
+    private SaleStatus saleStatus;
+    private InfoStatus infoStatus;
 
     public House() {
 
     }
+
     public House(int id, User owner, Location location, Services services, int monthlyRent) {
         this.id = id;
         this.owner = owner;
@@ -24,6 +30,8 @@ public class House {
         this.monthlyRent = monthlyRent;
         neighbors = new ArrayList<>();
         images  = new ArrayList<>();
+        saleStatus = SaleStatus.AVAILABLE;
+        infoStatus = InfoStatus.ACCEPTED;
     }
 
     public int getId() {
@@ -80,6 +88,22 @@ public class House {
 
     public void setImages(List<Icon> images) {
         this.images = images;
+    }
+
+    public SaleStatus getSaleStatus() {
+        return saleStatus;
+    }
+
+    public void setSaleStatus(SaleStatus saleStatus) {
+        this.saleStatus = saleStatus;
+    }
+
+    public InfoStatus getInfoStatus() {
+        return infoStatus;
+    }
+
+    public void setInfoStatus(InfoStatus infoStatus) {
+        this.infoStatus = infoStatus;
     }
 
     public void addNeighbor(Neighbor neighbor) {

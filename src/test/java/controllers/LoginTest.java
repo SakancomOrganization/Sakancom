@@ -1,7 +1,7 @@
 package controllers;
 
 import io.cucumber.java.Before;
-import objects.Type;
+import constants.UserType;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import objects.User;
@@ -30,12 +30,12 @@ public class LoginTest {
     @When("type is {string}")
     public void typeIs(String type) {
         if(type.equalsIgnoreCase("ADMIN"))
-            login.getUser().setType(Type.ADMIN);
+            login.getUser().setType(UserType.ADMIN);
         else if (type.equalsIgnoreCase("OWNER")) {
-            login.getUser().setType(Type.OWNER);
+            login.getUser().setType(UserType.OWNER);
         }
         else if (type.equalsIgnoreCase("TENANT")) {
-            login.getUser().setType(Type.TENANT);
+            login.getUser().setType(UserType.TENANT);
         }
     }
     @Then("the user will log in successfully")

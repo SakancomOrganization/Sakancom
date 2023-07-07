@@ -1,6 +1,4 @@
 
-9
-	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 O
 src/test/features/login.feature,f\d\fd79e5c6b6f7b4c3a502f75a1678e85733274923
 O
@@ -15,21 +13,5 @@ X
 (src/test/java/controllers/LoginTest.java,c\4\c439262e31f97c04ddbbc9e74164011c55403123
 T
 $src/main/java/controllers/Login.java,d\7\d7348dead3122e957b92c9ed3e4ca992b430a9cd
-V
-&src/main/java/objects/ContactInfo.java,0\3\03408d1909c489ff585dbf3df0083c48b73cb780
-P
- src/main/java/objects/House.java,0\2\02b6f33dde6173aeed32fddc2a6e3dde6071d01f
-S
-#src/main/java/objects/Location.java,a\1\a1ea25531735c86ac18b55257e0d7dbbf47d3389
-S
-#src/main/java/objects/Neighbor.java,9\8\981d1194aac4e6394844431e1f68828c0facb62d
 S
 #src/main/java/objects/Sakancom.java,7\1\718811609b28b587fb0589b710a9c317c43c97c5
-S
-#src/main/java/objects/Services.java,c\6\c69aac34193fd80f7b340f6bc0c5bad535a30573
-O
-src/main/java/objects/User.java,e\9\e91c8fd298b23b8aa6f52c7b729600feb9a16ff7
-O
-src/main/java/objects/Name.java,e\3\e3d0163689c3b52d234116f8a46e0c63f7856646
-S
-#src/test/java/objects/TestName.java,f\1\f1cd96b39af08b4319504f813556b2ec5ff34a64

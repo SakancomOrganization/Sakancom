@@ -11,6 +11,7 @@ public class TestName {
     public void setup() {
         name = new Name("Mohammad","Abd-Allateef","Alawneh");
     }
+
     @Test
     public void testFirstName() {
         name.setFirstName("Najat");

@@ -51,9 +51,9 @@ public class Location {
     @Override
     public boolean equals(Object obj) {
         if(obj instanceof Location location) {
-           return (location.getCity().isEmpty() || this.city.equals(location.getCity()))
-                   && (location.getStreet().isEmpty() || this.street.equals(location.getStreet()))
-                   && (location.getBuilding().isEmpty() || this.building.equals(location.getBuilding()))
+           return (location.getCity().isEmpty() || this.city.equalsIgnoreCase(location.getCity()))
+                   && (location.getStreet().isEmpty() || this.street.equalsIgnoreCase(location.getStreet()))
+                   && (location.getBuilding().isEmpty() || this.building.equalsIgnoreCase(location.getBuilding()))
                    && (location.floorNum == -1 || this.floorNum == location.getFloorNum());
         }
         return false;
