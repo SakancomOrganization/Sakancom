@@ -30,7 +30,7 @@ public class Furniture {
     @Override
     public boolean equals(Object obj) {
         if(obj instanceof Furniture furniture) {
-            return this.description.equals(furniture.getDescription())
+            return this.description.equalsIgnoreCase(furniture.getDescription())
                     && this.image.equals(furniture.getImage());
         }
         return false;

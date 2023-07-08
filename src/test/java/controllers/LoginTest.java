@@ -7,7 +7,6 @@ import io.cucumber.java.en.When;
 import objects.User;
 
 import static junit.framework.TestCase.assertFalse;
-import static junit.framework.TestCase.assertTrue;
 
 public class LoginTest {
 
