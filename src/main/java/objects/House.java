@@ -19,10 +19,6 @@ public class House {
     private SaleContract saleContract;
     private HouseRate houseRate;
 
-    public House() {
-
-    }
-
     public House(int id, User owner, Location location, Services services, int monthlyRent) {
         this.id = id;
         this.owner = owner;

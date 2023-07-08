@@ -34,7 +34,7 @@ public class Sakancom {
         }
     }
 
-    public void remove(User user) {
+    public void removeUser(User user) {
         users.remove(user);
     }
 

@@ -20,13 +20,7 @@ V
 S
 #src/main/java/objects/Location.java,a\1\a1ea25531735c86ac18b55257e0d7dbbf47d3389
 W
-'src/test/java/objects/TestServices.java,6\e\6e46090203f384131a3d035ae81c92c5b4846435
-S
-#src/main/java/objects/Services.java,c\6\c69aac34193fd80f7b340f6bc0c5bad535a30573
-W
 'src/test/java/objects/TestNeighbor.java,5\f\5fa013f4fc987d3afa4d69b387ce84e5110f0318
-S
-#src/main/java/objects/Neighbor.java,9\8\981d1194aac4e6394844431e1f68828c0facb62d
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 U
