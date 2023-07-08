@@ -33,8 +33,6 @@ S
 #src/main/java/objects/Location.java,a\1\a1ea25531735c86ac18b55257e0d7dbbf47d3389
 S
 #src/main/java/objects/Sakancom.java,7\1\718811609b28b587fb0589b710a9c317c43c97c5
-P
- src/main/java/objects/House.java,0\2\02b6f33dde6173aeed32fddc2a6e3dde6071d01f
 W
 'src/test/java/objects/TestServices.java,6\e\6e46090203f384131a3d035ae81c92c5b4846435
 S
@@ -43,8 +41,6 @@ O
 src/main/java/objects/Name.java,e\3\e3d0163689c3b52d234116f8a46e0c63f7856646
 S
 #src/test/java/objects/TestName.java,f\1\f1cd96b39af08b4319504f813556b2ec5ff34a64
-O
-src/main/java/objects/User.java,e\9\e91c8fd298b23b8aa6f52c7b729600feb9a16ff7
 W
 'src/test/java/objects/TestNeighbor.java,5\f\5fa013f4fc987d3afa4d69b387ce84e5110f0318
 S
@@ -53,3 +49,5 @@ S
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 U
 %src/main/java/email/EmailService.java,4\6\4631193b3e60655c3bb6d16618ae75b37865a257
+Y
+)src/test/java/email/TestEmailService.java,0\7\0749cac4aa4def01274a423663d99f5606dc6e18

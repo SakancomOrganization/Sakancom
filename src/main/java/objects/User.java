@@ -2,6 +2,8 @@ package objects;
 
 import enums.UserType;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class User {
@@ -11,10 +13,12 @@ public class User {
     private Name name;
     private Location location;
     private ContactInfo contactInfo;
+    private List<Furniture> furnitureList;
 
     public User () {
 
     }
+
     public User(String username, String password, UserType userType, Name name, Location location, ContactInfo contactInfo) {
         this.username = username;
         this.password = password;
@@ -22,6 +26,7 @@ public class User {
         this.name = name;
         this.location = location;
         this.contactInfo = contactInfo;
+        furnitureList = new ArrayList<>();
     }
 
     public String getUsername() {
@@ -40,11 +45,11 @@ public class User {
         this.password = password;
     }
 
-    public UserType getType() {
+    public UserType getUserType() {
         return userType;
     }
 
-    public void setType(UserType userType) {
+    public void setUserType(UserType userType) {
         this.userType = userType;
     }
 
@@ -70,6 +75,24 @@ public class User {
 
     public void setContactInfo(ContactInfo contactInfo) {
         this.contactInfo = contactInfo;
+    }
+
+    public List<Furniture> getFurnitureList() {
+        return furnitureList;
+    }
+
+    public void setFurnitureList(List<Furniture> furnitureList) {
+        this.furnitureList = furnitureList;
+    }
+
+    public void addFurniture(Furniture furniture) {
+        if(!furnitureList.contains(furniture)) {
+            furnitureList.add(furniture);
+        }
+    }
+
+    public void removeFurniture(Furniture furniture) {
+        furnitureList.remove(furniture);
     }
 
     @Override

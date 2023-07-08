@@ -3,7 +3,6 @@ package objects;
 import enums.InfoStatus;
 import enums.SaleStatus;
 
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -15,9 +14,9 @@ public class House {
     private Services services;
     private int monthlyRent;
     private List<Neighbor> neighbors;
-    private List<Icon> images;
-    private SaleStatus saleStatus;
+    private List<String> images;
     private InfoStatus infoStatus;
+    private SaleContract saleContract;
 
     public House() {
 
@@ -31,8 +30,8 @@ public class House {
         this.monthlyRent = monthlyRent;
         neighbors = new ArrayList<>();
         images  = new ArrayList<>();
-        saleStatus = SaleStatus.AVAILABLE;
         infoStatus = InfoStatus.ACCEPTED;
+        saleContract = new SaleContract(null, null, SaleStatus.AVAILABLE);
     }
 
     public int getId() {
@@ -83,20 +82,12 @@ public class House {
         this.neighbors = neighbors;
     }
 
-    public List<Icon> getImages() {
+    public List<String> getImages() {
         return images;
     }
 
-    public void setImages(List<Icon> images) {
+    public void setImages(List<String> images) {
         this.images = images;
-    }
-
-    public SaleStatus getSaleStatus() {
-        return saleStatus;
-    }
-
-    public void setSaleStatus(SaleStatus saleStatus) {
-        this.saleStatus = saleStatus;
     }
 
     public InfoStatus getInfoStatus() {
@@ -105,6 +96,14 @@ public class House {
 
     public void setInfoStatus(InfoStatus infoStatus) {
         this.infoStatus = infoStatus;
+    }
+
+    public SaleContract getSaleContract() {
+        return saleContract;
+    }
+
+    public void setSaleContract(SaleContract saleContract) {
+        this.saleContract = saleContract;
     }
 
     public void addNeighbor(Neighbor neighbor) {
@@ -117,9 +116,9 @@ public class House {
         neighbors.remove(neighbor);
     }
 
-    public void addImage(ImageIcon imageIcon) {
-        if(!images.contains(imageIcon)) {
-            images.add(imageIcon);
+    public void addImage(String image) {
+        if(!images.contains(image)) {
+            images.add(image);
         }
     }
 
