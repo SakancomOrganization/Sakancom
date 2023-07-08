@@ -34,6 +34,10 @@ public class Sakancom {
         }
     }
 
+    public void remove(User user) {
+        users.remove(user);
+    }
+
     public void addHouse(House house) {
         if(!houses.contains(house)) {
             houses.add(house);
@@ -44,13 +48,14 @@ public class Sakancom {
         houses.remove(house);
     }
 
-    public List<House> searchAboutHouses(int id, int monthlyRent, Location location, Services services) {
+    public List<House> searchAboutHouses(int id, int monthlyRent, Location location, Services services, double houseRate) {
         ArrayList<House> resultHouses = new ArrayList<>();
         for(House house : houses) {
             if((id == -1 || house.getId() == id)
                 && (monthlyRent == -1 || house.getMonthlyRent() == monthlyRent)
                 && (location == null || house.getLocation().equals(location))
-                && (services == null || house.getServices().equals(services)))
+                && (services == null || house.getServices().equals(services))
+                && (houseRate == -1 || house.getHouseRate().getRate() >= houseRate))
                 resultHouses.add(house);
         }
         return resultHouses;

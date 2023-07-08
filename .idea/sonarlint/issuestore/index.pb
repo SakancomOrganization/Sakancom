@@ -25,8 +25,6 @@ W
 'src/test/java/objects/TestLocation.java,9\2\925b835cbcbd61b4435373a3c5535ca6671906a0
 S
 #src/main/java/objects/Location.java,a\1\a1ea25531735c86ac18b55257e0d7dbbf47d3389
-S
-#src/main/java/objects/Sakancom.java,7\1\718811609b28b587fb0589b710a9c317c43c97c5
 W
 'src/test/java/objects/TestServices.java,6\e\6e46090203f384131a3d035ae81c92c5b4846435
 S

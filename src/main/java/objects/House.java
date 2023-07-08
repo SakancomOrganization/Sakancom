@@ -17,6 +17,7 @@ public class House {
     private List<String> images;
     private InfoStatus infoStatus;
     private SaleContract saleContract;
+    private HouseRate houseRate;
 
     public House() {
 
@@ -32,6 +33,7 @@ public class House {
         images  = new ArrayList<>();
         infoStatus = InfoStatus.ACCEPTED;
         saleContract = new SaleContract(null, null, SaleStatus.AVAILABLE);
+        houseRate = new HouseRate();
     }
 
     public int getId() {
@@ -104,6 +106,14 @@ public class House {
 
     public void setSaleContract(SaleContract saleContract) {
         this.saleContract = saleContract;
+    }
+
+    public HouseRate getHouseRate() {
+        return houseRate;
+    }
+
+    public void setHouseRate(HouseRate houseRate) {
+        this.houseRate = houseRate;
     }
 
     public void addNeighbor(Neighbor neighbor) {
