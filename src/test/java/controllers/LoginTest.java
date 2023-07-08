@@ -27,12 +27,12 @@ public class LoginTest {
     @When("type is {string}")
     public void typeIs(String type) {
         if(type.equalsIgnoreCase("ADMIN"))
-            login.getUser().setType(UserType.ADMIN);
+            login.getUser().setUserType(UserType.ADMIN);
         else if (type.equalsIgnoreCase("OWNER")) {
-            login.getUser().setType(UserType.OWNER);
+            login.getUser().setUserType(UserType.OWNER);
         }
         else if (type.equalsIgnoreCase("TENANT")) {
-            login.getUser().setType(UserType.TENANT);
+            login.getUser().setUserType(UserType.TENANT);
         }
     }
     @Then("the user will log in successfully")

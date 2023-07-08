@@ -14,4 +14,9 @@ public class TestSaleStatus {
     public void testUnavailable() {
         assertNotNull(SaleStatus.UNAVAILABLE);
     }
+
+    @Test
+    public void testRequested() {
+        assertNotNull(SaleStatus.REQUESTED);
+    }
 }

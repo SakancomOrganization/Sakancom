@@ -2,5 +2,6 @@ package enums;
 
 public enum SaleStatus {
     AVAILABLE,
-    UNAVAILABLE
+    UNAVAILABLE,
+    REQUESTED
 }
