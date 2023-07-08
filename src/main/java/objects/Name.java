@@ -1,5 +1,7 @@
 package objects;
 
+import java.util.Objects;
+
 public class Name {
     private String firstName;
     private String middleName;
@@ -33,5 +35,20 @@ public class Name {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Name name) {
+            return firstName.equalsIgnoreCase(name.getFirstName())
+                    && middleName.equalsIgnoreCase(name.getMiddleName())
+                    && lastName.equalsIgnoreCase(name.getLastName());
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName, middleName, lastName);
     }
 }

@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class TestName {
     private Name name;
@@ -28,5 +29,21 @@ public class TestName {
     public void testLastName() {
         name.setLastName("Mansour");
         assertEquals("Mansour",name.getLastName());
+    }
+
+    @Test
+    public void testEquals() {
+        // object from another type
+        assertNotEquals(name, new Object());
+        // equal (Ignore case)
+        assertEquals(name, new Name("moHammad","Abd-Allateef","alawneh"));
+        // unequal
+        assertNotEquals(name, new Name("Najat","Abd-Allateef","alawneh"));
+    }
+
+    @Test
+    public void testHashCode() {
+        Name anotherName = new Name ("Mohammad","Abd-Allateef","Alawneh");
+        assertEquals(name.hashCode(), anotherName.hashCode());
     }
 }

@@ -5,8 +5,6 @@ O
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 S
 #src/main/java/controllers/Main.java,f\b\fb946a3fe8a2e67ff43f8bf0e3554e4e14e5b60a
-Z
-*src/test/java/objects/TestContactInfo.java,d\0\d0b8363aea6e43e9f3f1e8afe77d00660c34f5c8
 S
 #src/main/java/enums/InfoStatus.java,a\e\aef06032c3ad5685ee4dd8c8399e36f590f1db41
 Q
@@ -17,22 +15,14 @@ U
 %src/test/java/enums/TestUserType.java,7\0\70e32db0c79bbed5bac40436c4753741f5e15345
 d
 4src/test/java/controllers/ControllersTestRunner.java,6\6\66836c9d22aff92fb6a07c44ca2a92e7eede9395
-T
-$src/main/java/controllers/Login.java,d\7\d7348dead3122e957b92c9ed3e4ca992b430a9cd
 V
 &src/main/java/objects/ContactInfo.java,0\3\03408d1909c489ff585dbf3df0083c48b73cb780
 S
 #src/main/java/objects/Location.java,a\1\a1ea25531735c86ac18b55257e0d7dbbf47d3389
 W
-'src/test/java/objects/TestLocation.java,9\2\925b835cbcbd61b4435373a3c5535ca6671906a0
-W
 'src/test/java/objects/TestServices.java,6\e\6e46090203f384131a3d035ae81c92c5b4846435
 S
 #src/main/java/objects/Services.java,c\6\c69aac34193fd80f7b340f6bc0c5bad535a30573
-O
-src/main/java/objects/Name.java,e\3\e3d0163689c3b52d234116f8a46e0c63f7856646
-S
-#src/test/java/objects/TestName.java,f\1\f1cd96b39af08b4319504f813556b2ec5ff34a64
 W
 'src/test/java/objects/TestNeighbor.java,5\f\5fa013f4fc987d3afa4d69b387ce84e5110f0318
 S

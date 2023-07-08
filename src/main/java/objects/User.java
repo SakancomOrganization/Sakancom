@@ -15,10 +15,6 @@ public class User {
     private ContactInfo contactInfo;
     private List<Furniture> furnitureList;
 
-    public User () {
-
-    }
-
     public User(String username, String password, UserType userType, Name name, Location location, ContactInfo contactInfo) {
         this.username = username;
         this.password = password;

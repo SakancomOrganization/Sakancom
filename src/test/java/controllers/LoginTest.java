@@ -4,7 +4,6 @@ import io.cucumber.java.Before;
 import enums.UserType;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import objects.User;
 
 import static junit.framework.TestCase.assertFalse;
 
@@ -13,7 +12,7 @@ public class LoginTest {
     private Login login;
     @Before
     public void setup() {
-        login = new Login(new User());
+        login = new Login(null);
     }
     @When("username is {string}")
     public void usernameIs(String username) {
