@@ -26,5 +26,4 @@ public class TestHouseRate {
         // test the number of raters
         assertEquals(5, houseRate.getRaters());
     }
-
 }

@@ -1,5 +1,7 @@
 package objects;
 
+import enums.UserType;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,15 +51,19 @@ public class Sakancom {
     }
 
     public List<House> searchAboutHouses(int id, int monthlyRent, Location location, Services services, double houseRate) {
-        ArrayList<House> resultHouses = new ArrayList<>();
-        for(House house : houses) {
-            if((id == -1 || house.getId() == id)
+        return houses.stream().filter(house -> (id == -1 || house.getId() == id)
                 && (monthlyRent == -1 || house.getMonthlyRent() == monthlyRent)
                 && (location == null || house.getLocation().equals(location))
                 && (services == null || house.getServices().equals(services))
-                && (houseRate == -1 || house.getHouseRate().getRate() >= houseRate))
-                resultHouses.add(house);
-        }
-        return resultHouses;
+                && (houseRate == -1 || house.getHouseRate().getRate() >= houseRate)).toList();
+    }
+
+    public List<User> searchAboutUsers(String username, UserType userType, Name name, String email, String phoneNumber, String major) {
+        return users.stream().filter(user -> (username.isEmpty() || user.getUsername().equals(username))
+                && (userType == null || user.getUserType().equals(userType))
+                && (name == null || user.getName().equals(name))
+                && (email.isEmpty() || user.getContactInfo().getEmail().equals(email))
+                && (phoneNumber.isEmpty() || user.getContactInfo().getPhoneNumber().equals(phoneNumber))
+                && (major.isEmpty() || user.getContactInfo().getMajor().equals(major))).toList();
     }
 }

@@ -1,5 +1,6 @@
 package objects;
 
+import enums.HouseClassificationByGender;
 import enums.InfoStatus;
 import enums.SaleStatus;
 
@@ -18,8 +19,9 @@ public class House {
     private InfoStatus infoStatus;
     private SaleContract saleContract;
     private HouseRate houseRate;
+    private HouseClassificationByGender houseClassificationByGender;
 
-    public House(int id, User owner, Location location, Services services, int monthlyRent) {
+    public House(int id, User owner, Location location, Services services, int monthlyRent, HouseClassificationByGender houseClassificationByGender) {
         this.id = id;
         this.owner = owner;
         this.location = location;
@@ -30,6 +32,7 @@ public class House {
         infoStatus = InfoStatus.ACCEPTED;
         saleContract = new SaleContract(null, null, SaleStatus.AVAILABLE);
         houseRate = new HouseRate();
+        this.houseClassificationByGender = houseClassificationByGender;
     }
 
     public int getId() {
@@ -110,6 +113,14 @@ public class House {
 
     public void setHouseRate(HouseRate houseRate) {
         this.houseRate = houseRate;
+    }
+
+    public HouseClassificationByGender getHouseClassificationByGender() {
+        return houseClassificationByGender;
+    }
+
+    public void setHouseClassificationByGender(HouseClassificationByGender houseClassificationByGender) {
+        this.houseClassificationByGender = houseClassificationByGender;
     }
 
     public void addNeighbor(Neighbor neighbor) {

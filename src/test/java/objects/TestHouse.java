@@ -1,5 +1,6 @@
 package objects;
 
+import enums.HouseClassificationByGender;
 import enums.InfoStatus;
 import enums.SaleStatus;
 import enums.UserType;
@@ -23,7 +24,7 @@ public class TestHouse {
     @Before
     public void setup() {
         neighbor = new Neighbor("Anas", "A very quiet neighbor");
-        house = new House(1, null, null, null, 400);
+        house = new House(1, null, null, null, 400, HouseClassificationByGender.FAMILY);
     }
 
     @Test
@@ -87,7 +88,7 @@ public class TestHouse {
     }
 
     @Test
-    public void testSaleContract() throws ParseException {
+    public void testSaleContract() {
         SaleContract saleContract = new SaleContract(null, null, SaleStatus.AVAILABLE);
         house.setSaleContract(saleContract);
         assertEquals(saleContract, house.getSaleContract());
@@ -101,9 +102,15 @@ public class TestHouse {
     }
 
     @Test
+    public void testHouseClassificationByGender() {
+        house.setHouseClassificationByGender(HouseClassificationByGender.FEMALE);
+        assertEquals(HouseClassificationByGender.FEMALE, house.getHouseClassificationByGender());
+    }
+
+    @Test
     public void testAddNeighbor() {
         // test add a new neighbor
-        house.getNeighbors().add(neighbor);
+        house.addNeighbor(neighbor);
         assertTrue(house.getNeighbors().contains(neighbor));
 
         // test add an existing one
@@ -121,7 +128,7 @@ public class TestHouse {
     @Test
     public void testAddImage() {
         // test add a new image
-        house.getImages().add("A new Image");
+        house.addImage("A new Image");
         assertTrue(house.getImages().contains("A new Image"));
 
         // test add an existing one
@@ -135,14 +142,14 @@ public class TestHouse {
         // object from another type
         assertNotEquals(house, new Object());
         // equal
-        assertEquals(house, new House(1,null, null, null, -1));
+        assertEquals(house, new House(1,null, null, null, -1, HouseClassificationByGender.FAMILY));
         // unequal
-        assertNotEquals(house, new House(2, owner, location, services, 400));
+        assertNotEquals(house, new House(2, owner, location, services, 400, HouseClassificationByGender.MALE));
     }
 
     @Test
     public void testHashCode() {
-        House anotherHouse = new House(1, null, null, null, -1);
+        House anotherHouse = new House(1, null, null, null, -1, HouseClassificationByGender.FAMILY);
         assertEquals(house.hashCode(), anotherHouse.hashCode());
     }
 }
