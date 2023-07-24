@@ -19,14 +19,14 @@ public class TestEmailService {
     @Test
     public void testSendEmailWithValidEmailAddress() {
         assertDoesNotThrow(() -> {
-            emailService.sendEmail("mo.a.alawneh@gmail.com","Test","Test Email Message");
+            emailService.sendEmail("mo.a.alawneh@gmail.com");
         });
     }
 
     @Test
     public void testSendEmailWithInvalidEmailAddress() {
         assertThrows(MessagingException.class, () -> {
-            emailService.sendEmail("ff","Test","Test Email Message");
+            emailService.sendEmail("ff");
         });
     }
 }
