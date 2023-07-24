@@ -6,13 +6,11 @@ public class Location {
     private String city;
     private String street;
     private String building;
-    private int floorNum;
 
-    public Location(String city, String street, String building, int floorNum) {
+    public Location(String city, String street, String building) {
         this.city = city;
         this.street = street;
         this.building = building;
-        this.floorNum = floorNum;
     }
 
     public String getCity() {
@@ -39,27 +37,18 @@ public class Location {
         this.building = building;
     }
 
-    public int getFloorNum() {
-        return floorNum;
-    }
-
-    public void setFloorNum(int floorNum) {
-        this.floorNum = floorNum;
-    }
-
     @Override
     public boolean equals(Object obj) {
         if(obj instanceof Location location) {
            return (location.getCity().isEmpty() || this.city.equalsIgnoreCase(location.getCity()))
                    && (location.getStreet().isEmpty() || this.street.equalsIgnoreCase(location.getStreet()))
-                   && (location.getBuilding().isEmpty() || this.building.equalsIgnoreCase(location.getBuilding()))
-                   && (location.floorNum == -1 || this.floorNum == location.getFloorNum());
+                   && (location.getBuilding().isEmpty() || this.building.equalsIgnoreCase(location.getBuilding()));
         }
         return false;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(city, street, building, floorNum);
+        return Objects.hash(city, street, building);
     }
 }

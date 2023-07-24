@@ -22,7 +22,7 @@ public class TestUser {
                 "Mohammad12002",
                 UserType.ADMIN,
                 new Name("Mohammad","AbdAllateef","Alawneh"),
-                new Location("Jenin","Abu-Baker Street","4070",1),
+                new UserLocation("Jenin","Abu-Baker Street","4070",1),
                 new ContactInfo("mo.a.alawneh@gmail.com","0592838433",new SimpleDateFormat("dd/MM/yyyy").parse("12/06/2002"),"Computer Engineering"));
     }
 
@@ -52,10 +52,10 @@ public class TestUser {
     }
 
     @Test
-    public void testLocation() {
-        Location location = new Location("Jenin", "Abu-Baker","33003",2);
-        user.setLocation(location);
-        assertEquals(user.getLocation(), location);
+    public void testUserLocation() {
+        UserLocation userLocation = new UserLocation("Jenin","Abu-Baker","Personal Building",1);
+        user.setUserLocation(userLocation);
+        assertEquals(userLocation, user.getUserLocation());
     }
 
     @Test
@@ -120,7 +120,7 @@ public class TestUser {
                 "Mohammad12002",
                 UserType.ADMIN,
                 new Name("Mohammad","AbdAllateef","Alawneh"),
-                new Location("Jenin","Abu-Baker Street","4070",1),
+                new UserLocation("Jenin","Abu-Baker Street","4070",1),
                 new ContactInfo("mo.a.alawneh@gmail.com","0592838433",new SimpleDateFormat("dd/MM/yyyy").parse("12/06/2002"),"Computer Engineering"));
         assertEquals(user.hashCode(), anotherUser.hashCode());
     }

@@ -22,7 +22,7 @@ public class TestSaleContract {
                 "Mohammad12002",
                 UserType.TENANT,
                 new Name("Mohammad","AbdAllateef","Alawneh"),
-                new Location("Jenin","Abu-Baker Street","4070",1),
+                new UserLocation("Jenin","Abu-Baker Street","4070",1),
                 new ContactInfo("mo.a.alawneh@gmail.com","0592838433",new SimpleDateFormat("dd/MM/yyyy").parse("12/06/2002"),"Computer Engineering"));
         date = new SimpleDateFormat("dd/MM/yyyy").parse("07/07/2023");
         saleContract = new SaleContract(null,

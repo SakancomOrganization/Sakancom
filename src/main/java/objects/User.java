@@ -11,16 +11,16 @@ public class User {
     private String password;
     private UserType userType;
     private Name name;
-    private Location location;
+    private UserLocation userLocation;
     private ContactInfo contactInfo;
     private List<Furniture> furnitureList;
 
-    public User(String username, String password, UserType userType, Name name, Location location, ContactInfo contactInfo) {
+    public User(String username, String password, UserType userType, Name name, UserLocation userLocation, ContactInfo contactInfo) {
         this.username = username;
         this.password = password;
         this.userType = userType;
         this.name = name;
-        this.location = location;
+        this.userLocation = userLocation;
         this.contactInfo = contactInfo;
         furnitureList = new ArrayList<>();
     }
@@ -57,12 +57,12 @@ public class User {
         this.name = name;
     }
 
-    public Location getLocation() {
-        return location;
+    public UserLocation getUserLocation() {
+        return userLocation;
     }
 
-    public void setLocation(Location location) {
-        this.location = location;
+    public void setUserLocation(UserLocation userLocation) {
+        this.userLocation = userLocation;
     }
 
     public ContactInfo getContactInfo() {

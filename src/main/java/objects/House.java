@@ -10,8 +10,6 @@ import java.util.Objects;
 
 public class House {
     private int id;
-    private User owner;
-    private Location location;
     private Services services;
     private int monthlyRent;
     private List<Neighbor> neighbors;
@@ -21,10 +19,8 @@ public class House {
     private HouseRate houseRate;
     private HouseClassificationByGender houseClassificationByGender;
 
-    public House(int id, User owner, Location location, Services services, int monthlyRent, HouseClassificationByGender houseClassificationByGender) {
+    public House(int id, Services services, int monthlyRent, HouseClassificationByGender houseClassificationByGender) {
         this.id = id;
-        this.owner = owner;
-        this.location = location;
         this.services = services;
         this.monthlyRent = monthlyRent;
         neighbors = new ArrayList<>();
@@ -41,22 +37,6 @@ public class House {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public User getOwner() {
-        return owner;
-    }
-
-    public void setOwner(User owner) {
-        this.owner = owner;
-    }
-
-    public Location getLocation() {
-        return location;
-    }
-
-    public void setLocation(Location location) {
-        this.location = location;
     }
 
     public Services getServices() {

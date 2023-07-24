@@ -68,7 +68,7 @@ public class EmailService {
 
     private Map<String, Object> init() throws FileNotFoundException {
         Map<String, Object> data;
-        InputStream inputStream = new FileInputStream("config.yml");
+        InputStream inputStream = new FileInputStream("email-config.yml");
         Yaml yml = new Yaml();
         data = yml.load(inputStream);
         return data;

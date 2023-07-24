@@ -7,11 +7,11 @@ import java.util.List;
 
 public class Sakancom {
     private List<User> users;
-    private List<House> houses;
+    private List<Building> buildings;
 
     public Sakancom () {
         users = new ArrayList<>();
-        houses  = new ArrayList<>();
+        buildings  = new ArrayList<>();
     }
 
     public List<User> getUsers() {
@@ -22,12 +22,12 @@ public class Sakancom {
         this.users = users;
     }
 
-    public List<House> getHouses() {
-        return houses;
+    public List<Building> getBuildings() {
+        return buildings;
     }
 
-    public void setHouses(List<House> houses) {
-        this.houses = houses;
+    public void setBuildings(List<Building> buildings) {
+        this.buildings = buildings;
     }
 
     public void addUser(User user) {
@@ -40,22 +40,21 @@ public class Sakancom {
         users.remove(user);
     }
 
-    public void addHouse(House house) {
-        if(!houses.contains(house)) {
-            houses.add(house);
+    public void addBuilding(Building building) {
+        if(!buildings.contains(building)) {
+            buildings.add(building);
         }
     }
 
-    public void removeHouse(House house) {
-        houses.remove(house);
+    public void removeHouse(Building building) {
+        buildings.remove(building);
     }
 
-    public List<House> searchAboutHouses(int id, int monthlyRent, Location location, Services services, double houseRate) {
-        return houses.stream().filter(house -> (id == -1 || house.getId() == id)
-                && (monthlyRent == -1 || house.getMonthlyRent() == monthlyRent)
-                && (location == null || house.getLocation().equals(location))
-                && (services == null || house.getServices().equals(services))
-                && (houseRate == -1 || house.getHouseRate().getRate() >= houseRate)).toList();
+    public List<Building> searchAboutBuildings(int id, String name, User owner, Location location) {
+        return buildings.stream().filter(building -> (id == -1 || building.getId() == id)
+                && (name.isEmpty() || building.getName().equals(name))
+                && (owner == null || building.getOwner().equals(owner))
+                && (location == null || building.getLocation().equals(location))).toList();
     }
 
     public List<User> searchAboutUsers(String username, UserType userType, Name name, String email, String phoneNumber, String major) {
