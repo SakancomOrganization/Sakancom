@@ -1,8 +1,6 @@
 
 O
 src/test/features/login.feature,f\d\fd79e5c6b6f7b4c3a502f75a1678e85733274923
-9
-	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 U
 %src/test/java/enums/TestUserType.java,7\0\70e32db0c79bbed5bac40436c4753741f5e15345
 d
@@ -17,11 +15,52 @@ W
 'src/test/java/enums/TestInfoStatus.java,6\c\6cac27d042c48362832931600d255fda120b55b5
 h
 8src/test/java/enums/TestHouseClassificationByGender.java,a\a\aa19e8f8c7815e3b2b7f6021360d7f8581d9d958
-Z
-*src/test/java/objects/TestContactInfo.java,d\0\d0b8363aea6e43e9f3f1e8afe77d00660c34f5c8
-X
-(src/test/java/objects/TestFurniture.java,a\e\ae655ef23cc4838655759f0c7539a0935af72232
 S
 #src/test/java/objects/TestName.java,f\1\f1cd96b39af08b4319504f813556b2ec5ff34a64
 S
 #src/main/java/controllers/Main.java,f\b\fb946a3fe8a2e67ff43f8bf0e3554e4e14e5b60a
+7
+pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
+Y
+)src/test/java/email/TestEmailService.java,0\7\0749cac4aa4def01274a423663d99f5606dc6e18
+:
+
+config.yml,d\f\df5a4730e21738e9ac0435c9a2d469643e0fad87
+U
+%src/main/java/email/EmailService.java,4\6\4631193b3e60655c3bb6d16618ae75b37865a257
+W
+'src/test/java/objects/TestNeighbor.java,5\f\5fa013f4fc987d3afa4d69b387ce84e5110f0318
+X
+(src/test/java/objects/TestHouseRate.java,d\7\d74e2c88fcba537bbbb5a7fd7612062f776ad449
+T
+$src/main/java/objects/HouseRate.java,a\f\af4cf1a0280a1bbc71751c8b3e902bc5aa2e80cb
+S
+#src/main/java/objects/Neighbor.java,9\8\981d1194aac4e6394844431e1f68828c0facb62d
+W
+'src/main/java/objects/SaleContract.java,6\e\6e9e2e4db94b22300c50676b8229303fb97f0b90
+O
+src/main/java/objects/Name.java,e\3\e3d0163689c3b52d234116f8a46e0c63f7856646
+S
+#src/main/java/objects/Services.java,c\6\c69aac34193fd80f7b340f6bc0c5bad535a30573
+W
+'src/test/java/objects/TestServices.java,6\e\6e46090203f384131a3d035ae81c92c5b4846435
+W
+'src/test/java/objects/TestLocation.java,9\2\925b835cbcbd61b4435373a3c5535ca6671906a0
+S
+#src/main/java/objects/Location.java,a\1\a1ea25531735c86ac18b55257e0d7dbbf47d3389
+W
+'src/main/java/objects/UserLocation.java,d\3\d3de3a93defc829bd2a9acdef792e0158ca8dc94
+[
++src/test/java/objects/TestSaleContract.java,f\2\f29e715a63fbd33283282dd508d5d4728797e09a
+[
++src/test/java/objects/TestUserLocation.java,e\9\e9cb8c0bb2a2b06e5f6dcf12be6c4c8918c0c24d
+d
+4src/main/java/enums/HouseClassificationByGender.java,0\5\05236b06458042abf944305c066bd1e429aff2be
+S
+#src/main/java/enums/InfoStatus.java,a\e\aef06032c3ad5685ee4dd8c8399e36f590f1db41
+S
+#src/main/java/enums/SaleStatus.java,9\2\928b704a01e0a388cf734146c1b0d8b112dda516
+Q
+!src/main/java/enums/UserType.java,a\3\a3be9b8d19325edf32b9a155cd281d9356a8d335
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d

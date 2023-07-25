@@ -60,7 +60,8 @@ public class House {
     }
 
     public void setNeighbors(List<Neighbor> neighbors) {
-        this.neighbors = neighbors;
+        this.neighbors.clear();
+        neighbors.forEach(this::addNeighbor);
     }
 
     public List<String> getImages() {
@@ -68,7 +69,8 @@ public class House {
     }
 
     public void setImages(List<String> images) {
-        this.images = images;
+        this.images.clear();
+        images.forEach(this::addImage);
     }
 
     public InfoStatus getInfoStatus() {

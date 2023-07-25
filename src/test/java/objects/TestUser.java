@@ -90,6 +90,7 @@ public class TestUser {
 
     @Test
     public void testRemoveFurniture() {
+        user.addFurniture(furniture);
         user.removeFurniture(furniture);
         assertFalse(user.getFurnitureList().contains(furniture));
     }

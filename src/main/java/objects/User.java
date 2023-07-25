@@ -78,7 +78,8 @@ public class User {
     }
 
     public void setFurnitureList(List<Furniture> furnitureList) {
-        this.furnitureList = furnitureList;
+        this.furnitureList.clear();
+        furnitureList.forEach(this::addFurniture);
     }
 
     public void addFurniture(Furniture furniture) {

@@ -97,6 +97,7 @@ public class TestHouse {
 
     @Test
     public void testRemoveNeighbor() {
+        house.addNeighbor(neighbor);
         house.removeNeighbor(neighbor);
         assertFalse(house.getNeighbors().contains(neighbor));
     }

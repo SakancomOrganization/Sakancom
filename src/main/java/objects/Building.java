@@ -9,7 +9,8 @@ public class Building {
     private String name;
     private User owner;
     private Location location;
-    private List<House> houses;
+    private final List<House> houses;
+    private int autoIncrementHouseId;
 
     public Building(int id, String name, User owner, Location location) {
         this.id = id;
@@ -17,6 +18,7 @@ public class Building {
         this.owner = owner;
         this.location = location;
         houses = new ArrayList<>();
+        autoIncrementHouseId = 1;
     }
 
     public int getId() {
@@ -56,12 +58,16 @@ public class Building {
     }
 
     public void setHouses(List<House> houses) {
-        this.houses = houses;
+        this.houses.clear();
+        houses.forEach(this::addHouse);
     }
 
     public void addHouse(House house) {
-        if(!houses.contains(house))
+        if(!houses.contains(house)) {
+            house.setId(autoIncrementHouseId);
             houses.add(house);
+            incrementAutoIncrementId(); // increase the id for the next addition
+        }
     }
 
     public void removeHouse(House house) {
@@ -79,5 +85,9 @@ public class Building {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    private void incrementAutoIncrementId() {
+        autoIncrementHouseId++;
     }
 }
