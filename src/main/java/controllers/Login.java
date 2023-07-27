@@ -1,6 +1,6 @@
 package controllers;
 
-import objects.User;
+import models.User;
 
 public class Login {
     private final User user;

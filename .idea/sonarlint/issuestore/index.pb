@@ -1,8 +1,6 @@
 
 U
 %src/test/java/enums/TestUserType.java,7\0\70e32db0c79bbed5bac40436c4753741f5e15345
-d
-4src/test/java/controllers/ControllersTestRunner.java,6\6\66836c9d22aff92fb6a07c44ca2a92e7eede9395
 W
 'src/test/java/enums/TestSaleStatus.java,d\9\d9e88cd26014bf52c27ba6cede2e6c0ac0c3f22e
 W
@@ -49,3 +47,43 @@ T
 $src/main/java/objects/Furniture.java,c\3\c3097095682f9159354494f9cb7b0018398fbd7d
 Z
 *src/test/java/objects/TestContactInfo.java,d\0\d0b8363aea6e43e9f3f1e8afe77d00660c34f5c8
+@
+email-config.yml,d\d\dda460ce63487d6cda272098330a3a48ef8eb34d
+W
+'src/test/java/email/TestYmlHandler.java,8\3\838f58774f9339c8de80434795be254877331439
+Y
+)src/test/java/email/TestEmailService.java,0\7\0749cac4aa4def01274a423663d99f5606dc6e18
+S
+#src/main/java/email/YmlHandler.java,0\0\0057fdb86176fb566471c3c141dc5b3a5c1c956b
+U
+%src/main/java/email/EmailService.java,4\6\4631193b3e60655c3bb6d16618ae75b37865a257
+O
+src/test/features/login.feature,f\d\fd79e5c6b6f7b4c3a502f75a1678e85733274923
+[
++src/test/java/objects/TestUserLocation.java,e\9\e9cb8c0bb2a2b06e5f6dcf12be6c4c8918c0c24d
+W
+'src/test/java/objects/TestLocation.java,9\2\925b835cbcbd61b4435373a3c5535ca6671906a0
+S
+#src/main/java/objects/Location.java,a\1\a1ea25531735c86ac18b55257e0d7dbbf47d3389
+W
+'src/main/java/objects/UserLocation.java,d\3\d3de3a93defc829bd2a9acdef792e0158ca8dc94
+W
+'src/main/java/objects/SaleContract.java,6\e\6e9e2e4db94b22300c50676b8229303fb97f0b90
+W
+'src/test/java/objects/TestBuilding.java,9\4\94fc45f04448e66da226fe1a7eb990e9d54b74a0
+O
+src/main/java/objects/User.java,e\9\e91c8fd298b23b8aa6f52c7b729600feb9a16ff7
+V
+&src/main/java/objects/ContactInfo.java,0\3\03408d1909c489ff585dbf3df0083c48b73cb780
+P
+ src/main/java/objects/House.java,0\2\02b6f33dde6173aeed32fddc2a6e3dde6071d01f
+S
+#src/main/java/objects/Building.java,9\a\9a431e3bb26008412eb940eee9eb5d0dfaf42459
+S
+#src/main/java/objects/Sakancom.java,7\1\718811609b28b587fb0589b710a9c317c43c97c5
+W
+'src/test/java/objects/TestSakancom.java,0\8\0864bbc3e24c60933ea07aa83f0cd04c4b166c0e
+S
+#src/main/java/controllers/Main.java,f\b\fb946a3fe8a2e67ff43f8bf0e3554e4e14e5b60a
+d
+4src/test/java/controllers/ControllersTestRunner.java,6\6\66836c9d22aff92fb6a07c44ca2a92e7eede9395
