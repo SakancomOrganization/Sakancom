@@ -20,7 +20,7 @@ public class TestBuilding {
 
     @Before
     public void setup() throws ParseException {
-        location = new Location("Jenin","Abu-Baker","Personal Building");
+        location = new Location("Jenin","Abu-Baker");
         owner = new User("mo-alawneh",
                 "Mohammad12002",
                 UserType.OWNER,

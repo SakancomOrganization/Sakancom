@@ -12,8 +12,8 @@ public class House {
     private int id;
     private Services services;
     private int monthlyRent;
-    private List<Neighbor> neighbors;
-    private List<String> images;
+    private final List<Neighbor> neighbors;
+    private final List<String> images;
     private InfoStatus infoStatus;
     private SaleContract saleContract;
     private HouseRate houseRate;

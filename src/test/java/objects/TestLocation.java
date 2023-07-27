@@ -11,7 +11,7 @@ public class TestLocation {
 
     @Before
     public void setup() {
-        location = new Location("Nablus","Tunis Street","4070");
+        location = new Location("Nablus","Tunis Street");
     }
 
     @Test
@@ -27,30 +27,24 @@ public class TestLocation {
     }
 
     @Test
-    public void testBuilding() {
-        location.setBuilding("4400");
-        assertEquals("4400",location.getBuilding());
-    }
-
-    @Test
     public void testEquals() {
         // object from another type
         assertNotEquals(location, new Object());
         // unequal city
-        assertNotEquals(location, new Location("Jerusalem","Tunis Street","4070"));
+        assertNotEquals(location, new Location("Jerusalem","Tunis Street"));
         // unequal street
-        assertNotEquals(location, new Location("Nablus","Main Street","4070"));
+        assertNotEquals(location, new Location("Nablus","Main Street"));
         // only city
-        assertEquals(location, new Location("Nablus","",""));
+        assertEquals(location, new Location("Nablus",""));
         // only street (ignore case)
-        assertEquals(location, new Location("","Tunis street",""));
+        assertEquals(location, new Location("","Tunis street"));
         // street and number
-        assertEquals(location, new Location("","Tunis Street",""));
+        assertEquals(location, new Location("","Tunis Street"));
     }
 
     @Test
     public void testHashCode() {
-        Location anotherLocation = new Location("Nablus","Tunis Street","4070");
+        Location anotherLocation = new Location("Nablus","Tunis Street");
         assertEquals(location.hashCode(), anotherLocation.hashCode());
     }
 
