@@ -6,6 +6,6 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(features = "src/test/features", glue = "controllers", snippets = CucumberOptions.SnippetType.CAMELCASE)
-public class ControllersTestRunner {
+public class TestRunner {
 
 }

@@ -1,18 +1,20 @@
 package controllers;
 
+import models.Sakancom;
 import models.User;
 
 public class Login {
-    private final User user;
+    private Login () {
 
-    public Login(User user) {
-        this.user = user;
     }
-    public User getUser() {
-        return user;
-    }
-
-    public boolean canLogin() {
+    public static boolean login(String username, String password) {
+        for(User user : Sakancom.getUsers()) {
+            if(user.getUsername().equals(username) && user.getPassword().equals(password)) {
+                User loggedInUser = new User(username, password, null, null, null , null);
+                Sakancom.setCurrentUser(loggedInUser);
+                return true;
+            }
+        }
         return false;
     }
 }

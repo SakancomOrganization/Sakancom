@@ -57,8 +57,6 @@ S
 #src/main/java/email/YmlHandler.java,0\0\0057fdb86176fb566471c3c141dc5b3a5c1c956b
 U
 %src/main/java/email/EmailService.java,4\6\4631193b3e60655c3bb6d16618ae75b37865a257
-O
-src/test/features/login.feature,f\d\fd79e5c6b6f7b4c3a502f75a1678e85733274923
 S
 #src/main/java/objects/Location.java,a\1\a1ea25531735c86ac18b55257e0d7dbbf47d3389
 W
@@ -85,5 +83,3 @@ W
 'src/test/java/objects/TestSakancom.java,0\8\0864bbc3e24c60933ea07aa83f0cd04c4b166c0e
 S
 #src/main/java/controllers/Main.java,f\b\fb946a3fe8a2e67ff43f8bf0e3554e4e14e5b60a
-d
-4src/test/java/controllers/ControllersTestRunner.java,6\6\66836c9d22aff92fb6a07c44ca2a92e7eede9395

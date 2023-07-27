@@ -1,26 +1,26 @@
 Feature: Login
   Scenario Outline: Login Successfully
+    Given Database is already filled
     When username is <username>
     And password is <password>
-    And type is <type>
     Then the user will log in successfully
 
     Examples:
-      | username | password | type |
-      | 'mohammad-al' | 'Mohammad62002' | 'admin' |
-      | 'najat-mansour' | 'Najat12003' | 'admin' |
-      | 'hay-sam' | 'HaySam' | 'owner' |
-      | 'than@mare' | 'tHaNaMaRee' | 'tenant' |
+      | username | password |
+      | 'mo-alawneh' | 'Mohammad62002' |
+      | 'najat-mansour' | 'Najat12003' |
+      | 'haya-sam' | 'HaySam' |
+      | 'than@mare' | 'tHaNaMaRee' |
 
   Scenario Outline: Login Failed
+    Given Database is already filled
     When username is <username>
     And password is <password>
-    And type is <type>
     Then the user will not log in successfully
 
     Examples:
-      | username | password | type |
-      | 'mohammad-al' | 'Mohammad62002' | 'owner' |
-      | 'najat-mansour' | 'Najat22003' | 'admin' |
-      | 'haySam' | 'HaySam' | 'owner' |
-      | 'than@mare' | 'tHaNaMaRee' | 'admin' |
+      | username | password |
+      | 'mohammad-al' | 'Mohammad62002' |
+      | 'najat-mansour' | 'Najat22003' |
+      | 'haySam' | 'HaySam' |
+      | 'than@mare' | 'thanaMaree' |
