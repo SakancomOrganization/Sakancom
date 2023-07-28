@@ -24,3 +24,23 @@ Feature: Login
       | 'najat-mansour' | 'Najat22003' |
       | 'haySam' | 'HaySam' |
       | 'than@mare' | 'thanaMaree' |
+
+    Scenario Outline: Forget Password With Valid Username
+      Given Database is already filled
+      When username is <username>
+      Then the user will receive a new password on the email
+
+      Examples:
+        | username |
+        | 'mo-alawneh' |
+        | 'najat-mansour' |
+
+    Scenario Outline: Forget Password With Invalid Username
+      Given Database is already filled
+      When username is <username>
+      Then the user will not receive a new password on the email
+
+      Examples:
+        | username |
+        | 'haySam' |
+        | 'thana@mare' |

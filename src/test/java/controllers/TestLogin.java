@@ -5,6 +5,8 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import models.Sakancom;
 
+import javax.mail.MessagingException;
+import java.io.FileNotFoundException;
 import java.text.ParseException;
 
 import static org.junit.Assert.*;
@@ -32,5 +34,13 @@ public class TestLogin {
     @Then("the user will not log in successfully")
     public void theUserWillNotLogInSuccessfully() {
         assertFalse(Login.login(username, password));
+    }
+    @Then("the user will receive a new password on the email")
+    public void theUserWillReceiveANewPasswordOnTheEmail() throws MessagingException, FileNotFoundException {
+        assertTrue(Login.forgetPassword(username));
+    }
+    @Then("the user will not receive a new password on the email")
+    public void theUserWillNotReceiveANewPasswordOnTheEmail() throws MessagingException, FileNotFoundException {
+        assertFalse(Login.forgetPassword(username));
     }
 }

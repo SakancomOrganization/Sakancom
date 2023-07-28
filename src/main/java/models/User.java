@@ -13,7 +13,7 @@ public class User {
     private Name name;
     private UserLocation userLocation;
     private ContactInfo contactInfo;
-    private List<Furniture> furnitureList;
+    private final List<Furniture> furnitureList;
 
     public User(String username, String password, UserType userType, Name name, UserLocation userLocation, ContactInfo contactInfo) {
         this.username = username;

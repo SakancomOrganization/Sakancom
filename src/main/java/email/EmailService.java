@@ -13,7 +13,11 @@ public class EmailService {
     private static final String SUBJECT = "Verification Code";
     private static final Random random = new Random(10);
 
-    public void sendEmail(String to) throws MessagingException, FileNotFoundException {
+    private EmailService() {
+
+    }
+
+    public static String sendEmail(String to) throws MessagingException, FileNotFoundException {
         Properties prop = new Properties();
         prop.put("mail.smtp.host", "smtp.gmail.com");
         prop.put("mail.smtp.port", "465");
@@ -46,16 +50,18 @@ public class EmailService {
         message.setContent(multipart);
 
         Transport.send(message);
+
+        return body; // new password
     }
 
-    private String generateRandomString() {
+    private static String generateRandomString() {
         StringBuilder randomStr = new StringBuilder();
         for(int i = 0; i < 4; i++)
             randomStr.append(generateRandomDigit());
         return randomStr.toString();
     }
 
-    private int generateRandomDigit() {
+    private static int generateRandomDigit() {
         return random.nextInt(10);
     }
 }
