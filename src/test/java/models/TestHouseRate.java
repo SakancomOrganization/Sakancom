@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
 
 public class TestHouseRate {
     private HouseRate houseRate;
@@ -25,5 +26,13 @@ public class TestHouseRate {
         assertEquals(4.2, houseRate.getRate(),0.0);
         // test the number of raters
         assertEquals(5, houseRate.getRaters());
+        // invalid new rate (less than 0)
+        assertThrows(NumberFormatException.class, () -> {
+           houseRate.addNewRate(-1);
+        });
+        // invalid new rate (more than 5)
+        assertThrows(NumberFormatException.class, () -> {
+            houseRate.addNewRate(6);
+        });
     }
 }

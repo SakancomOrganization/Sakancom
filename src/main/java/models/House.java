@@ -12,6 +12,7 @@ public class House {
     private int id;
     private Services services;
     private int monthlyRent;
+    private int floorNum;
     private final List<Neighbor> neighbors;
     private final List<String> images;
     private InfoStatus infoStatus;
@@ -19,10 +20,11 @@ public class House {
     private HouseRate houseRate;
     private HouseClassificationByGender houseClassificationByGender;
 
-    public House(int id, Services services, int monthlyRent, HouseClassificationByGender houseClassificationByGender) {
+    public House(int id, Services services, int monthlyRent, int floorNum, HouseClassificationByGender houseClassificationByGender) {
         this.id = id;
         this.services = services;
-        this.monthlyRent = monthlyRent;
+        setMonthlyRent(monthlyRent); // to check the monthly rent if it is less than 0
+        setFloorNum(floorNum); // to check the floor num if it is less than 0
         neighbors = new ArrayList<>();
         images  = new ArrayList<>();
         infoStatus = InfoStatus.ACCEPTED;
@@ -51,8 +53,20 @@ public class House {
         return monthlyRent;
     }
 
-    public void setMonthlyRent(int monthlyRent) {
+    public void setMonthlyRent(int monthlyRent) throws NumberFormatException{
+        if(monthlyRent < 0)
+            throw new NumberFormatException();
         this.monthlyRent = monthlyRent;
+    }
+
+    public int getFloorNum() {
+        return floorNum;
+    }
+
+    public void setFloorNum(int floorNum) throws NumberFormatException {
+        if(floorNum < 0)
+            throw new NumberFormatException();
+        this.floorNum = floorNum;
     }
 
     public List<Neighbor> getNeighbors() {

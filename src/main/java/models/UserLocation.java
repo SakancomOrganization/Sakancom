@@ -9,14 +9,16 @@ public class UserLocation extends Location {
     public UserLocation(String city, String street, String building, int floorNum) {
         super(city, street);
         this.building = building;
-        this.floorNum = floorNum;
+        setFloorNum(floorNum); // to check the floor number if it is less than zero
     }
 
     public int getFloorNum() {
         return floorNum;
     }
 
-    public void setFloorNum(int floorNum) {
+    public void setFloorNum(int floorNum) throws NumberFormatException {
+        if(floorNum < 0)
+            throw new NumberFormatException();
         this.floorNum = floorNum;
     }
 

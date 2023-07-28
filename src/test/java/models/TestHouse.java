@@ -19,7 +19,7 @@ public class TestHouse {
     @Before
     public void setup() {
         neighbor = new Neighbor("Anas", "A very quiet neighbor");
-        house = new House(1, null, 400, HouseClassificationByGender.FAMILY);
+        house = new House(1, null, 400, 1, HouseClassificationByGender.FAMILY);
     }
 
     @Test
@@ -39,7 +39,20 @@ public class TestHouse {
     public void testMonthlyRent() {
         house.setMonthlyRent(200);
         assertEquals(200, house.getMonthlyRent());
+        assertThrows(NumberFormatException.class, () -> {
+           house.setMonthlyRent(-100);
+        });
     }
+
+    @Test
+    public void testFloorNum() {
+        house.setFloorNum(2);
+        assertEquals(2, house.getFloorNum());
+        assertThrows(NumberFormatException.class, () -> {
+            house.setFloorNum(-1);
+        });
+    }
+
 
     @Test
     public void testNeighbors() {
@@ -119,14 +132,14 @@ public class TestHouse {
         // object from another type
         assertNotEquals(house, new Object());
         // equal
-        assertEquals(house, new House(1,null, -1, HouseClassificationByGender.FAMILY));
+        assertEquals(house, new House(1,null, -1 ,1, HouseClassificationByGender.FAMILY));
         // unequal
-        assertNotEquals(house, new House(2, services, 400, HouseClassificationByGender.MALE));
+        assertNotEquals(house, new House(2, services, 400 ,1, HouseClassificationByGender.MALE));
     }
 
     @Test
     public void testHashCode() {
-        House anotherHouse = new House(1, null, -1, HouseClassificationByGender.FAMILY);
+        House anotherHouse = new House(1, null, -1, 1, HouseClassificationByGender.FAMILY);
         assertEquals(house.hashCode(), anotherHouse.hashCode());
     }
 }

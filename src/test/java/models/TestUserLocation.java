@@ -3,8 +3,7 @@ package models;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.*;
 
 public class TestUserLocation {
     private UserLocation userLocation;
@@ -24,6 +23,9 @@ public class TestUserLocation {
     public void testFloorNum() {
         userLocation.setFloorNum(2);
         assertEquals(2, userLocation.getFloorNum());
+        assertThrows(NumberFormatException.class, () -> {
+           userLocation.setFloorNum(-1);
+        });
     }
 
     @Test

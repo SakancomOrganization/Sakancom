@@ -28,7 +28,7 @@ public class TestBuilding {
                 new UserLocation("Jenin","Abu-Baker Street","4070",1),
                 new ContactInfo("mo.a.alawneh@gmail.com","0592838433",new SimpleDateFormat("dd/MM/yyyy").parse("12/06/2002"),"Computer Engineering"));
         building = new Building(1, "Golden House", null, null);
-        house = new House(1, null, 3000, HouseClassificationByGender.FAMILY);
+        house = new House(1, null, 3000, 1, HouseClassificationByGender.FAMILY);
     }
 
     @Test
@@ -79,6 +79,14 @@ public class TestBuilding {
         building.addHouse(house);
         building.removeHouse(house);
         assertFalse(building.getHouses().contains(house));
+    }
+
+    @Test
+    public void testGetHouseById() {
+        building.addHouse(house);
+        House resultedHouse = new House(1, null, -1 ,1, null);
+        assertEquals(resultedHouse, building.getHouseById(1));
+        assertNull(building.getHouseById(10));
     }
 
     @Test

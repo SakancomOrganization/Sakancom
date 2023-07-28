@@ -14,7 +14,7 @@ public class TestLogout {
     }
     @When("user logged out")
     public void userLoggedOut() {
-        Logout.Logout();
+        Logout.logout();
     }
     @Then("the current user will be null")
     public void theCurrentUserWillBeNull() {

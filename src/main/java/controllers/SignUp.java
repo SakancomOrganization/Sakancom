@@ -8,7 +8,7 @@ public class SignUp {
 
     }
     public static boolean signUp(String username, String password, UserType userType, Name name, UserLocation userLocation, ContactInfo contactInfo) {
-        if(Sakancom.searchAboutUsers(username, null, null, "", "", "").isEmpty()) {
+        if(Sakancom.getUserByUsername(username) == null) {
             User newUser = new User(username, password, userType, name, userLocation, contactInfo);
             Sakancom.addUser(newUser);
             return true;

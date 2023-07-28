@@ -29,7 +29,10 @@ public class HouseRate {
         raters++;
     }
 
-    public void addNewRate(double newRateValue) {
+    public void addNewRate(double newRateValue) throws NumberFormatException{
+        if(newRateValue < 0 || newRateValue > 5) {
+            throw new NumberFormatException();
+        }
         addNewRater();
         rate = (rate * (raters - 1) + newRateValue) / raters;
     }

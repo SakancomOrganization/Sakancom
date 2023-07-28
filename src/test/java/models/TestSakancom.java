@@ -105,6 +105,20 @@ public class TestSakancom {
     }
 
     @Test
+    public void testGetUserByUsername() {
+        User resultedUser = new User("mo-alawneh", "", null, null, null, null);
+        assertEquals(resultedUser, Sakancom.getUserByUsername("mo-alawneh"));
+        assertNull(Sakancom.getUserByUsername("mohammad-al"));
+    }
+
+    @Test
+    public void testGetBuildingById() {
+        Building resultedBuilding = new Building(1, "", null, null);
+        assertEquals(resultedBuilding, Sakancom.getBuildingById(1));
+        assertNull(Sakancom.getBuildingById(10));
+    }
+
+    @Test
     public void testSearchAboutBuildings() {
         Building resultedBuilding = new Building(1,
                 "Golden House",
@@ -140,6 +154,7 @@ public class TestSakancom {
         House resultedHouse = new House(1,
                 null,
                 2000,
+                1,
                 HouseClassificationByGender.FAMILY);
         List<House> houses = new ArrayList<>();
         houses.add(resultedHouse);

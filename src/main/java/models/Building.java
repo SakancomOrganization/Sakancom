@@ -74,6 +74,13 @@ public class Building {
         houses.remove(house);
     }
 
+    public House getHouseById(int houseId) {
+        List<House> resultedHouses = houses.stream().filter(house -> houseId == house.getId()).toList();
+        if(!resultedHouses.isEmpty())
+            return resultedHouses.get(0);
+        return null;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if(obj instanceof Building building) {

@@ -57,6 +57,20 @@ public class Sakancom {
         buildings.remove(building);
     }
 
+    public static Building getBuildingById(int buildingId) {
+        List<Building> resultedBuildings = buildings.stream().filter(building -> buildingId == building.getId()).toList();
+        if(!resultedBuildings.isEmpty())
+            return resultedBuildings.get(0);
+        return null;
+    }
+
+    public static User getUserByUsername(String username) {
+        List<User> resultedUsers = users.stream().filter(user -> user.getUsername().equals(username)).toList();
+        if(!resultedUsers.isEmpty())
+            return resultedUsers.get(0);
+        return null;
+    }
+
     public static List<User> searchAboutUsers(String username, UserType userType, Name name, String email, String phoneNumber, String major) {
         return users.stream().filter(user -> (username.isEmpty() || user.getUsername().equals(username))
                 && (userType == null || user.getUserType().equals(userType))
@@ -151,6 +165,7 @@ public class Sakancom {
         House house = new House(1,
                 new Services(true, true, true, true, true, 3, 2),
                 2000,
+                1,
                 HouseClassificationByGender.FAMILY);
         building.addHouse(house);
     }

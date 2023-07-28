@@ -25,9 +25,3 @@ W
 email-config.yml,d\d\dda460ce63487d6cda272098330a3a48ef8eb34d
 S
 #src/main/java/email/YmlHandler.java,0\0\0057fdb86176fb566471c3c141dc5b3a5c1c956b
-V
-&src/test/java/models/TestSakancom.java,3\5\35090e34f6d86b0c2267af46ee7518b3f7c40aa0
-R
-"src/main/java/models/Sakancom.java,f\a\fae43a245de589027aa9735d66ed1e3441c0439b
-U
-%src/main/java/controllers/Logout.java,6\6\66a2d9f6a406e5794c3f940330e0defcc9e2875a
