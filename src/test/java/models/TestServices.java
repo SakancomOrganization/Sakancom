@@ -62,11 +62,11 @@ public class TestServices {
         // equal
         assertEquals(services, new Services(true, true, true, true, false, 4, 3));
         // increase the bedrooms and bedrooms number
-        assertEquals(services, new Services(true, true, true, true, false, 4, 5));
+        assertEquals(services, new Services(true, true, true, true, false, 1, 1));
         // unequal because of boolean
         assertNotEquals(services, new Services(true, false, true, true, false, 4, 3));
         // unequal because of rooms number
-        assertNotEquals(services, new Services(true, true, true, true, false, 1, 3));
+        assertNotEquals(services, new Services(true, true, true, true, false, 5, 3));
     }
 
     @Test

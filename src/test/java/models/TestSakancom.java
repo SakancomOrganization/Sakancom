@@ -19,7 +19,7 @@ public class TestSakancom {
     private static Building building;
 
     @BeforeClass
-    public static void setupData() throws ParseException, AlreadyFoundElementException, UnacceptableValueException {
+    public static void setupData() throws ParseException, UnacceptableValueException {
         Sakancom.initSakancomWithData();
     }
 
@@ -80,7 +80,7 @@ public class TestSakancom {
     }
 
     @Test
-    public void testSearchAboutUsers() {
+    public void testSearchAboutUsers() throws UnacceptableValueException, ParseException {
         User user = new User("mo-alawneh",
                 "Mohammad62002",
                 UserType.ADMIN,
@@ -125,7 +125,7 @@ public class TestSakancom {
     }
 
     @Test
-    public void testSearchAboutBuildings() {
+    public void testSearchAboutBuildings() throws UnacceptableValueException, ParseException {
         Building resultedBuilding = new Building(1,
                 "Golden House",
                 null,
@@ -146,7 +146,7 @@ public class TestSakancom {
         Location location = new Location("Nablus", "Rafidia");
         assertEquals(buildings, Sakancom.searchAboutBuildings(1, "golden house", owner, location));
         // failed search
-        assertEquals(List.of(), Sakancom.searchAboutBuildings(2,"", null, null));
+        assertEquals(List.of(), Sakancom.searchAboutBuildings(3,"", null, null));
         assertEquals(List.of(), Sakancom.searchAboutBuildings(1,"Happiness House", null, null));
         owner.setUsername("mo-alawneh");
         assertEquals(List.of(), Sakancom.searchAboutBuildings(1,"Golden House", owner, null));
@@ -156,7 +156,7 @@ public class TestSakancom {
     }
 
     @Test
-    public void testSearchAboutHouses() throws UnacceptableValueException {
+    public void testSearchAboutHouses() throws UnacceptableValueException, ParseException {
         House resultedHouse = new House(1,
                 null,
                 2000,
@@ -168,6 +168,7 @@ public class TestSakancom {
         Services services = new Services(true, true, true, true, true, 3, 2);
         User owner = new User("haya-sam","", UserType.OWNER, null, null, null);
         Location location = new Location("Nablus", "Rafidia");
+
         // search based on services
         assertEquals(houses, Sakancom.searchAboutHouses(services, -1, null, null, null));
         // search based on monthly rent

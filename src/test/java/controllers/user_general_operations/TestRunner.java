@@ -1,4 +1,4 @@
-package controllers;
+package controllers.user_general_operations;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;

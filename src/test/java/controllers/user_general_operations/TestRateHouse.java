@@ -8,6 +8,8 @@ import models.Building;
 import models.House;
 import models.Sakancom;
 
+import java.text.ParseException;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
 
@@ -30,7 +32,7 @@ public class TestRateHouse {
         this.newRate = newRate;
     }
     @Then("the house rate will be {double}")
-    public void theHouseRateWillBe(Double updatedRate) throws UnacceptableValueException {
+    public void theHouseRateWillBe(Double updatedRate) throws UnacceptableValueException, ParseException {
         UserGeneralOperations.rateHouse(buildingId, houseId, newRate);
         Building building = Sakancom.getBuildingById(buildingId);
         if(building != null) {

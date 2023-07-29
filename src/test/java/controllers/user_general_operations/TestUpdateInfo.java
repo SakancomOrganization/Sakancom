@@ -64,6 +64,17 @@ public class TestUpdateInfo {
         } else if(field.equalsIgnoreCase("major")) {
             assertEquals(value, user.getContactInfo().getMajor());
         }
+        user.getName().setFirstName("Mohammad");
+        user.getName().setMiddleName("AbdAllateef");
+        user.getName().setLastName("Alawneh");
+        user.getUserLocation().setCity("Jenin");
+        user.getUserLocation().setStreet("Abu-Baker");
+        user.getUserLocation().setBuilding("Personal Building");
+        user.getUserLocation().setFloorNum(2);
+        user.getContactInfo().setEmail("mo.a.alawneh@gmail.com");
+        user.getContactInfo().setPhoneNumber("0592838433");
+        user.getContactInfo().setBirthdate(new SimpleDateFormat("dd/MM/yyyy").parse("12/06/2002"));
+        user.getContactInfo().setMajor("Computer Engineering");
     }
     @Then("the information will not be updated due to invalid username")
     public void theInformationWillNotBeUpdatedDueToInvalidUsername() {

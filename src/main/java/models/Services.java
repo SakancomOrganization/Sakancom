@@ -85,8 +85,8 @@ public class Services {
                     && this.hasInternet == services.isHasInternet()
                     && this.hasTelephone == services.isHasTelephone()
                     && this.hasBalcony == services.isHasBalcony()
-                    && this.bedroomsNum <= services.getBedroomsNum()
-                    && this.bathroomsNum <= services.getBathroomsNum();
+                    && this.bedroomsNum >= services.getBedroomsNum()
+                    && this.bathroomsNum >= services.getBathroomsNum();
         }
         return false;
     }

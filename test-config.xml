@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Test Suite">
+    <test name="TDD Tests" preserve-order="true">
+        <packages>
+            <package name="enums" />
+            <package name="models" />
+            <package name="email" />
+        </packages>
+    </test>
+
+    <test name="BDD Tests" preserve-order="true">
+        <packages>
+            <package name="controllers" />
+        </packages>
+    </test>
+</suite>

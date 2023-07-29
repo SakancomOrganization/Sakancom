@@ -85,7 +85,7 @@ public class TestUser {
         assertTrue(user.getFurnitureList().contains(furniture));
 
         // test adding an existing one
-        assertThrows(IllegalArgumentException.class, () -> {
+        assertThrows(AlreadyFoundElementException.class, () -> {
            user.addFurniture(furniture);
         });
     }
