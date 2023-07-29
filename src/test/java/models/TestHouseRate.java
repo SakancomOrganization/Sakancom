@@ -1,5 +1,6 @@
 package models;
 
+import exceptions.UnacceptableValueException;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,7 +16,7 @@ public class TestHouseRate {
     }
 
     @Test
-    public void testAddNewRate() {
+    public void testAddNewRate() throws UnacceptableValueException {
         // set the raters
         houseRate.setRaters(4);
         // set the rate
@@ -27,11 +28,11 @@ public class TestHouseRate {
         // test the number of raters
         assertEquals(5, houseRate.getRaters());
         // invalid new rate (less than 0)
-        assertThrows(NumberFormatException.class, () -> {
+        assertThrows(UnacceptableValueException.class, () -> {
            houseRate.addNewRate(-1);
         });
         // invalid new rate (more than 5)
-        assertThrows(NumberFormatException.class, () -> {
+        assertThrows(UnacceptableValueException.class, () -> {
             houseRate.addNewRate(6);
         });
     }

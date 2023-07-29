@@ -1,6 +1,9 @@
-package controllers;
+package controllers.authentication;
 
+import controllers.SignUp;
 import enums.UserType;
+import exceptions.AlreadyFoundElementException;
+import exceptions.UnacceptableValueException;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import models.ContactInfo;
@@ -44,7 +47,7 @@ public class TestSignUp {
         this.name = new Name(firstName, secondName, lastName);
     }
     @When("location is {string} {string} {string} {int}")
-    public void locationIs(String city, String street, String building, Integer floor) {
+    public void locationIs(String city, String street, String building, Integer floor) throws UnacceptableValueException {
         this.userLocation = new UserLocation(city, street, building, floor);
     }
     @When("contactInfo are {string} {string} {string} {string}")
@@ -53,11 +56,11 @@ public class TestSignUp {
         this.contactInfo = new ContactInfo(email, phoneNumber, birthDateObject, major);
     }
     @Then("the user will sign up successfully")
-    public void theUserWillSignUpSuccessfully() {
+    public void theUserWillSignUpSuccessfully() throws AlreadyFoundElementException {
         assertTrue(SignUp.signUp(username, password, userType, name, userLocation, contactInfo));
     }
     @Then("the user will not sign up")
-    public void theUserWillNotSignUp() {
+    public void theUserWillNotSignUp() throws AlreadyFoundElementException {
         assertFalse(SignUp.signUp(username, password, userType, name, userLocation, contactInfo));
     }
 }

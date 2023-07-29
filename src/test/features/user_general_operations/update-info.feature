@@ -1,7 +1,9 @@
 Feature: Update Personal Information
+  Background: Shared Database
+    Given Database is already filled
+
  Scenario Outline: Update Success
-   Given Database is already filled
-   When username of who want to update is <username>
+   When <username> is already logged in
    And field is <field>
    And value is <value>
    Then the information will be updated successfully
@@ -21,8 +23,7 @@ Feature: Update Personal Information
    | 'mo-alawneh' | 'major' | 'Electrical Engineering' |
 
   Scenario Outline: Update Failed Due to Invalid Username
-    Given Database is already filled
-    When username of who want to update is <username>
+    When <username> is already logged in
     And field is <field>
     And value is <value>
     Then the information will not be updated due to invalid username
@@ -33,8 +34,7 @@ Feature: Update Personal Information
     | 'moh2002' | 'email' | 'mohammad12002jaba@gmail.com' |
 
   Scenario Outline: Update Failed Due to Number Format Exception
-    Given Database is already filled
-    When username of who want to update is <username>
+    When <username> is already logged in
     And field is <field>
     And value is <value>
     Then the information will not be updated and number format exception will be thrown
@@ -42,11 +42,19 @@ Feature: Update Personal Information
     Examples:
     | username | field | value |
     | 'mo-alawneh' | 'floor' | 'f' |
+
+  Scenario Outline: Update Failed Due to Unacceptable Value Exception
+    When <username> is already logged in
+    And field is <field>
+    And value is <value>
+    Then the information will not be updated and unacceptable value exception will be thrown
+
+    Examples:
+    | username | field | value |
     | 'mo-alawneh' | 'floor' | '-1' |
 
   Scenario Outline: Update Failed Due to Date Parse Exception
-    Given Database is already filled
-    When username of who want to update is <username>
+    When <username> is already logged in
     And field is <field>
     And value is <value>
     Then the information will not be updated and date parse exception will be thrown

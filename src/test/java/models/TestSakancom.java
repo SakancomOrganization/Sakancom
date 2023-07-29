@@ -2,6 +2,8 @@ package models;
 
 import enums.HouseClassificationByGender;
 import enums.UserType;
+import exceptions.AlreadyFoundElementException;
+import exceptions.UnacceptableValueException;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -17,7 +19,7 @@ public class TestSakancom {
     private static Building building;
 
     @BeforeClass
-    public static void setupData() throws ParseException {
+    public static void setupData() throws ParseException, AlreadyFoundElementException, UnacceptableValueException {
         Sakancom.initSakancomWithData();
     }
 
@@ -38,14 +40,16 @@ public class TestSakancom {
     }
 
     @Test
-    public void testAddUser() {
+    public void testAddUser() throws AlreadyFoundElementException {
         // success add
         Sakancom.addUser(user);
         assertTrue(Sakancom.getUsers().contains(user));
-        // failed add
+
+        // testing adding an existing one
         User newUser = new User("test-user","Test4321",UserType.ADMIN, null, null, null);
-        Sakancom.addUser(newUser);
-        assertEquals(5, Sakancom.getUsers().size());
+        assertThrows(AlreadyFoundElementException.class, () -> {
+           Sakancom.addUser(newUser);
+        });
     }
 
     @Test
@@ -56,18 +60,20 @@ public class TestSakancom {
     }
 
     @Test
-    public void testAddBuilding() {
+    public void testAddBuilding() throws AlreadyFoundElementException {
         // success add
         Sakancom.addBuilding(building);
         assertTrue(Sakancom.getBuildings().contains(building));
-        // failed add
+
+        // test adding an existing one
         Building newBuilding = new Building(1,"Happiness House",null, null);
-        Sakancom.addBuilding(newBuilding);
-        assertEquals(2, Sakancom.getBuildings().size());
+        assertThrows(AlreadyFoundElementException.class, () -> {
+            Sakancom.addBuilding(newBuilding);
+        });
     }
 
     @Test
-    public void testRemoveBuilding() {
+    public void testRemoveBuilding() throws AlreadyFoundElementException {
         Sakancom.addBuilding(building);
         Sakancom.removeBuilding(building);
         assertFalse(Sakancom.getBuildings().contains(building));
@@ -150,7 +156,7 @@ public class TestSakancom {
     }
 
     @Test
-    public void testSearchAboutHouses() {
+    public void testSearchAboutHouses() throws UnacceptableValueException {
         House resultedHouse = new House(1,
                 null,
                 2000,

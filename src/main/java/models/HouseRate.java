@@ -1,5 +1,7 @@
 package models;
 
+import exceptions.UnacceptableValueException;
+
 public class HouseRate {
     private int raters;
     private double rate;
@@ -29,9 +31,9 @@ public class HouseRate {
         raters++;
     }
 
-    public void addNewRate(double newRateValue) throws NumberFormatException{
+    public void addNewRate(double newRateValue) throws UnacceptableValueException {
         if(newRateValue < 0 || newRateValue > 5) {
-            throw new NumberFormatException();
+            throw new UnacceptableValueException("The rate must be between 0 and 5!");
         }
         addNewRater();
         rate = (rate * (raters - 1) + newRateValue) / raters;

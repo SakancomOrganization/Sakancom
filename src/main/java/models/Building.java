@@ -1,5 +1,7 @@
 package models;
 
+import exceptions.AlreadyFoundElementException;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -57,17 +59,18 @@ public class Building {
         return houses;
     }
 
-    public void setHouses(List<House> houses) {
+    public void setHouses(List<House> houses) throws AlreadyFoundElementException {
         this.houses.clear();
-        houses.forEach(this::addHouse);
+        for(House house : houses)
+            addHouse(house);
     }
 
-    public void addHouse(House house) {
-        if(!houses.contains(house)) {
-            house.setId(autoIncrementHouseId);
-            houses.add(house);
-            incrementAutoIncrementId(); // increase the id for the next addition
-        }
+    public void addHouse(House house) throws AlreadyFoundElementException{
+        if(houses.contains(house))
+            throw new AlreadyFoundElementException("house");
+        house.setId(autoIncrementHouseId);
+        houses.add(house);
+        incrementAutoIncrementId(); // increase the id for the next addition
     }
 
     public void removeHouse(House house) {

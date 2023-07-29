@@ -1,6 +1,7 @@
 package models;
 
 import enums.UserType;
+import exceptions.AlreadyFoundElementException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -77,15 +78,16 @@ public class User {
         return furnitureList;
     }
 
-    public void setFurnitureList(List<Furniture> furnitureList) {
+    public void setFurnitureList(List<Furniture> furnitureList) throws AlreadyFoundElementException {
         this.furnitureList.clear();
-        furnitureList.forEach(this::addFurniture);
+        for (Furniture furniture : furnitureList)
+            addFurniture(furniture);
     }
 
-    public void addFurniture(Furniture furniture) {
-        if(!furnitureList.contains(furniture)) {
-            furnitureList.add(furniture);
-        }
+    public void addFurniture(Furniture furniture) throws AlreadyFoundElementException {
+        if(furnitureList.contains(furniture))
+            throw new AlreadyFoundElementException("furniture");
+        furnitureList.add(furniture);
     }
 
     public void removeFurniture(Furniture furniture) {

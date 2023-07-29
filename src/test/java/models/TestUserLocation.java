@@ -1,5 +1,6 @@
 package models;
 
+import exceptions.UnacceptableValueException;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -9,7 +10,7 @@ public class TestUserLocation {
     private UserLocation userLocation;
 
     @Before
-    public void setup() {
+    public void setup() throws UnacceptableValueException {
         userLocation = new UserLocation("Jenin","Abu-Baker","Personal Building",1);
     }
 
@@ -20,16 +21,16 @@ public class TestUserLocation {
     }
 
     @Test
-    public void testFloorNum() {
+    public void testFloorNum() throws UnacceptableValueException {
         userLocation.setFloorNum(2);
         assertEquals(2, userLocation.getFloorNum());
-        assertThrows(NumberFormatException.class, () -> {
+        assertThrows(UnacceptableValueException.class, () -> {
            userLocation.setFloorNum(-1);
         });
     }
 
     @Test
-    public void testEquals() {
+    public void testEquals() throws UnacceptableValueException {
         // object from another type
         assertNotEquals(userLocation, new Object());
         // equals
@@ -43,7 +44,7 @@ public class TestUserLocation {
     }
 
     @Test
-    public void testHashCode() {
+    public void testHashCode() throws UnacceptableValueException {
         UserLocation anotherUserLocation = new UserLocation("Jenin","Abu-Baker","Personal Building",1);
         assertEquals(userLocation.hashCode(), anotherUserLocation.hashCode());
     }

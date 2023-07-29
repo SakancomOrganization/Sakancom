@@ -21,12 +21,11 @@ public class Login {
         }
         return false;
     }
-    public static boolean forgetPassword(String username) throws MessagingException, FileNotFoundException {
+    public static void forgetPassword(String username) throws MessagingException, FileNotFoundException, NullPointerException {
         User user = Sakancom.getUserByUsername(username);
         if (user == null)
-            return false;
+            throw new NullPointerException();
         String newPassword = EmailService.sendEmail(user.getContactInfo().getEmail());
         user.setPassword(newPassword);
-        return true;
     }
 }

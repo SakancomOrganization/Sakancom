@@ -1,21 +1,23 @@
-package controllers;
+package controllers.authentication;
 
+import controllers.Login;
+import exceptions.AlreadyFoundElementException;
+import exceptions.UnacceptableValueException;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import models.Sakancom;
 
-import javax.mail.MessagingException;
-import java.io.FileNotFoundException;
 import java.text.ParseException;
 
 import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 public class TestLogin {
     private String username;
     private String password;
     @Given("Database is already filled")
-    public void databaseIsAlreadyFilled() throws ParseException {
+    public static void databaseIsAlreadyFilled() throws ParseException, AlreadyFoundElementException, UnacceptableValueException {
         Sakancom.initSakancomWithData();
     }
     @When("username is {string}")
@@ -36,11 +38,15 @@ public class TestLogin {
         assertFalse(Login.login(username, password));
     }
     @Then("the user will receive a new password on the email")
-    public void theUserWillReceiveANewPasswordOnTheEmail() throws MessagingException, FileNotFoundException {
-        assertTrue(Login.forgetPassword(username));
+    public void theUserWillReceiveANewPasswordOnTheEmail()  {
+        assertDoesNotThrow(() -> {
+            Login.forgetPassword(username);
+        });
     }
     @Then("the user will not receive a new password on the email")
-    public void theUserWillNotReceiveANewPasswordOnTheEmail() throws MessagingException, FileNotFoundException {
-        assertFalse(Login.forgetPassword(username));
+    public void theUserWillNotReceiveANewPasswordOnTheEmail() {
+        assertThrows(NullPointerException.class, () -> {
+            Login.forgetPassword(username);
+        });
     }
 }

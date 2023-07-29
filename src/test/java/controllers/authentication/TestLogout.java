@@ -1,5 +1,7 @@
-package controllers;
+package controllers.authentication;
 
+import controllers.Login;
+import controllers.Logout;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;

@@ -2,6 +2,8 @@ package models;
 
 import enums.HouseClassificationByGender;
 import enums.UserType;
+import exceptions.AlreadyFoundElementException;
+import exceptions.UnacceptableValueException;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -35,22 +37,23 @@ public class Sakancom {
         return buildings;
     }
 
-    public static void addUser(User user) {
-        if(!users.contains(user)) {
-            users.add(user);
-        }
+    public static void addUser(User user) throws AlreadyFoundElementException {
+        if(users.contains(user))
+            throw new AlreadyFoundElementException("user");
+        users.add(user);
     }
 
     public static void removeUser(User user) {
         users.remove(user);
     }
 
-    public static void addBuilding(Building building) {
-        if(!buildings.contains(building)) {
-            building.setId(autoIncrementBuildingId);
-            buildings.add(building);
-            incrementAutoIncrementBuildingId(); // increment id for the next addition
-        }
+    public static void addBuilding(Building building) throws AlreadyFoundElementException {
+        if(buildings.contains(building))
+            throw new AlreadyFoundElementException("building");
+
+        building.setId(autoIncrementBuildingId);
+        buildings.add(building);
+        incrementAutoIncrementBuildingId(); // increment id for the next addition
     }
 
     public static void removeBuilding(Building building) {
@@ -107,7 +110,7 @@ public class Sakancom {
         autoIncrementBuildingId++;
     }
 
-    public static void initSakancomWithData() throws ParseException {
+    public static void initSakancomWithData() throws ParseException, UnacceptableValueException {
         // literals
         final String PERSONAL_BUILDING = "Personal Building";
         final String DATA_PATTERN = "dd/MM/yyyy";
@@ -122,7 +125,6 @@ public class Sakancom {
                 new UserLocation("Jenin","Abu-Baker",PERSONAL_BUILDING,2),
                 new ContactInfo("mo.a.alawneh@gmail.com","0592838433",
                         new SimpleDateFormat(DATA_PATTERN).parse("12/06/2002"),COMPUTER_ENGINEERING));
-        addUser(firstAdmin);
 
         // add the second admin (Najat Mansour)
         User secondAdmin = new User("najat-mansour",
@@ -132,7 +134,6 @@ public class Sakancom {
                 new UserLocation(NABLUS,"AlEtihad",PERSONAL_BUILDING,1),
                 new ContactInfo("s12028099@stu.najah.edu","0598892461",
                         new SimpleDateFormat(DATA_PATTERN).parse("28/01/2003"),COMPUTER_ENGINEERING));
-        addUser(secondAdmin);
 
         // add an owner
         User owner = new User("haya-sam",
@@ -142,7 +143,6 @@ public class Sakancom {
                 new UserLocation(NABLUS,"Tunis",PERSONAL_BUILDING,1),
                 new ContactInfo("hayasam@stu.najah.edu","0599112233",
                         new SimpleDateFormat(DATA_PATTERN).parse("25/05/1984"),COMPUTER_ENGINEERING));
-        addUser(owner);
 
         // add a tenant
         User tenant = new User("than@mare",
@@ -152,14 +152,12 @@ public class Sakancom {
                 new UserLocation(NABLUS,"JamalAbdAlNasser",PERSONAL_BUILDING,1),
                 new ContactInfo("thanaMari@stu.najah.edu","0599332211",
                         new SimpleDateFormat(DATA_PATTERN).parse("25/05/1992"),COMPUTER_ENGINEERING));
-        addUser(tenant);
 
         // add a building
         Building building = new Building(1,
                 "Golden House",
                 owner,
                 new Location("Nablus","Rafidia"));
-        addBuilding(building);
 
         // add a house
         House house = new House(1,
@@ -167,6 +165,16 @@ public class Sakancom {
                 2000,
                 1,
                 HouseClassificationByGender.FAMILY);
-        building.addHouse(house);
+
+        try {
+            addUser(firstAdmin);
+            addUser(secondAdmin);
+            addUser(owner);
+            addUser(tenant);
+            addBuilding(building);
+            building.addHouse(house);
+        } catch (AlreadyFoundElementException alreadyFoundElementException) {
+            // just to prevent the exception from being thrown
+        }
     }
 }

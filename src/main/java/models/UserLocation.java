@@ -1,12 +1,14 @@
 package models;
 
+import exceptions.UnacceptableValueException;
+
 import java.util.Objects;
 
 public class UserLocation extends Location {
     private String building;
     private int floorNum;
 
-    public UserLocation(String city, String street, String building, int floorNum) {
+    public UserLocation(String city, String street, String building, int floorNum) throws UnacceptableValueException {
         super(city, street);
         this.building = building;
         setFloorNum(floorNum); // to check the floor number if it is less than zero
@@ -16,9 +18,9 @@ public class UserLocation extends Location {
         return floorNum;
     }
 
-    public void setFloorNum(int floorNum) throws NumberFormatException {
+    public void setFloorNum(int floorNum) throws UnacceptableValueException {
         if(floorNum < 0)
-            throw new NumberFormatException();
+            throw new UnacceptableValueException("The floor number cannot be negative!");
         this.floorNum = floorNum;
     }
 

@@ -1,6 +1,7 @@
 package controllers;
 
 import enums.HouseClassificationByGender;
+import exceptions.UnacceptableValueException;
 import models.*;
 
 import java.text.ParseException;
@@ -12,8 +13,8 @@ public class UserGeneralOperations {
 
     }
 
-    public static void updateInfo(String username, String field, String value) throws NumberFormatException, ParseException, NullPointerException {
-        User user = Sakancom.getUserByUsername(username);
+    public static void updateInfo(String field, String value) throws NumberFormatException, ParseException, NullPointerException, UnacceptableValueException {
+        User user = Sakancom.getCurrentUser();
         if(user == null)
             throw new NullPointerException();
         if(field.equalsIgnoreCase("firstName")) {
@@ -41,7 +42,7 @@ public class UserGeneralOperations {
         }
     }
 
-    public static void rateHouse(int buildingId, int houseId, double rate) throws NullPointerException{
+    public static void rateHouse(int buildingId, int houseId, double rate) throws NullPointerException, UnacceptableValueException {
         Building building = Sakancom.getBuildingById(buildingId);
         if(building == null)
             throw new NullPointerException();

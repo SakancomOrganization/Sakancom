@@ -1,6 +1,8 @@
 Feature: Sign Up
-  Scenario Outline: Sign Up Successfully
+  Background: Shared Database
     Given Database is already filled
+
+  Scenario Outline: Sign Up Successfully
     When newUsername is <username>
     And newPassword is <password>
     And usertype is <userType>
@@ -15,7 +17,6 @@ Feature: Sign Up
     | 'naya2020' | 'NaYa2020' | 'owner' | 'Naya' | 'Khaled' | 'Khader' | 'Nablus' | 'AlEtihad' | '1122' | 1 | 's12028067@stu.najah.edu' | '0599552020' | '17/06/2020' | ' N/A ' |
 
   Scenario Outline: Sign Up Failed
-    Given Database is already filled
     When newUsername is <username>
     And newPassword is <password>
     And usertype is <userType>

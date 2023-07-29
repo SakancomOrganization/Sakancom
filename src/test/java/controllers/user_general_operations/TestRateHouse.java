@@ -1,5 +1,7 @@
-package controllers;
+package controllers.user_general_operations;
 
+import controllers.UserGeneralOperations;
+import exceptions.UnacceptableValueException;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import models.Building;
@@ -28,7 +30,7 @@ public class TestRateHouse {
         this.newRate = newRate;
     }
     @Then("the house rate will be {double}")
-    public void theHouseRateWillBe(Double updatedRate) {
+    public void theHouseRateWillBe(Double updatedRate) throws UnacceptableValueException {
         UserGeneralOperations.rateHouse(buildingId, houseId, newRate);
         Building building = Sakancom.getBuildingById(buildingId);
         if(building != null) {
@@ -46,7 +48,7 @@ public class TestRateHouse {
     }
     @Then("a Number Format Exception Will be thrown")
     public void aNumberFormatExceptionWillBeThrown() {
-        assertThrows(NumberFormatException.class, () -> {
+        assertThrows(UnacceptableValueException.class, () -> {
             UserGeneralOperations.rateHouse(buildingId, houseId, newRate);
         });
     }

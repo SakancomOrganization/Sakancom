@@ -1,6 +1,8 @@
 package models;
 
 import enums.UserType;
+import exceptions.AlreadyFoundElementException;
+import exceptions.UnacceptableValueException;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,7 +18,7 @@ public class TestUser {
     private Furniture furniture;
 
     @Before
-    public void setup() throws ParseException {
+    public void setup() throws ParseException, UnacceptableValueException {
         furniture = new Furniture("A new furniture description", "A new furniture image");
         user = new User("mo-alawneh",
                 "Mohammad12002",
@@ -52,7 +54,7 @@ public class TestUser {
     }
 
     @Test
-    public void testUserLocation() {
+    public void testUserLocation() throws UnacceptableValueException {
         UserLocation userLocation = new UserLocation("Jenin","Abu-Baker","Personal Building",1);
         user.setUserLocation(userLocation);
         assertEquals(userLocation, user.getUserLocation());
@@ -69,7 +71,7 @@ public class TestUser {
     }
 
     @Test
-    public void testFurniture() {
+    public void testFurniture() throws AlreadyFoundElementException {
         List<Furniture> furnitureList = new ArrayList<>();
         furnitureList.add(furniture);
         user.setFurnitureList(furnitureList);
@@ -77,19 +79,19 @@ public class TestUser {
     }
 
     @Test
-    public void testAddFurniture() {
+    public void testAddFurniture() throws AlreadyFoundElementException {
         // test adding a new furniture
         user.addFurniture(furniture);
         assertTrue(user.getFurnitureList().contains(furniture));
 
-        // test adding an existing furniture (the size must remain the same)
-        int furnitureListSize = user.getFurnitureList().size();
-        user.addFurniture(furniture);
-        assertEquals(furnitureListSize, user.getFurnitureList().size());
+        // test adding an existing one
+        assertThrows(IllegalArgumentException.class, () -> {
+           user.addFurniture(furniture);
+        });
     }
 
     @Test
-    public void testRemoveFurniture() {
+    public void testRemoveFurniture() throws AlreadyFoundElementException {
         user.addFurniture(furniture);
         user.removeFurniture(furniture);
         assertFalse(user.getFurnitureList().contains(furniture));
@@ -116,7 +118,7 @@ public class TestUser {
     }
 
     @Test
-    public void testHashCode() throws ParseException {
+    public void testHashCode() throws ParseException, UnacceptableValueException {
         User anotherUser = new User("mo-alawneh",
                 "Mohammad12002",
                 UserType.ADMIN,

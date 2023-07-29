@@ -3,6 +3,8 @@ package models;
 import enums.HouseClassificationByGender;
 import enums.InfoStatus;
 import enums.SaleStatus;
+import exceptions.AlreadyFoundElementException;
+import exceptions.UnacceptableValueException;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -17,7 +19,7 @@ public class TestHouse {
     private Neighbor neighbor;
 
     @Before
-    public void setup() {
+    public void setup() throws UnacceptableValueException {
         neighbor = new Neighbor("Anas", "A very quiet neighbor");
         house = new House(1, null, 400, 1, HouseClassificationByGender.FAMILY);
     }
@@ -36,26 +38,26 @@ public class TestHouse {
     }
 
     @Test
-    public void testMonthlyRent() {
+    public void testMonthlyRent() throws UnacceptableValueException {
         house.setMonthlyRent(200);
         assertEquals(200, house.getMonthlyRent());
-        assertThrows(NumberFormatException.class, () -> {
+        assertThrows(UnacceptableValueException.class, () -> {
            house.setMonthlyRent(-100);
         });
     }
 
     @Test
-    public void testFloorNum() {
+    public void testFloorNum() throws UnacceptableValueException {
         house.setFloorNum(2);
         assertEquals(2, house.getFloorNum());
-        assertThrows(NumberFormatException.class, () -> {
+        assertThrows(UnacceptableValueException.class, () -> {
             house.setFloorNum(-1);
         });
     }
 
 
     @Test
-    public void testNeighbors() {
+    public void testNeighbors() throws AlreadyFoundElementException {
         List<Neighbor> neighbors = new ArrayList<>();
         neighbors.add(neighbor);
         house.setNeighbors(neighbors);
@@ -63,7 +65,7 @@ public class TestHouse {
     }
 
     @Test
-    public void testImages() {
+    public void testImages() throws AlreadyFoundElementException {
         List<String> images = new ArrayList<>();
         images.add("A new image");
         house.setImages(images);
@@ -97,38 +99,38 @@ public class TestHouse {
     }
 
     @Test
-    public void testAddNeighbor() {
+    public void testAddNeighbor() throws AlreadyFoundElementException {
         // test add a new neighbor
         house.addNeighbor(neighbor);
         assertTrue(house.getNeighbors().contains(neighbor));
 
         // test add an existing one
-        int neighborsSize = house.getNeighbors().size();
-        house.addNeighbor(neighbor);
-        assertEquals(neighborsSize, house.getNeighbors().size());
+        assertThrows(AlreadyFoundElementException.class, () -> {
+            house.addNeighbor(neighbor);
+        });
     }
 
     @Test
-    public void testRemoveNeighbor() {
+    public void testRemoveNeighbor() throws AlreadyFoundElementException {
         house.addNeighbor(neighbor);
         house.removeNeighbor(neighbor);
         assertFalse(house.getNeighbors().contains(neighbor));
     }
 
     @Test
-    public void testAddImage() {
+    public void testAddImage() throws AlreadyFoundElementException {
         // test add a new image
         house.addImage("A new Image");
         assertTrue(house.getImages().contains("A new Image"));
 
         // test add an existing one
-        int imagesSize = house.getImages().size();
-        house.addImage("A new Image");
-        assertEquals(imagesSize, house.getImages().size());
+        assertThrows(AlreadyFoundElementException.class, () -> {
+           house.addImage("A new Image");
+        });
     }
 
     @Test
-    public void testEquals() {
+    public void testEquals() throws UnacceptableValueException {
         // object from another type
         assertNotEquals(house, new Object());
         // equal
@@ -138,7 +140,7 @@ public class TestHouse {
     }
 
     @Test
-    public void testHashCode() {
+    public void testHashCode() throws UnacceptableValueException {
         House anotherHouse = new House(1, null, -1, 1, HouseClassificationByGender.FAMILY);
         assertEquals(house.hashCode(), anotherHouse.hashCode());
     }

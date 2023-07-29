@@ -1,6 +1,8 @@
 Feature: Rate House
+  Background: Shared Database
+    Given Database is already filled
+
  Scenario Outline: House Rate Success
-   Given Database is already filled
    When building id is <buildingId>
    And house id is <houseId>
    And new rate is <newRate>
@@ -13,7 +15,6 @@ Feature: Rate House
    | 1 | 1 | 3.0 | 4.0 |
 
   Scenario Outline: House Rate failed due to Null Pointer Exception
-    Given Database is already filled
     When building id is <buildingId>
     And house id is <houseId>
     And new rate is <newRate>
@@ -25,7 +26,6 @@ Feature: Rate House
     | 1 | 0 | 4.0 |
 
   Scenario Outline: House Rate failed due to Number Format Exception
-    Given Database is already filled
     When building id is <buildingId>
     And house id is <houseId>
     And new rate is <newRate>

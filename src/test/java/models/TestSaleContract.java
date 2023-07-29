@@ -2,6 +2,7 @@ package models;
 
 import enums.SaleStatus;
 import enums.UserType;
+import exceptions.UnacceptableValueException;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -17,7 +18,7 @@ public class TestSaleContract {
     private Date date;
 
     @Before
-    public void setup() throws ParseException {
+    public void setup() throws ParseException, UnacceptableValueException {
         tenant = new User("mo-alawneh",
                 "Mohammad12002",
                 UserType.TENANT,

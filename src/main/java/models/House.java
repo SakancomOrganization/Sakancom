@@ -3,6 +3,8 @@ package models;
 import enums.HouseClassificationByGender;
 import enums.InfoStatus;
 import enums.SaleStatus;
+import exceptions.AlreadyFoundElementException;
+import exceptions.UnacceptableValueException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +22,7 @@ public class House {
     private HouseRate houseRate;
     private HouseClassificationByGender houseClassificationByGender;
 
-    public House(int id, Services services, int monthlyRent, int floorNum, HouseClassificationByGender houseClassificationByGender) {
+    public House(int id, Services services, int monthlyRent, int floorNum, HouseClassificationByGender houseClassificationByGender) throws UnacceptableValueException {
         this.id = id;
         this.services = services;
         setMonthlyRent(monthlyRent); // to check the monthly rent if it is less than 0
@@ -53,9 +55,9 @@ public class House {
         return monthlyRent;
     }
 
-    public void setMonthlyRent(int monthlyRent) throws NumberFormatException{
-        if(monthlyRent < 0)
-            throw new NumberFormatException();
+    public void setMonthlyRent(int monthlyRent) throws UnacceptableValueException {
+        if(monthlyRent < -1)
+            throw new UnacceptableValueException("The monthly rent cannot be negative!");
         this.monthlyRent = monthlyRent;
     }
 
@@ -63,9 +65,9 @@ public class House {
         return floorNum;
     }
 
-    public void setFloorNum(int floorNum) throws NumberFormatException {
+    public void setFloorNum(int floorNum) throws UnacceptableValueException {
         if(floorNum < 0)
-            throw new NumberFormatException();
+            throw new UnacceptableValueException("The floor number cannot be negative!");
         this.floorNum = floorNum;
     }
 
@@ -73,18 +75,20 @@ public class House {
         return neighbors;
     }
 
-    public void setNeighbors(List<Neighbor> neighbors) {
+    public void setNeighbors(List<Neighbor> neighbors) throws AlreadyFoundElementException {
         this.neighbors.clear();
-        neighbors.forEach(this::addNeighbor);
+        for (Neighbor neighbor : neighbors)
+            addNeighbor(neighbor);
     }
 
     public List<String> getImages() {
         return images;
     }
 
-    public void setImages(List<String> images) {
+    public void setImages(List<String> images) throws AlreadyFoundElementException {
         this.images.clear();
-        images.forEach(this::addImage);
+        for(String image : images)
+            addImage(image);
     }
 
     public InfoStatus getInfoStatus() {
@@ -119,20 +123,20 @@ public class House {
         this.houseClassificationByGender = houseClassificationByGender;
     }
 
-    public void addNeighbor(Neighbor neighbor) {
-        if(!neighbors.contains(neighbor)) {
-            neighbors.add(neighbor);
-        }
+    public void addNeighbor(Neighbor neighbor) throws AlreadyFoundElementException {
+        if(neighbors.contains(neighbor))
+            throw new AlreadyFoundElementException("neighbor");
+        neighbors.add(neighbor);
     }
 
     public void removeNeighbor(Neighbor neighbor) {
         neighbors.remove(neighbor);
     }
 
-    public void addImage(String image) {
-        if(!images.contains(image)) {
-            images.add(image);
-        }
+    public void addImage(String image) throws AlreadyFoundElementException{
+        if(images.contains(image))
+            throw new AlreadyFoundElementException("image");
+        images.add(image);
     }
 
     @Override

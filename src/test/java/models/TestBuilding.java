@@ -2,6 +2,8 @@ package models;
 
 import enums.HouseClassificationByGender;
 import enums.UserType;
+import exceptions.AlreadyFoundElementException;
+import exceptions.UnacceptableValueException;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,7 +21,7 @@ public class TestBuilding {
     private House house;
 
     @Before
-    public void setup() throws ParseException {
+    public void setup() throws ParseException, UnacceptableValueException {
         location = new Location("Jenin","Abu-Baker");
         owner = new User("mo-alawneh",
                 "Mohammad12002",
@@ -56,7 +58,7 @@ public class TestBuilding {
     }
 
     @Test
-    public void testHouses() {
+    public void testHouses() throws AlreadyFoundElementException {
         List<House> houses = new ArrayList<>();
         houses.add(house);
         building.setHouses(houses);
@@ -64,25 +66,26 @@ public class TestBuilding {
     }
 
     @Test
-    public void testAddHouse() {
+    public void testAddHouse() throws AlreadyFoundElementException {
         // add success
         building.addHouse(house);
         assertTrue(building.getHouses().contains(house));
 
-        // add fail (size of the houses array list = 1)
-        building.addHouse(house);
-        assertEquals(1, building.getHouses().size());
+        // test adding an existing one
+        assertThrows(AlreadyFoundElementException.class, () -> {
+           building.addHouse(house);
+        });
     }
 
     @Test
-    public void testRemoveHouse() {
+    public void testRemoveHouse() throws AlreadyFoundElementException {
         building.addHouse(house);
         building.removeHouse(house);
         assertFalse(building.getHouses().contains(house));
     }
 
     @Test
-    public void testGetHouseById() {
+    public void testGetHouseById() throws AlreadyFoundElementException, UnacceptableValueException {
         building.addHouse(house);
         House resultedHouse = new House(1, null, -1 ,1, null);
         assertEquals(resultedHouse, building.getHouseById(1));

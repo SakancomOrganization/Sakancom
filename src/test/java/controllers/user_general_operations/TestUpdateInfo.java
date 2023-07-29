@@ -1,5 +1,9 @@
-package controllers;
+package controllers.user_general_operations;
 
+import controllers.UserGeneralOperations;
+import exceptions.AlreadyFoundElementException;
+import exceptions.UnacceptableValueException;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import models.Sakancom;
@@ -15,9 +19,14 @@ public class TestUpdateInfo {
     private String username;
     private String field;
     private String value;
-    @When("username of who want to update is {string}")
-    public void usernameOfWhoWantToUpdateIs(String username) {
+    @Given("Database is already filled")
+    public static void databaseIsAlreadyFilled() throws ParseException, AlreadyFoundElementException, UnacceptableValueException {
+        Sakancom.initSakancomWithData();
+    }
+    @When("{string} is already logged in")
+    public void isAlreadyLoggedIn(String username) {
         this.username = username;
+        Sakancom.setCurrentUser(Sakancom.getUserByUsername(username));
     }
     @When("field is {string}")
     public void fieldIs(String field) {
@@ -28,8 +37,8 @@ public class TestUpdateInfo {
         this.value = value;
     }
     @Then("the information will be updated successfully")
-    public void theInformationWillBeUpdatedSuccessfully() throws ParseException {
-        UserGeneralOperations.updateInfo(username, field, value);
+    public void theInformationWillBeUpdatedSuccessfully() throws ParseException, UnacceptableValueException {
+        UserGeneralOperations.updateInfo(field, value);
         User user = Sakancom.getUserByUsername(username);
         assert user != null;
         if(field.equalsIgnoreCase("firstName")) {
@@ -59,19 +68,25 @@ public class TestUpdateInfo {
     @Then("the information will not be updated due to invalid username")
     public void theInformationWillNotBeUpdatedDueToInvalidUsername() {
         assertThrows(NullPointerException.class, () -> {
-            UserGeneralOperations.updateInfo(username, field, value);
+            UserGeneralOperations.updateInfo(field, value);
         });
     }
     @Then("the information will not be updated and number format exception will be thrown")
     public void theInformationWillNotBeUpdatedAndNumberFormatExceptionWillBeThrown() {
         assertThrows(NumberFormatException.class, () -> {
-            UserGeneralOperations.updateInfo(username, field, value);
+            UserGeneralOperations.updateInfo(field, value);
+        });
+    }
+    @Then("the information will not be updated and unacceptable value exception will be thrown")
+    public void theInformationWillNotBeUpdatedAndUnacceptableValueExceptionWillBeThrown() {
+        assertThrows(UnacceptableValueException.class, () -> {
+            UserGeneralOperations.updateInfo(field, value);
         });
     }
     @Then("the information will not be updated and date parse exception will be thrown")
     public void theInformationWillNotBeUpdatedAndDateParseExceptionWillBeThrown() {
         assertThrows(ParseException.class, () -> {
-            UserGeneralOperations.updateInfo(username, field, value);
+            UserGeneralOperations.updateInfo(field, value);
         });
     }
 }
