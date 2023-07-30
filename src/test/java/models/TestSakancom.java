@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class TestSakancom {
     private static User user;
@@ -24,8 +25,8 @@ public class TestSakancom {
     }
 
     @Before
-    public void setup()  {
-        user = new User("test-user","Test1234",UserType.ADMIN,null,null,null);
+    public void setup() {
+        user = new User("test-user", "Test1234", UserType.ADMIN, null, null, null);
         building = new Building(-1, "Test Building", null, null);
     }
 
@@ -46,9 +47,9 @@ public class TestSakancom {
         assertTrue(Sakancom.getUsers().contains(user));
 
         // testing adding an existing one
-        User newUser = new User("test-user","Test4321",UserType.ADMIN, null, null, null);
+        User newUser = new User("test-user", "Test4321", UserType.ADMIN, null, null, null);
         assertThrows(AlreadyFoundElementException.class, () -> {
-           Sakancom.addUser(newUser);
+            Sakancom.addUser(newUser);
         });
     }
 
@@ -66,7 +67,7 @@ public class TestSakancom {
         assertTrue(Sakancom.getBuildings().contains(building));
 
         // test adding an existing one
-        Building newBuilding = new Building(1,"Happiness House",null, null);
+        Building newBuilding = new Building(1, "Happiness House", null, null);
         assertThrows(AlreadyFoundElementException.class, () -> {
             Sakancom.addBuilding(newBuilding);
         });
@@ -84,30 +85,30 @@ public class TestSakancom {
         User user = new User("mo-alawneh",
                 "Mohammad62002",
                 UserType.ADMIN,
-                new Name("Mohammad","AbdAllateef","Alawneh"),
+                new Name("Mohammad", "AbdAllateef", "Alawneh"),
                 null,
                 null);
         List<User> result = new ArrayList<>();
         result.add(user);
 
         // search based on the username
-        assertEquals(result, Sakancom.searchAboutUsers("mo-alawneh",UserType.ADMIN,null, "", "", ""));
+        assertEquals(result, Sakancom.searchAboutUsers("mo-alawneh", UserType.ADMIN, null, "", "", ""));
         // search based on the username and name
-        assertEquals(result, Sakancom.searchAboutUsers("mo-alawneh",UserType.ADMIN, new Name("mohammad","AbdAllateef","alawneh"), "", "", ""));
+        assertEquals(result, Sakancom.searchAboutUsers("mo-alawneh", UserType.ADMIN, new Name("mohammad", "AbdAllateef", "alawneh"), "", "", ""));
         // search based on the username, name and email
-        assertEquals(result, Sakancom.searchAboutUsers("mo-alawneh",UserType.ADMIN, new Name("mohammad","AbdAllateef","alawneh"), "mo.a.alawneh@gmail.com", "", ""));
+        assertEquals(result, Sakancom.searchAboutUsers("mo-alawneh", UserType.ADMIN, new Name("mohammad", "AbdAllateef", "alawneh"), "mo.a.alawneh@gmail.com", "", ""));
         // search based on the username, name, email and phone number
-        assertEquals(result, Sakancom.searchAboutUsers("mo-alawneh",UserType.ADMIN, new Name("mohammad","AbdAllateef","alawneh"), "mo.a.alawneh@gmail.com", "0592838433", ""));
+        assertEquals(result, Sakancom.searchAboutUsers("mo-alawneh", UserType.ADMIN, new Name("mohammad", "AbdAllateef", "alawneh"), "mo.a.alawneh@gmail.com", "0592838433", ""));
         // search based on the username, name, email, phone number and major
-        assertEquals(result, Sakancom.searchAboutUsers("mo-alawneh",UserType.ADMIN, new Name("mohammad","AbdAllateef","alawneh"), "mo.a.alawneh@gmail.com", "0592838433", "computer engineering"));
+        assertEquals(result, Sakancom.searchAboutUsers("mo-alawneh", UserType.ADMIN, new Name("mohammad", "AbdAllateef", "alawneh"), "mo.a.alawneh@gmail.com", "0592838433", "computer engineering"));
         // failed search
-        assertEquals(List.of(), Sakancom.searchAboutUsers("ali-2002",UserType.ADMIN,null, "", "", ""));
-        assertEquals(List.of(), Sakancom.searchAboutUsers("najat-mansour",UserType.ADMIN,new Name("mohammad","AbdAllateef","alawneh"), "", "", ""));
-        assertEquals(List.of(), Sakancom.searchAboutUsers("mo-alawneh",UserType.ADMIN,new Name("bale","AbdAllateef","alawneh"), "", "", ""));
-        assertEquals(List.of(), Sakancom.searchAboutUsers("mo-alawneh",UserType.OWNER, new Name("mohammad","AbdAllateef","alawneh"), "mo.a.alawneh@gmail.com", "0592838433", "computer engineering"));
-        assertEquals(List.of(), Sakancom.searchAboutUsers("mo-alawneh",UserType.ADMIN, new Name("mohammad","AbdAllateef","alawneh"), "mo.a.alawneh@hotmail.com", "0592838433", "computer engineering"));
-        assertEquals(List.of(), Sakancom.searchAboutUsers("mo-alawneh",UserType.ADMIN, new Name("mohammad","AbdAllateef","alawneh"), "mo.a.alawneh@gmail.com", "0592123456", "computer engineering"));
-        assertEquals(List.of(), Sakancom.searchAboutUsers("mo-alawneh",UserType.ADMIN, new Name("mohammad","AbdAllateef","alawneh"), "mo.a.alawneh@gmail.com", "0592838433", "electrical engineering"));
+        assertEquals(List.of(), Sakancom.searchAboutUsers("ali-2002", UserType.ADMIN, null, "", "", ""));
+        assertEquals(List.of(), Sakancom.searchAboutUsers("najat-mansour", UserType.ADMIN, new Name("mohammad", "AbdAllateef", "alawneh"), "", "", ""));
+        assertEquals(List.of(), Sakancom.searchAboutUsers("mo-alawneh", UserType.ADMIN, new Name("bale", "AbdAllateef", "alawneh"), "", "", ""));
+        assertEquals(List.of(), Sakancom.searchAboutUsers("mo-alawneh", UserType.OWNER, new Name("mohammad", "AbdAllateef", "alawneh"), "mo.a.alawneh@gmail.com", "0592838433", "computer engineering"));
+        assertEquals(List.of(), Sakancom.searchAboutUsers("mo-alawneh", UserType.ADMIN, new Name("mohammad", "AbdAllateef", "alawneh"), "mo.a.alawneh@hotmail.com", "0592838433", "computer engineering"));
+        assertEquals(List.of(), Sakancom.searchAboutUsers("mo-alawneh", UserType.ADMIN, new Name("mohammad", "AbdAllateef", "alawneh"), "mo.a.alawneh@gmail.com", "0592123456", "computer engineering"));
+        assertEquals(List.of(), Sakancom.searchAboutUsers("mo-alawneh", UserType.ADMIN, new Name("mohammad", "AbdAllateef", "alawneh"), "mo.a.alawneh@gmail.com", "0592838433", "electrical engineering"));
     }
 
     @Test
@@ -140,19 +141,19 @@ public class TestSakancom {
         // search based on id and name
         assertEquals(buildings, Sakancom.searchAboutBuildings(1, "golden house", null, null));
         // search based on id, name and owner
-        User owner = new User("haya-sam","", UserType.OWNER, null, null, null);
+        User owner = new User("haya-sam", "", UserType.OWNER, null, null, null);
         assertEquals(buildings, Sakancom.searchAboutBuildings(1, "golden house", owner, null));
         // search based on id, name, owner and location
         Location location = new Location("Nablus", "Rafidia");
         assertEquals(buildings, Sakancom.searchAboutBuildings(1, "golden house", owner, location));
         // failed search
-        assertEquals(List.of(), Sakancom.searchAboutBuildings(3,"", null, null));
-        assertEquals(List.of(), Sakancom.searchAboutBuildings(1,"Happiness House", null, null));
+        assertEquals(List.of(), Sakancom.searchAboutBuildings(3, "", null, null));
+        assertEquals(List.of(), Sakancom.searchAboutBuildings(1, "Happiness House", null, null));
         owner.setUsername("mo-alawneh");
-        assertEquals(List.of(), Sakancom.searchAboutBuildings(1,"Golden House", owner, null));
+        assertEquals(List.of(), Sakancom.searchAboutBuildings(1, "Golden House", owner, null));
         owner.setUsername("mo-alawneh");
         location.setCity("Jenin");
-        assertEquals(List.of(), Sakancom.searchAboutBuildings(1,"Golden House", owner, location));
+        assertEquals(List.of(), Sakancom.searchAboutBuildings(1, "Golden House", owner, location));
     }
 
     @Test
@@ -166,7 +167,7 @@ public class TestSakancom {
         houses.add(resultedHouse);
 
         Services services = new Services(true, true, true, true, true, 3, 2);
-        User owner = new User("haya-sam","", UserType.OWNER, null, null, null);
+        User owner = new User("haya-sam", "", UserType.OWNER, null, null, null);
         Location location = new Location("Nablus", "Rafidia");
 
         // search based on services

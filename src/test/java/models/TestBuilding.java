@@ -6,6 +6,7 @@ import exceptions.AlreadyFoundElementException;
 import exceptions.UnacceptableValueException;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runners.model.TestClass;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

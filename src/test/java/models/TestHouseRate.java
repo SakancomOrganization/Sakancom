@@ -3,9 +3,6 @@ package models;
 import exceptions.UnacceptableValueException;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.TestMethodOrder;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
