@@ -15,12 +15,8 @@ S
 #src/main/java/enums/SaleStatus.java,9\2\928b704a01e0a388cf734146c1b0d8b112dda516
 Q
 !src/main/java/enums/UserType.java,a\3\a3be9b8d19325edf32b9a155cd281d9356a8d335
-9
-	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 W
 'src/test/java/email/TestYmlHandler.java,8\3\838f58774f9339c8de80434795be254877331439
-@
-email-config.yml,d\d\dda460ce63487d6cda272098330a3a48ef8eb34d
 Y
 )src/test/java/email/TestEmailService.java,0\7\0749cac4aa4def01274a423663d99f5606dc6e18
 U
@@ -45,8 +41,6 @@ _
 /src/test/features/authentication/logout.feature,f\0\f0d1bdae5c745acc2b00e5ef33492d1f39e2355c
 N
 src/main/java/models/User.java,f\7\f7010c4f46d3b9dd8d59899249df5ba3ee23f96b
-N
-src/main/java/models/Name.java,0\f\0f27e1a9e3c3dd534467d7c7d74566155dc3abda
 V
 &src/test/java/models/TestServices.java,a\a\aa6aa4cf0a79c028e94e50896603cef5f0dd4ba7
 Z
@@ -55,21 +49,9 @@ Z
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 g
 7src/test/java/controllers/authentication/TestLogin.java,1/4/14f61849131ce21341eb1060e646ccbc1568e073
-V
-&src/test/java/models/TestSakancom.java,3/5/35090e34f6d86b0c2267af46ee7518b3f7c40aa0
-O
-src/main/java/models/House.java,b/f/bfcafc26657f1e7ed2d5dd49a1d335fa986bdf38
-R
-"src/main/java/models/Sakancom.java,f/a/fae43a245de589027aa9735d66ed1e3441c0439b
-T
-$src/main/java/controllers/Owner.java,7/1/71bdd9e0a0ac59a695bdbb675b853490b8fcdacc
-U
-%src/main/java/controllers/Tenant.java,c/9/c9febc2ac0cd14c8318bfb0df27a6e329bcd00a4
 U
 %src/main/java/controllers/Logout.java,6/6/66a2d9f6a406e5794c3f940330e0defcc9e2875a
 T
 $src/main/java/controllers/Login.java,d/7/d7348dead3122e957b92c9ed3e4ca992b430a9cd
-T
-$src/main/java/controllers/Admin.java,6/a/6a8a9800a4ca5ad95ee88ed8e2e55c9566a6f5a6
 j
 :src/main/java/exceptions/AlreadyFoundElementException.java,c/1/c1c3c995dff94a3411cf0ec5f104ab5a881184ab

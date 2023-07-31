@@ -40,9 +40,9 @@ public class Name {
     @Override
     public boolean equals(Object obj) {
         if(obj instanceof Name name) {
-            return firstName.equalsIgnoreCase(name.getFirstName())
-                    && middleName.equalsIgnoreCase(name.getMiddleName())
-                    && lastName.equalsIgnoreCase(name.getLastName());
+            return (name.getFirstName().isEmpty() || firstName.equalsIgnoreCase(name.getFirstName()))
+                    && (name.getMiddleName().isEmpty() || middleName.equalsIgnoreCase(name.getMiddleName()))
+                    && (name.getLastName().isEmpty() || lastName.equalsIgnoreCase(name.getLastName()));
         }
         return false;
     }

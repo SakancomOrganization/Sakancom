@@ -32,8 +32,10 @@ public class Tenant {
 
     public static List<User> getAllHouseNeighbors(int buildingId, int houseId) throws BuildingNotFoundException, HouseNotFoundException {
         Building building = Sakancom.getBuildingById(buildingId);
+        // floor num == floor num && id != id (expect the house itself!)
         House house = building.getHouseById(houseId);
-        List<House> neighborHouses = building.getHouses().stream().filter(houseIterator -> houseIterator.getFloorNum() == house.getFloorNum()).toList();
+        List<House> neighborHouses = building.getHouses().stream().filter(houseIterator -> houseIterator.getFloorNum() == house.getFloorNum()
+        && (houseIterator.getId() != houseId)).toList();
         List<User> neighbors = new ArrayList<>();
         for(House houseIterator : neighborHouses) {
             neighbors.add(houseIterator.getSaleContract().getTenant());

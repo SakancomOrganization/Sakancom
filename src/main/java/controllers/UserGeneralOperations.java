@@ -1,15 +1,13 @@
 package controllers;
 
 import enums.HouseClassificationByGender;
-import exceptions.BuildingNotFoundException;
-import exceptions.HouseNotFoundException;
-import exceptions.UnacceptableValueException;
-import exceptions.WeakPasswordException;
+import exceptions.*;
 import helpers.PasswordChecker;
 import models.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserGeneralOperations {
@@ -56,7 +54,19 @@ public class UserGeneralOperations {
         house.getHouseRate().setUserRate(currentUser, rate);
     }
 
-    public static List<House> searchAboutHouses(Services services, int monthlyRent, Location location, HouseClassificationByGender houseClassificationByGender) {
-        return Sakancom.searchAboutHouses(services, monthlyRent, null, location, houseClassificationByGender);
+    public static List<House> searchAboutHouses(Services services, int monthlyRent, String username, Location location, HouseClassificationByGender houseClassificationByGender) throws UserNotFoundException {
+        List<House> resultHouses = new ArrayList<>();
+        for(Building building : Sakancom.getBuildings()) {
+            for(House house : building.getHouses()) {
+                if((services == null || house.getServices().equals(services))
+                        && (monthlyRent == -1 || house.getMonthlyRent() <= monthlyRent)
+                        && (username.isEmpty() || building.getOwner().equals(Sakancom.getUserByUsername(username)))
+                        && (location == null || building.getLocation().equals(location))
+                        && (houseClassificationByGender == null || house.getHouseClassificationByGender().equals(houseClassificationByGender))) {
+                    resultHouses.add(house);
+                }
+            }
+        }
+        return resultHouses;
     }
 }

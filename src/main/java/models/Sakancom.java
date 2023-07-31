@@ -77,43 +77,14 @@ public class Sakancom {
         return resultedUsers.get(0);
     }
 
-    public static List<User> searchAboutUsers(String username, UserType userType, Name name, String email, String phoneNumber, String major) {
-        return users.stream().filter(user -> (username.isEmpty() || user.getUsername().equals(username))
-                && (userType == null || user.getUserType().equals(userType))
-                && (name == null || user.getName().equals(name))
-                && (email.isEmpty() || user.getContactInfo().getEmail().equals(email))
-                && (phoneNumber.isEmpty() || user.getContactInfo().getPhoneNumber().equals(phoneNumber))
-                && (major.isEmpty() || user.getContactInfo().getMajor().equalsIgnoreCase(major))).toList();
-    }
-
-    public static List<Building> searchAboutBuildings(int id, String name, User owner, Location location) {
-        return buildings.stream().filter(building -> (id == -1 || building.getId() == id)
-                && (name.isEmpty() || building.getName().equalsIgnoreCase(name))
-                && (owner == null || building.getOwner().equals(owner))
-                && (location == null || building.getLocation().equals(location))).toList();
-    }
-
-    public static List<House> searchAboutHouses(Services services, int monthlyRent, User owner, Location location, HouseClassificationByGender houseClassificationByGender) {
-        List<House> resultHouses = new ArrayList<>();
-        for(Building building : buildings) {
-            for(House house : building.getHouses()) {
-                if((services == null || house.getServices().equals(services))
-                && (monthlyRent == -1 || house.getMonthlyRent() <= monthlyRent)
-                && (owner == null || building.getOwner().equals(owner))
-                && (location == null || building.getLocation().equals(location))
-                && (houseClassificationByGender == null || house.getHouseClassificationByGender().equals(houseClassificationByGender))) {
-                    resultHouses.add(house);
-                }
-            }
-        }
-        return resultHouses;
-    }
-
     private static void incrementAutoIncrementBuildingId() {
         autoIncrementBuildingId++;
     }
 
-    public static void initSakancomWithData() throws ParseException, UnacceptableValueException {
+    public static void initSakancomWithData() throws ParseException, UnacceptableValueException, AlreadyFoundElementException {
+        // remove the previous objects
+        clearSakancomData();
+
         // literals
         final String PERSONAL_BUILDING = "Personal Building";
         final String DATA_PATTERN = "dd/MM/yyyy";
@@ -169,22 +140,22 @@ public class Sakancom {
                 1,
                 HouseClassificationByGender.FAMILY);
 
-        // reset the autoIncrementBuildingId, then add
-        autoIncrementBuildingId = 1;
-        try {
-            addUser(firstAdmin);
-            addUser(secondAdmin);
-            addUser(owner);
-            addUser(tenant);
-            addBuilding(building);
-            building.addHouse(house);
-        } catch (AlreadyFoundElementException alreadyFoundElementException) {
-            // just to prevent the exception from being thrown
-        }
+        addUser(firstAdmin);
+        addUser(secondAdmin);
+        addUser(owner);
+        addUser(tenant);
+        addBuilding(building);
+        building.addHouse(house);
     }
 
-    public static void clearSakancomData() {
+    private static void clearSakancomData() {
+        // reset the autoIncrementBuildingId, then add
+        autoIncrementBuildingId = 1;
+        // reset the current user
+        Sakancom.setCurrentUser(null);
+        // remove all the users
         Sakancom.getUsers().clear();
+        // remove all the buildings
         Sakancom.getBuildings().clear();
     }
 }
