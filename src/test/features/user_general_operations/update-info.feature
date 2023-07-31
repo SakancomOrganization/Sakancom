@@ -22,17 +22,6 @@ Feature: Update Personal Information
    | 'mo-alawneh' | 'birthDate' | '11/11/2007' |
    | 'mo-alawneh' | 'major' | 'Electrical Engineering' |
 
-  Scenario Outline: Update Failed Due to Invalid Username
-    When <username> is already logged in
-    And field is <field>
-    And value is <value>
-    Then the information will not be updated due to invalid username
-
-    Examples:
-    | username | field | value |
-    | 'mohammad-al' | 'firstName' | 'Mohammed' |
-    | 'moh2002' | 'email' | 'mohammad12002jaba@gmail.com' |
-
   Scenario Outline: Update Failed Due to Number Format Exception
     When <username> is already logged in
     And field is <field>

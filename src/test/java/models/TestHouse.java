@@ -74,8 +74,8 @@ public class TestHouse {
 
     @Test
     public void testInfoStatus() {
-        house.setInfoStatus(InfoStatus.DIRTY);
-        assertEquals(InfoStatus.DIRTY, house.getInfoStatus());
+        house.setInfoStatus(InfoStatus.ACCEPTED);
+        assertEquals(InfoStatus.ACCEPTED, house.getInfoStatus());
     }
 
     @Test

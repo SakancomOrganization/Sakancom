@@ -2,6 +2,7 @@ package controllers.authentication;
 
 import controllers.Login;
 import controllers.Logout;
+import exceptions.UserNotFoundException;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -11,7 +12,7 @@ import static org.junit.Assert.assertNull;
 
 public class TestLogout {
     @Given("a user is already logged in with {string} and {string}")
-    public void aUserIsAlreadyLoggedInWithAnd(String username, String password) {
+    public void aUserIsAlreadyLoggedInWithAnd(String username, String password) throws UserNotFoundException {
         Login.login(username, password);
     }
     @When("user logged out")

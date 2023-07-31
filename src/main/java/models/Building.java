@@ -1,6 +1,9 @@
 package models;
 
+import enums.InfoStatus;
 import exceptions.AlreadyFoundElementException;
+import exceptions.BuildingNotFoundException;
+import exceptions.HouseNotFoundException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +16,7 @@ public class Building {
     private Location location;
     private final List<House> houses;
     private int autoIncrementHouseId;
+    private InfoStatus infoStatus;
 
     public Building(int id, String name, User owner, Location location) {
         this.id = id;
@@ -21,6 +25,7 @@ public class Building {
         this.location = location;
         houses = new ArrayList<>();
         autoIncrementHouseId = 1;
+        infoStatus = InfoStatus.DIRTY;
     }
 
     public int getId() {
@@ -65,6 +70,14 @@ public class Building {
             addHouse(house);
     }
 
+    public InfoStatus getInfoStatus() {
+        return infoStatus;
+    }
+
+    public void setInfoStatus(InfoStatus infoStatus) {
+        this.infoStatus = infoStatus;
+    }
+
     public void addHouse(House house) throws AlreadyFoundElementException{
         if(houses.contains(house))
             throw new AlreadyFoundElementException("house");
@@ -77,11 +90,12 @@ public class Building {
         houses.remove(house);
     }
 
-    public House getHouseById(int houseId) {
+    public House getHouseById(int houseId) throws HouseNotFoundException {
         List<House> resultedHouses = houses.stream().filter(house -> houseId == house.getId()).toList();
-        if(!resultedHouses.isEmpty())
-            return resultedHouses.get(0);
-        return null;
+        if(resultedHouses.isEmpty())
+            throw new HouseNotFoundException();
+
+        return resultedHouses.get(0);
     }
 
     @Override

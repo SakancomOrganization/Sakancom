@@ -17,13 +17,21 @@ Feature: Login
   Scenario Outline: Login Failed
     When username is <username>
     And password is <password>
-    Then the user will not log in successfully
+    Then the user will not log in successfully and user not found exception will be thrown
 
     Examples:
       | username | password |
       | 'mohammad-al' | 'Mohammad62002' |
-      | 'najat-mansour' | 'Najat22003' |
       | 'haySam' | 'HaySam' |
+
+  Scenario Outline: Login Failed
+    When username is <username>
+    And password is <password>
+    Then the user will not log in successfully due to invalid password
+
+    Examples:
+      | username | password |
+      | 'najat-mansour' | 'Najat22003' |
       | 'than@mare' | 'thanaMaree' |
 
     Scenario Outline: Forget Password With Valid Username

@@ -4,6 +4,7 @@ import controllers.UserGeneralOperations;
 import enums.HouseClassificationByGender;
 import exceptions.AlreadyFoundElementException;
 import exceptions.UnacceptableValueException;
+import exceptions.UserNotFoundException;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -19,7 +20,7 @@ public class TestHousesSearch {
     private Building building;
     private House house;
     @Given("another house is added")
-    public void anotherHouseIsAdded() throws UnacceptableValueException {
+    public void anotherHouseIsAdded() throws UnacceptableValueException, UserNotFoundException {
         building = new Building(2,
                 "Great Bed",
                 Sakancom.getUserByUsername("haya-sam"),

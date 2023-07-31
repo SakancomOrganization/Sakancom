@@ -3,7 +3,9 @@ package models;
 import enums.HouseClassificationByGender;
 import enums.UserType;
 import exceptions.AlreadyFoundElementException;
+import exceptions.BuildingNotFoundException;
 import exceptions.UnacceptableValueException;
+import exceptions.UserNotFoundException;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -60,18 +62,19 @@ public class Sakancom {
         buildings.remove(building);
     }
 
-    public static Building getBuildingById(int buildingId) {
+    public static Building getBuildingById(int buildingId) throws BuildingNotFoundException {
         List<Building> resultedBuildings = buildings.stream().filter(building -> buildingId == building.getId()).toList();
-        if(!resultedBuildings.isEmpty())
-            return resultedBuildings.get(0);
-        return null;
+        if(resultedBuildings.isEmpty())
+            throw new BuildingNotFoundException();
+
+        return resultedBuildings.get(0);
     }
 
-    public static User getUserByUsername(String username) {
+    public static User getUserByUsername(String username) throws UserNotFoundException {
         List<User> resultedUsers = users.stream().filter(user -> user.getUsername().equals(username)).toList();
-        if(!resultedUsers.isEmpty())
-            return resultedUsers.get(0);
-        return null;
+        if(resultedUsers.isEmpty())
+            throw new UserNotFoundException();
+        return resultedUsers.get(0);
     }
 
     public static List<User> searchAboutUsers(String username, UserType userType, Name name, String email, String phoneNumber, String major) {

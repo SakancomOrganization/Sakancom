@@ -3,7 +3,9 @@ package models;
 import enums.HouseClassificationByGender;
 import enums.UserType;
 import exceptions.AlreadyFoundElementException;
+import exceptions.BuildingNotFoundException;
 import exceptions.UnacceptableValueException;
+import exceptions.UserNotFoundException;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -112,21 +114,25 @@ public class TestSakancom {
     }
 
     @Test
-    public void testGetUserByUsername() {
+    public void testGetUserByUsername() throws UserNotFoundException {
         User resultedUser = new User("mo-alawneh", "", null, null, null, null);
         assertEquals(resultedUser, Sakancom.getUserByUsername("mo-alawneh"));
-        assertNull(Sakancom.getUserByUsername("mohammad-al"));
+        assertThrows(UserNotFoundException.class, () -> {
+            Sakancom.getUserByUsername("mohammad-al");
+        });
     }
 
     @Test
-    public void testGetBuildingById() {
+    public void testGetBuildingById() throws BuildingNotFoundException {
         Building resultedBuilding = new Building(1, "", null, null);
         assertEquals(resultedBuilding, Sakancom.getBuildingById(1));
-        assertNull(Sakancom.getBuildingById(10));
+        assertThrows(BuildingNotFoundException.class, () -> {
+            Sakancom.getBuildingById(10);
+        });
     }
 
     @Test
-    public void testSearchAboutBuildings() throws UnacceptableValueException, ParseException {
+    public void testSearchAboutBuildings() {
         Building resultedBuilding = new Building(1,
                 "Golden House",
                 null,

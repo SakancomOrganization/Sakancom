@@ -29,7 +29,7 @@ public class House {
         setFloorNum(floorNum); // to check the floor num if it is less than 0
         neighbors = new ArrayList<>();
         images  = new ArrayList<>();
-        infoStatus = InfoStatus.ACCEPTED;
+        infoStatus = InfoStatus.DIRTY;
         saleContract = new SaleContract(null, null, SaleStatus.AVAILABLE);
         houseRate = new HouseRate();
         this.houseClassificationByGender = houseClassificationByGender;

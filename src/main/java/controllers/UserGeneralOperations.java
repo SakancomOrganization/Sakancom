@@ -1,6 +1,8 @@
 package controllers;
 
 import enums.HouseClassificationByGender;
+import exceptions.BuildingNotFoundException;
+import exceptions.HouseNotFoundException;
 import exceptions.UnacceptableValueException;
 import models.*;
 
@@ -15,8 +17,6 @@ public class UserGeneralOperations {
 
     public static void updateInfo(String field, String value) throws NumberFormatException, ParseException, NullPointerException, UnacceptableValueException {
         User user = Sakancom.getCurrentUser();
-        if(user == null)
-            throw new NullPointerException();
         if(field.equalsIgnoreCase("firstName")) {
             user.getName().setFirstName(value);
         } else if(field.equalsIgnoreCase("secondName")) {
@@ -42,14 +42,8 @@ public class UserGeneralOperations {
         }
     }
 
-    public static void rateHouse(int buildingId, int houseId, double rate) throws NullPointerException, UnacceptableValueException {
-        Building building = Sakancom.getBuildingById(buildingId);
-        if(building == null)
-            throw new NullPointerException();
-        House house = building.getHouseById(houseId);
-        if(house == null)
-            throw new NullPointerException();
-        house.getHouseRate().addNewRate(rate);
+    public static void rateHouse(int buildingId, int houseId, double rate) throws HouseNotFoundException, UnacceptableValueException, BuildingNotFoundException {
+        Sakancom.getBuildingById(buildingId).getHouseById(houseId).getHouseRate().addNewRate(rate);
     }
 
     public static List<House> searchAboutHouses(Services services, int monthlyRent, Location location, HouseClassificationByGender houseClassificationByGender) {

@@ -18,12 +18,21 @@ Feature: Rate House
     When building id is <buildingId>
     And house id is <houseId>
     And new rate is <newRate>
-    Then a Null Pointer Exception Will be thrown
+    Then a Building Not Found Exception will be thrown
 
     Examples:
     | buildingId | houseId | newRate |
     | 0 | 1 | 5.0 |
-    | 1 | 0 | 4.0 |
+
+    Scenario Outline: House Rate failed due to Null Pointer Exception
+      When building id is <buildingId>
+      And house id is <houseId>
+      And new rate is <newRate>
+      Then a House Not Found Exception will be thrown
+
+      Examples:
+        | buildingId | houseId | newRate |
+        | 1 | 0 | 4.0 |
 
   Scenario Outline: House Rate failed due to Number Format Exception
     When building id is <buildingId>

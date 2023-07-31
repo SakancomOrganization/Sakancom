@@ -1,8 +1,11 @@
 package models;
 
 import enums.HouseClassificationByGender;
+import enums.InfoStatus;
 import enums.UserType;
 import exceptions.AlreadyFoundElementException;
+import exceptions.BuildingNotFoundException;
+import exceptions.HouseNotFoundException;
 import exceptions.UnacceptableValueException;
 import org.junit.Before;
 import org.junit.Test;
@@ -67,6 +70,12 @@ public class TestBuilding {
     }
 
     @Test
+    public void testInfoStatus() {
+        house.setInfoStatus(InfoStatus.ACCEPTED);
+        assertEquals(InfoStatus.ACCEPTED, house.getInfoStatus());
+    }
+
+    @Test
     public void testAddHouse() throws AlreadyFoundElementException {
         // add success
         building.addHouse(house);
@@ -86,11 +95,13 @@ public class TestBuilding {
     }
 
     @Test
-    public void testGetHouseById() throws AlreadyFoundElementException, UnacceptableValueException {
+    public void testGetHouseById() throws AlreadyFoundElementException, UnacceptableValueException, HouseNotFoundException {
         building.addHouse(house);
         House resultedHouse = new House(1, null, -1 ,1, null);
         assertEquals(resultedHouse, building.getHouseById(1));
-        assertNull(building.getHouseById(10));
+        assertThrows(HouseNotFoundException.class, () -> {
+            building.getHouseById(10);
+        });
     }
 
     @Test

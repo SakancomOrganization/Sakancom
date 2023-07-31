@@ -4,18 +4,21 @@ import controllers.SignUp;
 import enums.UserType;
 import exceptions.AlreadyFoundElementException;
 import exceptions.UnacceptableValueException;
+import exceptions.UserNotFoundException;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import models.ContactInfo;
 import models.Name;
+import models.Sakancom;
 import models.UserLocation;
+import org.junit.Assert;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 public class TestSignUp {
     private String username;
@@ -56,11 +59,16 @@ public class TestSignUp {
         this.contactInfo = new ContactInfo(email, phoneNumber, birthDateObject, major);
     }
     @Then("the user will sign up successfully")
-    public void theUserWillSignUpSuccessfully() throws AlreadyFoundElementException {
-        assertTrue(SignUp.signUp(username, password, userType, name, userLocation, contactInfo));
+    public void theUserWillSignUpSuccessfully() {
+        assertDoesNotThrow(() -> {
+            SignUp.signUp(username, password, userType, name, userLocation, contactInfo);
+            Sakancom.getUserByUsername(username);
+        });
     }
     @Then("the user will not sign up")
-    public void theUserWillNotSignUp() throws AlreadyFoundElementException {
-        assertFalse(SignUp.signUp(username, password, userType, name, userLocation, contactInfo));
+    public void theUserWillNotSignUp() {
+        assertThrows(AlreadyFoundElementException.class, () -> {
+            SignUp.signUp(username, password, userType, name, userLocation, contactInfo);
+        });
     }
 }

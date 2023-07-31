@@ -3,6 +3,7 @@ package controllers.user_general_operations;
 import controllers.UserGeneralOperations;
 import exceptions.AlreadyFoundElementException;
 import exceptions.UnacceptableValueException;
+import exceptions.UserNotFoundException;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -24,7 +25,7 @@ public class TestUpdateInfo {
         Sakancom.initSakancomWithData();
     }
     @When("{string} is already logged in")
-    public void isAlreadyLoggedIn(String username) {
+    public void isAlreadyLoggedIn(String username) throws UserNotFoundException {
         this.username = username;
         Sakancom.setCurrentUser(Sakancom.getUserByUsername(username));
     }
@@ -37,7 +38,7 @@ public class TestUpdateInfo {
         this.value = value;
     }
     @Then("the information will be updated successfully")
-    public void theInformationWillBeUpdatedSuccessfully() throws ParseException, UnacceptableValueException {
+    public void theInformationWillBeUpdatedSuccessfully() throws ParseException, UnacceptableValueException, UserNotFoundException {
         UserGeneralOperations.updateInfo(field, value);
         User user = Sakancom.getUserByUsername(username);
         assert user != null;
@@ -75,12 +76,6 @@ public class TestUpdateInfo {
         user.getContactInfo().setPhoneNumber("0592838433");
         user.getContactInfo().setBirthdate(new SimpleDateFormat("dd/MM/yyyy").parse("12/06/2002"));
         user.getContactInfo().setMajor("Computer Engineering");
-    }
-    @Then("the information will not be updated due to invalid username")
-    public void theInformationWillNotBeUpdatedDueToInvalidUsername() {
-        assertThrows(NullPointerException.class, () -> {
-            UserGeneralOperations.updateInfo(field, value);
-        });
     }
     @Then("the information will not be updated and number format exception will be thrown")
     public void theInformationWillNotBeUpdatedAndNumberFormatExceptionWillBeThrown() {
