@@ -4,6 +4,8 @@ import enums.HouseClassificationByGender;
 import exceptions.BuildingNotFoundException;
 import exceptions.HouseNotFoundException;
 import exceptions.UnacceptableValueException;
+import exceptions.WeakPasswordException;
+import helpers.PasswordChecker;
 import models.*;
 
 import java.text.ParseException;
@@ -15,9 +17,15 @@ public class UserGeneralOperations {
 
     }
 
-    public static void updateInfo(String field, String value) throws NumberFormatException, ParseException, NullPointerException, UnacceptableValueException {
+    public static void updateInfo(String field, String value) throws NumberFormatException, ParseException, NullPointerException, UnacceptableValueException, WeakPasswordException {
         User user = Sakancom.getCurrentUser();
-        if(field.equalsIgnoreCase("firstName")) {
+        if(field.equalsIgnoreCase("password")) {
+            if(!PasswordChecker.isStrongPassword(value)) {
+                throw new WeakPasswordException();
+            }
+            user.setPassword(value);
+        }
+        else if(field.equalsIgnoreCase("firstName")) {
             user.getName().setFirstName(value);
         } else if(field.equalsIgnoreCase("secondName")) {
             user.getName().setMiddleName(value);

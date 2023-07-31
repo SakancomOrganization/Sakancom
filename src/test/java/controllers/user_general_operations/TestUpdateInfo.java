@@ -4,6 +4,7 @@ import controllers.UserGeneralOperations;
 import exceptions.AlreadyFoundElementException;
 import exceptions.UnacceptableValueException;
 import exceptions.UserNotFoundException;
+import exceptions.WeakPasswordException;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -38,7 +39,7 @@ public class TestUpdateInfo {
         this.value = value;
     }
     @Then("the information will be updated successfully")
-    public void theInformationWillBeUpdatedSuccessfully() throws ParseException, UnacceptableValueException, UserNotFoundException {
+    public void theInformationWillBeUpdatedSuccessfully() throws ParseException, UnacceptableValueException, UserNotFoundException, WeakPasswordException {
         UserGeneralOperations.updateInfo(field, value);
         User user = Sakancom.getUserByUsername(username);
         assert user != null;
@@ -65,6 +66,12 @@ public class TestUpdateInfo {
         } else if(field.equalsIgnoreCase("major")) {
             assertEquals(value, user.getContactInfo().getMajor());
         }
+    }
+    @Then("the information will not be updated and weak password exception will be thrown")
+    public void theInformationWillNotBeUpdatedAndWeakPasswordExceptionWillBeThrown() {
+        assertThrows(WeakPasswordException.class, () -> {
+            UserGeneralOperations.updateInfo(field, value);
+        });
     }
     @Then("the information will not be updated and number format exception will be thrown")
     public void theInformationWillNotBeUpdatedAndNumberFormatExceptionWillBeThrown() {

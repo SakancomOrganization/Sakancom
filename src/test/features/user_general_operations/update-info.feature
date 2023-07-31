@@ -10,6 +10,7 @@ Feature: Update Personal Information
 
    Examples:
    | username | field | value |
+   | 'mo-alawneh' | 'password' | 'Mohammad12002@' |
    | 'mo-alawneh' | 'firstName' | 'Mohammed' |
    | 'mo-alawneh' | 'secondName' | 'Abd-Allateef' |
    | 'mo-alawneh' | 'lastName' | 'Alawna' |
@@ -21,6 +22,16 @@ Feature: Update Personal Information
    | 'mo-alawneh' | 'phoneNumber' | '0592283848' |
    | 'mo-alawneh' | 'birthDate' | '11/11/2007' |
    | 'mo-alawneh' | 'major' | 'Electrical Engineering' |
+
+  Scenario Outline: Update Failed Due to Weak Password
+    When <username> is already logged in
+    And field is <field>
+    And value is <value>
+    Then the information will not be updated and weak password exception will be thrown
+
+    Examples:
+      | username | field | value |
+      | 'mo-alawneh' | 'password' | 'Moh2002' |
 
   Scenario Outline: Update Failed Due to Number Format Exception
     When <username> is already logged in

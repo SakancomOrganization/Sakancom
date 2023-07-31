@@ -31,8 +31,6 @@ V
 &src/main/java/models/UserLocation.java,6\9\6958ac9bb15c195b510ff828b9feb37f83241199
 h
 8src/main/java/exceptions/UnacceptableValueException.java,e\8\e8a75feae3c710ab0e14ca34eaf3a8881986654f
-^
-.src/test/features/authentication/login.feature,4\d\4d4385662fc2c2849d46f0bc62645c5140892571
 R
 "src/main/java/models/Services.java,6\e\6e3b9cced2ede5a7ba24225f80d3b8efae101ab1
 R
@@ -53,18 +51,12 @@ V
 &src/test/java/models/TestServices.java,a\a\aa6aa4cf0a79c028e94e50896603cef5f0dd4ba7
 Z
 *src/test/java/models/TestUserLocation.java,b\1\b125b67f07ed66c72430a9ba329fe2ceeaa893df
-o
-?src/test/features/user_general_operations/houses-search.feature,1\4\14b30cd4f6827324c721eb61ace995f1e129b483
-m
-=src/test/features/user_general_operations/update-info.feature,4\b\4b3f4575c07291b7d58a8bfd6a0fbfc67f3f2d26
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 g
 7src/test/java/controllers/authentication/TestLogin.java,1/4/14f61849131ce21341eb1060e646ccbc1568e073
 V
 &src/test/java/models/TestSakancom.java,3/5/35090e34f6d86b0c2267af46ee7518b3f7c40aa0
-u
-Esrc/test/java/controllers/user_general_operations/TestUpdateInfo.java,5/6/56a9eae206116a1c1aedf7e96181ab223fd912e8
 O
 src/main/java/models/House.java,b/f/bfcafc26657f1e7ed2d5dd49a1d335fa986bdf38
 R

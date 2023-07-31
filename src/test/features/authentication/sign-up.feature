@@ -16,7 +16,7 @@ Feature: Sign Up
     | 'anas-al' | 'AnAs1234#' | 'admin' | 'Anas' | 'AbdAllateef' | 'Alawneh' | 'Jenin' | 'AbuBaker' | '4070' | 2 | 'mohammad12002jaba@stu.najah.edu' | '0599716597' | '25/07/2009' | 'School Student' |
     | 'naya2020' | 'NaYa2020@' | 'owner' | 'Naya' | 'Khaled' | 'Khader' | 'Nablus' | 'AlEtihad' | '1122' | 1 | 's12028067@stu.najah.edu' | '0599552020' | '17/06/2020' | ' N/A ' |
 
-  Scenario Outline: Sign Up Failed
+  Scenario Outline: Sign Up Failed Due to Already Found Username
     When newUsername is <username>
     And newPassword is <password>
     And usertype is <userType>
@@ -30,7 +30,7 @@ Feature: Sign Up
       | 'mo-alawneh' | 'Mohammad12002@' | 'admin' | 'Anas' | 'AbdAllateef' | 'Alawneh' | 'Jenin' | 'AbuBaker' | '4070' | 2 | 'mohammad12002jaba@stu.najah.edu' | '0599716597' | '25/07/2009' | 'School Student' |
       | 'najat-mansour' | 'Najat62003$' | 'owner' | 'Naya' | 'Khaled' | 'Khader' | 'Nablus' | 'AlEtihad' | '1122' | 1 | 's12028067@stu.najah.edu' | '0599552020' | '17/06/2020' | ' N/A ' |
 
-  Scenario Outline: Sign Up Failed
+  Scenario Outline: Sign Up Failed Due to Weak Password
     When newUsername is <username>
     And newPassword is <password>
     And usertype is <userType>

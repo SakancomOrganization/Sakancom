@@ -13,7 +13,7 @@ Feature: Rate House
    | 1 | 1 | 5  | 5.0 |
    | 1 | 1 | 4  | 4.0 |
 
-  Scenario Outline: House Rate failed due to Null Pointer Exception
+  Scenario Outline: House Rate failed due to Building Pointer Exception
     When building id is <buildingId>
     And house id is <houseId>
     And new rate is <newRate>
@@ -23,7 +23,7 @@ Feature: Rate House
     | buildingId | houseId | newRate |
     | 0 | 1 | 5 |
 
-    Scenario Outline: House Rate failed due to Null Pointer Exception
+    Scenario Outline: House Rate failed due to House Pointer Exception
       When building id is <buildingId>
       And house id is <houseId>
       And new rate is <newRate>
