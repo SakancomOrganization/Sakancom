@@ -15,7 +15,6 @@ public class House {
     private Services services;
     private int monthlyRent;
     private int floorNum;
-    private final List<Neighbor> neighbors;
     private final List<String> images;
     private InfoStatus infoStatus;
     private SaleContract saleContract;
@@ -27,7 +26,6 @@ public class House {
         this.services = services;
         setMonthlyRent(monthlyRent); // to check the monthly rent if it is less than 0
         setFloorNum(floorNum); // to check the floor num if it is less than 0
-        neighbors = new ArrayList<>();
         images  = new ArrayList<>();
         infoStatus = InfoStatus.DIRTY;
         saleContract = new SaleContract(null, null, SaleStatus.AVAILABLE);
@@ -71,16 +69,6 @@ public class House {
         this.floorNum = floorNum;
     }
 
-    public List<Neighbor> getNeighbors() {
-        return neighbors;
-    }
-
-    public void setNeighbors(List<Neighbor> neighbors) throws AlreadyFoundElementException {
-        this.neighbors.clear();
-        for (Neighbor neighbor : neighbors)
-            addNeighbor(neighbor);
-    }
-
     public List<String> getImages() {
         return images;
     }
@@ -121,16 +109,6 @@ public class House {
 
     public void setHouseClassificationByGender(HouseClassificationByGender houseClassificationByGender) {
         this.houseClassificationByGender = houseClassificationByGender;
-    }
-
-    public void addNeighbor(Neighbor neighbor) throws AlreadyFoundElementException {
-        if(neighbors.contains(neighbor))
-            throw new AlreadyFoundElementException("neighbor");
-        neighbors.add(neighbor);
-    }
-
-    public void removeNeighbor(Neighbor neighbor) {
-        neighbors.remove(neighbor);
     }
 
     public void addImage(String image) throws AlreadyFoundElementException{

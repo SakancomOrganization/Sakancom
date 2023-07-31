@@ -42,8 +42,10 @@ public class UserGeneralOperations {
         }
     }
 
-    public static void rateHouse(int buildingId, int houseId, double rate) throws HouseNotFoundException, UnacceptableValueException, BuildingNotFoundException {
-        Sakancom.getBuildingById(buildingId).getHouseById(houseId).getHouseRate().addNewRate(rate);
+    public static void rateHouse(int buildingId, int houseId, int rate) throws HouseNotFoundException, UnacceptableValueException, BuildingNotFoundException {
+        User currentUser = Sakancom.getCurrentUser();
+        House house = Sakancom.getBuildingById(buildingId).getHouseById(houseId);
+        house.getHouseRate().setUserRate(currentUser, rate);
     }
 
     public static List<House> searchAboutHouses(Services services, int monthlyRent, Location location, HouseClassificationByGender houseClassificationByGender) {

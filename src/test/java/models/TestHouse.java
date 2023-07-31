@@ -16,11 +16,9 @@ import static org.junit.Assert.*;
 public class TestHouse {
     private House house;
     private Services services;
-    private Neighbor neighbor;
 
     @Before
     public void setup() throws UnacceptableValueException {
-        neighbor = new Neighbor("Anas", "A very quiet neighbor");
         house = new House(1, null, 400, 1, HouseClassificationByGender.FAMILY);
     }
 
@@ -55,15 +53,6 @@ public class TestHouse {
         });
     }
 
-
-    @Test
-    public void testNeighbors() throws AlreadyFoundElementException {
-        List<Neighbor> neighbors = new ArrayList<>();
-        neighbors.add(neighbor);
-        house.setNeighbors(neighbors);
-        assertEquals(neighbors, house.getNeighbors());
-    }
-
     @Test
     public void testImages() throws AlreadyFoundElementException {
         List<String> images = new ArrayList<>();
@@ -96,25 +85,6 @@ public class TestHouse {
     public void testHouseClassificationByGender() {
         house.setHouseClassificationByGender(HouseClassificationByGender.FEMALE);
         assertEquals(HouseClassificationByGender.FEMALE, house.getHouseClassificationByGender());
-    }
-
-    @Test
-    public void testAddNeighbor() throws AlreadyFoundElementException {
-        // test add a new neighbor
-        house.addNeighbor(neighbor);
-        assertTrue(house.getNeighbors().contains(neighbor));
-
-        // test add an existing one
-        assertThrows(AlreadyFoundElementException.class, () -> {
-            house.addNeighbor(neighbor);
-        });
-    }
-
-    @Test
-    public void testRemoveNeighbor() throws AlreadyFoundElementException {
-        house.addNeighbor(neighbor);
-        house.removeNeighbor(neighbor);
-        assertFalse(house.getNeighbors().contains(neighbor));
     }
 
     @Test

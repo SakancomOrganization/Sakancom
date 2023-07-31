@@ -5,6 +5,7 @@ import enums.UserType;
 import exceptions.AlreadyFoundElementException;
 import exceptions.UnacceptableValueException;
 import exceptions.UserNotFoundException;
+import exceptions.WeakPasswordException;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import models.ContactInfo;
@@ -65,9 +66,15 @@ public class TestSignUp {
             Sakancom.getUserByUsername(username);
         });
     }
-    @Then("the user will not sign up")
+    @Then("the user will not sign up due to already found username")
     public void theUserWillNotSignUp() {
         assertThrows(AlreadyFoundElementException.class, () -> {
+            SignUp.signUp(username, password, userType, name, userLocation, contactInfo);
+        });
+    }
+    @Then("the user will not sign up due weak password and weak password exception will be thrown")
+    public void theUserWillNotSignUpDueWeakPasswordAndWeakPasswordExceptionWillBeThrown() {
+        assertThrows(WeakPasswordException.class, () -> {
             SignUp.signUp(username, password, userType, name, userLocation, contactInfo);
         });
     }

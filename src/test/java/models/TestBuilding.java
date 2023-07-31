@@ -71,8 +71,8 @@ public class TestBuilding {
 
     @Test
     public void testInfoStatus() {
-        house.setInfoStatus(InfoStatus.ACCEPTED);
-        assertEquals(InfoStatus.ACCEPTED, house.getInfoStatus());
+        building.setInfoStatus(InfoStatus.ACCEPTED);
+        assertEquals(InfoStatus.ACCEPTED, building.getInfoStatus());
     }
 
     @Test

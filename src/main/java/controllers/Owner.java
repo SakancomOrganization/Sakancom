@@ -15,6 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Owner {
+    private Owner() {
+
+    }
     public static List<Building> listAllBuildings() {
         return Sakancom.getBuildings().stream().filter(building -> building.getOwner().equals(Sakancom.getCurrentUser())).toList();
     }

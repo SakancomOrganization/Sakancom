@@ -10,9 +10,8 @@ Feature: Rate House
 
    Examples:
    | buildingId | houseId | newRate | updatedHouseRate |
-   | 1 | 1 | 5.0 | 5.0 |
-   | 1 | 1 | 4.0 | 4.5 |
-   | 1 | 1 | 3.0 | 4.0 |
+   | 1 | 1 | 5  | 5.0 |
+   | 1 | 1 | 4  | 4.0 |
 
   Scenario Outline: House Rate failed due to Null Pointer Exception
     When building id is <buildingId>
@@ -22,7 +21,7 @@ Feature: Rate House
 
     Examples:
     | buildingId | houseId | newRate |
-    | 0 | 1 | 5.0 |
+    | 0 | 1 | 5 |
 
     Scenario Outline: House Rate failed due to Null Pointer Exception
       When building id is <buildingId>
@@ -32,7 +31,7 @@ Feature: Rate House
 
       Examples:
         | buildingId | houseId | newRate |
-        | 1 | 0 | 4.0 |
+        | 1 | 0 | 4 |
 
   Scenario Outline: House Rate failed due to Number Format Exception
     When building id is <buildingId>
@@ -42,5 +41,5 @@ Feature: Rate House
 
     Examples:
       | buildingId | houseId | newRate |
-      | 1 | 1 | -1.0 |
-      | 1 | 1 | 6.0 |
+      | 1 | 1 | -1 |
+      | 1 | 1 | 6 |

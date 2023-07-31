@@ -13,6 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Admin {
+    private Admin() {
+
+    }
     public static List<User> listAllUsers() {
         return Sakancom.getUsers();
     }

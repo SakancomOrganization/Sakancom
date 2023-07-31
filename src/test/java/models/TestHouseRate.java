@@ -1,5 +1,6 @@
 package models;
 
+import enums.UserType;
 import exceptions.UnacceptableValueException;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,31 +10,24 @@ import static org.junit.Assert.assertThrows;
 
 public class TestHouseRate {
     private HouseRate houseRate;
+    private User firstUser;
+    private User secondUser;
 
     @Before
     public void setup() {
         houseRate = new HouseRate();
+        firstUser = new User("rater1", "PASS1", UserType.TENANT, null, null, null);
+        secondUser = new User("rater2", "PASS2", UserType.TENANT, null, null,null);
     }
 
     @Test
-    public void testAddNewRate() throws UnacceptableValueException {
-        // set the raters
-        houseRate.setRaters(4);
-        // set the rate
-        houseRate.setRate(4.5);
-        // add a new rater
-        houseRate.addNewRate(3);
-        // test the rate value
-        assertEquals(4.2, houseRate.getRate(),0.0);
-        // test the number of raters
-        assertEquals(5, houseRate.getRaters());
-        // invalid new rate (less than 0)
-        assertThrows(UnacceptableValueException.class, () -> {
-           houseRate.addNewRate(-1);
-        });
-        // invalid new rate (more than 5)
-        assertThrows(UnacceptableValueException.class, () -> {
-            houseRate.addNewRate(6);
-        });
+    public void testSetRateAndGetRate() throws UnacceptableValueException {
+        houseRate.setUserRate(firstUser, 4);
+        houseRate.setUserRate(secondUser, 2);
+        assertEquals(3.0, houseRate.getTotalRate(), 0.0);
+        houseRate.setUserRate(firstUser, 3);
+        assertEquals(2.5, houseRate.getTotalRate(), 0.0);
+        houseRate.setUserRate(secondUser, 5);
+        assertEquals(4.0, houseRate.getTotalRate(), 0.0);
     }
 }

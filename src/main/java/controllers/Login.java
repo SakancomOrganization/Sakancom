@@ -12,6 +12,7 @@ public class Login {
     private Login () {
 
     }
+
     public static boolean login(String username, String password) throws UserNotFoundException {
         User user = Sakancom.getUserByUsername(username);
         if(user.getPassword().equals(password)) {
