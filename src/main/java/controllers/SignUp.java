@@ -2,7 +2,6 @@ package controllers;
 
 import enums.UserType;
 import exceptions.AlreadyFoundElementException;
-import exceptions.UserNotFoundException;
 import models.*;
 
 public class SignUp {

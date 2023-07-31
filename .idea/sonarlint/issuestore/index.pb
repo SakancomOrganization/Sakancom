@@ -33,16 +33,10 @@ S
 #src/main/java/models/HouseRate.java,2\e\2ee3094851fc712b4440cb4edeaf822c3e6dc36d
 V
 &src/main/java/models/UserLocation.java,6\9\6958ac9bb15c195b510ff828b9feb37f83241199
-R
-"src/main/java/models/Building.java,e\3\e319e29765be4063c1a32bc493a8f59de8802bc1
 S
 #src/test/java/models/TestHouse.java,f\4\f4be23ced14562ff3e48d79dfd07068bf6cc82ff
 U
 %src/main/java/controllers/Logout.java,6\6\66a2d9f6a406e5794c3f940330e0defcc9e2875a
-U
-%src/main/java/controllers/SignUp.java,6\9\69abe9c9b4bb9983c22f528ce7bcbed4714e5f0b
-T
-$src/main/java/controllers/Login.java,d\7\d7348dead3122e957b92c9ed3e4ca992b430a9cd
 j
 :src/main/java/exceptions/AlreadyFoundElementException.java,c\1\c1c3c995dff94a3411cf0ec5f104ab5a881184ab
 h
@@ -51,8 +45,6 @@ h
 .src/test/features/authentication/login.feature,4\d\4d4385662fc2c2849d46f0bc62645c5140892571
 d
 4src/main/java/controllers/UserGeneralOperations.java,1\a\1a2bb13c432c56523fedc15028b11c3a6d5b598f
-O
-src/main/java/models/House.java,b\f\bfcafc26657f1e7ed2d5dd49a1d335fa986bdf38
 R
 "src/main/java/models/Services.java,6\e\6e3b9cced2ede5a7ba24225f80d3b8efae101ab1
 R
@@ -61,10 +53,6 @@ W
 'src/test/java/models/TestFurniture.java,5\c\5c78960cdbb825f6ede1622ca0a67d930149b54f
 R
 "src/test/java/models/TestUser.java,7\1\719e744b17c120baea8b657ba1f856ccaac57793
-g
-7src/test/java/controllers/authentication/TestLogin.java,1\4\14f61849131ce21341eb1060e646ccbc1568e073
-h
-8src/test/java/controllers/authentication/TestSignUp.java,6\1\61f68751367727e5ff9195755086ddfb64c37e87
 _
 /src/test/features/authentication/logout.feature,f\0\f0d1bdae5c745acc2b00e5ef33492d1f39e2355c
 `
@@ -75,14 +63,8 @@ N
 src/main/java/models/Name.java,0\f\0f27e1a9e3c3dd534467d7c7d74566155dc3abda
 Z
 *src/test/java/models/TestSaleContract.java,e\7\e79aa6f49d3b5f40c7e500f4dad88deff305aa4f
-w
-Gsrc/test/java/controllers/user_general_operations/TestHousesSearch.java,0\5\05b8e91ccb5a08ebbc4de92ce419f0ae026a2ce5
-t
-Dsrc/test/java/controllers/user_general_operations/TestRateHouse.java,7\e\7e8c566a4981cffcc7b73767c0928f77a47976af
 l
 <src/test/features/user_general_operations/rate-house.feature,8\1\816a9f2681113442e30a153a915063423bebef2a
-R
-"src/main/java/models/Sakancom.java,f\a\fae43a245de589027aa9735d66ed1e3441c0439b
 W
 'src/test/java/models/TestHouseRate.java,3\d\3d45a2359e1b65c695ab26c746381e06570caebf
 V
@@ -97,11 +79,7 @@ o
 ?src/test/features/user_general_operations/houses-search.feature,1\4\14b30cd4f6827324c721eb61ace995f1e129b483
 m
 =src/test/features/user_general_operations/update-info.feature,4\b\4b3f4575c07291b7d58a8bfd6a0fbfc67f3f2d26
-u
-Esrc/test/java/controllers/user_general_operations/TestUpdateInfo.java,5\6\56a9eae206116a1c1aedf7e96181ab223fd912e8
 V
 &src/test/java/models/TestBuilding.java,e\a\ea15aa261ec625ceae2a2826496bec40af803dc6
-V
-&src/test/java/models/TestSakancom.java,3\5\35090e34f6d86b0c2267af46ee7518b3f7c40aa0
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec

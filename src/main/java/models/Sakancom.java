@@ -169,6 +169,8 @@ public class Sakancom {
                 1,
                 HouseClassificationByGender.FAMILY);
 
+        // reset the autoIncrementBuildingId, then add
+        autoIncrementBuildingId = 1;
         try {
             addUser(firstAdmin);
             addUser(secondAdmin);
@@ -179,5 +181,10 @@ public class Sakancom {
         } catch (AlreadyFoundElementException alreadyFoundElementException) {
             // just to prevent the exception from being thrown
         }
+    }
+
+    public static void clearSakancomData() {
+        Sakancom.getUsers().clear();
+        Sakancom.getBuildings().clear();
     }
 }

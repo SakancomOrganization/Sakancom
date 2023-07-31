@@ -7,7 +7,6 @@ import exceptions.BuildingNotFoundException;
 import exceptions.UnacceptableValueException;
 import exceptions.UserNotFoundException;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.text.ParseException;
@@ -21,15 +20,12 @@ public class TestSakancom {
     private static User user;
     private static Building building;
 
-    @BeforeClass
-    public static void setupData() throws ParseException, UnacceptableValueException {
-        Sakancom.initSakancomWithData();
-    }
-
     @Before
-    public void setup() {
+    public void setup() throws UnacceptableValueException, ParseException {
+        Sakancom.clearSakancomData();
+        Sakancom.initSakancomWithData();
         user = new User("test-user", "Test1234", UserType.ADMIN, null, null, null);
-        building = new Building(-1, "Test Building", null, null);
+        building = new Building(2, "Test Building", null, null);
     }
 
     @Test
@@ -56,7 +52,8 @@ public class TestSakancom {
     }
 
     @Test
-    public void testRemoveUser() {
+    public void testRemoveUser() throws AlreadyFoundElementException {
+        Sakancom.addUser(user);
         assertTrue(Sakancom.getUsers().contains(user));
         Sakancom.removeUser(user);
         assertFalse(Sakancom.getUsers().contains(user));

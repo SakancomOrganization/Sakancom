@@ -75,7 +75,7 @@ public class TestHousesSearch {
     public void theResultedListSizeWillBe(Integer resultSize) {
         Integer actualSize = UserGeneralOperations.searchAboutHouses(services, monthlyRent, location, houseClassificationByGender).size();
         assertEquals(resultSize, actualSize);
-        building.removeHouse(house);
-        Sakancom.getBuildings().remove(building);
+//        building.removeHouse(house);
+//        Sakancom.getBuildings().remove(building);
     }
 }

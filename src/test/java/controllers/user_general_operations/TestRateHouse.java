@@ -36,13 +36,9 @@ public class TestRateHouse {
     @Then("the house rate will be {double}")
     public void theHouseRateWillBe(Double updatedRate) throws UnacceptableValueException, HouseNotFoundException, BuildingNotFoundException {
         UserGeneralOperations.rateHouse(buildingId, houseId, newRate);
-        Building building = Sakancom.getBuildingById(buildingId);
-        if(building != null) {
-            House house = building.getHouseById(houseId);
-            if(house != null) {
-                assertEquals(updatedRate, house.getHouseRate().getRate(), 0.0);
-            }
-        }
+        House house = Sakancom.getBuildingById(buildingId).getHouseById(houseId);
+        assertEquals(updatedRate, house.getHouseRate().getRate(), 0.0);
+
     }
     @Then("a Building Not Found Exception will be thrown")
     public void aBuildingNotFoundExceptionWillBeThrown() {
