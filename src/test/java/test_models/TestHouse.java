@@ -43,18 +43,14 @@ public class TestHouse {
     public void testMonthlyRent() throws UnacceptableValueException {
         house.setMonthlyRent(200);
         assertEquals(200, house.getMonthlyRent());
-        assertThrows(UnacceptableValueException.class, () -> {
-           house.setMonthlyRent(-100);
-        });
+        assertThrows(UnacceptableValueException.class, () -> house.setMonthlyRent(-100));
     }
 
     @Test
     public void testFloorNum() throws UnacceptableValueException {
         house.setFloorNum(2);
         assertEquals(2, house.getFloorNum());
-        assertThrows(UnacceptableValueException.class, () -> {
-            house.setFloorNum(-1);
-        });
+        assertThrows(UnacceptableValueException.class, () -> house.setFloorNum(-1));
     }
 
     @Test
@@ -98,9 +94,7 @@ public class TestHouse {
         assertTrue(house.getImages().contains("A new Image"));
 
         // test add an existing one
-        assertThrows(AlreadyFoundElementException.class, () -> {
-           house.addImage("A new Image");
-        });
+        assertThrows(AlreadyFoundElementException.class, () -> house.addImage("A new Image"));
     }
 
     @Test

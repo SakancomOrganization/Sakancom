@@ -39,20 +39,14 @@ public class TestRatingHouse {
     }
     @Then("a Building Not Found Exception will be thrown")
     public void aBuildingNotFoundExceptionWillBeThrown() {
-        assertThrows(BuildingNotFoundException.class, () -> {
-            UserGeneralOperations.rateHouse(buildingId, houseId, newRate);
-        });
+        assertThrows(BuildingNotFoundException.class, () -> UserGeneralOperations.rateHouse(buildingId, houseId, newRate));
     }
     @Then("a House Not Found Exception will be thrown")
     public void aHouseNotFoundExceptionWillBeThrown() {
-        assertThrows(HouseNotFoundException.class, () -> {
-            UserGeneralOperations.rateHouse(buildingId, houseId, newRate);
-        });
+        assertThrows(HouseNotFoundException.class, () -> UserGeneralOperations.rateHouse(buildingId, houseId, newRate));
     }
     @Then("a Number Format Exception Will be thrown")
     public void aNumberFormatExceptionWillBeThrown() {
-        assertThrows(UnacceptableValueException.class, () -> {
-            UserGeneralOperations.rateHouse(buildingId, houseId, newRate);
-        });
+        assertThrows(UnacceptableValueException.class, () -> UserGeneralOperations.rateHouse(buildingId, houseId, newRate));
     }
 }

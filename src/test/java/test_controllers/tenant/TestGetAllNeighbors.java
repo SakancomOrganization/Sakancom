@@ -66,14 +66,10 @@ public class TestGetAllNeighbors {
     }
     @Then("the neighbors will not be found and building not found exception will be thrown")
     public void theNeighborsWillNotBeFoundAndBuildingNotFoundExceptionWillBeThrown() {
-        assertThrows(BuildingNotFoundException.class, () -> {
-            Tenant.getAllHouseNeighbors(buildingId, houseId);
-        });
+        assertThrows(BuildingNotFoundException.class, () -> Tenant.getAllHouseNeighbors(buildingId, houseId));
     }
     @Then("the neighbors will not be found and house not found exception will be thrown")
     public void theNeighborsWillNotBeFoundAndHouseNotFoundExceptionWillBeThrown() {
-        assertThrows(HouseNotFoundException.class, () -> {
-            Tenant.getAllHouseNeighbors(buildingId, houseId);
-        });
+        assertThrows(HouseNotFoundException.class, () -> Tenant.getAllHouseNeighbors(buildingId, houseId));
     }
 }

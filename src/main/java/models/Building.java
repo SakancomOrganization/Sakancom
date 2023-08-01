@@ -2,7 +2,6 @@ package models;
 
 import enums.InfoStatus;
 import exceptions.AlreadyFoundElementException;
-import exceptions.BuildingNotFoundException;
 import exceptions.HouseNotFoundException;
 
 import java.util.ArrayList;

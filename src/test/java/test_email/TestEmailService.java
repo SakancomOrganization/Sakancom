@@ -19,8 +19,6 @@ public class TestEmailService {
 
     @Test
     public void testSendEmailWithInvalidEmailAddress() {
-        assertThrows(MessagingException.class, () -> {
-            EmailService.sendEmail("ff");
-        });
+        assertThrows(MessagingException.class, () -> EmailService.sendEmail("ff"));
     }
 }

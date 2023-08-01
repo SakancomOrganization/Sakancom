@@ -36,9 +36,7 @@ public class TestLogin {
     }
     @Then("the user will not log in successfully and user not found exception will be thrown")
     public void theUserWillNotLogInSuccessfullyAndUserNotFoundExceptionWillBeThrown() {
-        assertThrows(UserNotFoundException.class, () -> {
-            Login.login(username, password);
-        });
+        assertThrows(UserNotFoundException.class, () -> Login.login(username, password));
     }
     @Then("the user will not log in successfully due to invalid password")
     public void theUserWillNotLogInSuccessfullyDueToInvalidPassword() throws UserNotFoundException {
@@ -46,14 +44,10 @@ public class TestLogin {
     }
     @Then("the user will receive a new password on the email")
     public void theUserWillReceiveANewPasswordOnTheEmail()  {
-        assertDoesNotThrow(() -> {
-            Login.forgetPassword(username);
-        });
+        assertDoesNotThrow(() -> Login.forgetPassword(username));
     }
     @Then("the user will not receive a new password on the email")
     public void theUserWillNotReceiveANewPasswordOnTheEmail() {
-        assertThrows(UserNotFoundException.class, () -> {
-            Login.forgetPassword(username);
-        });
+        assertThrows(UserNotFoundException.class, () -> Login.forgetPassword(username));
     }
 }

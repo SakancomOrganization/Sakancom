@@ -69,26 +69,18 @@ public class TestUpdateInfo {
     }
     @Then("the information will not be updated and weak password exception will be thrown")
     public void theInformationWillNotBeUpdatedAndWeakPasswordExceptionWillBeThrown() {
-        assertThrows(WeakPasswordException.class, () -> {
-            UserGeneralOperations.updateInfo(field, value);
-        });
+        assertThrows(WeakPasswordException.class, () -> UserGeneralOperations.updateInfo(field, value));
     }
     @Then("the information will not be updated and number format exception will be thrown")
     public void theInformationWillNotBeUpdatedAndNumberFormatExceptionWillBeThrown() {
-        assertThrows(NumberFormatException.class, () -> {
-            UserGeneralOperations.updateInfo(field, value);
-        });
+        assertThrows(NumberFormatException.class, () -> UserGeneralOperations.updateInfo(field, value));
     }
     @Then("the information will not be updated and unacceptable value exception will be thrown")
     public void theInformationWillNotBeUpdatedAndUnacceptableValueExceptionWillBeThrown() {
-        assertThrows(UnacceptableValueException.class, () -> {
-            UserGeneralOperations.updateInfo(field, value);
-        });
+        assertThrows(UnacceptableValueException.class, () -> UserGeneralOperations.updateInfo(field, value));
     }
     @Then("the information will not be updated and date parse exception will be thrown")
     public void theInformationWillNotBeUpdatedAndDateParseExceptionWillBeThrown() {
-        assertThrows(ParseException.class, () -> {
-            UserGeneralOperations.updateInfo(field, value);
-        });
+        assertThrows(ParseException.class, () -> UserGeneralOperations.updateInfo(field, value));
     }
 }

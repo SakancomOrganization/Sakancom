@@ -45,9 +45,7 @@ public class TestSakancom {
 
         // testing adding an existing one
         User newUser = new User("test-user", "Test4321", UserType.ADMIN, null, null, null);
-        assertThrows(AlreadyFoundElementException.class, () -> {
-            Sakancom.addUser(newUser);
-        });
+        assertThrows(AlreadyFoundElementException.class, () -> Sakancom.addUser(newUser));
     }
 
     @Test
@@ -66,9 +64,7 @@ public class TestSakancom {
 
         // test adding an existing one
         Building newBuilding = new Building(1, "Happiness House", null, null);
-        assertThrows(AlreadyFoundElementException.class, () -> {
-            Sakancom.addBuilding(newBuilding);
-        });
+        assertThrows(AlreadyFoundElementException.class, () -> Sakancom.addBuilding(newBuilding));
     }
 
     @Test
@@ -82,17 +78,13 @@ public class TestSakancom {
     public void testGetUserByUsername() throws UserNotFoundException {
         User resultedUser = new User("mo-alawneh", "", null, null, null, null);
         assertEquals(resultedUser, Sakancom.getUserByUsername("mo-alawneh"));
-        assertThrows(UserNotFoundException.class, () -> {
-            Sakancom.getUserByUsername("mohammad-al");
-        });
+        assertThrows(UserNotFoundException.class, () -> Sakancom.getUserByUsername("mohammad-al"));
     }
 
     @Test
     public void testGetBuildingById() throws BuildingNotFoundException {
         Building resultedBuilding = new Building(1, "", null, null);
         assertEquals(resultedBuilding, Sakancom.getBuildingById(1));
-        assertThrows(BuildingNotFoundException.class, () -> {
-            Sakancom.getBuildingById(10);
-        });
+        assertThrows(BuildingNotFoundException.class, () -> Sakancom.getBuildingById(10));
     }
 }

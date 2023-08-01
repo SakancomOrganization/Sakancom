@@ -81,9 +81,7 @@ public class TestBuilding {
         assertTrue(building.getHouses().contains(house));
 
         // test adding an existing one
-        assertThrows(AlreadyFoundElementException.class, () -> {
-           building.addHouse(house);
-        });
+        assertThrows(AlreadyFoundElementException.class, () -> building.addHouse(house));
     }
 
     @Test
@@ -98,9 +96,7 @@ public class TestBuilding {
         building.addHouse(house);
         House resultedHouse = new House(1, null, -1 ,1, null);
         assertEquals(resultedHouse, building.getHouseById(1));
-        assertThrows(HouseNotFoundException.class, () -> {
-            building.getHouseById(10);
-        });
+        assertThrows(HouseNotFoundException.class, () -> building.getHouseById(10));
     }
 
     @Test

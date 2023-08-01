@@ -66,14 +66,10 @@ public class TestSignUp {
     }
     @Then("the user will not sign up due to already found username")
     public void theUserWillNotSignUp() {
-        assertThrows(AlreadyFoundElementException.class, () -> {
-            SignUp.signUp(username, password, userType, name, userLocation, contactInfo);
-        });
+        assertThrows(AlreadyFoundElementException.class, () -> SignUp.signUp(username, password, userType, name, userLocation, contactInfo));
     }
     @Then("the user will not sign up due weak password and weak password exception will be thrown")
     public void theUserWillNotSignUpDueWeakPasswordAndWeakPasswordExceptionWillBeThrown() {
-        assertThrows(WeakPasswordException.class, () -> {
-            SignUp.signUp(username, password, userType, name, userLocation, contactInfo);
-        });
+        assertThrows(WeakPasswordException.class, () -> SignUp.signUp(username, password, userType, name, userLocation, contactInfo));
     }
 }

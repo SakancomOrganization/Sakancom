@@ -34,19 +34,15 @@ public class TestRequestHouse {
         assertEquals(SaleStatus.REQUESTED, Sakancom.getBuildingById(buildingId).getHouseById(houseId).getSaleContract().getSaleStatus());
     }
     @Then("the tenant in the house sale contract will be correct")
-    public void theTenantInTheHouseSaleContractWillBeCorrect() throws UserNotFoundException, BuildingNotFoundException, HouseNotFoundException {
+    public void theTenantInTheHouseSaleContractWillBeCorrect() throws BuildingNotFoundException, HouseNotFoundException {
         assertEquals(Sakancom.getCurrentUser(), Sakancom.getBuildingById(buildingId).getHouseById(houseId).getSaleContract().getTenant());
     }
     @Then("the request failed and building not found exception will be thrown")
     public void theRequestFailedAndBuildingNotFoundExceptionWillBeThrown() {
-        assertThrows(BuildingNotFoundException.class, () -> {
-            Tenant.requestHouse(buildingId, houseId);
-        });
+        assertThrows(BuildingNotFoundException.class, () -> Tenant.requestHouse(buildingId, houseId));
     }
     @Then("the request failed and house not found exception will be thrown")
     public void theRequestFailedAndHouseNotFoundExceptionWillBeThrown() {
-        assertThrows(HouseNotFoundException.class, () -> {
-            Tenant.requestHouse(buildingId, houseId);
-        });
+        assertThrows(HouseNotFoundException.class, () -> Tenant.requestHouse(buildingId, houseId));
     }
 }

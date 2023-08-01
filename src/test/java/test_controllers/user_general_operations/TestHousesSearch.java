@@ -83,8 +83,6 @@ public class TestHousesSearch {
     }
     @Then("a user not found exception will be thrown")
     public void aUserNotFoundExceptionWillBeThrown() {
-        assertThrows(UserNotFoundException.class, () -> {
-            UserGeneralOperations.searchAboutHouses(services, monthlyRent, username, location, houseClassificationByGender).size();
-        });
+        assertThrows(UserNotFoundException.class, () -> UserGeneralOperations.searchAboutHouses(services, monthlyRent, username, location, houseClassificationByGender).size());
     }
 }

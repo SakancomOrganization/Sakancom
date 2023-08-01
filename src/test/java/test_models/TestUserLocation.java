@@ -25,9 +25,7 @@ public class TestUserLocation {
     public void testFloorNum() throws UnacceptableValueException {
         userLocation.setFloorNum(2);
         assertEquals(2, userLocation.getFloorNum());
-        assertThrows(UnacceptableValueException.class, () -> {
-           userLocation.setFloorNum(-1);
-        });
+        assertThrows(UnacceptableValueException.class, () -> userLocation.setFloorNum(-1));
     }
 
     @Test
