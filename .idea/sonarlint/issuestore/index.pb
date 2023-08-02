@@ -29,8 +29,6 @@ c
 ,src/test/java/test_models/TestHouseRate.java,1/8/187cada6820bae78174c4332ca495352f1f556cc
 [
 +src/test/java/test_models/TestLocation.java,8/7/879c98e7b8985a62d199e9f4427b8de07a9c08d9
-W
-'src/test/java/test_models/TestName.java,5/2/524e5bfdb82ec3094c2b7a9d8349c8cbf94c944e
 [
 +src/test/java/test_models/TestSakancom.java,a/f/afb77ed204d84b6796d14864962325adb7a0dc06
 _
@@ -77,10 +75,6 @@ S
 #src/main/java/models/HouseRate.java,2/e/2ee3094851fc712b4440cb4edeaf822c3e6dc36d
 R
 "src/main/java/models/Location.java,3/b/3bf95ea7f996224b5c0785348fba99abe16ce610
-N
-src/main/java/models/Name.java,0/f/0f27e1a9e3c3dd534467d7c7d74566155dc3abda
-R
-"src/main/java/models/Sakancom.java,f/a/fae43a245de589027aa9735d66ed1e3441c0439b
 V
 &src/main/java/models/SaleContract.java,3/f/3f008ae267223d7283c2bc612e4e3627ea6f99e4
 N
@@ -123,8 +117,6 @@ n
 >src/test/java/test_controllers/tenant/TestGetAllNeighbors.java,e/9/e9cf52fa7ac528a934aa3130f045ea2597de8207
 [
 +src/test/java/test_models/TestBuilding.java,1/1/11ae7c7440a5cfec33d3fde2137e6d6bec5a6f19
-T
-$src/main/java/controllers/Admin.java,6/a/6a8a9800a4ca5ad95ee88ed8e2e55c9566a6f5a6
 o
 ?src/test/features/user_general_operations/houses-search.feature,1/4/14b30cd4f6827324c721eb61ace995f1e129b483
 \

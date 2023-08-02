@@ -1,6 +1,7 @@
 package controllers;
 
 import enums.InfoStatus;
+import enums.SaleStatus;
 import enums.UserType;
 import exceptions.BuildingNotFoundException;
 import exceptions.HouseNotFoundException;
@@ -8,7 +9,9 @@ import exceptions.UserNotFoundException;
 import models.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Admin {
     private Admin() {
@@ -73,5 +76,42 @@ public class Admin {
 
     public static void rejectHouseUpdate(int buildingId, int houseId) throws HouseNotFoundException, BuildingNotFoundException {
         Sakancom.getBuildingById(buildingId).getHouseById(houseId).setInfoStatus(InfoStatus.REJECTED);
+    }
+
+    public static Map<String, Integer> getStatistics() {
+        Map<String, Integer> statisticsMap = new HashMap<>();
+        statisticsMap.put("adminsNum", countUserTypesNum(UserType.ADMIN));
+        statisticsMap.put("ownersNum", countUserTypesNum(UserType.OWNER));
+        statisticsMap.put("tenantsNum", countUserTypesNum(UserType.TENANT));
+        statisticsMap.put("buildingsNum", countBuildingsNum());
+        statisticsMap.put("housesNum", countHousesNum());
+        statisticsMap.put("availableHousesNum", countHousesNumInStatus(SaleStatus.AVAILABLE));
+        statisticsMap.put("unavailableHousesNum", countHousesNumInStatus(SaleStatus.UNAVAILABLE));
+        statisticsMap.put("requestedHousesNum", countHousesNumInStatus(SaleStatus.REQUESTED));
+        return statisticsMap;
+    }
+
+    private static int countUserTypesNum(UserType userType) {
+        return Sakancom.getUsers().stream().filter(user -> user.getUserType() == userType).toList().size();
+    }
+
+    private static int countBuildingsNum() {
+        return Sakancom.getBuildings().size();
+    }
+
+    private static int countHousesNum() {
+        int housesCount = 0;
+        for(Building building : Sakancom.getBuildings()) {
+            housesCount += building.getHouses().size();
+        }
+        return housesCount;
+    }
+
+    private static int countHousesNumInStatus(SaleStatus saleStatus) {
+        int availableHousesCount = 0;
+        for(Building building : Sakancom.getBuildings()) {
+            availableHousesCount += building.getHouses().stream().filter(house -> house.getSaleContract().getSaleStatus() == saleStatus).toList().size();
+        }
+        return availableHousesCount;
     }
 }

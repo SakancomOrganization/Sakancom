@@ -44,6 +44,18 @@ public class TestName {
         assertEquals(name, new Name("moHammad","","alawneh"));
         // equal with ignoring last name
         assertEquals(name, new Name("moHammad","Abd-Allateef",""));
+        // equal with sub first name -first-
+        assertEquals(name, new Name("moh","Abd-Allateef","alawneh"));
+        // equal with sub first name -middle-
+        assertEquals(name, new Name("ad","Abd-Allateef","alawneh"));
+        // equal with sub first name -end-
+        assertEquals(name, new Name("mm","Abd-Allateef","alawneh"));
+        // equal with sub middle name -first-
+        assertEquals(name, new Name("moHammad","Abd","alawneh"));
+        // equal with sub middle name -middle-
+        assertEquals(name, new Name("moHammad","Alla","alawneh"));
+        // equal with sub middle name -end-
+        assertEquals(name, new Name("moHammad","Allateef","alawneh"));
         // unequal
         assertNotEquals(name, new Name("Najat","Abd-Allateef","alawneh"));
     }

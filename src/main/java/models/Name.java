@@ -1,5 +1,7 @@
 package models;
 
+import helpers.StringsComparator;
+
 import java.util.Objects;
 
 public class Name {
@@ -40,9 +42,9 @@ public class Name {
     @Override
     public boolean equals(Object obj) {
         if(obj instanceof Name name) {
-            return (name.getFirstName().isEmpty() || firstName.equalsIgnoreCase(name.getFirstName()))
-                    && (name.getMiddleName().isEmpty() || middleName.equalsIgnoreCase(name.getMiddleName()))
-                    && (name.getLastName().isEmpty() || lastName.equalsIgnoreCase(name.getLastName()));
+            return StringsComparator.compare(firstName, name.getFirstName())
+                    && StringsComparator.compare(middleName, name.getMiddleName())
+                    && StringsComparator.compare(lastName, name.getLastName());
         }
         return false;
     }
