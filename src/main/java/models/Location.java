@@ -1,5 +1,7 @@
 package models;
 
+import helpers.StringsComparator;
+
 import java.util.Objects;
 
 public class Location {
@@ -30,8 +32,8 @@ public class Location {
     @Override
     public boolean equals(Object obj) {
         if(obj instanceof Location location) {
-           return (location.getCity().isEmpty() || this.city.equalsIgnoreCase(location.getCity()))
-                   && (location.getStreet().isEmpty() || this.street.equalsIgnoreCase(location.getStreet()));
+           return StringsComparator.compare(city, location.getCity())
+                   && StringsComparator.compare(street, location.getStreet());
         }
         return false;
     }

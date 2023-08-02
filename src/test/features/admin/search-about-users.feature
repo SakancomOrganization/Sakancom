@@ -14,20 +14,20 @@ Feature: Search About Users
 
     Examples:
     | username | userType | firstName | middleName | lastName | email | phoneNumber | major | expectedSize |
-    | 'mo-alawneh' | 'admin' | 'MohaMMad' | 'AbdAllateef' | 'alaWneh' | 'mo.a.alawneh@gmail.com' | '0592838433' | 'Computer Engineering' | 1 |
+    | 'mo-alawneh' | 'admin' | 'MohaMMad' | 'AbdAllateef' | 'ala' | 'mo.a.alawneh@gmail.com' | '0592838433' | 'Computer Engineering' | 1 |
     | 'mo-alawneh' | '' | '' | '' | '' | '' | '' | '' | 1 |
     | '' | 'admin' | '' | '' | '' | '' | '' | '' | 2 |
     | '' | 'owner' | '' | '' | '' | '' | '' | '' | 1 |
     | '' | 'tenant' | '' | '' | '' | '' | '' | '' | 1 |
     | '' | 'admin' | 'najat' | '' | '' | '' | '' | '' | 1 |
     | '' | 'admin' | '' | 'sam' | '' | '' | '' | '' | 1 |
-    | '' | 'admin' | '' | '' | 'mansour' | '' | '' | '' | 1 |
-    | '' | '' | '' | '' | '' | 'mo.a.alawneh@gmail.com' | '' | '' | 1 |
+    | '' | 'admin' | '' | '' | 'ans' | '' | '' | '' | 1 |
+    | '' | '' | '' | '' | '' | 'mo.a.alawneh' | '' | '' | 1 |
     | '' | '' | '' | '' | '' | '' | '0592838433' | '' | 1 |
-    | '' | '' | '' | '' | '' | '' | '' | 'Computer Engineering' | 4 |
+    | '' | '' | '' | '' | '' | '' | '' | 'Engineering' | 4 |
     | '' | 'admin' | '' | '' | '' | '' | '' | 'computer engineering' | 2 |
     | '' | '' | 'mohammad' | '' | '' | '' | '' | 'computer engineering' | 1 |
     | '' | '' | '' | '' | '' | '' | '' | '' | 4 |
     | '' | 'admin' | 'mahmoud' | '' | '' | '' | '' | '' | 0 |
     | 'haya-sam' | 'admin' | '' | '' | '' | '' | '' | '' | 0 |
-    | 'than@mare' | 'tenant' | '' | '' | '' | '' | '0592838433' | 'Computer Engineering' | 0 |
+    | 'than@mare' | 'tenant' | '' | '' | '' | '' | '0592' | 'Computer Engineering' | 0 |

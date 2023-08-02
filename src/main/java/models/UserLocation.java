@@ -1,6 +1,7 @@
 package models;
 
 import exceptions.UnacceptableValueException;
+import helpers.StringsComparator;
 
 import java.util.Objects;
 
@@ -36,7 +37,7 @@ public class UserLocation extends Location {
     public boolean equals(Object obj) {
         if(obj instanceof UserLocation userLocation) {
             return super.equals(userLocation)
-                    && this.getBuilding().equalsIgnoreCase(userLocation.getBuilding())
+                    && StringsComparator.compare(building, userLocation.getBuilding())
                     && this.floorNum == userLocation.getFloorNum();
         }
         return false;

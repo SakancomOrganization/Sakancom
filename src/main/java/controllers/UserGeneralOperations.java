@@ -1,9 +1,9 @@
 package controllers;
 
 import enums.HouseClassificationByGender;
-import enums.SaleStatus;
 import exceptions.*;
 import helpers.PasswordChecker;
+import helpers.StringsComparator;
 import models.*;
 
 import java.text.ParseException;
@@ -55,13 +55,14 @@ public class UserGeneralOperations {
         house.getHouseRate().setUserRate(currentUser, rate);
     }
 
-    public static List<House> searchAboutHouses(Services services, int monthlyRent, String username, Location location, HouseClassificationByGender houseClassificationByGender) throws UserNotFoundException {
+    public static List<House> searchAboutHouses(Services services, int monthlyRent, Name ownerName, String buildingName, Location location, HouseClassificationByGender houseClassificationByGender) {
         List<House> resultHouses = new ArrayList<>();
         for(Building building : Sakancom.getBuildings()) {
             for(House house : building.getHouses()) {
                 if((services == null || house.getServices().equals(services))
                         && (monthlyRent == -1 || house.getMonthlyRent() <= monthlyRent)
-                        && (username.isEmpty() || building.getOwner().equals(Sakancom.getUserByUsername(username)))
+                        && (ownerName == null || building.getOwner().getName().equals(ownerName))
+                        && StringsComparator.compare(building.getName(), buildingName)
                         && (location == null || building.getLocation().equals(location))
                         && (houseClassificationByGender == null || house.getHouseClassificationByGender().equals(houseClassificationByGender))) {
                     resultHouses.add(house);

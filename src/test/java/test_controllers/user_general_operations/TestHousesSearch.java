@@ -16,7 +16,8 @@ import static org.junit.Assert.assertThrows;
 public class TestHousesSearch {
     private Services services;
     private int monthlyRent;
-    private String username;
+    private Name name;
+    private String buildingName;
     private Location location;
     private HouseClassificationByGender houseClassificationByGender;
 
@@ -58,9 +59,13 @@ public class TestHousesSearch {
     public void monthlyRentIs(Integer monthlyRent) {
         this.monthlyRent = monthlyRent;
     }
-    @When("Owner is {string}")
-    public void ownerIs(String username) {
-        this.username = username;
+    @When("owner name is {string} {string} {string}")
+    public void ownerNameIs(String firstName, String middleName, String lastName) {
+        name = new Name(firstName, middleName, lastName);
+    }
+    @When("building name is {string}")
+    public void ownerIs(String buildingName) {
+        this.buildingName = buildingName;
     }
     @When("location is {string} {string}")
     public void locationIs(String city, String street) {
@@ -78,11 +83,7 @@ public class TestHousesSearch {
     }
     @Then("the resulted list size will be {int}")
     public void theResultedListSizeWillBe(Integer resultSize) throws UserNotFoundException {
-        Integer actualSize = UserGeneralOperations.searchAboutHouses(services, monthlyRent, username, location, houseClassificationByGender).size();
+        Integer actualSize = UserGeneralOperations.searchAboutHouses(services, monthlyRent, name, buildingName, location, houseClassificationByGender).size();
         assertEquals(resultSize, actualSize);
-    }
-    @Then("a user not found exception will be thrown")
-    public void aUserNotFoundExceptionWillBeThrown() {
-        assertThrows(UserNotFoundException.class, () -> UserGeneralOperations.searchAboutHouses(services, monthlyRent, username, location, houseClassificationByGender).size());
     }
 }

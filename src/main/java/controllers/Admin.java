@@ -3,9 +3,11 @@ package controllers;
 import enums.InfoStatus;
 import enums.SaleStatus;
 import enums.UserType;
+import exceptions.AdminCannotBeRemovedException;
 import exceptions.BuildingNotFoundException;
 import exceptions.HouseNotFoundException;
 import exceptions.UserNotFoundException;
+import helpers.StringsComparator;
 import models.*;
 
 import java.util.ArrayList;
@@ -31,23 +33,27 @@ public class Admin {
     }
 
     public static List<User> searchAboutUsers(String username, UserType userType, Name name, String email, String phoneNumber, String major) {
-        return Sakancom.getUsers().stream().filter(user -> (username.isEmpty() || user.getUsername().equals(username))
+        return Sakancom.getUsers().stream().filter(user -> StringsComparator.compare(user.getUsername(), username)
                 && (userType == null || user.getUserType().equals(userType))
                 && (name == null || user.getName().equals(name))
-                && (email.isEmpty() || user.getContactInfo().getEmail().equals(email))
-                && (phoneNumber.isEmpty() || user.getContactInfo().getPhoneNumber().equals(phoneNumber))
-                && (major.isEmpty() || user.getContactInfo().getMajor().equalsIgnoreCase(major))).toList();
+                && StringsComparator.compare(user.getContactInfo().getEmail(), email)
+                && StringsComparator.compare(user.getContactInfo().getPhoneNumber(), phoneNumber)
+                && StringsComparator.compare(user.getContactInfo().getMajor(), major)).toList();
     }
 
-    public static List<Building> searchAboutBuildings(int id, String name, User owner, Location location) {
+    public static List<Building> searchAboutBuildings(int id, String buildingName, String ownerUsername, Name ownerName, Location location) {
         return Sakancom.getBuildings().stream().filter(building -> (id == -1 || building.getId() == id)
-                && (name.isEmpty() || building.getName().equalsIgnoreCase(name))
-                && (owner == null || building.getOwner().equals(owner))
+                && StringsComparator.compare(building.getName(), buildingName)
+                && StringsComparator.compare(building.getOwner().getUsername(), ownerUsername)
+                && (ownerName == null || building.getOwner().getName().equals(ownerName))
                 && (location == null || building.getLocation().equals(location))).toList();
     }
 
-    public static void removeUser(String username) throws UserNotFoundException {
-        Sakancom.removeUser(Sakancom.getUserByUsername(username));
+    public static void removeUser(String username) throws UserNotFoundException, AdminCannotBeRemovedException {
+        User user = Sakancom.getUserByUsername(username);
+        if(user.getUserType() == UserType.ADMIN)
+            throw new AdminCannotBeRemovedException();
+        Sakancom.removeUser(user);
     }
 
     public static List<Building> getAllUpdatedBuildings() {

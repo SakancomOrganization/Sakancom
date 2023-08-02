@@ -34,6 +34,10 @@ public class TestUserLocation {
         assertNotEquals(userLocation, new Object());
         // equals
         assertEquals(userLocation, new UserLocation("Jenin","Abu-Baker","Personal Building",1));
+        // sub string tests
+        assertEquals(userLocation, new UserLocation("Jenin","Abu-Baker","PErsoNal",1));
+        assertEquals(userLocation, new UserLocation("Jenin","Abu-Baker","Building",1));
+        assertEquals(userLocation, new UserLocation("Jenin","Abu-Baker","sonal Bui",1));
         // unequal due to string in the super (location)
         assertNotEquals(userLocation, new UserLocation("Nablus","Abu-Baker","Personal Building",1));
         // unequal due to the building string (specialized member field)

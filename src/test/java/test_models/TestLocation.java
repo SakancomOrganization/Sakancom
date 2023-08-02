@@ -39,6 +39,9 @@ public class TestLocation {
         assertEquals(location, new Location("Nablus",""));
         // only street (ignore case)
         assertEquals(location, new Location("","Tunis street"));
+        // sub string tests
+        assertEquals(location, new Location("","Tunis"));
+        assertEquals(location, new Location("","nis street"));
         // street and number
         assertEquals(location, new Location("","Tunis Street"));
     }
