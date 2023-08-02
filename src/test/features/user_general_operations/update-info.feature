@@ -23,7 +23,7 @@ Feature: Update Personal Information
    | 'mo-alawneh' | 'birthDate' | '11/11/2007' |
    | 'mo-alawneh' | 'major' | 'Electrical Engineering' |
 
-  Scenario Outline: Update Failed Due to Weak Password
+  Scenario Outline: Update Failed Due to Weak Password Exception
     When <username> is already logged in
     And field is <field>
     And value is <value>

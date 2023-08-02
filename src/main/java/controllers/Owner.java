@@ -18,22 +18,20 @@ public class Owner {
     private Owner() {
 
     }
-    public static List<Building> listAllBuildings() {
+    public static List<Building> listAllOwnBuildings() {
         return Sakancom.getBuildings().stream().filter(building -> building.getOwner().equals(Sakancom.getCurrentUser())).toList();
     }
 
-    public static List<House> listAllHouses() {
-        List<House> houses = new ArrayList<>();
-        for(Building building : Sakancom.getBuildings()) {
-            if(building.getOwner().equals(Sakancom.getCurrentUser())) {
-                houses.addAll(building.getHouses());
-            }
-        }
-        return houses;
+    public static List<House> listAllHousesInOwnBuilding(int buildingId) throws BuildingNotFoundException {
+        Building building = Sakancom.getBuildingById(buildingId);
+        if(!building.getOwner().equals(Sakancom.getCurrentUser()))
+            throw new BuildingNotFoundException();
+        return building.getHouses();
     }
 
     public static List<Building> listAllRejectedBuildings() {
-        return Sakancom.getBuildings().stream().filter(building -> building.getInfoStatus() == InfoStatus.REJECTED).toList();
+        return Sakancom.getBuildings().stream().filter(building -> building.getInfoStatus() == InfoStatus.REJECTED
+        && building.getOwner().equals(Sakancom.getCurrentUser())).toList();
     }
 
     public static List<House> listAllRejectedHouses() {
@@ -48,6 +46,9 @@ public class Owner {
 
     public static void updateBuildingInfo(int buildingId, String field, String value) throws BuildingNotFoundException {
         Building building = Sakancom.getBuildingById(buildingId);
+        // building for another owner
+        if(!building.getOwner().equals(Sakancom.getCurrentUser()))
+            throw new BuildingNotFoundException();
         if(field.equalsIgnoreCase("name")) {
             building.setName(value);
         } else if(field.equalsIgnoreCase("city")) {
@@ -59,7 +60,11 @@ public class Owner {
     }
 
     public static void updateHouseInfo(int buildingId, int houseId, String field, String value) throws UnacceptableValueException, HouseNotFoundException, BuildingNotFoundException {
-        House house = Sakancom.getBuildingById(buildingId).getHouseById(houseId);
+        Building building = Sakancom.getBuildingById(buildingId);
+        House house = building.getHouseById(houseId);
+        // building for another owner ===> house for another owner
+        if(!building.getOwner().equals(Sakancom.getCurrentUser()))
+            throw new BuildingNotFoundException();
         if(field.equalsIgnoreCase("monthlyRent")) {
             house.setMonthlyRent(Integer.parseInt(value));
         } else if(field.equalsIgnoreCase("includesElectricity")) {

@@ -42,7 +42,6 @@ public class TestUpdateInfo {
     public void theInformationWillBeUpdatedSuccessfully() throws ParseException, UnacceptableValueException, UserNotFoundException, WeakPasswordException {
         UserGeneralOperations.updateInfo(field, value);
         User user = Sakancom.getUserByUsername(username);
-        assert user != null;
         if(field.equalsIgnoreCase("firstName")) {
             assertEquals(value, user.getName().getFirstName());
         } else if(field.equalsIgnoreCase("secondName")) {

@@ -32,7 +32,7 @@ public class TestBuilding {
                 new Name("Mohammad","AbdAllateef","Alawneh"),
                 new UserLocation("Jenin","Abu-Baker Street","4070",1),
                 new ContactInfo("mo.a.alawneh@gmail.com","0592838433",new SimpleDateFormat("dd/MM/yyyy").parse("12/06/2002"),"Computer Engineering"));
-        building = new Building(1, "Golden House", null, null);
+        building = new Building(1, "Golden House", owner, null);
         house = new House(1, null, 3000, 1, HouseClassificationByGender.FAMILY);
     }
 
@@ -105,10 +105,12 @@ public class TestBuilding {
         assertNotEquals(building, new Object());
         // equal with the same id and name
         assertEquals(building, new Building(1, "Golden Building",null, null));
-        // equal with the same id only
+        // equal because of id
         assertEquals(building, new Building(1, "Illegal Name", null, null));
+        // equal because of name and owner
+        assertEquals(building, new Building(2, "Golden House", owner, null));
         // unequal
-        assertNotEquals(building, new Building(2, "Golden Building",null, null));
+        assertNotEquals(building, new Building(3, "Illegal Name",null, null));
     }
 
     @Test

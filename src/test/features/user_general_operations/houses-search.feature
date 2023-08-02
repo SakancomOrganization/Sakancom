@@ -12,7 +12,7 @@ Feature: Houses Search
     Then the resulted list size will be <resultedListSize>
 
   Examples:
-    | withElectricity |withWater | hasInternet | hasTelephone | hasBalcony | bedroomsNum | bathroomsNum | monthlyRent | username | city | street | houseClassificationByGender | resultedListSize |
+    | withElectricity | withWater | hasInternet | hasTelephone | hasBalcony | bedroomsNum | bathroomsNum | monthlyRent | username | city | street | houseClassificationByGender | resultedListSize |
     | 'true' | 'true' | 'true' | 'true' | 'true' | 3 | 2 | 2000 | 'haya-sam' | 'Nablus' | 'Rafidia' | 'Family' | 1 |
     | 'true' | 'false' | 'true' | 'true' | 'true' | 3 | 2 | 2000 | 'haya-sam' | 'Nablus' | 'Rafidia' | 'Family' | 0 |
     | 'true' | 'true' | 'true' | 'false' | 'true' | 3 | 2 | 2000 | 'haya-sam' | 'Nablus' | 'Rafidia' | 'Family' | 0 |
@@ -33,5 +33,5 @@ Feature: Houses Search
       Then a user not found exception will be thrown
 
     Examples:
-      | withElectricity |withWater | hasInternet | hasTelephone | hasBalcony | bedroomsNum | bathroomsNum | monthlyRent | username | city | street | houseClassificationByGender |
+      | withElectricity | withWater | hasInternet | hasTelephone | hasBalcony | bedroomsNum | bathroomsNum | monthlyRent | username | city | street | houseClassificationByGender |
       | 'true' | 'true' | 'true' | 'true' | 'true' | 3 | 2 | 2000 | 'ali-ahmad' | 'Nablus' | 'Rafidia' | 'Family' |

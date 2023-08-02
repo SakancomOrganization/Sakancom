@@ -28,7 +28,7 @@ public class TestGetAllNeighbors {
 
         // add a building
         Building newBuilding = new Building(-1,
-                "Golden House",
+                "Selver House",
                 Sakancom.getUserByUsername("haya-sam"),
                 new Location("Nablus","Rafidia"));
 

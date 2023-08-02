@@ -100,7 +100,9 @@ public class Building {
     @Override
     public boolean equals(Object obj) {
         if(obj instanceof Building building) {
-            return this.id == building.getId();
+            // (id == id) or (name == name and owner == owner)
+            return (this.id == building.getId())
+                    || (this.name.equalsIgnoreCase(building.getName()) && this.owner.equals(building.getOwner()));
         }
         return false;
     }
