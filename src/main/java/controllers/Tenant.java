@@ -42,4 +42,12 @@ public class Tenant {
         }
         return neighbors;
     }
+
+    public static void leaveHouse(int buildingId, int houseId) throws BuildingNotFoundException, HouseNotFoundException {
+        Building building = Sakancom.getBuildingById(buildingId);
+        House house = building.getHouseById(houseId);
+        if(!house.getSaleContract().getTenant().equals(Sakancom.getCurrentUser()))
+            throw new HouseNotFoundException();
+        house.getSaleContract().setSaleStatus(SaleStatus.AVAILABLE);
+    }
 }

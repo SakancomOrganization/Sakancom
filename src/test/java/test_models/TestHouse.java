@@ -33,7 +33,7 @@ public class TestHouse {
     }
 
     @Test
-    public void testServices() {
+    public void testServices() throws UnacceptableValueException {
         services = new Services(true, true, true, true, true, 4, 2);
         house.setServices(services);
         assertEquals(services, house.getServices());

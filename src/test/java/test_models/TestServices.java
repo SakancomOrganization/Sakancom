@@ -1,5 +1,6 @@
 package test_models;
 
+import exceptions.UnacceptableValueException;
 import models.Services;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,7 +11,7 @@ public class TestServices {
     private Services services;
 
     @Before
-    public void setup() {
+    public void setup() throws UnacceptableValueException {
         services = new Services(true, true, true, true, false, 4, 3);
     }
 
@@ -45,19 +46,21 @@ public class TestServices {
     }
 
     @Test
-    public void testBedroomsNum() {
+    public void testBedroomsNum() throws UnacceptableValueException {
         services.setBedroomsNum(3);
         assertEquals(3, services.getBedroomsNum());
+        assertThrows(UnacceptableValueException.class, () -> services.setBedroomsNum(-1));
     }
 
     @Test
-    public void testBathroomsNum() {
+    public void testBathroomsNum() throws UnacceptableValueException {
         services.setBathroomsNum(1);
         assertEquals(1, services.getBathroomsNum());
+        assertThrows(UnacceptableValueException.class, () -> services.setBathroomsNum(-1));
     }
 
     @Test
-    public void testEquals() {
+    public void testEquals() throws UnacceptableValueException {
         // object from another type
         assertNotEquals(services, new Object());
         // equal
@@ -71,7 +74,7 @@ public class TestServices {
     }
 
     @Test
-    public void testHashCode() {
+    public void testHashCode() throws UnacceptableValueException {
         Services anotherServices = new Services(true, true, true, true, false, 4, 3);
         assertEquals(services.hashCode(), anotherServices.hashCode());
     }

@@ -1,5 +1,7 @@
 package models;
 
+import exceptions.UnacceptableValueException;
+
 import java.util.Objects;
 
 public class Services {
@@ -11,14 +13,14 @@ public class Services {
     private int bedroomsNum;
     private int bathroomsNum;
 
-    public Services(boolean includesElectricity, boolean includesWater, boolean hasInternet, boolean hasTelephone, boolean hasBalcony, int bedroomsNum, int bathroomsNum) {
+    public Services(boolean includesElectricity, boolean includesWater, boolean hasInternet, boolean hasTelephone, boolean hasBalcony, int bedroomsNum, int bathroomsNum) throws UnacceptableValueException {
         this.includesElectricity = includesElectricity;
         this.includesWater = includesWater;
         this.hasInternet = hasInternet;
         this.hasTelephone = hasTelephone;
         this.hasBalcony = hasBalcony;
-        this.bedroomsNum = bedroomsNum;
-        this.bathroomsNum = bathroomsNum;
+        setBedroomsNum(bedroomsNum); // to make sure that the bedrooms number cannot be negative
+        setBathroomsNum(bathroomsNum); // to make sure that bathrooms number cannot be negative
     }
 
     public boolean isIncludesElectricity() {
@@ -65,7 +67,9 @@ public class Services {
         return bedroomsNum;
     }
 
-    public void setBedroomsNum(int bedroomsNum) {
+    public void setBedroomsNum(int bedroomsNum) throws UnacceptableValueException {
+        if(bedroomsNum < 0)
+            throw new UnacceptableValueException("Bedrooms number cannot be negative!");
         this.bedroomsNum = bedroomsNum;
     }
 
@@ -73,7 +77,9 @@ public class Services {
         return bathroomsNum;
     }
 
-    public void setBathroomsNum(int bathroomsNum) {
+    public void setBathroomsNum(int bathroomsNum) throws UnacceptableValueException {
+        if(bathroomsNum < 0)
+            throw new UnacceptableValueException("Bathrooms number cannot be negative!");
         this.bathroomsNum = bathroomsNum;
     }
 

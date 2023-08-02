@@ -98,10 +98,14 @@ public class Owner {
     }
 
     public static void addHouse(int buildingId, House house) throws AlreadyFoundElementException, BuildingNotFoundException {
+        if(!Sakancom.getBuildingById(buildingId).getOwner().equals(Sakancom.getCurrentUser()))
+            throw new BuildingNotFoundException();
         Sakancom.getBuildingById(buildingId).addHouse(house);
     }
 
     public static void addImage(int buildingId, int houseId, String image) throws AlreadyFoundElementException, HouseNotFoundException, BuildingNotFoundException {
+        if(!Sakancom.getBuildingById(buildingId).getOwner().equals(Sakancom.getCurrentUser()))
+            throw new BuildingNotFoundException();
         Sakancom.getBuildingById(buildingId).getHouseById(houseId).addImage(image);
     }
 
@@ -115,11 +119,19 @@ public class Owner {
         return houses;
     }
 
-    public static void acceptSaleRequest(int buildingId, int houseId) throws NullPointerException {
-        for(Building building : Sakancom.getBuildings()) {
-            if(building.getOwner().equals(Sakancom.getCurrentUser()) && building.getId() == buildingId) {
-                building.getHouses().stream().filter(house -> house.getId() == houseId).toList().get(0).getSaleContract().setSaleStatus(SaleStatus.UNAVAILABLE);
-            }
-        }
+    public static void acceptSaleRequest(int buildingId, int houseId) throws BuildingNotFoundException, HouseNotFoundException {
+        setSaleStatus(buildingId, houseId, SaleStatus.UNAVAILABLE);
+    }
+
+    public static void breakSaleStatus(int buildingId, int houseId) throws BuildingNotFoundException, HouseNotFoundException {
+        setSaleStatus(buildingId, houseId, SaleStatus.AVAILABLE);
+    }
+
+    private static void setSaleStatus(int buildingId, int houseId, SaleStatus saleStatus) throws BuildingNotFoundException, HouseNotFoundException {
+        Building building = Sakancom.getBuildingById(buildingId);
+        if(!building.getOwner().equals(Sakancom.getCurrentUser()))
+            throw new BuildingNotFoundException();
+        House house = building.getHouseById(houseId);
+        house.getSaleContract().setSaleStatus(saleStatus);
     }
 }

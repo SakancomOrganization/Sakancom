@@ -41,7 +41,7 @@ public class TestHousesSearch {
         }
     }
     @When("services are {string} {string} {string} {string} {string} {int} {int}")
-    public void servicesAre(String withElectricity, String withWater, String hasInternet, String hasTelephone, String hasBalcony, Integer bedroomsNum, Integer bathroomsNum) {
+    public void servicesAre(String withElectricity, String withWater, String hasInternet, String hasTelephone, String hasBalcony, Integer bedroomsNum, Integer bathroomsNum) throws UnacceptableValueException {
         boolean withElectricityBool;
         boolean withWaterBool;
         boolean hasInternetBool;

@@ -14,6 +14,7 @@ import static org.junit.Assert.*;
 public class TestAddBuilding {
     private String name;
     private Location location;
+    private Building building;
     @When("added building name is {string}")
     public void addedBuildingNameIs(String name) {
         this.name = name;
@@ -28,10 +29,11 @@ public class TestAddBuilding {
     }
     @Then("Building will be added successfully")
     public void buildingWillBeAddedSuccessfully() throws AlreadyFoundElementException {
-        int sizeBeforeAddition = Sakancom.getBuildings().size();
-        Owner.addBuilding(new Building(-1, name, Sakancom.getCurrentUser(), location));
-        int sizeAfterAddition = Sakancom.getBuildings().size();
-        assertEquals(sizeAfterAddition, sizeBeforeAddition + 1);
+        //int sizeBeforeAddition = Sakancom.getBuildings().size();
+        building = new Building(-1, name, Sakancom.getCurrentUser(), location);
+        Owner.addBuilding(building);
+        //int sizeAfterAddition = Sakancom.getBuildings().size();
+        assertTrue(Sakancom.getBuildings().contains(building));
     }
     @Then("Building will not be added successfully and already found element exception will be thrown")
     public void buildingWillNotBeAddedSuccessfullyAndAlreadyFoundElementExceptionWillBeThrown() {

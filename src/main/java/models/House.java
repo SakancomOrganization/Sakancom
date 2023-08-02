@@ -111,7 +111,7 @@ public class House {
         this.houseClassificationByGender = houseClassificationByGender;
     }
 
-    public void addImage(String image) throws AlreadyFoundElementException{
+    public void addImage(String image) throws AlreadyFoundElementException {
         if(images.contains(image))
             throw new AlreadyFoundElementException("image");
         images.add(image);

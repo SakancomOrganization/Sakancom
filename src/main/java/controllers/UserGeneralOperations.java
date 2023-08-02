@@ -1,6 +1,7 @@
 package controllers;
 
 import enums.HouseClassificationByGender;
+import enums.SaleStatus;
 import exceptions.*;
 import helpers.PasswordChecker;
 import models.*;
