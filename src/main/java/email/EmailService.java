@@ -6,11 +6,11 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import java.io.FileNotFoundException;
+import java.security.SecureRandom;
 import java.util.Properties;
-import java.util.Random;
 
 public class EmailService {
-    private static final Random random = new Random();
+    private static final SecureRandom random = new SecureRandom();
     private static final String SUBJECT = "Verification Code";
     private final String from;
     private final String password;
