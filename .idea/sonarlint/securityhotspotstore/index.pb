@@ -175,3 +175,15 @@ T
 $src/main/java/controllers/Login.java,d\7\d7348dead3122e957b92c9ed3e4ca992b430a9cd
 l
 <src/test/java/test_controllers/authentication/TestLogin.java,d\4\d44e135a2d9b865bb1ee37fef61a997ff8ff3729
+U
+%src/main/java/email/EmailService.java,4\6\4631193b3e60655c3bb6d16618ae75b37865a257
+R
+"src/main/java/models/Services.java,6\e\6e3b9cced2ede5a7ba24225f80d3b8efae101ab1
+T
+$src/main/java/controllers/Owner.java,7\1\71bdd9e0a0ac59a695bdbb675b853490b8fcdacc
+f
+6src/test/java/test_controllers/owner/TestAddHouse.java,5\5\55a9894ae84df266c3c2a347d188f8ebbb4f2079
+Y
+)src/test/features/owner/add-house.feature,1\e\1e3ce23b6bb78391a6705a3f128d43c17e07ca30
+K
+.github/workflows/build.yml,f\e\fe77d5d1439f26e353a42bbd38dece2467ff6558
