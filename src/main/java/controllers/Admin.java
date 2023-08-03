@@ -61,11 +61,15 @@ public class Admin {
     }
 
     public static void acceptBuildingUpdate(int buildingId) throws BuildingNotFoundException {
-        Sakancom.getBuildingById(buildingId).setInfoStatus(InfoStatus.ACCEPTED);
+        setBuildingInfoStatus(buildingId, InfoStatus.ACCEPTED);
     }
 
     public static void rejectBuildingUpdates(int buildingId) throws BuildingNotFoundException {
-        Sakancom.getBuildingById(buildingId).setInfoStatus(InfoStatus.REJECTED);
+        setBuildingInfoStatus(buildingId, InfoStatus.REJECTED);
+    }
+
+    private static void setBuildingInfoStatus(int buildingId, InfoStatus infoStatus) throws BuildingNotFoundException {
+        Sakancom.getBuildingById(buildingId).setInfoStatus(infoStatus);
     }
 
     public static List<House> getAllUpdatedHouses() {
@@ -77,11 +81,15 @@ public class Admin {
     }
 
     public static void acceptHouseUpdate(int buildingId, int houseId) throws HouseNotFoundException, BuildingNotFoundException {
-        Sakancom.getBuildingById(buildingId).getHouseById(houseId).setInfoStatus(InfoStatus.ACCEPTED);
+        setHouseInfoStatus(buildingId, houseId, InfoStatus.ACCEPTED);
     }
 
     public static void rejectHouseUpdate(int buildingId, int houseId) throws HouseNotFoundException, BuildingNotFoundException {
-        Sakancom.getBuildingById(buildingId).getHouseById(houseId).setInfoStatus(InfoStatus.REJECTED);
+        setHouseInfoStatus(buildingId, houseId, InfoStatus.REJECTED);
+    }
+
+    private static void setHouseInfoStatus(int buildingId, int houseId, InfoStatus infoStatus) throws BuildingNotFoundException, HouseNotFoundException {
+        Sakancom.getBuildingById(buildingId).getHouseById(houseId).setInfoStatus(infoStatus);
     }
 
     public static Map<String, Integer> getStatistics() {

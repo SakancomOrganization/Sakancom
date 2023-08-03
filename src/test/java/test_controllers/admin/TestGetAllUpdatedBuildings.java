@@ -12,8 +12,8 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-public class TestGetAllUpdatingHouses {
-    private List<Building> updatedHouses;
+public class TestGetAllUpdatedBuildings {
+    private List<Building> updatedBuildings;
     @When("building {int} info status is set to be dirty")
     public void buildingInfoStatusIsSetToBeDirty(Integer buildingId) throws BuildingNotFoundException {
         Sakancom.getBuildingById(buildingId).setInfoStatus(InfoStatus.DIRTY);
@@ -24,11 +24,11 @@ public class TestGetAllUpdatingHouses {
     }
     @When("the current admin try to get all updating buildings")
     public void theCurrentAdminTryToGetAllUpdatingBuildings() {
-        updatedHouses = Admin.getAllUpdatedBuildings();
+        updatedBuildings = Admin.getAllUpdatedBuildings();
     }
-    @Then("the result size of the updating houses must be {int}")
+    @Then("the result size of the updating buildings must be {int}")
     public void theResultSizeOfTheUpdatingHousesMustBe(Integer expectedSize) {
-        Integer actualSize = updatedHouses.size();
+        Integer actualSize = updatedBuildings.size();
         assertEquals(expectedSize, actualSize);
     }
 }
