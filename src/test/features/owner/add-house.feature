@@ -31,18 +31,16 @@ Feature: Add House
     # non-owner
     | 1 | 'mo-alawneh' | 'true' | 'false' | 'true' | 'false' | 'true' | 2 | 1 | 2400 | 3 | 'Family' |
 
-    Scenario Outline: Add Failed Due to Unacceptable Value Exception
-      When house added to building with id <buildingId>
-      And current owner who wants to add a house is <username>
-      And added house services are <withElectricity> <withWater> <hasInternet> <hasTelephone> <hasBalcony> <bedroomsNum> <bathroomsNum>
-      And monthlyRent is <monthlyRent>
-      And floor num is <floorNum>
-      And house classification by gender of the added house is <houseClassificationByGender>
-      Then house will not be added successfully and unacceptable value exception will be thrown
+  Scenario Outline: Add Failed Due to Unacceptable Value Exception In House
+    When house added to building with id <buildingId>
+    And current owner who wants to add a house is <username>
+    And added house services that makes the exception are <withElectricity> <withWater> <hasInternet> <hasTelephone> <hasBalcony> <bedroomsNum> <bathroomsNum>
+    And monthlyRent is <monthlyRent>
+    And floor num is <floorNum>
+    And house classification by gender of the added house is <houseClassificationByGender>
+    Then house will not be added successfully and unacceptable value exception will be thrown because of the house
 
-      Examples:
+    Examples:
       | buildingId | username | withElectricity | withWater | hasInternet | hasTelephone | hasBalcony | bedroomsNum | bathroomsNum | monthlyRent | floorNum | houseClassificationByGender |
-      | 1 | 'haya-sam' | 'true' | 'false' | 'true' | 'false' | 'true' | -1 | 2 | 2400 | 3 | 'Family' |
-      | 1 | 'haya-sam' | 'true' | 'false' | 'true' | 'false' | 'true' | 1 | -2 | 2400 | 3 | 'Family' |
       | 1 | 'haya-sam' | 'true' | 'false' | 'true' | 'false' | 'true' | 1 | 2 | -100 | 3 | 'Family' |
       | 1 | 'haya-sam' | 'true' | 'false' | 'true' | 'false' | 'true' | 1 | 2 | 2400 | -3 | 'Family' |

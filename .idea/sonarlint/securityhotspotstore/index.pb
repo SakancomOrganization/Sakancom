@@ -89,12 +89,6 @@ h
 8src/main/java/exceptions/UnacceptableValueException.java,e/8/e8a75feae3c710ab0e14ca34eaf3a8881986654f
 [
 +src/test/java/test_models/TestServices.java,5/9/5976b8e3c63b161812d9ef2d7ce743047b91ca8d
-R
-"src/main/java/models/Services.java,6/e/6e3b9cced2ede5a7ba24225f80d3b8efae101ab1
-Y
-)src/test/features/owner/add-house.feature,1/e/1e3ce23b6bb78391a6705a3f128d43c17e07ca30
-f
-6src/test/java/test_controllers/owner/TestAddHouse.java,5/5/55a9894ae84df266c3c2a347d188f8ebbb4f2079
 X
 (src/test/java/test_models/TestHouse.java,e/b/eb55698eb85bad5b8d3a8b170525962083d58e44
 Y

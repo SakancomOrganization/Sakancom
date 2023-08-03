@@ -16,7 +16,6 @@ import static org.junit.Assert.*;
 
 public class TestAddHouse {
     private int buildingId;
-    private String username;
     private Services services;
     private int monthlyRent;
     private int floorNum;
@@ -46,6 +45,7 @@ public class TestAddHouse {
         this.hasBalconyBoolean = Boolean.parseBoolean(hasBalcony);
         this.bedroomsNum = bedroomsNum;
         this.bathroomsNum = bathroomsNum;
+        services = new Services(withElectricityBoolean, withWaterBoolean, hasInternetBoolean, hasTelephoneBoolean, hasBalconyBoolean, bedroomsNum, bathroomsNum);
     }
     @When("monthlyRent is {int}")
     public void monthlyRentIs(Integer monthlyRent) {
@@ -79,12 +79,18 @@ public class TestAddHouse {
             Owner.addHouse(buildingId, new House(-1, services, monthlyRent, floorNum, houseClassificationByGender));
         });
     }
-    @Then("house will not be added successfully and unacceptable value exception will be thrown")
-    public void houseWillNotBeAddedSuccessfullyAndUnacceptableValueExceptionWillBeThrown() {
-        assertThrows(UnacceptableValueException.class,() -> {
-            services = new Services(withElectricityBoolean, withWaterBoolean, hasInternetBoolean, hasTelephoneBoolean, hasBalconyBoolean, bedroomsNum, bathroomsNum);
-            House house = new House(-1, services, monthlyRent, floorNum, houseClassificationByGender);
-           Owner.addHouse(buildingId, house);
-        });
+    @When("added house services that makes the exception are {string} {string} {string} {string} {string} {int} {int}")
+    public void addedHouseServicesThatMakeTheExceptionAre(String withElectricity, String withWater, String hasInternet, String hasTelephone, String hasBalcony, Integer bedroomsNum, Integer bathroomsNum) throws UnacceptableValueException {
+        this.withElectricityBoolean = Boolean.parseBoolean(withElectricity);
+        this.withWaterBoolean = Boolean.parseBoolean(withWater);
+        this.hasInternetBoolean = Boolean.parseBoolean(hasInternet);
+        this.hasTelephoneBoolean = Boolean.parseBoolean(hasTelephone);
+        this.hasBalconyBoolean = Boolean.parseBoolean(hasBalcony);
+        this.bedroomsNum = bedroomsNum;
+        this.bathroomsNum = bathroomsNum;
+    }
+    @Then("house will not be added successfully and unacceptable value exception will be thrown because of the house")
+    public void houseWillNotBeAddedSuccessfullyAndUnacceptableValueExceptionWillBeThrownBecauseOfTheHouse() {
+        assertThrows(UnacceptableValueException.class, () -> Owner.addHouse(buildingId, new House(-1, services, monthlyRent, floorNum, houseClassificationByGender)));
     }
 }
