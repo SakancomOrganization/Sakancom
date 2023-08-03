@@ -7,8 +7,6 @@ import models.User;
 
 import javax.mail.MessagingException;
 
-import java.io.FileNotFoundException;
-
 public class Login {
     private Login () {
 
