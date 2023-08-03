@@ -10,8 +10,8 @@ import java.util.Properties;
 import java.util.Random;
 
 public class EmailService {
+    private static final Random random = new Random();
     private static final String SUBJECT = "Verification Code";
-    private static final Random random = new Random(10);
     private final String from;
     private final String password;
     private String body;
