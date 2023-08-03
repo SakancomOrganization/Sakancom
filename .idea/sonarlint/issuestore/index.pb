@@ -1,10 +1,6 @@
 
 _
 /src/test/features/authentication/logout.feature,f\0\f0d1bdae5c745acc2b00e5ef33492d1f39e2355c
-7
-pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
-l
-<src/test/java/test_controllers/authentication/TestLogin.java,d/4/d44e135a2d9b865bb1ee37fef61a997ff8ff3729
 m
 =src/test/java/test_controllers/authentication/TestLogout.java,b/0/b0871855824b9da619c1a2ad908028519b9455f5
 m
@@ -13,8 +9,6 @@ m
 Ksrc/test/java/test_controllers/user_general_operations/TestRatingHouse.java,6/3/636b877e1c2e6beac28e31bd1eb82f928fbe819f
 \
 ,src/test/java/test_email/TestYmlHandler.java,0/6/06a33f9c6c445a85223e8ca2371759952dee3c6b
-^
-.src/test/java/test_email/TestEmailService.java,9/2/92965a836df3b52954ea4d0bdebfff0156d6e303
 r
 Bsrc/test/java/test_controllers/tenant/TestListAvailableHouses.java,d/6/d6ce3d6927845404966a71a36c3d5d7cbd09c88c
 k
@@ -33,8 +27,6 @@ _
 /src/test/java/test_models/TestSaleContract.java,5/b/5b7d52cd6d6ca9637268c7e43c7ba9acddce975e
 W
 'src/test/java/test_models/TestUser.java,9/a/9a3e5289d69dd216e84f26810598924c27f61631
-U
-%src/main/java/email/EmailService.java,4/6/4631193b3e60655c3bb6d16618ae75b37865a257
 S
 #src/main/java/email/YmlHandler.java,0/0/0057fdb86176fb566471c3c141dc5b3a5c1c956b
 d
@@ -69,8 +61,6 @@ j
 :src/test/features/tenant/list-all-available-houses.feature,6/b/6ba3e68457602767fb3c023c631393f407285c9b
 f
 6src/test/features/owner/list-all-own-buildings.feature,8/c/8cb660bcb9b11d79cdf632017b3a8bec854633fc
-~
-Nsrc/test/java/test_controllers/authentication/TestRunnerForAuthentication.java,7/6/768bf14e745a6a746b4c88f12268169620a07c06
 x
 Hsrc/test/java/test_controllers/owner/TestListAllHousesInOwnBuilding.java,1/7/17741b71c62e7546243489043885a768a94475f1
 s
@@ -193,8 +183,6 @@ U
 %src/main/java/controllers/SignUp.java,6/9/69abe9c9b4bb9983c22f528ce7bcbed4714e5f0b
 U
 %src/main/java/controllers/Logout.java,6/6/66a2d9f6a406e5794c3f940330e0defcc9e2875a
-T
-$src/main/java/controllers/Login.java,d/7/d7348dead3122e957b92c9ed3e4ca992b430a9cd
 b
 2src/test/features/admin/search-about-users.feature,4/4/44b89844075766093ac4277a075545aaee01417f
 R

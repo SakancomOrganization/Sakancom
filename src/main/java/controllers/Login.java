@@ -6,6 +6,7 @@ import models.Sakancom;
 import models.User;
 
 import javax.mail.MessagingException;
+
 import java.io.FileNotFoundException;
 
 public class Login {
@@ -21,9 +22,9 @@ public class Login {
         }
         return false;
     }
-    public static void forgetPassword(String username) throws MessagingException, FileNotFoundException, UserNotFoundException {
+    public static void forgetPassword(EmailService emailService, String username) throws MessagingException, UserNotFoundException {
         User user = Sakancom.getUserByUsername(username);
-        String newPassword = EmailService.sendEmail(user.getContactInfo().getEmail());
+        String newPassword = emailService.sendEmail(user.getContactInfo().getEmail());
         user.setPassword(newPassword);
     }
 }

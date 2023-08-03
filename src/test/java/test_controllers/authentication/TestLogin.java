@@ -1,6 +1,7 @@
 package test_controllers.authentication;
 
 import controllers.Login;
+import email.EmailService;
 import exceptions.AlreadyFoundElementException;
 import exceptions.UnacceptableValueException;
 import exceptions.UserNotFoundException;
@@ -8,11 +9,14 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import models.Sakancom;
+import org.mockito.Mockito;
 
+import javax.mail.MessagingException;
 import java.text.ParseException;
 
 import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.mockito.Mockito.*;
 
 public class TestLogin {
     private String username;
@@ -43,11 +47,14 @@ public class TestLogin {
         assertFalse(Login.login(username, password));
     }
     @Then("the user will receive a new password on the email")
-    public void theUserWillReceiveANewPasswordOnTheEmail()  {
-        assertDoesNotThrow(() -> Login.forgetPassword(username));
+    public void theUserWillReceiveANewPasswordOnTheEmail() throws MessagingException, UserNotFoundException {
+        String previousPassword = Sakancom.getUserByUsername(username).getPassword();
+        Login.forgetPassword(mock(EmailService.class), username);
+        String updatedPassword = Sakancom.getUserByUsername(username).getPassword();
+        assertNotEquals(previousPassword, updatedPassword);
     }
-    @Then("the user will not receive a new password on the email")
+    @Then("the user will not receive a new password on the email and a user not found exception will be thrown")
     public void theUserWillNotReceiveANewPasswordOnTheEmail() {
-        assertThrows(UserNotFoundException.class, () -> Login.forgetPassword(username));
+        assertThrows(UserNotFoundException.class, () -> Login.forgetPassword(mock(EmailService.class),username));
     }
 }

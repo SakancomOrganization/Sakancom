@@ -45,7 +45,7 @@ Feature: Login
 
     Scenario Outline: Forget Password With Invalid Username
       When username is <username>
-      Then the user will not receive a new password on the email
+      Then the user will not receive a new password on the email and a user not found exception will be thrown
 
       Examples:
         | username |

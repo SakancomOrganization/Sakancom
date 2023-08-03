@@ -12,12 +12,15 @@ import java.util.Random;
 public class EmailService {
     private static final String SUBJECT = "Verification Code";
     private static final Random random = new Random(10);
+    private final String from;
+    private final String password;
 
-    private EmailService() {
-
+    public EmailService() throws FileNotFoundException {
+        from = YmlHandler.getValue("fromEmail");
+        password = YmlHandler.getValue("password");
     }
 
-    public static String sendEmail(String to) throws MessagingException, FileNotFoundException {
+    public String sendEmail(String to) throws MessagingException {
         Properties prop = new Properties();
         prop.put("mail.smtp.host", "smtp.gmail.com");
         prop.put("mail.smtp.port", "465");
@@ -25,9 +28,6 @@ public class EmailService {
         prop.put("mail.smtp.socketFactory.port", "465");
         prop.put("mail.smtp.ssl.checkserveridentity", "true");
         prop.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-
-        String from = YmlHandler.getValue("fromEmail");
-        String password = YmlHandler.getValue("password");
 
         Session session = Session.getInstance(prop, new javax.mail.Authenticator() {
             @Override
