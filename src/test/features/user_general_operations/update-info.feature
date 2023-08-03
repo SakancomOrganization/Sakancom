@@ -63,3 +63,13 @@ Feature: Update Personal Information
     | username | field | value |
     | 'mo-alawneh' | 'birthDate' | '11-11-2007' |
     | 'mo-alawneh' | 'birthDate' | '2007\11\11' |
+
+  Scenario Outline: Update Failed Due to Invalid Email Format Exception
+    When <username> is already logged in
+    And field is <field>
+    And value is <value>
+    Then the information will not be updated and an invalid email format exception will be thrown
+
+    Examples:
+      | username | field | value |
+      | 'mo-alawneh' | 'email' | 'f@najah.com' |

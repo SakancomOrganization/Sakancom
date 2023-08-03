@@ -1,5 +1,8 @@
 package models;
 
+import exceptions.InvalidEmailFormatException;
+import helpers.EmailFormatChecker;
+
 import java.util.Date;
 
 public class ContactInfo {
@@ -19,7 +22,9 @@ public class ContactInfo {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(String email) throws InvalidEmailFormatException {
+        if(!EmailFormatChecker.hasCorrectEmailFormat(email))
+            throw new InvalidEmailFormatException();
         this.email = email;
     }
 

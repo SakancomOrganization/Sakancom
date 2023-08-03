@@ -16,7 +16,7 @@ public class UserGeneralOperations {
 
     }
 
-    public static void updateInfo(String field, String value) throws NumberFormatException, ParseException, NullPointerException, UnacceptableValueException, WeakPasswordException {
+    public static void updateInfo(String field, String value) throws NumberFormatException, ParseException, NullPointerException, UnacceptableValueException, WeakPasswordException, InvalidEmailFormatException {
         User user = Sakancom.getCurrentUser();
         if(field.equalsIgnoreCase("password")) {
             if(!PasswordChecker.isStrongPassword(value)) {

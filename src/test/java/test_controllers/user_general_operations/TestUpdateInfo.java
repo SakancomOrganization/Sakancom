@@ -1,10 +1,7 @@
 package test_controllers.user_general_operations;
 
 import controllers.UserGeneralOperations;
-import exceptions.AlreadyFoundElementException;
-import exceptions.UnacceptableValueException;
-import exceptions.UserNotFoundException;
-import exceptions.WeakPasswordException;
+import exceptions.*;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -39,7 +36,7 @@ public class TestUpdateInfo {
         this.value = value;
     }
     @Then("the information will be updated successfully")
-    public void theInformationWillBeUpdatedSuccessfully() throws ParseException, UnacceptableValueException, UserNotFoundException, WeakPasswordException {
+    public void theInformationWillBeUpdatedSuccessfully() throws ParseException, UnacceptableValueException, UserNotFoundException, WeakPasswordException, InvalidEmailFormatException {
         UserGeneralOperations.updateInfo(field, value);
         User user = Sakancom.getUserByUsername(username);
         if(field.equalsIgnoreCase("firstName")) {
@@ -81,5 +78,9 @@ public class TestUpdateInfo {
     @Then("the information will not be updated and date parse exception will be thrown")
     public void theInformationWillNotBeUpdatedAndDateParseExceptionWillBeThrown() {
         assertThrows(ParseException.class, () -> UserGeneralOperations.updateInfo(field, value));
+    }
+    @Then("the information will not be updated and an invalid email format exception will be thrown")
+    public void theInformationWillNotBeUpdatedAndAnInvalidEmailFormatExceptionWillBeThrown() {
+        assertThrows(InvalidEmailFormatException.class, () -> UserGeneralOperations.updateInfo(field, value));
     }
 }

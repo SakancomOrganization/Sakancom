@@ -115,7 +115,7 @@ public class Sakancom {
                 UserType.OWNER,
                 new Name("Haya","Yaser","Samaana"),
                 new UserLocation(NABLUS,"Tunis",PERSONAL_BUILDING,1),
-                new ContactInfo("hayasam@stu.najah.edu","0599112233",
+                new ContactInfo("mohammad1jaba2002@gmail.com","0599112233",
                         new SimpleDateFormat(DATA_PATTERN).parse("25/05/1984"),COMPUTER_ENGINEERING));
 
         // add a tenant
@@ -124,7 +124,7 @@ public class Sakancom {
                 UserType.TENANT,
                 new Name("Thana","Mahmoud","Mari"),
                 new UserLocation(NABLUS,"JamalAbdAlNasser",PERSONAL_BUILDING,1),
-                new ContactInfo("thanaMari@stu.najah.edu","0599332211",
+                new ContactInfo("s12028067@stu.najah.edu","0599332211",
                         new SimpleDateFormat(DATA_PATTERN).parse("25/05/1992"),COMPUTER_ENGINEERING));
 
         // add a building

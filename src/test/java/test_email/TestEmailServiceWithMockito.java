@@ -3,7 +3,6 @@ package test_email;
 import email.EmailService;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
 
 import javax.mail.MessagingException;
 
@@ -23,9 +22,8 @@ public class TestEmailServiceWithMockito {
      }
 
      @Test
-     public void testReturnEmailValue() throws MessagingException {
-         when(mockEmailService.sendEmail("mo.a.alawneh@gmail.com")).thenReturn("1234");
-         assertEquals("1234", mockEmailService.sendEmail("mo.a.alawneh@gmail.com"));
+     public void testReturnBody() {
+         assertEquals("", emailService.getBody());
      }
 
      @Test

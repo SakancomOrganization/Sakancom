@@ -14,13 +14,15 @@ public class EmailService {
     private static final Random random = new Random(10);
     private final String from;
     private final String password;
+    private String body;
 
     public EmailService() throws FileNotFoundException {
         from = YmlHandler.getValue("fromEmail");
         password = YmlHandler.getValue("password");
+        body = "";
     }
 
-    public String sendEmail(String to) throws MessagingException {
+    public void sendEmail(String to) throws MessagingException {
         Properties prop = new Properties();
         prop.put("mail.smtp.host", "smtp.gmail.com");
         prop.put("mail.smtp.port", "465");
@@ -42,7 +44,7 @@ public class EmailService {
         message.setSubject(SUBJECT);
 
         MimeBodyPart mimeBodyPart = new MimeBodyPart();
-        String body = generateRandomString();
+        body = generateRandomString();
         mimeBodyPart.setContent(body, "text/html");
 
         Multipart multipart = new MimeMultipart();
@@ -50,8 +52,10 @@ public class EmailService {
         message.setContent(multipart);
 
         Transport.send(message);
+    }
 
-        return body; // new password
+    public String getBody() {
+        return body;
     }
 
     private static String generateRandomString() {

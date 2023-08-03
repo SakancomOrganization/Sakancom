@@ -1,5 +1,6 @@
 package test_models;
 
+import exceptions.InvalidEmailFormatException;
 import models.ContactInfo;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import static junit.framework.TestCase.assertEquals;
+import static org.junit.Assert.assertThrows;
 
 public class TestContactInfo {
     private ContactInfo contactInfo;
@@ -20,9 +22,10 @@ public class TestContactInfo {
     }
 
     @Test
-    public void testEmail() {
+    public void testEmail() throws InvalidEmailFormatException {
         contactInfo.setEmail("s12028067@stu.najah.edu");
         assertEquals("s12028067@stu.najah.edu",contactInfo.getEmail());
+        assertThrows(InvalidEmailFormatException.class, () -> contactInfo.setEmail("f@f"));
     }
 
     @Test

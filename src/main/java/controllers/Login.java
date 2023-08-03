@@ -22,7 +22,7 @@ public class Login {
     }
     public static void forgetPassword(EmailService emailService, String username) throws MessagingException, UserNotFoundException {
         User user = Sakancom.getUserByUsername(username);
-        String newPassword = emailService.sendEmail(user.getContactInfo().getEmail());
-        user.setPassword(newPassword);
+        emailService.sendEmail(user.getContactInfo().getEmail());
+        user.setPassword(emailService.getBody());
     }
 }
