@@ -25,8 +25,6 @@ _
 /src/test/java/test_models/TestSaleContract.java,5/b/5b7d52cd6d6ca9637268c7e43c7ba9acddce975e
 W
 'src/test/java/test_models/TestUser.java,9/a/9a3e5289d69dd216e84f26810598924c27f61631
-S
-#src/main/java/email/YmlHandler.java,0/0/0057fdb86176fb566471c3c141dc5b3a5c1c956b
 d
 4src/main/java/enums/HouseClassificationByGender.java,0/5/05236b06458042abf944305c066bd1e429aff2be
 S
@@ -185,3 +183,5 @@ Y
 )src/test/features/owner/add-house.feature,1\e\1e3ce23b6bb78391a6705a3f128d43c17e07ca30
 f
 6src/test/java/test_controllers/owner/TestAddHouse.java,5\5\55a9894ae84df266c3c2a347d188f8ebbb4f2079
+K
+.github/workflows/build.yml,f\e\fe77d5d1439f26e353a42bbd38dece2467ff6558
