@@ -46,8 +46,6 @@ c
 Z
 *src/main/java/helpers/PasswordChecker.java,7/e/7e831ad7c59983fd34146cfc1079070079d33602
 S
-#src/main/java/models/Furniture.java,4/6/4626cdf9fe9da559c320585f0fede62ec4722f8b
-S
 #src/main/java/models/HouseRate.java,2/e/2ee3094851fc712b4440cb4edeaf822c3e6dc36d
 V
 &src/main/java/models/SaleContract.java,3/f/3f008ae267223d7283c2bc612e4e3627ea6f99e4
