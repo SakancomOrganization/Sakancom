@@ -183,8 +183,6 @@ f
 6src/test/java/test_controllers/owner/TestAddHouse.java,5\5\55a9894ae84df266c3c2a347d188f8ebbb4f2079
 Y
 )src/test/features/owner/add-house.feature,1\e\1e3ce23b6bb78391a6705a3f128d43c17e07ca30
-K
-.github/workflows/build.yml,f\e\fe77d5d1439f26e353a42bbd38dece2467ff6558
 @
 email-config.yml,d\d\dda460ce63487d6cda272098330a3a48ef8eb34d
 S
