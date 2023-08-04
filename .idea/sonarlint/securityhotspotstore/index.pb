@@ -185,3 +185,7 @@ Y
 )src/test/features/owner/add-house.feature,1\e\1e3ce23b6bb78391a6705a3f128d43c17e07ca30
 K
 .github/workflows/build.yml,f\e\fe77d5d1439f26e353a42bbd38dece2467ff6558
+@
+email-config.yml,d\d\dda460ce63487d6cda272098330a3a48ef8eb34d
+S
+#src/main/java/email/YmlHandler.java,0\0\0057fdb86176fb566471c3c141dc5b3a5c1c956b

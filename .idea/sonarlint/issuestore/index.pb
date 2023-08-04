@@ -185,3 +185,7 @@ f
 6src/test/java/test_controllers/owner/TestAddHouse.java,5\5\55a9894ae84df266c3c2a347d188f8ebbb4f2079
 K
 .github/workflows/build.yml,f\e\fe77d5d1439f26e353a42bbd38dece2467ff6558
+S
+#src/main/java/email/YmlHandler.java,0\0\0057fdb86176fb566471c3c141dc5b3a5c1c956b
+@
+email-config.yml,d\d\dda460ce63487d6cda272098330a3a48ef8eb34d
