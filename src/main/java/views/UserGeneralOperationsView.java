@@ -11,6 +11,7 @@ import java.text.ParseException;
 import java.util.logging.Logger;
 
 public class UserGeneralOperationsView {
+    public static final String VALUE = "value";
     private static final Logger logger = Logger.getLogger(UserGeneralOperationsView.class.getName());
     private UserGeneralOperationsView() {
 
@@ -24,7 +25,7 @@ public class UserGeneralOperationsView {
     public static void updateInfoView() {
         printUserFields();
         String field = CustomizedScanners.scanNonEmptyString("field");
-        String value = CustomizedScanners.scanNonEmptyString("value");
+        String value = CustomizedScanners.scanNonEmptyString(VALUE);
         while (true) {
             try {
                 if(ViewsValidation.isValidUserField(field)) {
@@ -37,16 +38,16 @@ public class UserGeneralOperationsView {
                 }
             } catch (ParseException e) {
                 logger.warning("Invalid birthdate!");
-                value = CustomizedScanners.scanString("value");
+                value = CustomizedScanners.scanString(VALUE);
             } catch (UnacceptableValueException e) {
                 logger.warning("Invalid floor number!");
-                value = CustomizedScanners.scanString("value");
+                value = CustomizedScanners.scanString(VALUE);
             } catch (WeakPasswordException e) {
                 logger.warning("Weak password!");
-                value = CustomizedScanners.scanString("value");
+                value = CustomizedScanners.scanString(VALUE);
             } catch (InvalidEmailFormatException e) {
                 logger.warning("Invalid email!");
-                value = CustomizedScanners.scanString("value");
+                value = CustomizedScanners.scanString(VALUE);
             }
         }
     }
