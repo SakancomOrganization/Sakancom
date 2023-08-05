@@ -98,7 +98,7 @@ public class UserGeneralOperationsView {
                 Services services = new Services(withElectricity, withWater, hasInternet, hasTelephone, hasBalcony, bedroomsNum, bathroomsNum);
                 Name ownerName = new Name(firstName, middleName, lastName);
                 Location location = new Location(city, street);
-                ListPrinter.printMap(UserGeneralOperations.searchAboutHouses(services, monthlyRent, ownerName, buildingName, location, houseClassificationByGender));
+                CollectionsPrinter.printMap(UserGeneralOperations.searchAboutHouses(services, monthlyRent, ownerName, buildingName, location, houseClassificationByGender));
                 break;
             } catch (UnacceptableValueException e) {
                 if(!ViewsValidation.isNonNegativeNumber(bedroomsNum)) {

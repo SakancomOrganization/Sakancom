@@ -11,9 +11,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
-public class ListPrinter {
-    private static final Logger logger = Logger.getLogger(ListPrinter.class.getName());
-    private ListPrinter() {
+public class CollectionsPrinter {
+    private static final Logger logger = Logger.getLogger(CollectionsPrinter.class.getName());
+    private CollectionsPrinter() {
 
     }
 

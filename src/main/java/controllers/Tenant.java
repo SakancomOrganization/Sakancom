@@ -51,6 +51,21 @@ public class Tenant {
         return neighbors;
     }
 
+    public static Map<Integer, List<House>> listTenantHouses() {
+        Map<Integer, List<House>> tenantHouses = new HashMap<>();
+        for(Building building : Sakancom.getBuildings()) {
+            List<House> subList = new ArrayList<>();
+            for (House house : building.getHouses()) {
+                if(house.getSaleContract().getSaleStatus() == SaleStatus.UNAVAILABLE
+                && house.getSaleContract().getTenant().equals(Sakancom.getCurrentUser()))
+                    subList.add(house);
+            }
+            if(!subList.isEmpty())
+                tenantHouses.put(building.getId(), subList);
+        }
+        return tenantHouses;
+    }
+
     public static void leaveHouse(int buildingId, int houseId) throws BuildingNotFoundException, HouseNotFoundException {
         Building building = Sakancom.getBuildingById(buildingId);
         House house = building.getHouseById(houseId);
