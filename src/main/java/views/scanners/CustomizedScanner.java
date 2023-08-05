@@ -1,7 +1,5 @@
 package views.scanners;
 
-import java.io.Console;
-import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.logging.*;
