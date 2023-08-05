@@ -12,11 +12,12 @@ import models.Sakancom;
 
 import java.text.ParseException;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 
 public class TestListAvailableHouses {
-    private List<House> availableHouses;
+    private Map<Integer, List<House>> availableHouses;
 
     @Given("Database is already filled")
     public void databaseIsAlreadyFilled() throws UnacceptableValueException, ParseException, AlreadyFoundElementException {

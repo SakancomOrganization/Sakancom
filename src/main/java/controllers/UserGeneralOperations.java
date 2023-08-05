@@ -9,7 +9,9 @@ import models.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class UserGeneralOperations {
     private UserGeneralOperations() {
@@ -55,19 +57,28 @@ public class UserGeneralOperations {
         house.getHouseRate().setUserRate(currentUser, rate);
     }
 
-    public static List<House> searchAboutHouses(Services services, int monthlyRent, Name ownerName, String buildingName, Location location, HouseClassificationByGender houseClassificationByGender) {
-        List<House> resultHouses = new ArrayList<>();
-        for(Building building : Sakancom.getBuildings()) {
-            for(House house : building.getHouses()) {
-                if((services == null || house.getServices().equals(services))
-                        && (monthlyRent == -1 || house.getMonthlyRent() <= monthlyRent)
-                        && (ownerName == null || building.getOwner().getName().equals(ownerName))
-                        && StringsComparator.compare(building.getName(), buildingName)
-                        && (location == null || building.getLocation().equals(location))
-                        && (houseClassificationByGender == null || house.getHouseClassificationByGender().equals(houseClassificationByGender))) {
-                    resultHouses.add(house);
-                }
+    private static List<House> searchInsideBuilding(int buildingId, Services services, int monthlyRent, Name ownerName, String buildingName, Location location, HouseClassificationByGender houseClassificationByGender) throws BuildingNotFoundException {
+        Building building = Sakancom.getBuildingById(buildingId);
+        List<House> subList = new ArrayList<>();
+        for(House house : building.getHouses()) {
+            if((services == null || house.getServices().equals(services))
+                    && (monthlyRent == -1 || house.getMonthlyRent() <= monthlyRent)
+                    && (ownerName == null || building.getOwner().getName().equals(ownerName))
+                    && StringsComparator.compare(building.getName(), buildingName)
+                    && (location == null || building.getLocation().equals(location))
+                    && (houseClassificationByGender == null || house.getHouseClassificationByGender().equals(houseClassificationByGender))) {
+                subList.add(house);
             }
+        }
+        return subList;
+    }
+
+    public static Map<Integer, List<House>> searchAboutHouses(Services services, int monthlyRent, Name ownerName, String buildingName, Location location, HouseClassificationByGender houseClassificationByGender) throws BuildingNotFoundException {
+        Map<Integer, List<House>> resultHouses = new HashMap<>();
+        for(Building building : Sakancom.getBuildings()) {
+            List<House> subList = searchInsideBuilding(building.getId(), services, monthlyRent, ownerName, buildingName, location, houseClassificationByGender);
+            if(!subList.isEmpty())
+                resultHouses.put(building.getId(), subList);
         }
         return resultHouses;
     }

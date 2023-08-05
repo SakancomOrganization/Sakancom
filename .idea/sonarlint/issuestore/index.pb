@@ -9,8 +9,6 @@ m
 Ksrc/test/java/test_controllers/user_general_operations/TestRatingHouse.java,6/3/636b877e1c2e6beac28e31bd1eb82f928fbe819f
 \
 ,src/test/java/test_email/TestYmlHandler.java,0/6/06a33f9c6c445a85223e8ca2371759952dee3c6b
-r
-Bsrc/test/java/test_controllers/tenant/TestListAvailableHouses.java,d/6/d6ce3d6927845404966a71a36c3d5d7cbd09c88c
 k
 ;src/test/java/test_controllers/tenant/TestRequestHouse.java,e/e/ee62982f261e5c6926892397f566ad53ddedf2f5
 c
@@ -47,10 +45,6 @@ Z
 *src/main/java/helpers/PasswordChecker.java,7/e/7e831ad7c59983fd34146cfc1079070079d33602
 S
 #src/main/java/models/HouseRate.java,2/e/2ee3094851fc712b4440cb4edeaf822c3e6dc36d
-V
-&src/main/java/models/SaleContract.java,3/f/3f008ae267223d7283c2bc612e4e3627ea6f99e4
-j
-:src/test/features/tenant/list-all-available-houses.feature,6/b/6ba3e68457602767fb3c023c631393f407285c9b
 f
 6src/test/features/owner/list-all-own-buildings.feature,8/c/8cb660bcb9b11d79cdf632017b3a8bec854633fc
 x
@@ -71,8 +65,6 @@ a
 1src/test/features/owner/update-house-info.feature,2/e/2ef545b780eef096647dae14e0c900bfc0628133
 m
 =src/test/java/test_controllers/owner/TestUpdateHouseInfo.java,5/b/5b7e73dabc63ce4a1d0983d55d8884faa789b6d3
-n
->src/test/java/test_controllers/tenant/TestRunnerForTenant.java,8/8/88fc40bd9a77457488f8f0faf11a362ebc6c084c
 n
 >src/test/java/test_controllers/tenant/TestGetAllNeighbors.java,e/9/e9cf52fa7ac528a934aa3130f045ea2597de8207
 [
@@ -137,10 +129,6 @@ W
 'src/test/java/test_models/TestName.java,5/2/524e5bfdb82ec3094c2b7a9d8349c8cbf94c944e
 N
 src/main/java/models/Name.java,0/f/0f27e1a9e3c3dd534467d7c7d74566155dc3abda
-O
-src/main/java/models/House.java,b/f/bfcafc26657f1e7ed2d5dd49a1d335fa986bdf38
-R
-"src/main/java/models/Building.java,e/3/e319e29765be4063c1a32bc493a8f59de8802bc1
 \
 ,src/main/java/helpers/StringsComparator.java,5/3/5337b51e372d135600e1ad6f4d91189339b65ad0
 [
@@ -149,12 +137,6 @@ _
 /src/test/java/test_models/TestUserLocation.java,b/3/b372827f061f412ba885ae599b6edf2fce0a4018
 R
 "src/main/java/models/Location.java,3/b/3bf95ea7f996224b5c0785348fba99abe16ce610
-V
-&src/main/java/models/UserLocation.java,6/9/6958ac9bb15c195b510ff828b9feb37f83241199
-|
-Lsrc/test/java/test_controllers/user_general_operations/TestHousesSearch.java,e/a/ea5ead70163fd8d5629112ef2a09a7cecd4c5a02
-o
-?src/test/features/user_general_operations/houses-search.feature,1/4/14b30cd4f6827324c721eb61ace995f1e129b483
 b
 2src/test/features/admin/search-about-users.feature,4/4/44b89844075766093ac4277a075545aaee01417f
 r
@@ -171,8 +153,6 @@ l
 <src/test/java/test_controllers/authentication/TestLogin.java,d\4\d44e135a2d9b865bb1ee37fef61a997ff8ff3729
 R
 "src/main/java/models/Services.java,6\e\6e3b9cced2ede5a7ba24225f80d3b8efae101ab1
-T
-$src/main/java/controllers/Owner.java,7\1\71bdd9e0a0ac59a695bdbb675b853490b8fcdacc
 U
 %src/main/java/email/EmailService.java,4\6\4631193b3e60655c3bb6d16618ae75b37865a257
 Y

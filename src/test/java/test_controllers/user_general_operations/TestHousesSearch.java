@@ -3,6 +3,7 @@ package test_controllers.user_general_operations;
 import controllers.UserGeneralOperations;
 import enums.HouseClassificationByGender;
 import exceptions.AlreadyFoundElementException;
+import exceptions.BuildingNotFoundException;
 import exceptions.UnacceptableValueException;
 import exceptions.UserNotFoundException;
 import io.cucumber.java.en.Given;
@@ -82,7 +83,7 @@ public class TestHousesSearch {
         }
     }
     @Then("the resulted list size will be {int}")
-    public void theResultedListSizeWillBe(Integer resultSize) throws UserNotFoundException {
+    public void theResultedListSizeWillBe(Integer resultSize) throws BuildingNotFoundException {
         Integer actualSize = UserGeneralOperations.searchAboutHouses(services, monthlyRent, name, buildingName, location, houseClassificationByGender).size();
         assertEquals(resultSize, actualSize);
     }

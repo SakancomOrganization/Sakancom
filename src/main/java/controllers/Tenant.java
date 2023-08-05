@@ -9,17 +9,25 @@ import models.Sakancom;
 import models.User;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Tenant {
     private Tenant() {
 
     }
 
-    public static List<House> listAvailableHouses() {
-        List<House> availableHouses = new ArrayList<>();
+    public static Map<Integer, List<House>> listAvailableHouses() {
+        Map<Integer, List<House>> availableHouses = new HashMap<>();
         for(Building building : Sakancom.getBuildings()) {
-            availableHouses.addAll(building.getHouses().stream().filter(house -> house.getSaleContract().getSaleStatus() == SaleStatus.AVAILABLE).toList());
+            List<House> subList = new ArrayList<>();
+            for (House house : building.getHouses()) {
+                if(house.getSaleContract().getSaleStatus() == SaleStatus.AVAILABLE)
+                    subList.add(house);
+            }
+            if(!subList.isEmpty())
+                availableHouses.put(building.getId(), subList);
         }
         return availableHouses;
     }

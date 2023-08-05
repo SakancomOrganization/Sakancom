@@ -4,7 +4,6 @@ import controllers.Login;
 import email.EmailService;
 import exceptions.UserNotFoundException;
 import models.Sakancom;
-import views.scanners.CustomizedScanner;
 
 import javax.mail.MessagingException;
 import java.io.FileNotFoundException;
@@ -17,8 +16,8 @@ public class SignInView {
     }
 
     public static void signInView() {
-        String username = CustomizedScanner.scanString("username");
-        String password = CustomizedScanner.scanString("password");
+        String username = CustomizedScanners.scanString("username");
+        String password = CustomizedScanners.scanString("password");
         try {
             if(Login.login(username, password)) {
                 String welcomeMsg = "Hello, " + Sakancom.getCurrentUser().getName().getFirstName();
@@ -32,7 +31,7 @@ public class SignInView {
     }
 
     public static void forgetPasswordView() throws FileNotFoundException {
-        String username = CustomizedScanner.scanString("username");
+        String username = CustomizedScanners.scanString("username");
         try {
             Login.forgetPassword(new EmailService(), username);
             logger.info("We sent a message contains the new password on your email!");
