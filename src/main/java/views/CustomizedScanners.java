@@ -75,6 +75,20 @@ public class CustomizedScanners {
         return scanBoolean;
     }
 
+    public static Date scanBirthdate() {
+        printScanMsg("birthdate");
+        Date scanBirthdate;
+        while (true) {
+            try {
+                String scanBirthdateAsString = scanner.nextLine();
+                scanBirthdate = new SimpleDateFormat("dd/MM/yyyy").parse(scanBirthdateAsString);
+                break;
+            } catch (ParseException e) {
+                printWarnMsg("birthdate");
+            }
+        }
+        return scanBirthdate;
+    }
 
     private static UserType stringToUserType(String userType) {
         if (userType.equalsIgnoreCase("admin"))
@@ -98,21 +112,6 @@ public class CustomizedScanners {
             }
             printWarnMsg("user type");
         }
-    }
-
-    public static Date scanBirthdate() {
-        printScanMsg("birthdate");
-        Date scanBirthdate;
-        while (true) {
-            try {
-                String scanBirthdateAsString = scanner.nextLine();
-                scanBirthdate = new SimpleDateFormat("dd/MM/yyyy").parse(scanBirthdateAsString);
-                break;
-            } catch (ParseException e) {
-                printWarnMsg("birthdate");
-            }
-        }
-        return scanBirthdate;
     }
 
     private static HouseClassificationByGender stringToHouseClassificationByGender(String houseClassificationByGender) {

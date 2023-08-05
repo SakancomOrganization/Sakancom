@@ -16,26 +16,18 @@ public class UserGeneralOperationsView {
 
     }
 
-    private static boolean isValidField(String field) {
-        return field.equalsIgnoreCase("firstName")
-                || field.equalsIgnoreCase("secondName")
-                || field.equalsIgnoreCase("lastName")
-                || field.equalsIgnoreCase("city")
-                || field.equalsIgnoreCase("street")
-                || field.equalsIgnoreCase("building")
-                || field.equalsIgnoreCase("floor")
-                || field.equalsIgnoreCase("email")
-                || field.equalsIgnoreCase("phoneNumber")
-                || field.equalsIgnoreCase("birthDate")
-                || field.equalsIgnoreCase("major");
+    private static void printUserFields() {
+        String outputString = "User fields: firstName - secondName - lastName - city - street - building - floor - email - phoneNumber - birthDate - major\n";
+        logger.info(outputString);
     }
 
     public static void updateInfoView() {
+        printUserFields();
         String field = CustomizedScanners.scanNonEmptyString("field");
         String value = CustomizedScanners.scanNonEmptyString("value");
         while (true) {
             try {
-                if(isValidField(field)) {
+                if(ViewsValidation.isValidUserField(field)) {
                     UserGeneralOperations.updateInfo(field, value);
                     logger.info("Updated Successfully");
                     break;
@@ -44,13 +36,17 @@ public class UserGeneralOperationsView {
                     field = CustomizedScanners.scanString("field");
                 }
             } catch (ParseException e) {
-                logger.warning("Invalid Birthdate!");
+                logger.warning("Invalid birthdate!");
+                value = CustomizedScanners.scanString("value");
             } catch (UnacceptableValueException e) {
-                logger.warning("");
+                logger.warning("Invalid floor number!");
+                value = CustomizedScanners.scanString("value");
             } catch (WeakPasswordException e) {
                 logger.warning("Weak password!");
+                value = CustomizedScanners.scanString("value");
             } catch (InvalidEmailFormatException e) {
-                logger.warning("Invalid Email");
+                logger.warning("Invalid email!");
+                value = CustomizedScanners.scanString("value");
             }
         }
     }
@@ -101,15 +97,15 @@ public class UserGeneralOperationsView {
                 CollectionsPrinter.printMap(UserGeneralOperations.searchAboutHouses(services, monthlyRent, ownerName, buildingName, location, houseClassificationByGender));
                 break;
             } catch (UnacceptableValueException e) {
-                if(!ViewsValidation.isNonNegativeNumber(bedroomsNum)) {
+                if(ViewsValidation.isNegativeNumber(bedroomsNum)) {
                     bedroomsNum = CustomizedScanners.scanInt("bedrooms number");
                     logger.info("Invalid bedrooms number");
                 }
-                if(!ViewsValidation.isNonNegativeNumber(bathroomsNum)) {
+                if(ViewsValidation.isNegativeNumber(bathroomsNum)) {
                     bathroomsNum = CustomizedScanners.scanInt("bathrooms number");
                     logger.info("Invalid bathrooms number");
                 }
-                if(!ViewsValidation.isNonNegativeNumber(monthlyRent)) {
+                if(ViewsValidation.isNegativeNumber(monthlyRent)) {
                     monthlyRent = CustomizedScanners.scanInt("monthly rent");
                     logger.info("Invalid monthly rent");
                 }

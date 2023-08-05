@@ -18,6 +18,7 @@ public class Owner {
     private Owner() {
 
     }
+
     public static List<Building> listAllOwnBuildings() {
         return Sakancom.getBuildings().stream().filter(building -> building.getOwner().equals(Sakancom.getCurrentUser())).toList();
     }

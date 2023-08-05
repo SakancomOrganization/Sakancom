@@ -28,11 +28,11 @@ public class TenantView {
                 Tenant.requestHouse(buildingId, houseId);
                 break;
             } catch (BuildingNotFoundException e) {
-                buildingId = CustomizedScanners.scanInt("requested building ID");
                 logger.warning("Invalid requested building ID!");
+                buildingId = CustomizedScanners.scanInt("requested building ID");
             } catch (HouseNotFoundException e) {
-                houseId = CustomizedScanners.scanInt("requested house ID");
                 logger.warning("Invalid requested house ID!");
+                houseId = CustomizedScanners.scanInt("requested house ID");
             }
         }
     }
@@ -45,11 +45,11 @@ public class TenantView {
                 Tenant.leaveHouse(buildingId, houseId);
                 break;
             } catch (BuildingNotFoundException e) {
-                buildingId = CustomizedScanners.scanInt("left building ID");
                 logger.warning("Invalid left building ID!");
+                buildingId = CustomizedScanners.scanInt("left building ID");
             } catch (HouseNotFoundException e) {
-                houseId = CustomizedScanners.scanInt("left house ID");
                 logger.warning("Invalid left house ID!");
+                houseId = CustomizedScanners.scanInt("left house ID");
             }
         }
     }
@@ -62,11 +62,11 @@ public class TenantView {
                 CollectionsPrinter.printUsers(Tenant.getAllHouseNeighbors(buildingId,houseId));
                 break;
             } catch (BuildingNotFoundException e) {
-                buildingId = CustomizedScanners.scanInt("building ID");
                 logger.warning("Invalid building ID!");
+                buildingId = CustomizedScanners.scanInt("building ID");
             } catch (HouseNotFoundException e) {
-                houseId = CustomizedScanners.scanInt("house ID");
                 logger.warning("Invalid house ID!");
+                houseId = CustomizedScanners.scanInt("house ID");
             }
         }
     }

@@ -78,6 +78,12 @@ public class CollectionsPrinter {
         logger.info(result);
     }
 
+    private static void appendHouseImages(House house, StringBuilder outputString) {
+        outputString.append("Images:\n");
+        for(String img : house.getImages())
+            outputString.append(img).append("\n");
+    }
+
     private static void appendHouseInfo(House house, StringBuilder outputString) {
         outputString.append("\nID: ").append(house.getId()).append("\n");
         outputString.append("Monthly Rent: ").append(house.getMonthlyRent()).append("\n");
@@ -89,11 +95,13 @@ public class CollectionsPrinter {
         outputString.append("Floor Num: ").append(house.getFloorNum()).append("\n");
         outputString.append("Info Status: ").append(house.getInfoStatus()).append("\n");
         outputString.append("House Rate: ").append(house.getHouseRate().getTotalRate()).append("\n");
+        appendHouseImages(house, outputString);
         SaleStatus saleStatus = house.getSaleContract().getSaleStatus();
         outputString.append("Sale Status: ").append(saleStatus).append("\n");
         if(saleStatus == SaleStatus.UNAVAILABLE)
             outputString.append("Tenant: ").append(house.getSaleContract().getTenant().getName().getFirstName()).append(" ")
                     .append(house.getSaleContract().getTenant().getName().getLastName()).append("\n");
+
         outputString.append("House Classification By Gender: ").append(house.getHouseClassificationByGender()).append("\n\n");
     }
 
