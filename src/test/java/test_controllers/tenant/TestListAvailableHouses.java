@@ -3,6 +3,7 @@ package test_controllers.tenant;
 import controllers.Tenant;
 import enums.SaleStatus;
 import exceptions.AlreadyFoundElementException;
+import exceptions.InvalidEmailFormatException;
 import exceptions.UnacceptableValueException;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -20,7 +21,7 @@ public class TestListAvailableHouses {
     private Map<Integer, List<House>> availableHouses;
 
     @Given("Database is already filled")
-    public void databaseIsAlreadyFilled() throws UnacceptableValueException, ParseException, AlreadyFoundElementException {
+    public void databaseIsAlreadyFilled() throws UnacceptableValueException, ParseException, AlreadyFoundElementException, InvalidEmailFormatException {
         Sakancom.initSakancomWithData();
     }
     @Given("the house sale status is set to be requested")

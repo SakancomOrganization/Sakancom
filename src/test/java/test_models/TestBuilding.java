@@ -5,6 +5,7 @@ import enums.InfoStatus;
 import enums.UserType;
 import exceptions.AlreadyFoundElementException;
 import exceptions.HouseNotFoundException;
+import exceptions.InvalidEmailFormatException;
 import exceptions.UnacceptableValueException;
 import models.*;
 import org.junit.Before;
@@ -24,7 +25,7 @@ public class TestBuilding {
     private House house;
 
     @Before
-    public void setup() throws ParseException, UnacceptableValueException {
+    public void setup() throws ParseException, UnacceptableValueException, InvalidEmailFormatException {
         location = new Location("Jenin","Abu-Baker");
         owner = new User("mo-alawneh",
                 "Mohammad12002",

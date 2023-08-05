@@ -11,8 +11,8 @@ public class ContactInfo {
     private Date birthdate;
     private String major;
 
-    public ContactInfo(String email, String phoneNumber, Date birthdate, String major) {
-        this.email = email;
+    public ContactInfo(String email, String phoneNumber, Date birthdate, String major) throws InvalidEmailFormatException {
+        setEmail(email);
         this.phoneNumber = phoneNumber;
         this.birthdate = birthdate;
         this.major = major;

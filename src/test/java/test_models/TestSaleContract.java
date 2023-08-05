@@ -2,6 +2,7 @@ package test_models;
 
 import enums.SaleStatus;
 import enums.UserType;
+import exceptions.InvalidEmailFormatException;
 import exceptions.UnacceptableValueException;
 import models.*;
 import org.junit.Before;
@@ -19,7 +20,7 @@ public class TestSaleContract {
     private Date date;
 
     @Before
-    public void setup() throws ParseException, UnacceptableValueException {
+    public void setup() throws ParseException, UnacceptableValueException, InvalidEmailFormatException {
         tenant = new User("mo-alawneh",
                 "Mohammad12002",
                 UserType.TENANT,

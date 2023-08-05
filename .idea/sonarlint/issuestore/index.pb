@@ -17,8 +17,6 @@ c
 ,src/test/java/test_models/TestFurniture.java,d/a/da3b29a558b97c349be4a4b337127a37841df5b0
 \
 ,src/test/java/test_models/TestHouseRate.java,1/8/187cada6820bae78174c4332ca495352f1f556cc
-[
-+src/test/java/test_models/TestSakancom.java,a/f/afb77ed204d84b6796d14864962325adb7a0dc06
 _
 /src/test/java/test_models/TestSaleContract.java,5/b/5b7d52cd6d6ca9637268c7e43c7ba9acddce975e
 W
@@ -55,8 +53,6 @@ k
 ;src/test/features/owner/list-all-rejected-buildings.feature,a/b/ab020789164eb424ac4eda98a8c2361642ce2741
 s
 Csrc/test/java/test_controllers/owner/TestListAllRejectedHouses.java,d/9/d94264d9a0f122ed8f1d1e11dc9eb672faf9ada0
-q
-Asrc/test/java/test_controllers/owner/TestListAllOwnBuildings.java,2/6/26e2d1e33a8c45ca16fe6d9153f0cd90d555c150
 p
 @src/test/java/test_controllers/owner/TestUpdateBuildingInfo.java,1/6/16c02f077422ce0fca1fafbc8d7c3554b9fc92d2
 d
@@ -107,8 +103,6 @@ i
 ,src/test/features/tenant/leave-house.feature,d/b/dba137de60d5125c15a04c9f6bb925efe4ce1248
 l
 <src/test/java/test_controllers/owner/TestRunnerForOwner.java,7/a/7a1c686b85790c520e9d8bf808088d33ee0385b8
-j
-:src/test/java/test_controllers/admin/TestListAllUsers.java,4/f/4f8dc7b68679e5b3b4bb4b38d16bf52731430c03
 ^
 .src/test/features/admin/list-all-users.feature,f/6/f6f7f36d4b88be124b1db607ef923c26610970e9
 n
@@ -149,10 +143,6 @@ k
 +src/test/features/admin/remove-user.feature,d/7/d7a6e42afc77d0c93b74e7e88fb2ef8513c775b4
 h
 8src/test/java/test_controllers/admin/TestRemoveUser.java,9/4/9416d1fd9ec5d00fcf959982ed1a622cbee24637
-l
-<src/test/java/test_controllers/authentication/TestLogin.java,d\4\d44e135a2d9b865bb1ee37fef61a997ff8ff3729
-R
-"src/main/java/models/Services.java,6\e\6e3b9cced2ede5a7ba24225f80d3b8efae101ab1
 U
 %src/main/java/email/EmailService.java,4\6\4631193b3e60655c3bb6d16618ae75b37865a257
 Y
@@ -163,8 +153,6 @@ S
 #src/main/java/email/YmlHandler.java,0\0\0057fdb86176fb566471c3c141dc5b3a5c1c956b
 @
 email-config.yml,d\d\dda460ce63487d6cda272098330a3a48ef8eb34d
->
-dr-haya-JaCoCo,8\c\8c021a84652c07964dbcaabc4dc857bc65ca4f6d
 S
 #src/main/java/models/Furniture.java,4\6\4626cdf9fe9da559c320585f0fede62ec4722f8b
 K

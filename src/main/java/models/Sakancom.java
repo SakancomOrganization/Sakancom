@@ -2,10 +2,7 @@ package models;
 
 import enums.HouseClassificationByGender;
 import enums.UserType;
-import exceptions.AlreadyFoundElementException;
-import exceptions.BuildingNotFoundException;
-import exceptions.UnacceptableValueException;
-import exceptions.UserNotFoundException;
+import exceptions.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -81,7 +78,7 @@ public class Sakancom {
         autoIncrementBuildingId++;
     }
 
-    public static void initSakancomWithData() throws ParseException, UnacceptableValueException, AlreadyFoundElementException {
+    public static void initSakancomWithData() throws ParseException, UnacceptableValueException, AlreadyFoundElementException, InvalidEmailFormatException {
         // remove the previous objects
         clearSakancomData();
 

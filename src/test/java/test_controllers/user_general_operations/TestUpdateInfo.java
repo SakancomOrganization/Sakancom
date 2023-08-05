@@ -19,7 +19,7 @@ public class TestUpdateInfo {
     private String field;
     private String value;
     @Given("Database is already filled")
-    public static void databaseIsAlreadyFilled() throws ParseException, AlreadyFoundElementException, UnacceptableValueException {
+    public static void databaseIsAlreadyFilled() throws ParseException, AlreadyFoundElementException, UnacceptableValueException, InvalidEmailFormatException {
         Sakancom.initSakancomWithData();
     }
     @When("{string} is already logged in")

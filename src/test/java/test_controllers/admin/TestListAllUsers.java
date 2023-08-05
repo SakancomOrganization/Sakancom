@@ -2,6 +2,7 @@ package test_controllers.admin;
 
 import controllers.Admin;
 import exceptions.AlreadyFoundElementException;
+import exceptions.InvalidEmailFormatException;
 import exceptions.UnacceptableValueException;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -17,7 +18,7 @@ import static org.junit.Assert.assertEquals;
 public class TestListAllUsers {
     private List<User> users;
     @Given("Database is already filled")
-    public void databaseIsAlreadyFilled() throws AlreadyFoundElementException, UnacceptableValueException, ParseException {
+    public void databaseIsAlreadyFilled() throws AlreadyFoundElementException, UnacceptableValueException, ParseException, InvalidEmailFormatException {
         Sakancom.initSakancomWithData();
     }
     @When("the admin wants to list all users")

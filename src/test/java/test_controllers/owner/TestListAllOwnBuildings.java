@@ -2,6 +2,7 @@ package test_controllers.owner;
 
 import controllers.Owner;
 import exceptions.AlreadyFoundElementException;
+import exceptions.InvalidEmailFormatException;
 import exceptions.UnacceptableValueException;
 import exceptions.UserNotFoundException;
 import io.cucumber.java.en.Given;
@@ -18,7 +19,7 @@ import static org.junit.Assert.assertEquals;
 public class TestListAllOwnBuildings {
     private List<Building> ownBuildings;
     @Given("Database is already filled")
-    public void databaseIsAlreadyFilled() throws AlreadyFoundElementException, UnacceptableValueException, ParseException {
+    public void databaseIsAlreadyFilled() throws AlreadyFoundElementException, UnacceptableValueException, ParseException, InvalidEmailFormatException {
         Sakancom.initSakancomWithData();
     }
     @When("the current owner who wants to list own buildings is {string}")

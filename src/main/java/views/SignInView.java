@@ -16,8 +16,8 @@ public class SignInView {
     }
 
     public static void signInView() {
-        String username = CustomizedScanners.scanString("username");
-        String password = CustomizedScanners.scanString("password");
+        String username = CustomizedScanners.scanNonEmptyString("username");
+        String password = CustomizedScanners.scanNonEmptyString("password");
         try {
             if(Login.login(username, password)) {
                 String welcomeMsg = "Hello, " + Sakancom.getCurrentUser().getName().getFirstName();
@@ -31,7 +31,7 @@ public class SignInView {
     }
 
     public static void forgetPasswordView() throws FileNotFoundException {
-        String username = CustomizedScanners.scanString("username");
+        String username = CustomizedScanners.scanNonEmptyString("username");
         try {
             Login.forgetPassword(new EmailService(), username);
             logger.info("We sent a message contains the new password on your email!");

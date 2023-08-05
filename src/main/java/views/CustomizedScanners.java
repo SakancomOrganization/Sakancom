@@ -1,5 +1,6 @@
 package views;
 
+import enums.HouseClassificationByGender;
 import enums.UserType;
 
 import java.text.ParseException;
@@ -42,7 +43,7 @@ public class CustomizedScanners {
         return scannedInt;
     }
 
-    public static String scanString(String type) {
+    public static String scanNonEmptyString(String type) {
         printScanMsg(type);
         String scanString;
         while (true) {
@@ -52,6 +53,11 @@ public class CustomizedScanners {
             printWarnMsg(type);
         }
         return scanString;
+    }
+
+    public static String scanString(String type) {
+        printScanMsg(type);
+        return scanner.nextLine();
     }
 
     public static boolean scanBoolean(String type) {
@@ -107,5 +113,29 @@ public class CustomizedScanners {
             }
         }
         return scanBirthdate;
+    }
+
+    private static HouseClassificationByGender stringToHouseClassificationByGender(String houseClassificationByGender) {
+        if (houseClassificationByGender.equalsIgnoreCase("family"))
+            return HouseClassificationByGender.FAMILY;
+        else if (houseClassificationByGender.equalsIgnoreCase("female"))
+            return HouseClassificationByGender.FEMALE;
+        else if (houseClassificationByGender.equalsIgnoreCase("male"))
+            return HouseClassificationByGender.MALE;
+        return null;
+    }
+
+    public static HouseClassificationByGender scanHouseClassificationByGender() {
+        printScanMsg("house classification by gender");
+        HouseClassificationByGender scanHouseClassificationByGender;
+        String scanHouseClassificationByGenderAsString;
+        while (true) {
+            scanHouseClassificationByGenderAsString = scanner.nextLine();
+            scanHouseClassificationByGender = stringToHouseClassificationByGender(scanHouseClassificationByGenderAsString);
+            if (scanHouseClassificationByGender != null) {
+                return scanHouseClassificationByGender;
+            }
+            printWarnMsg("house classification by gender");
+        }
     }
 }

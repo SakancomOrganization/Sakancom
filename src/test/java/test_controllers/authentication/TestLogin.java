@@ -3,6 +3,7 @@ package test_controllers.authentication;
 import controllers.Login;
 import email.EmailService;
 import exceptions.AlreadyFoundElementException;
+import exceptions.InvalidEmailFormatException;
 import exceptions.UnacceptableValueException;
 import exceptions.UserNotFoundException;
 import io.cucumber.java.en.Given;
@@ -22,7 +23,7 @@ public class TestLogin {
     private String username;
     private String password;
     @Given("Database is already filled")
-    public static void databaseIsAlreadyFilled() throws ParseException, UnacceptableValueException, AlreadyFoundElementException {
+    public static void databaseIsAlreadyFilled() throws ParseException, UnacceptableValueException, AlreadyFoundElementException, InvalidEmailFormatException {
         Sakancom.initSakancomWithData();
     }
     @When("username is {string}")

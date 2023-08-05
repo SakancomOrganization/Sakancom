@@ -2,6 +2,7 @@ package test_models;
 
 import enums.UserType;
 import exceptions.AlreadyFoundElementException;
+import exceptions.InvalidEmailFormatException;
 import exceptions.UnacceptableValueException;
 import models.*;
 import org.junit.Before;
@@ -19,7 +20,7 @@ public class TestUser {
     private Furniture furniture;
 
     @Before
-    public void setup() throws ParseException, UnacceptableValueException {
+    public void setup() throws ParseException, UnacceptableValueException, InvalidEmailFormatException {
         furniture = new Furniture("A new furniture description", "A new furniture image");
         user = new User("mo-alawneh",
                 "Mohammad12002",
@@ -62,7 +63,7 @@ public class TestUser {
     }
 
     @Test
-    public void testContactInfo() throws ParseException {
+    public void testContactInfo() throws ParseException, InvalidEmailFormatException {
         ContactInfo contactInfo = new ContactInfo("mo.a.alawneh@gmail.com",
                 "0592838433",
                 new SimpleDateFormat("dd/MM/yyyy").parse("12/06/2002"),
@@ -117,7 +118,7 @@ public class TestUser {
     }
 
     @Test
-    public void testHashCode() throws ParseException, UnacceptableValueException {
+    public void testHashCode() throws ParseException, UnacceptableValueException, InvalidEmailFormatException {
         User anotherUser = new User("mo-alawneh",
                 "Mohammad12002",
                 UserType.ADMIN,

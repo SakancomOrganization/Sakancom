@@ -3,6 +3,7 @@ package test_controllers.authentication;
 import controllers.SignUp;
 import enums.UserType;
 import exceptions.AlreadyFoundElementException;
+import exceptions.InvalidEmailFormatException;
 import exceptions.UnacceptableValueException;
 import exceptions.WeakPasswordException;
 import io.cucumber.java.en.Then;
@@ -53,7 +54,7 @@ public class TestSignUp {
         this.userLocation = new UserLocation(city, street, building, floor);
     }
     @When("contactInfo are {string} {string} {string} {string}")
-    public void contactInfoAre(String email, String phoneNumber, String birthDate, String major) throws ParseException {
+    public void contactInfoAre(String email, String phoneNumber, String birthDate, String major) throws ParseException, InvalidEmailFormatException {
         Date birthDateObject = new SimpleDateFormat("dd/MM/yyyy").parse(birthDate);
         this.contactInfo = new ContactInfo(email, phoneNumber, birthDateObject, major);
     }

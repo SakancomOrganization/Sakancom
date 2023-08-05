@@ -16,7 +16,7 @@ public class TestContactInfo {
     private ContactInfo contactInfo;
 
     @Before
-    public void setup() throws ParseException {
+    public void setup() throws ParseException, InvalidEmailFormatException {
         Date birthdate = new SimpleDateFormat("dd/MM/yyyy").parse("12/06/2002");
         contactInfo = new ContactInfo("mo.a.alawneh@gmail.com","0592838433", birthdate,"Computer Engineering");
     }

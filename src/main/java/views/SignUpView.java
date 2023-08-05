@@ -3,6 +3,7 @@ package views;
 import controllers.SignUp;
 import enums.UserType;
 import exceptions.AlreadyFoundElementException;
+import exceptions.InvalidEmailFormatException;
 import exceptions.UnacceptableValueException;
 import exceptions.WeakPasswordException;
 import models.ContactInfo;
@@ -19,22 +20,22 @@ public class SignUpView {
     }
 
     public static void signUpView() {
-        String username = CustomizedScanners.scanString("username");
-        String password = CustomizedScanners.scanString("password");
+        String username = CustomizedScanners.scanNonEmptyString("username");
+        String password = CustomizedScanners.scanNonEmptyString("password");
         UserType userType = CustomizedScanners.scanUserType();
         // name
-        String firstName = CustomizedScanners.scanString("first name");
-        String middleName = CustomizedScanners.scanString("middle name");
-        String lastName = CustomizedScanners.scanString("last name");
+        String firstName = CustomizedScanners.scanNonEmptyString("first name");
+        String middleName = CustomizedScanners.scanNonEmptyString("middle name");
+        String lastName = CustomizedScanners.scanNonEmptyString("last name");
         // contact info
-        String email = CustomizedScanners.scanString("email");
-        String phoneNumber = CustomizedScanners.scanString("phone number");
+        String email = CustomizedScanners.scanNonEmptyString("email");
+        String phoneNumber = CustomizedScanners.scanNonEmptyString("phone number");
         Date birthdate = CustomizedScanners.scanBirthdate();
-        String major = CustomizedScanners.scanString("major");
+        String major = CustomizedScanners.scanNonEmptyString("major");
         // user location
-        String city = CustomizedScanners.scanString("city");
-        String street = CustomizedScanners.scanString("street");
-        String building = CustomizedScanners.scanString("building");
+        String city = CustomizedScanners.scanNonEmptyString("city");
+        String street = CustomizedScanners.scanNonEmptyString("street");
+        String building = CustomizedScanners.scanNonEmptyString("building");
         int floorNum = CustomizedScanners.scanInt("floor number");
 
         while (true) {
@@ -50,10 +51,13 @@ public class SignUpView {
                 floorNum = CustomizedScanners.scanInt("floor number");
             } catch (AlreadyFoundElementException e) {
                 logger.warning("Username is already used!");
-                username = CustomizedScanners.scanString("username");
+                username = CustomizedScanners.scanNonEmptyString("username");
             } catch (WeakPasswordException e) {
                 logger.warning("Weak password!");
-                password = CustomizedScanners.scanString("password");
+                password = CustomizedScanners.scanNonEmptyString("password");
+            } catch (InvalidEmailFormatException e) {
+                logger.warning("Invalid email format!");
+                email = CustomizedScanners.scanNonEmptyString("email");
             }
         }
     }

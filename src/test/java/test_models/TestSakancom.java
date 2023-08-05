@@ -1,10 +1,7 @@
 package test_models;
 
 import enums.UserType;
-import exceptions.AlreadyFoundElementException;
-import exceptions.BuildingNotFoundException;
-import exceptions.UnacceptableValueException;
-import exceptions.UserNotFoundException;
+import exceptions.*;
 import models.Building;
 import models.Sakancom;
 import models.User;
@@ -21,7 +18,7 @@ public class TestSakancom {
     private static Building building;
 
     @Before
-    public void setup() throws UnacceptableValueException, ParseException, AlreadyFoundElementException {
+    public void setup() throws UnacceptableValueException, ParseException, AlreadyFoundElementException, InvalidEmailFormatException {
         Sakancom.initSakancomWithData();
         user = new User("test-user", "Test1234", UserType.ADMIN, null, null, null);
         building = new Building(2, "Test Building", null, null);
