@@ -1,11 +1,16 @@
 package views;
 
 import enums.SaleStatus;
+import exceptions.AlreadyFoundElementException;
+import exceptions.InvalidEmailFormatException;
+import exceptions.UnacceptableValueException;
 import models.Building;
 import models.House;
+import models.Sakancom;
 import models.User;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Map;
@@ -17,7 +22,7 @@ public class CollectionsPrinter {
 
     }
 
-    private static void appendHorizontalLine(StringBuilder stringBuilder, int count) {
+    public static void appendHorizontalLine(StringBuilder stringBuilder, int count) {
         stringBuilder.append("\n");
         stringBuilder.append("-".repeat(count));
     }
@@ -35,17 +40,21 @@ public class CollectionsPrinter {
         if(users.isEmpty())
             logger.info("No users!");
 
-        StringBuilder outputString = new StringBuilder(String.format("%n|%-15s|%-15s|%-15s|%-15s|%-15s|%-15s|%-25s|%-25s|%-15s|%-32s|%-15s|%-15s|%-25s|",
+        final int LINE_WIDTH = 256;
+        StringBuilder outputString = new StringBuilder();
+        appendHorizontalLine(outputString, LINE_WIDTH);
+        outputString.append(String.format("%n|%-15s|%-15s|%-15s|%-15s|%-15s|%-15s|%-25s|%-25s|%-15s|%-32s|%-15s|%-15s|%-25s|",
                 "Username", // username
                 "First Name", "Middle Name", "Last Name", // name
                 "User Type", // user type
                 "City","Street","Building","Floor Number", // user location
-                "Email","Phone Number","Birthdate","Major")); // contact info
+                "Email","Phone Number","Birthdate","Major"));
 
-        appendHorizontalLine(outputString, 256);
+        appendHorizontalLine(outputString, LINE_WIDTH);
         for(User user : users) {
             appendUserInfo(user, outputString);
         }
+        appendHorizontalLine(outputString, LINE_WIDTH);
         String result = String.valueOf(outputString);
         logger.info(result);
     }
@@ -63,17 +72,21 @@ public class CollectionsPrinter {
         if(buildings.isEmpty())
             logger.info("No buildings!");
 
-        StringBuilder outputString = new StringBuilder(String.format("|%n|%-15s|%-15s|%-25s|%-15s|%-15s|%-15s|",
+        final int LINE_WIDTH = 107;
+        StringBuilder outputString = new StringBuilder();
+        appendHorizontalLine(outputString, LINE_WIDTH);
+        outputString.append(String.format("%n|%-15s|%-15s|%-25s|%-15s|%-15s|%-15s|",
                 "ID",
                 "Name",
                 "Owner",
                 "City",
                 "Street",
                 "Info Status"));
-        appendHorizontalLine(outputString, 107);
+        appendHorizontalLine(outputString, LINE_WIDTH);
         for(Building building : buildings) {
             appendBuildingInfo(building, outputString);
         }
+        appendHorizontalLine(outputString, LINE_WIDTH);
         String result = String.valueOf(outputString);
         logger.info(result);
     }

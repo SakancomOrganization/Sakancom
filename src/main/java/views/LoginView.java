@@ -1,7 +1,6 @@
 package views;
 
 import controllers.Login;
-import controllers.UserGeneralOperations;
 import email.EmailService;
 import exceptions.InvalidEmailFormatException;
 import exceptions.UserNotFoundException;
@@ -13,12 +12,14 @@ import java.util.logging.Logger;
 
 public class LoginView {
     private static final Logger logger = Logger.getLogger(LoginView.class.getName());
+    public static final String USERNAME = "username";
+
     private LoginView() {
 
     }
 
     public static void loginView() {
-        String username = CustomizedScanners.scanNonEmptyString("username");
+        String username = CustomizedScanners.scanNonEmptyString(USERNAME);
         String password = CustomizedScanners.scanNonEmptyString("password");
         try {
             if(Login.login(username, password)) {
@@ -33,7 +34,7 @@ public class LoginView {
     }
 
     public static void forgetPasswordView() throws FileNotFoundException {
-        String username = CustomizedScanners.scanNonEmptyString("username");
+        String username = CustomizedScanners.scanNonEmptyString(USERNAME);
         try {
             Login.forgetPassword(new EmailService(), username);
             logger.info("We sent a message contains the new password on your email!");
@@ -45,7 +46,7 @@ public class LoginView {
     }
 
     public static void updateEmailView() {
-        String username = CustomizedScanners.scanNonEmptyString("username");
+        String username = CustomizedScanners.scanNonEmptyString(USERNAME);
         String newEmail = CustomizedScanners.scanNonEmptyString("email");
         try {
             Login.updateEmail(username, newEmail);

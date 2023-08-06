@@ -181,34 +181,24 @@ public class OwnerView {
     public static void acceptSaleRequestView() {
         int buildingId = CustomizedScanners.scanInt(BUILDING_ID);
         int houseId = CustomizedScanners.scanInt(HOUSE_ID);
-        while (true) {
-            try {
-                Owner.acceptSaleRequest(buildingId, houseId);
-                break;
-            } catch (BuildingNotFoundException e) {
-                logger.warning(INVALID_BUILD_ID);
-                buildingId = CustomizedScanners.scanInt("building id");
-            } catch (HouseNotFoundException e) {
-                logger.warning(INVALID_HOUSE_ID);
-                buildingId = CustomizedScanners.scanInt("house id");
-            }
+        try {
+            Owner.acceptSaleRequest(buildingId, houseId);
+        } catch (BuildingNotFoundException e) {
+            logger.warning(INVALID_BUILD_ID);
+        } catch (HouseNotFoundException e) {
+            logger.warning(INVALID_HOUSE_ID);
         }
     }
 
     public static void breakSaleStatusView() {
         int buildingId = CustomizedScanners.scanInt(BUILDING_ID);
         int houseId = CustomizedScanners.scanInt(HOUSE_ID);
-        while (true) {
-            try {
-                Owner.breakSaleStatus(buildingId, houseId);
-                break;
-            } catch (BuildingNotFoundException e) {
-                logger.warning(INVALID_BUILD_ID);
-                buildingId = CustomizedScanners.scanInt("building id");
-            } catch (HouseNotFoundException e) {
-                logger.warning(INVALID_HOUSE_ID);
-                buildingId = CustomizedScanners.scanInt("house id");
-            }
+        try {
+            Owner.breakSaleStatus(buildingId, houseId);
+        } catch (BuildingNotFoundException e) {
+            logger.warning(INVALID_BUILD_ID);
+        } catch (HouseNotFoundException e) {
+            logger.warning(INVALID_HOUSE_ID);
         }
     }
 }

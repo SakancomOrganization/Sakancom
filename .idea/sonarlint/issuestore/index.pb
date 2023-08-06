@@ -195,12 +195,8 @@ R
 "src/main/java/models/Sakancom.java,f\a\fae43a245de589027aa9735d66ed1e3441c0439b
 U
 %src/main/java/controllers/Tenant.java,c\9\c9febc2ac0cd14c8318bfb0df27a6e329bcd00a4
-R
-"src/main/java/views/AdminView.java,1\6\16ef284199890c28cc9f7bf4070df72414a26421
 T
 $src/main/java/views/MenuPrinter.java,3\e\3e2b9d4dd70d059aae17a765058f9050c9a946de
-[
-+src/main/java/views/CollectionsPrinter.java,7\9\799920b47df90e6ef83372b4c1b5c7320bec0b09
 S
 #src/main/java/views/TenantView.java,d\6\d65221863b558dc4c01ac159d6cf5d987ec44c0f
 X
@@ -215,5 +211,3 @@ O
 src/main/java/models/House.java,b\f\bfcafc26657f1e7ed2d5dd49a1d335fa986bdf38
 o
 ?src/test/java/test_controllers/owner/TestBreakSaleContract.java,d\5\d5ddf5921df99e6b0d4514b770fe3e7d3dd97ae5
-R
-"src/main/java/views/OwnerView.java,d\9\d9ace4ba84e5b48061fa9dd96bb8db29e0817681
