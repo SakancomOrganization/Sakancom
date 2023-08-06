@@ -74,13 +74,7 @@ public class UserGeneralOperationsView {
     }
 
     public static void searchAboutHousesView() {
-        boolean withElectricity = CustomizedScanners.scanBoolean("with electricity");
-        boolean withWater = CustomizedScanners.scanBoolean("with water");
-        boolean hasInternet = CustomizedScanners.scanBoolean("has internet");
-        boolean hasTelephone = CustomizedScanners.scanBoolean("has telephone");
-        boolean hasBalcony = CustomizedScanners.scanBoolean("has balcony");
-        int bedroomsNum = CustomizedScanners.scanInt("bedrooms number");
-        int bathroomsNum = CustomizedScanners.scanInt("bathrooms number");
+        Services services = CustomizedScanners.scanServices();
         int monthlyRent = CustomizedScanners.scanInt("monthly rent");
         String firstName = CustomizedScanners.scanString("owner first name");
         String middleName = CustomizedScanners.scanString("owner middle name");
@@ -92,23 +86,14 @@ public class UserGeneralOperationsView {
 
         while (true) {
             try {
-                Services services = new Services(withElectricity, withWater, hasInternet, hasTelephone, hasBalcony, bedroomsNum, bathroomsNum);
-                Name ownerName = new Name(firstName, middleName, lastName);
-                Location location = new Location(city, street);
-                CollectionsPrinter.printMap(UserGeneralOperations.searchAboutHouses(services, monthlyRent, ownerName, buildingName, location, houseClassificationByGender));
-                break;
-            } catch (UnacceptableValueException e) {
-                if(ViewsValidation.isNegativeNumber(bedroomsNum)) {
-                    bedroomsNum = CustomizedScanners.scanInt("bedrooms number");
-                    logger.info("Invalid bedrooms number");
-                }
-                if(ViewsValidation.isNegativeNumber(bathroomsNum)) {
-                    bathroomsNum = CustomizedScanners.scanInt("bathrooms number");
-                    logger.info("Invalid bathrooms number");
-                }
                 if(ViewsValidation.isNegativeNumber(monthlyRent)) {
                     monthlyRent = CustomizedScanners.scanInt("monthly rent");
                     logger.info("Invalid monthly rent");
+                } else {
+                    Name ownerName = new Name(firstName, middleName, lastName);
+                    Location location = new Location(city, street);
+                    CollectionsPrinter.printMap(UserGeneralOperations.searchAboutHouses(services, monthlyRent, ownerName, buildingName, location, houseClassificationByGender));
+                    break;
                 }
             } catch (BuildingNotFoundException e) {
                 logger.warning("Invalid building name!");

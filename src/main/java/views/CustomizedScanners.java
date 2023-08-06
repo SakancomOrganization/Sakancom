@@ -2,6 +2,8 @@ package views;
 
 import enums.HouseClassificationByGender;
 import enums.UserType;
+import exceptions.UnacceptableValueException;
+import models.Services;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -135,6 +137,30 @@ public class CustomizedScanners {
                 return scanHouseClassificationByGender;
             }
             printWarnMsg("house classification by gender");
+        }
+    }
+
+    public static Services scanServices() {
+        boolean withElectricity = CustomizedScanners.scanBoolean("with electricity");
+        boolean withWater = CustomizedScanners.scanBoolean("with water");
+        boolean hasInternet = CustomizedScanners.scanBoolean("has internet");
+        boolean hasTelephone = CustomizedScanners.scanBoolean("has telephone");
+        boolean hasBalcony = CustomizedScanners.scanBoolean("has balcony");
+        int bedroomsNum = CustomizedScanners.scanInt("bedrooms number");
+        int bathroomsNum = CustomizedScanners.scanInt("bathrooms number");
+        while (true) {
+            try {
+                return new Services(withElectricity, withWater, hasInternet, hasTelephone, hasBalcony, bedroomsNum, bathroomsNum);
+            } catch (UnacceptableValueException e) {
+                if(ViewsValidation.isNegativeNumber(bedroomsNum)) {
+                    logger.warning("Invalid bedrooms number!");
+                    bedroomsNum = CustomizedScanners.scanInt("bedrooms number");
+                }
+                if(ViewsValidation.isNegativeNumber(bathroomsNum)) {
+                    logger.warning("Invalid bathrooms number!");
+                    bedroomsNum = CustomizedScanners.scanInt("bathrooms number");
+                }
+            }
         }
     }
 }

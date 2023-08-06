@@ -91,8 +91,6 @@ o
 ?src/test/java/test_controllers/owner/TestAcceptSaleRequest.java,8/4/840d1fe93392cab9ccb0ca79b8b9c1f8100f6f5d
 c
 3src/test/features/owner/break-sale-contract.feature,3/5/35023e99b84190e356f6f7a2ab37472c8f5f122e
-o
-?src/test/java/test_controllers/owner/TestBreakSaleContract.java,d/5/d5ddf5921df99e6b0d4514b770fe3e7d3dd97ae5
 c
 3src/test/features/owner/accept-sale-request.feature,1/3/13c4e9b1cb2375b0899666ad21af5d7925c9dc64
 ^
@@ -165,8 +163,6 @@ U
 %src/main/java/controllers/SignUp.java,6\9\69abe9c9b4bb9983c22f528ce7bcbed4714e5f0b
 V
 &src/main/java/models/UserLocation.java,6\9\6958ac9bb15c195b510ff828b9feb37f83241199
-R
-"src/main/java/models/Building.java,e\3\e319e29765be4063c1a32bc493a8f59de8802bc1
 j
 :src/test/features/tenant/list-all-available-houses.feature,6\b\6ba3e68457602767fb3c023c631393f407285c9b
 |
@@ -177,8 +173,6 @@ o
 ?src/test/features/user_general_operations/houses-search.feature,1\4\14b30cd4f6827324c721eb61ace995f1e129b483
 T
 $src/main/java/controllers/Admin.java,6\a\6a8a9800a4ca5ad95ee88ed8e2e55c9566a6f5a6
-O
-src/main/java/models/House.java,b\f\bfcafc26657f1e7ed2d5dd49a1d335fa986bdf38
 V
 &src/main/java/models/SaleContract.java,3\f\3f008ae267223d7283c2bc612e4e3627ea6f99e4
 U
@@ -219,13 +213,7 @@ S
 #src/main/java/views/SignUpView.java,3\8\383d99cc642f9d14319c6ab3cae5f2b2ecb2bf88
 S
 #src/main/java/views/TenantView.java,d\6\d65221863b558dc4c01ac159d6cf5d987ec44c0f
-[
-+src/main/java/views/CustomizedScanners.java,6\f\6fd295f59dc435d5e4a672cc37fbc06ba860607c
 X
 (src/main/java/views/ViewsValidation.java,0\e\0e8e1d3f1092c9a532ab4e8ab0c5797f161fb6d6
-d
-4src/main/java/controllers/UserGeneralOperations.java,1\a\1a2bb13c432c56523fedc15028b11c3a6d5b598f
-T
-$src/main/java/controllers/Owner.java,7\1\71bdd9e0a0ac59a695bdbb675b853490b8fcdacc
-R
-"src/main/java/views/OwnerView.java,d\9\d9ace4ba84e5b48061fa9dd96bb8db29e0817681
+M
+src/main/java/views/Main.java,4\5\457e3c82f5dfcf1e67ae99a0b8f82a5c5280e90b
