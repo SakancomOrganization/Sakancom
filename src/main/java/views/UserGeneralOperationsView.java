@@ -6,6 +6,8 @@ import exceptions.*;
 import models.Location;
 import models.Name;
 import models.Services;
+import printers.CollectionsPrinter;
+import scanners.CustomizedScanners;
 
 import java.text.ParseException;
 import java.util.logging.Logger;

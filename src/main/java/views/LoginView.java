@@ -5,6 +5,7 @@ import email.EmailService;
 import exceptions.InvalidEmailFormatException;
 import exceptions.UserNotFoundException;
 import models.Sakancom;
+import scanners.CustomizedScanners;
 
 import javax.mail.MessagingException;
 import java.io.FileNotFoundException;

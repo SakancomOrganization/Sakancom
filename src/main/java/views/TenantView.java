@@ -3,6 +3,8 @@ package views;
 import controllers.Tenant;
 import exceptions.BuildingNotFoundException;
 import exceptions.HouseNotFoundException;
+import printers.CollectionsPrinter;
+import scanners.CustomizedScanners;
 
 import java.util.logging.Logger;
 

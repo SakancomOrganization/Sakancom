@@ -1,6 +1,7 @@
 package controllers;
 
 import email.EmailService;
+import enums.UserType;
 import exceptions.InvalidEmailFormatException;
 import exceptions.UserNotFoundException;
 import models.Sakancom;
@@ -20,6 +21,10 @@ public class Login {
             return true;
         }
         return false;
+    }
+
+    public static UserType getCurrentUserType() {
+        return Sakancom.getCurrentUser().getUserType();
     }
 
     public static void forgetPassword(EmailService emailService, String username) throws MessagingException, UserNotFoundException {

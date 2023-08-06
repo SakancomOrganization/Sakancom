@@ -9,6 +9,7 @@ import exceptions.WeakPasswordException;
 import models.ContactInfo;
 import models.Name;
 import models.UserLocation;
+import scanners.CustomizedScanners;
 
 import java.util.Date;
 import java.util.logging.Logger;

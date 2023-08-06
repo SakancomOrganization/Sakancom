@@ -7,6 +7,8 @@ import exceptions.BuildingNotFoundException;
 import exceptions.HouseNotFoundException;
 import exceptions.UnacceptableValueException;
 import models.*;
+import printers.CollectionsPrinter;
+import scanners.CustomizedScanners;
 
 import java.util.logging.Logger;
 

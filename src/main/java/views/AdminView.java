@@ -5,6 +5,8 @@ import enums.UserType;
 import exceptions.*;
 import models.Location;
 import models.Name;
+import printers.CollectionsPrinter;
+import scanners.CustomizedScanners;
 
 import java.util.Map;
 import java.util.logging.Logger;

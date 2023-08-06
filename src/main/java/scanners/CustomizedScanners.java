@@ -1,9 +1,10 @@
-package views;
+package scanners;
 
 import enums.HouseClassificationByGender;
 import enums.UserType;
 import exceptions.UnacceptableValueException;
 import models.Services;
+import views.ViewsValidation;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

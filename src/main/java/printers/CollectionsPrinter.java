@@ -1,4 +1,4 @@
-package views;
+package printers;
 
 import enums.SaleStatus;
 import models.Building;
