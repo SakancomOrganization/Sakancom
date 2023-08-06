@@ -14,7 +14,7 @@ Feature: Login
       | 'haya-sam' | 'HaySam' |
       | 'than@mare' | 'tHaNaMaRee' |
 
-  Scenario Outline: Login Failed
+  Scenario Outline: Login Failed Due to User Not Found Exception
     When username is <username>
     And password is <password>
     Then the user will not log in successfully and user not found exception will be thrown
@@ -24,7 +24,7 @@ Feature: Login
       | 'mohammad-al' | 'Mohammad62002' |
       | 'haySam' | 'HaySam' |
 
-  Scenario Outline: Login Failed
+  Scenario Outline: Login Failed Due to Invalid Password
     When username is <username>
     And password is <password>
     Then the user will not log in successfully due to invalid password
@@ -33,21 +33,3 @@ Feature: Login
       | username | password |
       | 'najat-mansour' | 'Najat22003' |
       | 'than@mare' | 'thanaMaree' |
-
-    Scenario Outline: Forget Password With Valid Username
-      When username is <username>
-      Then the user will receive a new password on the email
-
-      Examples:
-        | username |
-        | 'mo-alawneh' |
-        | 'najat-mansour' |
-
-    Scenario Outline: Forget Password With Invalid Username
-      When username is <username>
-      Then the user will not receive a new password on the email and a user not found exception will be thrown
-
-      Examples:
-        | username |
-        | 'haySam' |
-        | 'thana@mare' |

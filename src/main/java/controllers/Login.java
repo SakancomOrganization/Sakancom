@@ -1,6 +1,7 @@
 package controllers;
 
 import email.EmailService;
+import exceptions.InvalidEmailFormatException;
 import exceptions.UserNotFoundException;
 import models.Sakancom;
 import models.User;
@@ -20,9 +21,14 @@ public class Login {
         }
         return false;
     }
+
     public static void forgetPassword(EmailService emailService, String username) throws MessagingException, UserNotFoundException {
         User user = Sakancom.getUserByUsername(username);
         emailService.sendEmail(user.getContactInfo().getEmail());
         user.setPassword(emailService.getBody());
+    }
+
+    public static void updateEmail(String username, String email) throws UserNotFoundException, InvalidEmailFormatException {
+        Sakancom.getUserByUsername(username).getContactInfo().setEmail(email);
     }
 }

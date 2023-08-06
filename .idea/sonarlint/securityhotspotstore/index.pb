@@ -157,10 +157,6 @@ K
 .github/workflows/build.yml,f\e\fe77d5d1439f26e353a42bbd38dece2467ff6558
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
-T
-$src/main/java/controllers/Login.java,d\7\d7348dead3122e957b92c9ed3e4ca992b430a9cd
-U
-%src/main/java/controllers/SignUp.java,6\9\69abe9c9b4bb9983c22f528ce7bcbed4714e5f0b
 V
 &src/main/java/models/UserLocation.java,6\9\6958ac9bb15c195b510ff828b9feb37f83241199
 j
@@ -171,14 +167,10 @@ Lsrc/test/java/test_controllers/user_general_operations/TestHousesSearch.java,e
 ^src/test/java/test_controllers/user_general_operations/TestRunnerForUserGeneralOperations.java,0\6\06b85e0a52103ee8c78ebcd2e36058e272802ee7
 o
 ?src/test/features/user_general_operations/houses-search.feature,1\4\14b30cd4f6827324c721eb61ace995f1e129b483
-T
-$src/main/java/controllers/Admin.java,6\a\6a8a9800a4ca5ad95ee88ed8e2e55c9566a6f5a6
 V
 &src/main/java/models/SaleContract.java,3\f\3f008ae267223d7283c2bc612e4e3627ea6f99e4
 U
 %src/main/java/models/ContactInfo.java,2\c\2c3e737113a0e97af88d0dcc48aabeadb64d2e4c
-l
-<src/test/java/test_controllers/authentication/TestLogin.java,d\4\d44e135a2d9b865bb1ee37fef61a997ff8ff3729
 q
 Asrc/test/java/test_controllers/owner/TestListAllOwnBuildings.java,2\6\26e2d1e33a8c45ca16fe6d9153f0cd90d555c150
 z
@@ -210,10 +202,18 @@ $src/main/java/views/MenuPrinter.java,3\e\3e2b9d4dd70d059aae17a765058f9050c9a94
 [
 +src/main/java/views/CollectionsPrinter.java,7\9\799920b47df90e6ef83372b4c1b5c7320bec0b09
 S
-#src/main/java/views/SignUpView.java,3\8\383d99cc642f9d14319c6ab3cae5f2b2ecb2bf88
-S
 #src/main/java/views/TenantView.java,d\6\d65221863b558dc4c01ac159d6cf5d987ec44c0f
 X
 (src/main/java/views/ViewsValidation.java,0\e\0e8e1d3f1092c9a532ab4e8ab0c5797f161fb6d6
 M
 src/main/java/views/Main.java,4\5\457e3c82f5dfcf1e67ae99a0b8f82a5c5280e90b
+R
+"src/main/java/models/Building.java,e\3\e319e29765be4063c1a32bc493a8f59de8802bc1
+O
+src/main/java/models/House.java,b\f\bfcafc26657f1e7ed2d5dd49a1d335fa986bdf38
+[
++src/main/java/views/CustomizedScanners.java,6\f\6fd295f59dc435d5e4a672cc37fbc06ba860607c
+o
+?src/test/java/test_controllers/owner/TestBreakSaleContract.java,d\5\d5ddf5921df99e6b0d4514b770fe3e7d3dd97ae5
+R
+"src/main/java/views/OwnerView.java,d\9\d9ace4ba84e5b48061fa9dd96bb8db29e0817681

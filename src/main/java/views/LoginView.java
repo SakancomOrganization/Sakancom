@@ -1,7 +1,9 @@
 package views;
 
 import controllers.Login;
+import controllers.UserGeneralOperations;
 import email.EmailService;
+import exceptions.InvalidEmailFormatException;
 import exceptions.UserNotFoundException;
 import models.Sakancom;
 
@@ -9,13 +11,13 @@ import javax.mail.MessagingException;
 import java.io.FileNotFoundException;
 import java.util.logging.Logger;
 
-public class SignInView {
-    private static final Logger logger = Logger.getLogger(SignInView.class.getName());
-    private SignInView() {
+public class LoginView {
+    private static final Logger logger = Logger.getLogger(LoginView.class.getName());
+    private LoginView() {
 
     }
 
-    public static void signInView() {
+    public static void loginView() {
         String username = CustomizedScanners.scanNonEmptyString("username");
         String password = CustomizedScanners.scanNonEmptyString("password");
         try {
@@ -36,8 +38,21 @@ public class SignInView {
             Login.forgetPassword(new EmailService(), username);
             logger.info("We sent a message contains the new password on your email!");
         } catch (UserNotFoundException e) {
-            logger.warning("Invalid Username!");
+            logger.warning("Invalid username!");
         } catch (MessagingException e) {
+            logger.warning("Invalid email address!");
+        }
+    }
+
+    public static void updateEmailView() {
+        String username = CustomizedScanners.scanNonEmptyString("username");
+        String newEmail = CustomizedScanners.scanNonEmptyString("email");
+        try {
+            Login.updateEmail(username, newEmail);
+            logger.info("The email is updated successfully!");
+        } catch (UserNotFoundException e) {
+            logger.warning("Invalid username!");
+        } catch (InvalidEmailFormatException e) {
             logger.warning("Invalid email address!");
         }
     }
