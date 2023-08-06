@@ -3,19 +3,16 @@ package views;
 import controllers.Admin;
 import enums.UserType;
 import exceptions.*;
-import models.House;
 import models.Location;
 import models.Name;
-import models.Sakancom;
 
-import java.text.ParseException;
-import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
 public class AdminView {
     private static final Logger logger = Logger.getLogger(AdminView.class.getName());
     public static final String BUILDING_ID = "building ID";
+    public static final String INVALID_BUILDING_ID = "Invalid building ID!";
 
     private AdminView() {
 
@@ -36,7 +33,7 @@ public class AdminView {
                 CollectionsPrinter.printHouses(Admin.listAllHousesInBuilding(buildingId));
                 break;
             } catch (BuildingNotFoundException e) {
-                logger.warning("Invalid building ID!");
+                logger.warning(INVALID_BUILDING_ID);
                 buildingId = CustomizedScanners.scanInt(BUILDING_ID);
             }
         }
@@ -100,7 +97,7 @@ public class AdminView {
         try {
             Admin.acceptBuildingUpdate(buildingId);
         } catch (BuildingNotFoundException e) {
-            logger.warning("Invalid building ID!");
+            logger.warning(INVALID_BUILDING_ID);
         }
     }
 
@@ -109,7 +106,7 @@ public class AdminView {
         try {
             Admin.rejectBuildingUpdates(buildingId);
         } catch (BuildingNotFoundException e) {
-            logger.warning("Invalid building ID!");
+            logger.warning(INVALID_BUILDING_ID);
         }
     }
 
@@ -123,7 +120,7 @@ public class AdminView {
         try {
             Admin.acceptHouseUpdate(buildingId, houseId);
         } catch (BuildingNotFoundException e) {
-            logger.warning("Invalid building ID!");
+            logger.warning(INVALID_BUILDING_ID);
         } catch (HouseNotFoundException e) {
             logger.warning("Invalid house ID!");
         }
@@ -135,7 +132,7 @@ public class AdminView {
         try {
             Admin.rejectHouseUpdate(buildingId, houseId);
         } catch (BuildingNotFoundException e) {
-            logger.warning("Invalid building ID!");
+            logger.warning(INVALID_BUILDING_ID);
         } catch (HouseNotFoundException e) {
             logger.warning("Invalid house ID!");
         }

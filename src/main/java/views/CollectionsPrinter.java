@@ -1,16 +1,11 @@
 package views;
 
 import enums.SaleStatus;
-import exceptions.AlreadyFoundElementException;
-import exceptions.InvalidEmailFormatException;
-import exceptions.UnacceptableValueException;
 import models.Building;
 import models.House;
-import models.Sakancom;
 import models.User;
 
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Map;
