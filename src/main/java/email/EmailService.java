@@ -1,7 +1,7 @@
 package email;
 
-import javax.activation.DataHandler;
-import javax.activation.FileDataSource;
+import io.YmlHandler;
+
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
@@ -33,7 +33,7 @@ public class EmailService {
 
     private void setBody() throws IOException {
         // read the html
-        body = Files.readString(Paths.get("src/main/resources/email-body.html"));
+        body = Files.readString(Paths.get("src/main/resources/html/email-body.html"));
         // replace the holder
         body = body.replace("{{dynamic_text_placeholder}}", generateRandomString());
     }
@@ -89,10 +89,5 @@ public class EmailService {
 
     private static int generateRandomDigit() {
         return random.nextInt(10);
-    }
-
-    public static void main(String[] args) throws IOException, MessagingException {
-        EmailService emailService = new EmailService();
-        emailService.sendEmail("mo.a.alawneh@gmail.com");
     }
 }

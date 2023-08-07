@@ -2,14 +2,17 @@ package views;
 
 import controllers.Owner;
 import enums.HouseClassificationByGender;
-import exceptions.AlreadyFoundElementException;
-import exceptions.BuildingNotFoundException;
-import exceptions.HouseNotFoundException;
-import exceptions.UnacceptableValueException;
+import exceptions.*;
+import io.FileSystemMaker;
+import io.YmlHandler;
 import models.*;
 import printers.CollectionsPrinter;
 import scanners.CustomizedScanners;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.text.ParseException;
 import java.util.logging.Logger;
 
 public class OwnerView {
@@ -109,70 +112,65 @@ public class OwnerView {
         }
     }
 
-    public static void addBuildingView() {
+    public static void addBuildingView() throws FileNotFoundException {
         String name = CustomizedScanners.scanNonEmptyString("building name");
         String city = CustomizedScanners.scanNonEmptyString("city");
         String street = CustomizedScanners.scanNonEmptyString("street");
-        while (true) {
-            try {
-                Location location = new Location(city, street);
-                Building building = new Building(-1, name, Sakancom.getCurrentUser(), location);
-                Owner.addBuilding(building);
-                break;
-            } catch (AlreadyFoundElementException e) {
-                logger.warning("This building is already found! please try again!");
-            }
+        try {
+            Location location = new Location(city, street);
+            Building building = new Building(-1, name, Sakancom.getCurrentUser(), location);
+            Owner.addBuilding(building);
+            File file = new File(YmlHandler.getValue("path") + building.getId());
+            FileSystemMaker fileSystemMaker = new FileSystemMaker();
+            fileSystemMaker.mkDir(file);
+        } catch (AlreadyFoundElementException e) {
+            logger.warning("This building is already found! please try again!");
         }
     }
 
-    public static void addHouseView() {
+    public static void addHouseView() throws FileNotFoundException {
         int buildingId = CustomizedScanners.scanInt(BUILDING_ID);
         Services services = CustomizedScanners.scanServices();
         int monthlyRent = CustomizedScanners.scanInt("monthly rent");
         int floorNum = CustomizedScanners.scanInt("floor number");
         HouseClassificationByGender houseClassificationByGender = CustomizedScanners.scanHouseClassificationByGender();
-        while (true) {
-            try {
-                House house = new House(-1, services, monthlyRent, floorNum, houseClassificationByGender);
-                Owner.addHouse(buildingId, house);
-                break;
-            } catch (AlreadyFoundElementException e) {
-                logger.warning("This house is already found! please try again!");
-                buildingId = CustomizedScanners.scanInt(BUILDING_ID);
-            } catch (BuildingNotFoundException e) {
-                logger.warning(INVALID_BUILD_ID);
-                buildingId = CustomizedScanners.scanInt(BUILDING_ID);
-            } catch (UnacceptableValueException e) {
-                if(ViewsValidation.isNegativeNumber(monthlyRent)) {
-                    logger.warning("Invalid monthly rent!");
-                    monthlyRent = CustomizedScanners.scanInt("monthly rent");
-                }
-                if(ViewsValidation.isNegativeNumber(floorNum)) {
-                    logger.warning("Invalid floor number!");
-                    floorNum = CustomizedScanners.scanInt("floor number");
-                }
+        try {
+            House house = new House(-1, services, monthlyRent, floorNum, houseClassificationByGender);
+            Owner.addHouse(buildingId, house);
+            File file = new File(YmlHandler.getValue("path") +buildingId + "\\house_" + house.getId());
+            FileSystemMaker fileSystemMaker = new FileSystemMaker();
+            fileSystemMaker.mkDir(file);
+        } catch (AlreadyFoundElementException e) {
+            logger.warning("This house is already found! please try again!");
+        } catch (BuildingNotFoundException e) {
+            logger.warning(INVALID_BUILD_ID);
+        } catch (UnacceptableValueException e) {
+            if(ViewsValidation.isNegativeNumber(monthlyRent)) {
+                logger.warning("Invalid monthly rent!");
+            }
+            if(ViewsValidation.isNegativeNumber(floorNum)) {
+                logger.warning("Invalid floor number!");
             }
         }
     }
 
-    public static void addImageView() {
+    public static void addImageView() throws FileNotFoundException {
         int buildingId = CustomizedScanners.scanInt(BUILDING_ID);
         int houseId = CustomizedScanners.scanInt(HOUSE_ID);
         String image = CustomizedScanners.scanNonEmptyString("image");
-        while (true) {
-            try {
-                Owner.addImage(buildingId, houseId, image);
-                break;
-            } catch (AlreadyFoundElementException e) {
-                logger.warning("This image is already found!");
-                image = CustomizedScanners.scanNonEmptyString("image");
-            } catch (BuildingNotFoundException e) {
-                logger.warning(INVALID_BUILD_ID);
-                buildingId = CustomizedScanners.scanInt(BUILDING_ID);
-            } catch (HouseNotFoundException e) {
-                logger.warning(INVALID_HOUSE_ID);
-                houseId = CustomizedScanners.scanInt(HOUSE_ID);
-            }
+        try {
+            Owner.addImage(buildingId, houseId, image);
+            File file = new File(YmlHandler.getValue("path") +buildingId + "\\house_" + houseId + File.separator + image);
+            FileSystemMaker fileSystemMaker = new FileSystemMaker();
+            fileSystemMaker.mkFile(file);
+        } catch (AlreadyFoundElementException e) {
+            logger.warning("This image is already found!");
+        } catch (BuildingNotFoundException e) {
+            logger.warning(INVALID_BUILD_ID);
+        } catch (HouseNotFoundException e) {
+            logger.warning(INVALID_HOUSE_ID);
+        } catch (IOException e) {
+            logger.warning("Invalid file name!");
         }
     }
 

@@ -19,7 +19,7 @@ public class MenusHandler {
 
     }
 
-    private static void determineUserMenu() {
+    private static void determineUserMenu() throws FileNotFoundException {
         if(Login.getCurrentUserType() == UserType.ADMIN) {
             adminMenuHandler();
         } else if(Login.getCurrentUserType() == UserType.OWNER) {
@@ -100,7 +100,7 @@ public class MenusHandler {
         }
     }
 
-    private static void ownerOptions(int choice) {
+    private static void ownerOptions(int choice) throws FileNotFoundException {
         if(choice == 1) {
             OwnerView.listAllOwnBuildingsView();
         } else if (choice == 2) {
@@ -130,7 +130,7 @@ public class MenusHandler {
         }
     }
 
-    public static void ownerMenuHandler() {
+    public static void ownerMenuHandler() throws FileNotFoundException {
         while (true) {
             MenusPrinter.printOwnerMenu();
             int choice = CustomizedScanners.scanInt(CHOICE);

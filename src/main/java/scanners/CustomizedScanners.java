@@ -132,7 +132,7 @@ public class CustomizedScanners {
         HouseClassificationByGender scanHouseClassificationByGender;
         String scanHouseClassificationByGenderAsString;
         while (true) {
-            scanHouseClassificationByGenderAsString = scanner.nextLine();
+            scanHouseClassificationByGenderAsString = scanner.next();
             scanHouseClassificationByGender = stringToHouseClassificationByGender(scanHouseClassificationByGenderAsString);
             if (scanHouseClassificationByGender != null) {
                 return scanHouseClassificationByGender;

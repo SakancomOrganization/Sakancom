@@ -1,4 +1,4 @@
-package email;
+package io;
 
 import org.yaml.snakeyaml.Yaml;
 
@@ -15,7 +15,7 @@ public class YmlHandler {
 
     private static Map<String, Object> init() throws FileNotFoundException {
         Map<String, Object> data;
-        InputStream inputStream = new FileInputStream("email-config.yml");
+        InputStream inputStream = new FileInputStream("config.yml");
         Yaml yml = new Yaml();
         data = yml.load(inputStream);
         return data;

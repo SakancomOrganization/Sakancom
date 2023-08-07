@@ -6,6 +6,10 @@ import exceptions.HouseNotFoundException;
 import printers.CollectionsPrinter;
 import scanners.CustomizedScanners;
 
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
 import java.util.logging.Logger;
 
 public class TenantView {
@@ -70,6 +74,16 @@ public class TenantView {
                 logger.warning("Invalid house ID!");
                 houseId = CustomizedScanners.scanInt("house ID");
             }
+        }
+    }
+
+    public static void seeImagesView(int buildingId, int houseId) {
+        try {
+            String path = "C:\\Users\\HITECH\\IdeaProjects\\Sakancom\\src\\main\\resources\\images/building_" + buildingId + "/house_" + houseId;
+            Desktop desktop = Desktop.getDesktop();
+            desktop.open(new File(path));
+        } catch (IOException e) {
+            logger.warning("Invalid path!");
         }
     }
 }

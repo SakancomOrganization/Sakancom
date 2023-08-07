@@ -8,7 +8,6 @@ import models.Sakancom;
 import scanners.CustomizedScanners;
 
 import javax.mail.MessagingException;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.logging.Logger;
 
