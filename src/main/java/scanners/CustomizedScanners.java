@@ -14,7 +14,6 @@ import java.util.Scanner;
 import java.util.logging.*;
 
 public class CustomizedScanners {
-    private static final Scanner scanner = new Scanner(System.in);
     private static final Logger logger = Logger.getLogger(CustomizedScanners.class.getName());
 
     private CustomizedScanners() {
@@ -31,7 +30,7 @@ public class CustomizedScanners {
         logger.warning(warnMsg);
     }
 
-    public static int scanInt(String type) {
+    public static int scanInt(String type, Scanner scanner) {
         printScanMsg(type);
         int scannedInt;
         while (true) {
@@ -46,7 +45,7 @@ public class CustomizedScanners {
         return scannedInt;
     }
 
-    public static String scanNonEmptyString(String type) {
+    public static String scanNonEmptyString(String type, Scanner scanner) {
         printScanMsg(type);
         String scanString;
         while (true) {
@@ -58,12 +57,12 @@ public class CustomizedScanners {
         return scanString;
     }
 
-    public static String scanString(String type) {
+    public static String scanString(String type, Scanner scanner) {
         printScanMsg(type);
         return scanner.nextLine();
     }
 
-    public static boolean scanBoolean(String type) {
+    public static boolean scanBoolean(String type, Scanner scanner) {
         printScanMsg(type);
         boolean scanBoolean;
         while (true) {
@@ -78,7 +77,7 @@ public class CustomizedScanners {
         return scanBoolean;
     }
 
-    public static Date scanBirthdate() {
+    public static Date scanBirthdate(Scanner scanner) {
         printScanMsg("birthdate");
         Date scanBirthdate;
         while (true) {
@@ -103,7 +102,7 @@ public class CustomizedScanners {
         return null;
     }
 
-    public static UserType scanUserType() {
+    public static UserType scanUserType(Scanner scanner) {
         printScanMsg("user type");
         UserType scanUserType;
         String scanUserTypeAsString;
@@ -127,7 +126,7 @@ public class CustomizedScanners {
         return null;
     }
 
-    public static HouseClassificationByGender scanHouseClassificationByGender() {
+    public static HouseClassificationByGender scanHouseClassificationByGender(Scanner scanner) {
         printScanMsg("house classification by gender");
         HouseClassificationByGender scanHouseClassificationByGender;
         String scanHouseClassificationByGenderAsString;
@@ -141,25 +140,25 @@ public class CustomizedScanners {
         }
     }
 
-    public static Services scanServices() {
-        boolean withElectricity = CustomizedScanners.scanBoolean("with electricity");
-        boolean withWater = CustomizedScanners.scanBoolean("with water");
-        boolean hasInternet = CustomizedScanners.scanBoolean("has internet");
-        boolean hasTelephone = CustomizedScanners.scanBoolean("has telephone");
-        boolean hasBalcony = CustomizedScanners.scanBoolean("has balcony");
-        int bedroomsNum = CustomizedScanners.scanInt("bedrooms number");
-        int bathroomsNum = CustomizedScanners.scanInt("bathrooms number");
+    public static Services scanServices(Scanner scanner) {
+        boolean withElectricity = CustomizedScanners.scanBoolean("with electricity", scanner);
+        boolean withWater = CustomizedScanners.scanBoolean("with water", scanner);
+        boolean hasInternet = CustomizedScanners.scanBoolean("has internet", scanner);
+        boolean hasTelephone = CustomizedScanners.scanBoolean("has telephone", scanner);
+        boolean hasBalcony = CustomizedScanners.scanBoolean("has balcony", scanner);
+        int bedroomsNum = CustomizedScanners.scanInt("bedrooms number", scanner);
+        int bathroomsNum = CustomizedScanners.scanInt("bathrooms number", scanner);
         while (true) {
             try {
                 return new Services(withElectricity, withWater, hasInternet, hasTelephone, hasBalcony, bedroomsNum, bathroomsNum);
             } catch (UnacceptableValueException e) {
                 if(ViewsValidation.isNegativeNumber(bedroomsNum)) {
                     logger.warning("Invalid bedrooms number!");
-                    bedroomsNum = CustomizedScanners.scanInt("bedrooms number");
+                    bedroomsNum = CustomizedScanners.scanInt("bedrooms number", new Scanner(System.in));
                 }
                 if(ViewsValidation.isNegativeNumber(bathroomsNum)) {
                     logger.warning("Invalid bathrooms number!");
-                    bedroomsNum = CustomizedScanners.scanInt("bathrooms number");
+                    bedroomsNum = CustomizedScanners.scanInt("bathrooms number", new Scanner(System.in));
                 }
             }
         }

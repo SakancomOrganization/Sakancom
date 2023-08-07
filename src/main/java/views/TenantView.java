@@ -27,52 +27,52 @@ public class TenantView {
     }
 
     public static void requestHouseView() {
-        int buildingId = CustomizedScanners.scanInt("requested building ID");
-        int houseId = CustomizedScanners.scanInt("requested house ID");
+        int buildingId = CustomizedScanners.scanInt("requested building ID", new Scanner(System.in));
+        int houseId = CustomizedScanners.scanInt("requested house ID", new Scanner(System.in));
         while(true) {
             try {
                 Tenant.requestHouse(buildingId, houseId);
                 break;
             } catch (BuildingNotFoundException e) {
                 logger.warning("Invalid requested building ID!");
-                buildingId = CustomizedScanners.scanInt("requested building ID");
+                buildingId = CustomizedScanners.scanInt("requested building ID", new Scanner(System.in));
             } catch (HouseNotFoundException e) {
                 logger.warning("Invalid requested house ID!");
-                houseId = CustomizedScanners.scanInt("requested house ID");
+                houseId = CustomizedScanners.scanInt("requested house ID", new Scanner(System.in));
             }
         }
     }
 
     public static void leaveHouseView() {
-        int buildingId = CustomizedScanners.scanInt("left building ID");
-        int houseId = CustomizedScanners.scanInt("left house ID");
+        int buildingId = CustomizedScanners.scanInt("left building ID", new Scanner(System.in));
+        int houseId = CustomizedScanners.scanInt("left house ID", new Scanner(System.in));
         while(true) {
             try {
                 Tenant.leaveHouse(buildingId, houseId);
                 break;
             } catch (BuildingNotFoundException e) {
                 logger.warning("Invalid left building ID!");
-                buildingId = CustomizedScanners.scanInt("left building ID");
+                buildingId = CustomizedScanners.scanInt("left building ID", new Scanner(System.in));
             } catch (HouseNotFoundException e) {
                 logger.warning("Invalid left house ID!");
-                houseId = CustomizedScanners.scanInt("left house ID");
+                houseId = CustomizedScanners.scanInt("left house ID", new Scanner(System.in));
             }
         }
     }
 
     public static void getAllNeighborsView() {
-        int buildingId = CustomizedScanners.scanInt("building ID");
-        int houseId = CustomizedScanners.scanInt("house ID");
+        int buildingId = CustomizedScanners.scanInt("building ID", new Scanner(System.in));
+        int houseId = CustomizedScanners.scanInt("house ID", new Scanner(System.in));
         while(true) {
             try {
                 CollectionsPrinter.printUsers(Tenant.getAllHouseNeighbors(buildingId,houseId));
                 break;
             } catch (BuildingNotFoundException e) {
                 logger.warning("Invalid building ID!");
-                buildingId = CustomizedScanners.scanInt("building ID");
+                buildingId = CustomizedScanners.scanInt("building ID", new Scanner(System.in));
             } catch (HouseNotFoundException e) {
                 logger.warning("Invalid house ID!");
-                houseId = CustomizedScanners.scanInt("house ID");
+                houseId = CustomizedScanners.scanInt("house ID", new Scanner(System.in));
             }
         }
     }

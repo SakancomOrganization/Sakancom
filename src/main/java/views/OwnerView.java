@@ -12,7 +12,7 @@ import scanners.CustomizedScanners;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.text.ParseException;
+import java.util.Scanner;
 import java.util.logging.Logger;
 
 public class OwnerView {
@@ -33,14 +33,14 @@ public class OwnerView {
     }
 
     public static void listAllHousesInOwnBuildingView() {
-        int buildingId = CustomizedScanners.scanInt(BUILDING_ID);
+        int buildingId = CustomizedScanners.scanInt(BUILDING_ID, new Scanner(System.in));
         while (true) {
             try {
                 CollectionsPrinter.printHouses(Owner.listAllHousesInOwnBuilding(buildingId));
                 break;
             } catch (BuildingNotFoundException e) {
                 logger.warning(INVALID_BUILD_ID);
-                buildingId = CustomizedScanners.scanInt(BUILDING_ID);
+                buildingId = CustomizedScanners.scanInt(BUILDING_ID, new Scanner(System.in));
             }
         }
     }
@@ -60,9 +60,9 @@ public class OwnerView {
 
     public static void updateBuildingInfoView() {
         printBuildingFields();
-        int buildingId = CustomizedScanners.scanInt(BUILDING_ID);
-        String field = CustomizedScanners.scanNonEmptyString(FIELD);
-        String value = CustomizedScanners.scanNonEmptyString(VALUE);
+        int buildingId = CustomizedScanners.scanInt(BUILDING_ID, new Scanner(System.in));
+        String field = CustomizedScanners.scanNonEmptyString(FIELD, new Scanner(System.in));
+        String value = CustomizedScanners.scanNonEmptyString(VALUE, new Scanner(System.in));
         while (true) {
             try {
                 if(ViewsValidation.isValidBuildingField(field)) {
@@ -70,11 +70,11 @@ public class OwnerView {
                     break;
                 } else {
                     logger.warning("Invalid field!");
-                    field = CustomizedScanners.scanNonEmptyString(FIELD);
+                    field = CustomizedScanners.scanNonEmptyString(FIELD, new Scanner(System.in));
                 }
             } catch (BuildingNotFoundException e) {
                 logger.warning(INVALID_BUILD_ID);
-                buildingId = CustomizedScanners.scanInt(BUILDING_ID);
+                buildingId = CustomizedScanners.scanInt(BUILDING_ID, new Scanner(System.in));
             }
         }
     }
@@ -86,10 +86,10 @@ public class OwnerView {
 
     public static void updateHouseInfoView() {
         printHouseFields();
-        int buildingId = CustomizedScanners.scanInt(BUILDING_ID);
-        int houseId = CustomizedScanners.scanInt(HOUSE_ID);
-        String field = CustomizedScanners.scanNonEmptyString(FIELD);
-        String value = CustomizedScanners.scanNonEmptyString(VALUE);
+        int buildingId = CustomizedScanners.scanInt(BUILDING_ID, new Scanner(System.in));
+        int houseId = CustomizedScanners.scanInt(HOUSE_ID, new Scanner(System.in));
+        String field = CustomizedScanners.scanNonEmptyString(FIELD, new Scanner(System.in));
+        String value = CustomizedScanners.scanNonEmptyString(VALUE, new Scanner(System.in));
         while (true) {
             try {
                 if(ViewsValidation.isValidHouseField(field)) {
@@ -97,25 +97,25 @@ public class OwnerView {
                     break;
                 } else {
                     logger.warning("Invalid field!");
-                    field = CustomizedScanners.scanNonEmptyString(FIELD);
+                    field = CustomizedScanners.scanNonEmptyString(FIELD, new Scanner(System.in));
                 }
             } catch (BuildingNotFoundException e) {
                 logger.warning(INVALID_BUILD_ID);
-                buildingId = CustomizedScanners.scanInt(BUILDING_ID);
+                buildingId = CustomizedScanners.scanInt(BUILDING_ID, new Scanner(System.in));
             } catch (HouseNotFoundException e) {
                 logger.warning(INVALID_HOUSE_ID);
-                buildingId = CustomizedScanners.scanInt(HOUSE_ID);
+                buildingId = CustomizedScanners.scanInt(HOUSE_ID, new Scanner(System.in));
             } catch (UnacceptableValueException e) {
                 logger.warning("Invalid value!");
-                value = CustomizedScanners.scanNonEmptyString(VALUE);
+                value = CustomizedScanners.scanNonEmptyString(VALUE, new Scanner(System.in));
             }
         }
     }
 
     public static void addBuildingView() throws FileNotFoundException {
-        String name = CustomizedScanners.scanNonEmptyString("building name");
-        String city = CustomizedScanners.scanNonEmptyString("city");
-        String street = CustomizedScanners.scanNonEmptyString("street");
+        String name = CustomizedScanners.scanNonEmptyString("building name", new Scanner(System.in));
+        String city = CustomizedScanners.scanNonEmptyString("city", new Scanner(System.in));
+        String street = CustomizedScanners.scanNonEmptyString("street", new Scanner(System.in));
         try {
             Location location = new Location(city, street);
             Building building = new Building(-1, name, Sakancom.getCurrentUser(), location);
@@ -129,11 +129,11 @@ public class OwnerView {
     }
 
     public static void addHouseView() throws FileNotFoundException {
-        int buildingId = CustomizedScanners.scanInt(BUILDING_ID);
-        Services services = CustomizedScanners.scanServices();
-        int monthlyRent = CustomizedScanners.scanInt("monthly rent");
-        int floorNum = CustomizedScanners.scanInt("floor number");
-        HouseClassificationByGender houseClassificationByGender = CustomizedScanners.scanHouseClassificationByGender();
+        int buildingId = CustomizedScanners.scanInt(BUILDING_ID, new Scanner(System.in));
+        Services services = CustomizedScanners.scanServices(new Scanner(System.in));
+        int monthlyRent = CustomizedScanners.scanInt("monthly rent", new Scanner(System.in));
+        int floorNum = CustomizedScanners.scanInt("floor number", new Scanner(System.in));
+        HouseClassificationByGender houseClassificationByGender = CustomizedScanners.scanHouseClassificationByGender(new Scanner(System.in));
         try {
             House house = new House(-1, services, monthlyRent, floorNum, houseClassificationByGender);
             Owner.addHouse(buildingId, house);
@@ -155,9 +155,9 @@ public class OwnerView {
     }
 
     public static void addImageView() throws FileNotFoundException {
-        int buildingId = CustomizedScanners.scanInt(BUILDING_ID);
-        int houseId = CustomizedScanners.scanInt(HOUSE_ID);
-        String image = CustomizedScanners.scanNonEmptyString("image");
+        int buildingId = CustomizedScanners.scanInt(BUILDING_ID, new Scanner(System.in));
+        int houseId = CustomizedScanners.scanInt(HOUSE_ID, new Scanner(System.in));
+        String image = CustomizedScanners.scanNonEmptyString("image", new Scanner(System.in));
         try {
             Owner.addImage(buildingId, houseId, image);
             File file = new File(YmlHandler.getValue("path") +buildingId + "\\house_" + houseId + File.separator + image);
@@ -179,8 +179,8 @@ public class OwnerView {
     }
 
     public static void acceptSaleRequestView() {
-        int buildingId = CustomizedScanners.scanInt(BUILDING_ID);
-        int houseId = CustomizedScanners.scanInt(HOUSE_ID);
+        int buildingId = CustomizedScanners.scanInt(BUILDING_ID, new Scanner(System.in));
+        int houseId = CustomizedScanners.scanInt(HOUSE_ID, new Scanner(System.in));
         try {
             Owner.acceptSaleRequest(buildingId, houseId);
         } catch (BuildingNotFoundException e) {
@@ -191,8 +191,8 @@ public class OwnerView {
     }
 
     public static void breakSaleStatusView() {
-        int buildingId = CustomizedScanners.scanInt(BUILDING_ID);
-        int houseId = CustomizedScanners.scanInt(HOUSE_ID);
+        int buildingId = CustomizedScanners.scanInt(BUILDING_ID, new Scanner(System.in));
+        int houseId = CustomizedScanners.scanInt(HOUSE_ID, new Scanner(System.in));
         try {
             Owner.breakSaleStatus(buildingId, houseId);
         } catch (BuildingNotFoundException e) {

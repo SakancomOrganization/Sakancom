@@ -1,11 +1,16 @@
 package printers;
 
 import enums.SaleStatus;
+import exceptions.AlreadyFoundElementException;
+import exceptions.InvalidEmailFormatException;
+import exceptions.UnacceptableValueException;
 import models.Building;
 import models.House;
+import models.Sakancom;
 import models.User;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Map;
@@ -13,6 +18,9 @@ import java.util.logging.Logger;
 
 public class CollectionsPrinter {
     private static final Logger logger = Logger.getLogger(CollectionsPrinter.class.getName());
+    public static final String ANSI_YELLOW = "\u001B[33m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_RESET = "\u001B[0m";
     private CollectionsPrinter() {
 
     }
@@ -37,6 +45,7 @@ public class CollectionsPrinter {
 
         final int LINE_WIDTH = 256;
         StringBuilder outputString = new StringBuilder();
+        outputString.append(ANSI_YELLOW);
         appendHorizontalLine(outputString, LINE_WIDTH);
         outputString.append(String.format("%n|%-15s|%-15s|%-15s|%-15s|%-15s|%-15s|%-25s|%-25s|%-15s|%-32s|%-15s|%-15s|%-25s|",
                 "Username", // username
@@ -44,10 +53,15 @@ public class CollectionsPrinter {
                 "User Type", // user type
                 "City","Street","Building","Floor Number", // user location
                 "Email","Phone Number","Birthdate","Major"));
-
         appendHorizontalLine(outputString, LINE_WIDTH);
-        for(User user : users) {
-            appendUserInfo(user, outputString);
+        outputString.append(ANSI_RESET);
+        for(int i = 0; i < users.size(); i++) {
+            if(i % 2 == 0) {
+                outputString.append(ANSI_GREEN);
+            } else{
+                outputString.append(ANSI_RESET);
+            }
+            appendUserInfo(users.get(i), outputString);
         }
         appendHorizontalLine(outputString, LINE_WIDTH);
         String result = String.valueOf(outputString);
@@ -69,6 +83,7 @@ public class CollectionsPrinter {
 
         final int LINE_WIDTH = 107;
         StringBuilder outputString = new StringBuilder();
+        outputString.append(ANSI_YELLOW);
         appendHorizontalLine(outputString, LINE_WIDTH);
         outputString.append(String.format("%n|%-15s|%-15s|%-25s|%-15s|%-15s|%-15s|",
                 "ID",
@@ -78,8 +93,14 @@ public class CollectionsPrinter {
                 "Street",
                 "Info Status"));
         appendHorizontalLine(outputString, LINE_WIDTH);
-        for(Building building : buildings) {
-            appendBuildingInfo(building, outputString);
+        outputString.append(ANSI_RESET);
+        for(int i = 0; i < buildings.size(); i++) {
+            if(i % 2 == 0) {
+                outputString.append(ANSI_GREEN);
+            } else{
+                outputString.append(ANSI_RESET);
+            }
+            appendBuildingInfo(buildings.get(i), outputString);
         }
         appendHorizontalLine(outputString, LINE_WIDTH);
         String result = String.valueOf(outputString);
@@ -135,5 +156,10 @@ public class CollectionsPrinter {
         }
         String result = String.valueOf(outputString);
         logger.info(result);
+    }
+
+    public static void main(String[] args) throws AlreadyFoundElementException, UnacceptableValueException, ParseException, InvalidEmailFormatException {
+        Sakancom.initSakancomWithData();
+        printUsers(Sakancom.getUsers());
     }
 }

@@ -9,6 +9,7 @@ import printers.CollectionsPrinter;
 import scanners.CustomizedScanners;
 
 import java.util.Map;
+import java.util.Scanner;
 import java.util.logging.Logger;
 
 public class AdminView {
@@ -29,27 +30,27 @@ public class AdminView {
     }
 
     public static void listAllBuildingsInHouseView() {
-        int buildingId = CustomizedScanners.scanInt(BUILDING_ID);
+        int buildingId = CustomizedScanners.scanInt(BUILDING_ID, new Scanner(System.in));
         while (true) {
             try {
                 CollectionsPrinter.printHouses(Admin.listAllHousesInBuilding(buildingId));
                 break;
             } catch (BuildingNotFoundException e) {
                 logger.warning(INVALID_BUILDING_ID);
-                buildingId = CustomizedScanners.scanInt(BUILDING_ID);
+                buildingId = CustomizedScanners.scanInt(BUILDING_ID, new Scanner(System.in));
             }
         }
     }
 
     public static void searchAboutUsersView() {
-        String username = CustomizedScanners.scanString("username");
-        UserType userType = CustomizedScanners.scanUserType();
-        String firstName = CustomizedScanners.scanString("first name");
-        String middleName = CustomizedScanners.scanString("middle name");
-        String lastName = CustomizedScanners.scanString("last name");
-        String email = CustomizedScanners.scanString("email");
-        String phoneNumber = CustomizedScanners.scanString("phone number");
-        String major = CustomizedScanners.scanString("major");
+        String username = CustomizedScanners.scanString("username", new Scanner(System.in));
+        UserType userType = CustomizedScanners.scanUserType(new Scanner(System.in));
+        String firstName = CustomizedScanners.scanString("first name", new Scanner(System.in));
+        String middleName = CustomizedScanners.scanString("middle name", new Scanner(System.in));
+        String lastName = CustomizedScanners.scanString("last name", new Scanner(System.in));
+        String email = CustomizedScanners.scanString("email", new Scanner(System.in));
+        String phoneNumber = CustomizedScanners.scanString("phone number", new Scanner(System.in));
+        String major = CustomizedScanners.scanString("major", new Scanner(System.in));
 
         Name name = new Name(firstName, middleName, lastName);
         CollectionsPrinter.printUsers(Admin.searchAboutUsers(username,
@@ -61,14 +62,14 @@ public class AdminView {
     }
 
     public static void searchAboutBuildingsView() {
-       int buildingId = CustomizedScanners.scanInt(BUILDING_ID);
-       String buildingName = CustomizedScanners.scanString("building name");
-       String ownerUsername = CustomizedScanners.scanString("owner username");
-       String ownerFirstName = CustomizedScanners.scanString("owner first name");
-       String ownerMiddleName = CustomizedScanners.scanString("owner middle name");
-       String ownerLastName = CustomizedScanners.scanString("owner last name");
-       String city = CustomizedScanners.scanString("city");
-       String street = CustomizedScanners.scanString("street");
+       int buildingId = CustomizedScanners.scanInt(BUILDING_ID, new Scanner(System.in));
+       String buildingName = CustomizedScanners.scanString("building name", new Scanner(System.in));
+       String ownerUsername = CustomizedScanners.scanString("owner username", new Scanner(System.in));
+       String ownerFirstName = CustomizedScanners.scanString("owner first name", new Scanner(System.in));
+       String ownerMiddleName = CustomizedScanners.scanString("owner middle name", new Scanner(System.in));
+       String ownerLastName = CustomizedScanners.scanString("owner last name", new Scanner(System.in));
+       String city = CustomizedScanners.scanString("city", new Scanner(System.in));
+       String street = CustomizedScanners.scanString("street", new Scanner(System.in));
 
         Name ownerName = new Name(ownerFirstName, ownerMiddleName, ownerLastName);
         Location location = new Location(city, street);
@@ -80,7 +81,7 @@ public class AdminView {
     }
 
     public static void removeUserView() {
-        String username = CustomizedScanners.scanNonEmptyString("username");
+        String username = CustomizedScanners.scanNonEmptyString("username", new Scanner(System.in));
         try {
             Admin.removeUser(username);
         } catch (UserNotFoundException e) {
@@ -95,7 +96,7 @@ public class AdminView {
     }
 
     public static void acceptBuildingUpdatesView() {
-        int buildingId = CustomizedScanners.scanInt(BUILDING_ID);
+        int buildingId = CustomizedScanners.scanInt(BUILDING_ID, new Scanner(System.in));
         try {
             Admin.acceptBuildingUpdate(buildingId);
         } catch (BuildingNotFoundException e) {
@@ -104,7 +105,7 @@ public class AdminView {
     }
 
     public static void rejectBuildingUpdatesView() {
-        int buildingId = CustomizedScanners.scanInt(BUILDING_ID);
+        int buildingId = CustomizedScanners.scanInt(BUILDING_ID, new Scanner(System.in));
         try {
             Admin.rejectBuildingUpdates(buildingId);
         } catch (BuildingNotFoundException e) {
@@ -117,8 +118,8 @@ public class AdminView {
     }
 
     public static void acceptHousesUpdatesView() {
-        int buildingId = CustomizedScanners.scanInt(BUILDING_ID);
-        int houseId = CustomizedScanners.scanInt("house ID");
+        int buildingId = CustomizedScanners.scanInt(BUILDING_ID, new Scanner(System.in));
+        int houseId = CustomizedScanners.scanInt("house ID", new Scanner(System.in));
         try {
             Admin.acceptHouseUpdate(buildingId, houseId);
         } catch (BuildingNotFoundException e) {
@@ -129,8 +130,8 @@ public class AdminView {
     }
 
     public static void rejectHousesUpdatesView() {
-        int buildingId = CustomizedScanners.scanInt(BUILDING_ID);
-        int houseId = CustomizedScanners.scanInt("house ID");
+        int buildingId = CustomizedScanners.scanInt(BUILDING_ID, new Scanner(System.in));
+        int houseId = CustomizedScanners.scanInt("house ID", new Scanner(System.in));
         try {
             Admin.rejectHouseUpdate(buildingId, houseId);
         } catch (BuildingNotFoundException e) {

@@ -8,6 +8,7 @@ import views.*;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Scanner;
 import java.util.logging.Logger;
 
 public class MenusHandler {
@@ -49,7 +50,7 @@ public class MenusHandler {
         MenusPrinter.printWelcomeSessionMsg();
         while (true) {
             MenusPrinter.printMainMenu();
-            int choice = CustomizedScanners.scanInt(CHOICE);
+            int choice = CustomizedScanners.scanInt(CHOICE, new Scanner(System.in));
             mainMenuOptions(choice);
             if(choice == 5)
                 break;
@@ -93,7 +94,7 @@ public class MenusHandler {
     public static void adminMenuHandler() {
         while (true) {
             MenusPrinter.printAdminMenu();
-            int choice = CustomizedScanners.scanInt(CHOICE);
+            int choice = CustomizedScanners.scanInt(CHOICE, new Scanner(System.in));
             adminOptions(choice);
             if(choice == 14)
                 break;
@@ -133,7 +134,7 @@ public class MenusHandler {
     public static void ownerMenuHandler() throws FileNotFoundException {
         while (true) {
             MenusPrinter.printOwnerMenu();
-            int choice = CustomizedScanners.scanInt(CHOICE);
+            int choice = CustomizedScanners.scanInt(CHOICE, new Scanner(System.in));
             ownerOptions(choice);
             if(choice == 12)
                 break;
@@ -161,7 +162,7 @@ public class MenusHandler {
     public static void tenantMenuHandler() {
         while (true) {
             MenusPrinter.printTenantMenu();
-            int choice = CustomizedScanners.scanInt(CHOICE);
+            int choice = CustomizedScanners.scanInt(CHOICE, new Scanner(System.in));
             tenantOptions(choice);
             if(choice == 6)
                 break;

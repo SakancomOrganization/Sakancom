@@ -8,23 +8,27 @@ public class MenusPrinter {
     private static final Logger logger = Logger.getLogger(MenusPrinter.class.getName());
     public static final String FORMAT = "%n|%-5s| %-30s|";
     public static final String LOGOUT = "logout";
+    public static final String ANSI_YELLOW = "\u001B[33m";
 
     private MenusPrinter() {
 
     }
 
     public static void printWelcomeSessionMsg() {
-        logger.info("Hello and Welcome to Sakancom Application!\n" +
-                "This Application is power by Najat and Mohammad!");
+        String outputString = ANSI_YELLOW + "\nHello and Welcome to Sakancom Application!\n" +
+                "This Application is power by Najat and Mohammad!\n\n";
+        logger.info(outputString);
     }
 
     public static void printFinishSessionMsg() {
-        logger.info("Thanks to use this application\n" +
-                "Please, communicate us for any help!");
+        String outputString = ANSI_YELLOW + "\nThanks to use this application\n" +
+                "Please, communicate us for any help!";
+        logger.info(outputString);
     }
 
     private static void printMenu(List<String> actions) {
         StringBuilder outputString = new StringBuilder();
+        outputString.append(ANSI_YELLOW);
         CollectionsPrinter.appendHorizontalLine(outputString, 39);
         for(int i = 0; i < actions.size(); i++) {
             outputString.append(String.format(FORMAT, i + 1, actions.get(i)));

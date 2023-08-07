@@ -181,8 +181,6 @@ c
 3src/test/features/tenant/list-tenant-houses.feature,7\4\744f10492c388a9524798cd5d6971f9f39b5f32f
 o
 ?src/test/java/test_controllers/tenant/TestListTenantHouses.java,8\b\8b0a5be66ffe112b550397a8e2676121ded66f08
-X
-(src/main/java/views/ViewsValidation.java,0\e\0e8e1d3f1092c9a532ab4e8ab0c5797f161fb6d6
 R
 "src/main/java/models/Building.java,e\3\e319e29765be4063c1a32bc493a8f59de8802bc1
 O
@@ -191,8 +189,6 @@ o
 ?src/test/java/test_controllers/owner/TestBreakSaleContract.java,d\5\d5ddf5921df99e6b0d4514b770fe3e7d3dd97ae5
 U
 %src/main/java/controllers/SignUp.java,6\9\69abe9c9b4bb9983c22f528ce7bcbed4714e5f0b
-S
-#src/main/java/views/SignUpView.java,3\8\383d99cc642f9d14319c6ab3cae5f2b2ecb2bf88
 r
 Bsrc/test/java/test_controllers/authentication/TestUpdateEmail.java,4\f\4f34243839b7c269294d173997c1b4bd46ebaed6
 e
@@ -207,14 +203,6 @@ d
 4src/main/java/controllers/UserGeneralOperations.java,1\a\1a2bb13c432c56523fedc15028b11c3a6d5b598f
 T
 $src/main/java/controllers/Admin.java,6\a\6a8a9800a4ca5ad95ee88ed8e2e55c9566a6f5a6
-^
-.src/main/java/printers/CollectionsPrinter.java,2\4\242052583b197684432a2679c5c1f15700fd242e
-S
-#src/main/java/views/LogoutView.java,4\8\480a09e75385f392bc7aa2c9f814bd7f7edbd4f0
-R
-"src/main/java/views/AdminView.java,1\6\16ef284199890c28cc9f7bf4070df72414a26421
-X
-(src/main/java/printers/MenusPrinter.java,0\2\021c2be62f013ceace91f2c2ed3a341579499f30
 R
 "src/main/java/models/Sakancom.java,f\a\fae43a245de589027aa9735d66ed1e3441c0439b
 n

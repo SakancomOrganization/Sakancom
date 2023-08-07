@@ -9,6 +9,7 @@ import scanners.CustomizedScanners;
 
 import javax.mail.MessagingException;
 import java.io.IOException;
+import java.util.Scanner;
 import java.util.logging.Logger;
 
 public class LoginView {
@@ -20,8 +21,8 @@ public class LoginView {
     }
 
     public static void loginView() {
-        String username = CustomizedScanners.scanNonEmptyString(USERNAME);
-        String password = CustomizedScanners.scanNonEmptyString("password");
+        String username = CustomizedScanners.scanNonEmptyString(USERNAME, new Scanner(System.in));
+        String password = CustomizedScanners.scanNonEmptyString("password", new Scanner(System.in));
         try {
             if(Login.login(username, password)) {
                 String welcomeMsg = "Hello, " + Sakancom.getCurrentUser().getName().getFirstName();
@@ -35,7 +36,7 @@ public class LoginView {
     }
 
     public static void forgetPasswordView() throws IOException {
-        String username = CustomizedScanners.scanNonEmptyString(USERNAME);
+        String username = CustomizedScanners.scanNonEmptyString(USERNAME, new Scanner(System.in));
         try {
             Login.forgetPassword(new EmailService(), username);
             logger.info("We sent a message contains the new password on your email!");
@@ -47,8 +48,8 @@ public class LoginView {
     }
 
     public static void updateEmailView() {
-        String username = CustomizedScanners.scanNonEmptyString(USERNAME);
-        String newEmail = CustomizedScanners.scanNonEmptyString("email");
+        String username = CustomizedScanners.scanNonEmptyString(USERNAME, new Scanner(System.in));
+        String newEmail = CustomizedScanners.scanNonEmptyString("email", new Scanner(System.in));
         try {
             Login.updateEmail(username, newEmail);
             logger.info("The email is updated successfully!");
