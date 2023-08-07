@@ -197,8 +197,6 @@ h
 .src/test/features/authentication/login.feature,4\d\4d4385662fc2c2849d46f0bc62645c5140892571
 l
 <src/test/java/test_controllers/authentication/TestLogin.java,d\4\d44e135a2d9b865bb1ee37fef61a997ff8ff3729
-T
-$src/main/java/controllers/Admin.java,6\a\6a8a9800a4ca5ad95ee88ed8e2e55c9566a6f5a6
 n
 >src/test/features/authentication/get-current-user-type.feature,0\4\049a2eab75db931032c147753a340409219f73c3
 U

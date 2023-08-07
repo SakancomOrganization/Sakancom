@@ -197,8 +197,6 @@ l
 <src/test/java/test_controllers/authentication/TestLogin.java,d\4\d44e135a2d9b865bb1ee37fef61a997ff8ff3729
 h
 8src/test/features/authentication/forget-password.feature,f\e\fe8dbc4cc397662b9c9fe4736d1ce8bb4b5321c8
-T
-$src/main/java/controllers/Admin.java,6\a\6a8a9800a4ca5ad95ee88ed8e2e55c9566a6f5a6
 n
 >src/test/features/authentication/get-current-user-type.feature,0\4\049a2eab75db931032c147753a340409219f73c3
 ~

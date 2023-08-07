@@ -10,9 +10,6 @@ import java.text.ParseException;
 
 public class Main {
     public static void main(String[] args) throws IOException, AlreadyFoundElementException, UnacceptableValueException, ParseException, InvalidEmailFormatException {
-        /*
-        this is the main method
-         */
         Sakancom.initSakancomWithData();
         MenusHandler.mainMenuHandler();
     }
