@@ -28,7 +28,9 @@ public class TestEmailServiceWithMockito {
 
      @Test
      public void testSendEmailWithValidEmailAddress() throws MessagingException {
+         // when
          mockEmailService.sendEmail("mo.a.alawneh@gmail.com");
+         // then
          verify(mockEmailService, times(1)).sendEmail("mo.a.alawneh@gmail.com");
      }
 

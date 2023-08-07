@@ -8,6 +8,7 @@ import models.Sakancom;
 import models.User;
 
 import javax.mail.MessagingException;
+import java.io.IOException;
 
 public class Login {
     private Login () {
@@ -27,7 +28,7 @@ public class Login {
         return Sakancom.getCurrentUser().getUserType();
     }
 
-    public static void forgetPassword(EmailService emailService, String username) throws MessagingException, UserNotFoundException {
+    public static void forgetPassword(EmailService emailService, String username) throws MessagingException, UserNotFoundException, IOException {
         User user = Sakancom.getUserByUsername(username);
         emailService.sendEmail(user.getContactInfo().getEmail());
         user.setPassword(emailService.getBody());

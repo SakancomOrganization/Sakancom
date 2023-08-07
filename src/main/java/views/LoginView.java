@@ -9,6 +9,7 @@ import scanners.CustomizedScanners;
 
 import javax.mail.MessagingException;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.logging.Logger;
 
 public class LoginView {
@@ -34,7 +35,7 @@ public class LoginView {
         }
     }
 
-    public static void forgetPasswordView() throws FileNotFoundException {
+    public static void forgetPasswordView() throws IOException {
         String username = CustomizedScanners.scanNonEmptyString(USERNAME);
         try {
             Login.forgetPassword(new EmailService(), username);

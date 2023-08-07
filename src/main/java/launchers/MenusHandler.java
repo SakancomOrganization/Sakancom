@@ -7,6 +7,7 @@ import scanners.CustomizedScanners;
 import views.*;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.logging.Logger;
 
 public class MenusHandler {
@@ -27,7 +28,7 @@ public class MenusHandler {
             tenantMenuHandler();
         }
     }
-    private static void mainMenuOptions(int choice) throws FileNotFoundException {
+    private static void mainMenuOptions(int choice) throws IOException {
         if(choice == 1) {
             LoginView.loginView();
             determineUserMenu();
@@ -44,7 +45,7 @@ public class MenusHandler {
         }
     }
 
-    public static void mainMenuHandler() throws FileNotFoundException {
+    public static void mainMenuHandler() throws IOException {
         MenusPrinter.printWelcomeSessionMsg();
         while (true) {
             MenusPrinter.printMainMenu();
