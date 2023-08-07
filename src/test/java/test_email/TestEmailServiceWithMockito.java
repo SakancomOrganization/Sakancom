@@ -24,7 +24,7 @@ public class TestEmailServiceWithMockito {
 
      @Test
      public void testReturnBody() {
-         assertEquals("", emailService.getBody());
+         assertEquals("", emailService.getNewPassword());
      }
 
      @Test

@@ -20,22 +20,25 @@ public class EmailService {
     private final String from;
     private final String password;
     private String body;
+    private String newPassword;
 
     public EmailService() throws FileNotFoundException {
         from = YmlHandler.getValue("fromEmail");
         password = YmlHandler.getValue("password");
         body = "";
+        newPassword = "";
     }
 
-    public String getBody() {
-        return body;
+    public String getNewPassword() {
+        return newPassword;
     }
 
     private void setBody() throws IOException {
         // read the html
         body = Files.readString(Paths.get("src/main/resources/html/email-body.html"));
         // replace the holder
-        body = body.replace("{{dynamic_text_placeholder}}", generateRandomString());
+        newPassword = generateRandomString();
+        body = body.replace("{{dynamic_text_placeholder}}", newPassword);
     }
 
     private Properties defineProperties() {

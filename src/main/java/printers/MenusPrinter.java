@@ -1,5 +1,7 @@
 package printers;
 
+import enums.Colors;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -8,32 +10,35 @@ public class MenusPrinter {
     private static final Logger logger = Logger.getLogger(MenusPrinter.class.getName());
     public static final String FORMAT = "%n|%-5s| %-30s|";
     public static final String LOGOUT = "logout";
-    public static final String ANSI_YELLOW = "\u001B[33m";
 
     private MenusPrinter() {
 
     }
 
     public static void printWelcomeSessionMsg() {
-        String outputString = ANSI_YELLOW + "\nHello and Welcome to Sakancom Application!\n" +
-                "This Application is power by Najat and Mohammad!\n\n";
+        String outputString = "\n" + Colors.BACKGROUND_WHITE.getUniCodeValue() + "Hello and Welcome to Sakancom Application!      "
+                + Colors.RESET.getUniCodeValue() + "\n" + Colors.BACKGROUND_WHITE.getUniCodeValue()
+                + "This Application is power by Najat and Mohammad!" + Colors.RESET.getUniCodeValue() + "\n\n";
         logger.info(outputString);
     }
 
     public static void printFinishSessionMsg() {
-        String outputString = ANSI_YELLOW + "\nThanks to use this application\n" +
-                "Please, communicate us for any help!";
+        String outputString = "\n" + Colors.BACKGROUND_WHITE.getUniCodeValue() + "Thanks to use this application      "
+                + Colors.RESET.getUniCodeValue() + "\n" + Colors.BACKGROUND_WHITE.getUniCodeValue()
+                + "Please, communicate us for any help!" + Colors.RESET.getUniCodeValue() + "\n\n";
         logger.info(outputString);
     }
 
     private static void printMenu(List<String> actions) {
         StringBuilder outputString = new StringBuilder();
-        outputString.append(ANSI_YELLOW);
+        outputString.append(Colors.YELLOW.getUniCodeValue());
         CollectionsPrinter.appendHorizontalLine(outputString, 39);
         for(int i = 0; i < actions.size(); i++) {
             outputString.append(String.format(FORMAT, i + 1, actions.get(i)));
         }
         CollectionsPrinter.appendHorizontalLine(outputString, 39);
+        outputString.append(Colors.RESET.getUniCodeValue());
+        outputString.append("\n\n");
         String result = String.valueOf(outputString);
         logger.info(result);
     }
@@ -80,8 +85,10 @@ public class MenusPrinter {
         ownerActions.add("add a new building");
         ownerActions.add("add a new house");
         ownerActions.add("add a new image to a house");
+        ownerActions.add("get all sales requests");
         ownerActions.add("accept sale request");
         ownerActions.add("break sale request");
+        ownerActions.add("owner special zone");
         ownerActions.add(LOGOUT);
 
         printMenu(ownerActions);
@@ -94,8 +101,20 @@ public class MenusPrinter {
         tenantActions.add("request a new house");
         tenantActions.add("leave a house");
         tenantActions.add("get all neighbors for a house");
+        tenantActions.add("see images");
+        tenantActions.add("tenant special zone");
         tenantActions.add(LOGOUT);
 
         printMenu(tenantActions);
+    }
+
+    public static void printUserGeneralOperationsMenu() {
+        List<String> userGeneralActions = new ArrayList<>();
+        userGeneralActions.add("rate a house");
+        userGeneralActions.add("update personal info!");
+        userGeneralActions.add("search about houses!");
+        userGeneralActions.add("back step");
+
+        printMenu(userGeneralActions);
     }
 }

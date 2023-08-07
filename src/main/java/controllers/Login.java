@@ -31,7 +31,7 @@ public class Login {
     public static void forgetPassword(EmailService emailService, String username) throws MessagingException, UserNotFoundException, IOException {
         User user = Sakancom.getUserByUsername(username);
         emailService.sendEmail(user.getContactInfo().getEmail());
-        user.setPassword(emailService.getBody());
+        user.setPassword(emailService.getNewPassword());
     }
 
     public static void updateEmail(String username, String email) throws UserNotFoundException, InvalidEmailFormatException {

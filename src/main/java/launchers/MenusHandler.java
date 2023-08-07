@@ -21,13 +21,19 @@ public class MenusHandler {
     }
 
     private static void determineUserMenu() throws FileNotFoundException {
-        if(Login.getCurrentUserType() == UserType.ADMIN) {
-            adminMenuHandler();
-        } else if(Login.getCurrentUserType() == UserType.OWNER) {
-            ownerMenuHandler();
-        } else if(Login.getCurrentUserType() == UserType.TENANT) {
-            tenantMenuHandler();
+        try {
+            UserType currentUserType = Login.getCurrentUserType();
+            if(currentUserType == UserType.ADMIN) {
+                adminMenuHandler();
+            } else if(currentUserType == UserType.OWNER) {
+                ownerMenuHandler();
+            } else if(currentUserType == UserType.TENANT) {
+                tenantMenuHandler();
+            }
+        } catch (NullPointerException e) {
+            // prevent null pointer exception
         }
+
     }
     private static void mainMenuOptions(int choice) throws IOException {
         if(choice == 1) {
@@ -121,10 +127,14 @@ public class MenusHandler {
         } else if(choice == 9) {
             OwnerView.addImageView();
         } else if(choice == 10) {
-            OwnerView.acceptSaleRequestView();
+            OwnerView.getAllSaleRequestsView();
         } else if(choice == 11) {
-            OwnerView.breakSaleStatusView();
+            OwnerView.acceptSaleRequestView();
         } else if(choice == 12) {
+            OwnerView.breakSaleStatusView();
+        } else if(choice == 13) {
+            userGeneralMenuHandler();
+        } else if(choice == 14) {
             LogoutView.logoutView();
         } else {
             logger.warning(INVALID_CHOICE);
@@ -136,7 +146,7 @@ public class MenusHandler {
             MenusPrinter.printOwnerMenu();
             int choice = CustomizedScanners.scanInt(CHOICE, new Scanner(System.in));
             ownerOptions(choice);
-            if(choice == 12)
+            if(choice == 14)
                 break;
         }
     }
@@ -153,6 +163,10 @@ public class MenusHandler {
         } else if(choice == 5) {
             TenantView.getAllNeighborsView();
         } else if(choice == 6) {
+            TenantView.seeImagesView();
+        } else if(choice == 7) {
+            userGeneralMenuHandler();
+        } else if(choice == 8) {
             LogoutView.logoutView();
         } else {
             logger.warning(INVALID_CHOICE);
@@ -164,7 +178,31 @@ public class MenusHandler {
             MenusPrinter.printTenantMenu();
             int choice = CustomizedScanners.scanInt(CHOICE, new Scanner(System.in));
             tenantOptions(choice);
-            if(choice == 6)
+            if(choice == 8)
+                break;
+        }
+    }
+
+    public static void userGeneralActions(int choice) {
+        if(choice == 1) {
+            UserGeneralOperationsView.rateHouseView();
+        } else if(choice == 2) {
+            UserGeneralOperationsView.updateInfoView();
+        } else if(choice == 3) {
+            UserGeneralOperationsView.searchAboutHousesView();
+        } else if(choice == 4) {
+            logger.info("Navigate to role menu!");
+        } else  {
+            logger.warning(INVALID_CHOICE);
+        }
+    }
+
+    public static void userGeneralMenuHandler() {
+        while (true) {
+            MenusPrinter.printUserGeneralOperationsMenu();
+            int choice = CustomizedScanners.scanInt(CHOICE, new Scanner(System.in));
+            userGeneralActions(choice);
+            if(choice == 4)
                 break;
         }
     }

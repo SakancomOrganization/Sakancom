@@ -1,5 +1,6 @@
 package printers;
 
+import enums.Colors;
 import enums.SaleStatus;
 import exceptions.AlreadyFoundElementException;
 import exceptions.InvalidEmailFormatException;
@@ -18,9 +19,6 @@ import java.util.logging.Logger;
 
 public class CollectionsPrinter {
     private static final Logger logger = Logger.getLogger(CollectionsPrinter.class.getName());
-    public static final String ANSI_YELLOW = "\u001B[33m";
-    public static final String ANSI_GREEN = "\u001B[32m";
-    public static final String ANSI_RESET = "\u001B[0m";
     private CollectionsPrinter() {
 
     }
@@ -45,7 +43,7 @@ public class CollectionsPrinter {
 
         final int LINE_WIDTH = 256;
         StringBuilder outputString = new StringBuilder();
-        outputString.append(ANSI_YELLOW);
+        outputString.append(Colors.YELLOW.getUniCodeValue());
         appendHorizontalLine(outputString, LINE_WIDTH);
         outputString.append(String.format("%n|%-15s|%-15s|%-15s|%-15s|%-15s|%-15s|%-25s|%-25s|%-15s|%-32s|%-15s|%-15s|%-25s|",
                 "Username", // username
@@ -54,12 +52,12 @@ public class CollectionsPrinter {
                 "City","Street","Building","Floor Number", // user location
                 "Email","Phone Number","Birthdate","Major"));
         appendHorizontalLine(outputString, LINE_WIDTH);
-        outputString.append(ANSI_RESET);
+        outputString.append(Colors.RESET.getUniCodeValue());
         for(int i = 0; i < users.size(); i++) {
             if(i % 2 == 0) {
-                outputString.append(ANSI_GREEN);
+                outputString.append(Colors.GREEN.getUniCodeValue());
             } else{
-                outputString.append(ANSI_RESET);
+                outputString.append(Colors.RESET.getUniCodeValue());
             }
             appendUserInfo(users.get(i), outputString);
         }
@@ -83,7 +81,7 @@ public class CollectionsPrinter {
 
         final int LINE_WIDTH = 107;
         StringBuilder outputString = new StringBuilder();
-        outputString.append(ANSI_YELLOW);
+        outputString.append(Colors.YELLOW.getUniCodeValue());
         appendHorizontalLine(outputString, LINE_WIDTH);
         outputString.append(String.format("%n|%-15s|%-15s|%-25s|%-15s|%-15s|%-15s|",
                 "ID",
@@ -93,12 +91,12 @@ public class CollectionsPrinter {
                 "Street",
                 "Info Status"));
         appendHorizontalLine(outputString, LINE_WIDTH);
-        outputString.append(ANSI_RESET);
+        outputString.append(Colors.RESET.getUniCodeValue());
         for(int i = 0; i < buildings.size(); i++) {
             if(i % 2 == 0) {
-                outputString.append(ANSI_GREEN);
+                outputString.append(Colors.GREEN.getUniCodeValue());
             } else{
-                outputString.append(ANSI_RESET);
+                outputString.append(Colors.RESET.getUniCodeValue());
             }
             appendBuildingInfo(buildings.get(i), outputString);
         }
@@ -156,10 +154,5 @@ public class CollectionsPrinter {
         }
         String result = String.valueOf(outputString);
         logger.info(result);
-    }
-
-    public static void main(String[] args) throws AlreadyFoundElementException, UnacceptableValueException, ParseException, InvalidEmailFormatException {
-        Sakancom.initSakancomWithData();
-        printUsers(Sakancom.getUsers());
     }
 }

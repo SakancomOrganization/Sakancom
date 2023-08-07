@@ -63,21 +63,18 @@ public class TenantView {
     public static void getAllNeighborsView() {
         int buildingId = CustomizedScanners.scanInt("building ID", new Scanner(System.in));
         int houseId = CustomizedScanners.scanInt("house ID", new Scanner(System.in));
-        while(true) {
-            try {
-                CollectionsPrinter.printUsers(Tenant.getAllHouseNeighbors(buildingId,houseId));
-                break;
-            } catch (BuildingNotFoundException e) {
-                logger.warning("Invalid building ID!");
-                buildingId = CustomizedScanners.scanInt("building ID", new Scanner(System.in));
-            } catch (HouseNotFoundException e) {
-                logger.warning("Invalid house ID!");
-                houseId = CustomizedScanners.scanInt("house ID", new Scanner(System.in));
-            }
+        try {
+            CollectionsPrinter.printUsers(Tenant.getAllHouseNeighbors(buildingId,houseId));
+        } catch (BuildingNotFoundException e) {
+            logger.warning("Invalid building ID!");
+        } catch (HouseNotFoundException e) {
+            logger.warning("Invalid house ID!");
         }
     }
 
-    public static void seeImagesView(int buildingId, int houseId) {
+    public static void seeImagesView() {
+        int buildingId = CustomizedScanners.scanInt("building ID", new Scanner(System.in));
+        int houseId = CustomizedScanners.scanInt("house ID", new Scanner(System.in));
         try {
             String path = "C:\\Users\\HITECH\\IdeaProjects\\Sakancom\\src\\main\\resources\\images/building_" + buildingId + "/house_" + houseId;
             Desktop desktop = Desktop.getDesktop();

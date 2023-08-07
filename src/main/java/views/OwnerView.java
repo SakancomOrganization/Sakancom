@@ -162,7 +162,8 @@ public class OwnerView {
             Owner.addImage(buildingId, houseId, image);
             File file = new File(YmlHandler.getValue("path") +buildingId + "\\house_" + houseId + File.separator + image);
             FileSystemMaker fileSystemMaker = new FileSystemMaker();
-            fileSystemMaker.mkFile(file);
+            if(fileSystemMaker.mkFile(file))
+                logger.info("Image is added successfully!");
         } catch (AlreadyFoundElementException e) {
             logger.warning("This image is already found!");
         } catch (BuildingNotFoundException e) {
