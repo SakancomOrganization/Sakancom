@@ -215,8 +215,6 @@ h
 .src/test/features/authentication/login.feature,4\d\4d4385662fc2c2849d46f0bc62645c5140892571
 l
 <src/test/java/test_controllers/authentication/TestLogin.java,d\4\d44e135a2d9b865bb1ee37fef61a997ff8ff3729
-u
-Esrc/test/java/test_controllers/authentication/TestForgetPassword.java,8\2\8213c5ac2a12354e6df2b92c814cdcedebb17ea9
 d
 4src/main/java/controllers/UserGeneralOperations.java,1\a\1a2bb13c432c56523fedc15028b11c3a6d5b598f
 T

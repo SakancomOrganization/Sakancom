@@ -7,6 +7,7 @@ import org.junit.Test;
 import javax.mail.MessagingException;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
@@ -27,7 +28,7 @@ public class TestEmailServiceWithMockito {
      }
 
      @Test
-     public void testSendEmailWithValidEmailAddress() throws MessagingException {
+     public void testSendEmailWithValidEmailAddress() throws MessagingException, IOException {
          // when
          mockEmailService.sendEmail("mo.a.alawneh@gmail.com");
          // then

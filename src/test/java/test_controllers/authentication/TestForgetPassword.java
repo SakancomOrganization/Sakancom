@@ -9,6 +9,8 @@ import models.Sakancom;
 
 import javax.mail.MessagingException;
 
+import java.io.IOException;
+
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertThrows;
 import static org.mockito.Mockito.mock;
@@ -20,7 +22,7 @@ public class TestForgetPassword {
         this.username = username;
     }
     @Then("the user will receive a new password on the email")
-    public void theUserWillReceiveANewPasswordOnTheEmail() throws MessagingException, UserNotFoundException {
+    public void theUserWillReceiveANewPasswordOnTheEmail() throws MessagingException, UserNotFoundException, IOException {
         String previousPassword = Sakancom.getUserByUsername(username).getPassword();
         Login.forgetPassword(mock(EmailService.class), username);
         String updatedPassword = Sakancom.getUserByUsername(username).getPassword();
