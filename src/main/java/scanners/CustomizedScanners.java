@@ -4,7 +4,7 @@ import enums.HouseClassificationByGender;
 import enums.UserType;
 import exceptions.UnacceptableValueException;
 import models.Services;
-import views.ViewsValidation;
+import helpers.ViewsValidation;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -32,29 +32,23 @@ public class CustomizedScanners {
 
     public static int scanInt(String type, Scanner scanner) {
         printScanMsg(type);
-        int scannedInt;
-        while (true) {
-            try {
-                scannedInt = scanner.nextInt();
-                break;
-            } catch (InputMismatchException inputMismatchException) {
-                scanner.next();
-                printWarnMsg(type);
-            }
+        try {
+            return scanner.nextInt();
+        } catch (InputMismatchException inputMismatchException) {
+            scanner.next();
+            printWarnMsg(type);
+            return -1; // invalid value
         }
-        return scannedInt;
     }
 
     public static String scanNonEmptyString(String type, Scanner scanner) {
         printScanMsg(type);
         String scanString;
-        while (true) {
-            scanString = scanner.nextLine();
-            if (!scanString.isEmpty())
-                break;
-            printWarnMsg(type);
-        }
-        return scanString;
+        scanString = scanner.nextLine();
+        if (!scanString.isEmpty())
+            return scanString;
+        printWarnMsg(type);
+        return null; // invalid value
     }
 
     public static String scanString(String type, Scanner scanner) {
@@ -64,32 +58,24 @@ public class CustomizedScanners {
 
     public static boolean scanBoolean(String type, Scanner scanner) {
         printScanMsg(type);
-        boolean scanBoolean;
-        while (true) {
-            try {
-                scanBoolean = scanner.nextBoolean();
-                break;
-            } catch (InputMismatchException inputMismatchException) {
-                scanner.next();
-                printWarnMsg(type);
-            }
+        try {
+            return scanner.nextBoolean();
+        } catch (InputMismatchException inputMismatchException) {
+            scanner.next();
+            printWarnMsg(type);
+            return false;
         }
-        return scanBoolean;
     }
 
     public static Date scanBirthdate(Scanner scanner) {
         printScanMsg("birthdate");
-        Date scanBirthdate;
-        while (true) {
-            try {
-                String scanBirthdateAsString = scanner.nextLine();
-                scanBirthdate = new SimpleDateFormat("dd/MM/yyyy").parse(scanBirthdateAsString);
-                break;
-            } catch (ParseException e) {
-                printWarnMsg("birthdate");
-            }
+        try {
+            String scanBirthdateAsString = scanner.nextLine();
+            return new SimpleDateFormat("dd/MM/yyyy").parse(scanBirthdateAsString);
+        } catch (ParseException e) {
+            printWarnMsg("birthdate");
+            return null;
         }
-        return scanBirthdate;
     }
 
     private static UserType stringToUserType(String userType) {
@@ -105,15 +91,12 @@ public class CustomizedScanners {
     public static UserType scanUserType(Scanner scanner) {
         printScanMsg("user type");
         UserType scanUserType;
-        String scanUserTypeAsString;
-        while (true) {
-            scanUserTypeAsString = scanner.nextLine();
-            scanUserType = stringToUserType(scanUserTypeAsString);
-            if (scanUserType != null) {
-                return scanUserType;
-            }
+        String scanUserTypeAsString = scanner.nextLine();
+        scanUserType = stringToUserType(scanUserTypeAsString);
+        if (scanUserType == null) {
             printWarnMsg("user type");
         }
+        return null;
     }
 
     private static HouseClassificationByGender stringToHouseClassificationByGender(String houseClassificationByGender) {
@@ -129,15 +112,11 @@ public class CustomizedScanners {
     public static HouseClassificationByGender scanHouseClassificationByGender(Scanner scanner) {
         printScanMsg("house classification by gender");
         HouseClassificationByGender scanHouseClassificationByGender;
-        String scanHouseClassificationByGenderAsString;
-        while (true) {
-            scanHouseClassificationByGenderAsString = scanner.next();
-            scanHouseClassificationByGender = stringToHouseClassificationByGender(scanHouseClassificationByGenderAsString);
-            if (scanHouseClassificationByGender != null) {
-                return scanHouseClassificationByGender;
-            }
+        String scanHouseClassificationByGenderAsString = scanner.next();
+        scanHouseClassificationByGender = stringToHouseClassificationByGender(scanHouseClassificationByGenderAsString);
+        if (scanHouseClassificationByGender == null)
             printWarnMsg("house classification by gender");
-        }
+        return scanHouseClassificationByGender;
     }
 
     public static Services scanServices(Scanner scanner) {
@@ -148,19 +127,16 @@ public class CustomizedScanners {
         boolean hasBalcony = CustomizedScanners.scanBoolean("has balcony", scanner);
         int bedroomsNum = CustomizedScanners.scanInt("bedrooms number", scanner);
         int bathroomsNum = CustomizedScanners.scanInt("bathrooms number", scanner);
-        while (true) {
-            try {
-                return new Services(withElectricity, withWater, hasInternet, hasTelephone, hasBalcony, bedroomsNum, bathroomsNum);
-            } catch (UnacceptableValueException e) {
-                if(ViewsValidation.isNegativeNumber(bedroomsNum)) {
-                    logger.warning("Invalid bedrooms number!");
-                    bedroomsNum = CustomizedScanners.scanInt("bedrooms number", new Scanner(System.in));
-                }
-                if(ViewsValidation.isNegativeNumber(bathroomsNum)) {
-                    logger.warning("Invalid bathrooms number!");
-                    bedroomsNum = CustomizedScanners.scanInt("bathrooms number", new Scanner(System.in));
-                }
+        try {
+            return new Services(withElectricity, withWater, hasInternet, hasTelephone, hasBalcony, bedroomsNum, bathroomsNum);
+        } catch (UnacceptableValueException e) {
+            if(ViewsValidation.isNegativeNumber(bedroomsNum)) {
+                logger.warning("Invalid bedrooms number!");
             }
+            if(ViewsValidation.isNegativeNumber(bathroomsNum)) {
+                logger.warning("Invalid bathrooms number!");
+            }
+            return null;
         }
     }
 }

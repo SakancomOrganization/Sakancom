@@ -1,4 +1,4 @@
-package views;
+package helpers;
 
 public class ViewsValidation {
     private ViewsValidation() {
@@ -6,6 +6,9 @@ public class ViewsValidation {
     }
 
     public static boolean isValidUserField(String field) {
+        if(field == null)
+            return false;
+
         return field.equalsIgnoreCase("firstName")
                 || field.equalsIgnoreCase("secondName")
                 || field.equalsIgnoreCase("lastName")
@@ -39,9 +42,5 @@ public class ViewsValidation {
 
     public static boolean isNegativeNumber(int roomsNum) {
         return roomsNum < 0;
-    }
-
-    public static boolean isValidRate(int rate) {
-        return rate >=0 && rate <= 5;
     }
 }

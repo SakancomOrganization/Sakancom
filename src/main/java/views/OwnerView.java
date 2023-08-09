@@ -3,6 +3,7 @@ package views;
 import controllers.Owner;
 import enums.HouseClassificationByGender;
 import exceptions.*;
+import helpers.ViewsValidation;
 import io.FileSystemMaker;
 import io.YmlHandler;
 import models.*;
@@ -65,6 +66,7 @@ public class OwnerView {
         String value = CustomizedScanners.scanNonEmptyString(VALUE, new Scanner(System.in));
         while (true) {
             try {
+                assert field != null;
                 if(ViewsValidation.isValidBuildingField(field)) {
                     Owner.updateBuildingInfo(buildingId, field, value);
                     break;
@@ -92,6 +94,7 @@ public class OwnerView {
         String value = CustomizedScanners.scanNonEmptyString(VALUE, new Scanner(System.in));
         while (true) {
             try {
+                assert field != null;
                 if(ViewsValidation.isValidHouseField(field)) {
                     Owner.updateHouseInfo(buildingId, houseId, field, value);
                     break;
@@ -154,7 +157,7 @@ public class OwnerView {
         }
     }
 
-    public static void addImageView() throws FileNotFoundException {
+    public static void addImageView() {
         int buildingId = CustomizedScanners.scanInt(BUILDING_ID, new Scanner(System.in));
         int houseId = CustomizedScanners.scanInt(HOUSE_ID, new Scanner(System.in));
         String image = CustomizedScanners.scanNonEmptyString("image", new Scanner(System.in));

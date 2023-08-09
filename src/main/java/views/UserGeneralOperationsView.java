@@ -3,6 +3,7 @@ package views;
 import controllers.UserGeneralOperations;
 import enums.HouseClassificationByGender;
 import exceptions.*;
+import helpers.ViewsValidation;
 import models.Location;
 import models.Name;
 import models.Services;

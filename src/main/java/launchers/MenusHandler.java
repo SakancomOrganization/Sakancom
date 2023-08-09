@@ -115,7 +115,7 @@ public class MenusHandler {
         } else if (choice == 3) {
             OwnerView.listAllRejectBuildingsView();
         } else if(choice == 4) {
-            OwnerView.listAllHousesInOwnBuildingView();
+            OwnerView.listAllRejectedHousesView();
         } else if(choice == 5) {
             OwnerView.updateBuildingInfoView();
         } else if(choice == 6) {
