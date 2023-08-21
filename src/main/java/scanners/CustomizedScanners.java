@@ -96,7 +96,7 @@ public class CustomizedScanners {
         if (scanUserType == null) {
             printWarnMsg("user type");
         }
-        return null;
+        return scanUserType;
     }
 
     private static HouseClassificationByGender stringToHouseClassificationByGender(String houseClassificationByGender) {

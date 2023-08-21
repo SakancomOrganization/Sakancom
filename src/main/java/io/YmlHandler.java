@@ -13,15 +13,15 @@ public class YmlHandler {
 
     }
 
-    private static Map<String, Object> init() throws FileNotFoundException {
+    private static Map<String, Object> init(String fileName) throws FileNotFoundException {
         Map<String, Object> data;
-        InputStream inputStream = new FileInputStream("config.yml");
+        InputStream inputStream = new FileInputStream( "src/main/resources/config/" + fileName + ".yml");
         Yaml yml = new Yaml();
         data = yml.load(inputStream);
         return data;
     }
 
-    public static String getValue(String key) throws FileNotFoundException {
-        return init().get(key).toString();
+    public static String getValue(String fileName, String key) throws FileNotFoundException {
+        return init(fileName).get(key).toString();
     }
 }

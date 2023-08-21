@@ -23,8 +23,8 @@ public class EmailService {
     private String newPassword;
 
     public EmailService() throws FileNotFoundException {
-        from = YmlHandler.getValue("fromEmail");
-        password = YmlHandler.getValue("password");
+        from = YmlHandler.getValue("email-config","fromEmail");
+        password = YmlHandler.getValue("email-config","password");
         body = "";
         newPassword = "";
     }

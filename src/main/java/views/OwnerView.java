@@ -123,7 +123,7 @@ public class OwnerView {
             Location location = new Location(city, street);
             Building building = new Building(-1, name, Sakancom.getCurrentUser(), location);
             Owner.addBuilding(building);
-            File file = new File(YmlHandler.getValue("path") + building.getId());
+            File file = new File(YmlHandler.getValue("path-config","path") + building.getId());
             FileSystemMaker fileSystemMaker = new FileSystemMaker();
             fileSystemMaker.mkDir(file);
         } catch (AlreadyFoundElementException e) {
@@ -140,7 +140,7 @@ public class OwnerView {
         try {
             House house = new House(-1, services, monthlyRent, floorNum, houseClassificationByGender);
             Owner.addHouse(buildingId, house);
-            File file = new File(YmlHandler.getValue("path") +buildingId + "\\house_" + house.getId());
+            File file = new File(YmlHandler.getValue("path-config","path") +buildingId + "\\house_" + house.getId());
             FileSystemMaker fileSystemMaker = new FileSystemMaker();
             fileSystemMaker.mkDir(file);
         } catch (AlreadyFoundElementException e) {
@@ -163,7 +163,7 @@ public class OwnerView {
         String image = CustomizedScanners.scanNonEmptyString("image", new Scanner(System.in));
         try {
             Owner.addImage(buildingId, houseId, image);
-            File file = new File(YmlHandler.getValue("path") +buildingId + "\\house_" + houseId + File.separator + image);
+            File file = new File(YmlHandler.getValue("path-config","path") +buildingId + "\\house_" + houseId + File.separator + image);
             FileSystemMaker fileSystemMaker = new FileSystemMaker();
             if(fileSystemMaker.mkFile(file))
                 logger.info("Image is added successfully!");

@@ -15,6 +15,12 @@ public class Login {
 
     }
 
+    /**
+        @param username the username of the user who wants to log in
+        @param password the password of the user who wants to log in
+        @throws UserNotFoundException if the username is invalid
+        @return can the user log in or not
+     */
     public static boolean login(String username, String password) throws UserNotFoundException {
         User user = Sakancom.getUserByUsername(username);
         if(user.getPassword().equals(password)) {
